@@ -1,0 +1,56 @@
+{
+  "title": "Canadian Property Law - Landlord & Tenant Rights",
+  "jurisdictions": [
+    "Ontario",
+    "British Columbia",
+    "Alberta",
+    "Quebec"
+  ],
+  "categories": [
+    "residential tenancies",
+    "property tax",
+    "condominiums",
+    "property disputes"
+  ],
+  "documents": [
+    {
+      "type": "statute",
+      "title": "Ontario Residential Tenancies Act",
+      "url": "https://www.ontario.ca/laws/statute/01r08",
+      "sections": [
+        "rent increases",
+        "repairs",
+        "evictions",
+        "tenant rights"
+      ],
+      "solutions": [
+        "repair request",
+        "rent reduction",
+        "LTB application",
+        "withhold rent"
+      ]
+    },
+    {
+      "type": "guide",
+      "title": "Ontario Landlord and Tenant Rights - Complete Guide",
+      "content": "\n                    ONTARIO LANDLORD AND TENANT RIGHTS:\n\n                    1. REPAIR RESPONSIBILITIES:\n                    - Landlords must maintain habitable premises\n                    - Tenants must report repairs within 7 days\n                    - Emergency repairs: tenants can arrange and deduct from rent\n                    - Non-emergency: landlords have 7 days to respond\n\n                    2. RENT INCREASES:\n                    - Maximum annual increase set by government (2024: 2.5%)\n                    - 90 days written notice required\n                    - Cannot increase rent more than once per year\n                    - Exceptions for new tenants\n\n                    3. EVICTION PROCESS:\n                    - Specific grounds required (non-payment, damage, illegal activity)\n                    - 14-day notice for non-payment\n                    - 60-day notice for most other reasons\n                    - Application to Landlord and Tenant Board required\n\n                    4. TENANT REMEDIES:\n                    - Repair deduction: up to $500/month or 1 month's rent\n                    - Rent reduction: proportional to uninhabitability\n                    - Termination: if landlord breaches obligations\n                    - LTB application: free to file, binding decisions\n\n                    5. DISPUTE RESOLUTION:\n                    - Landlord and Tenant Board (LTB) handles disputes\n                    - Mediation available before hearing\n                    - Decisions enforceable by sheriff\n                    - Appeal to Divisional Court possible\n                    ",
+      "solutions": [
+        "request repairs",
+        "apply for rent reduction",
+        "file LTB application",
+        "terminate tenancy"
+      ]
+    },
+    {
+      "type": "guide",
+      "title": "British Columbia Property Tax Appeal Process",
+      "content": "\n                    BRITISH COLUMBIA PROPERTY TAX APPEALS:\n\n                    1. ASSESSMENT REVIEW PROCESS:\n                    - Property assessments done annually by BC Assessment\n                    - Notices mailed in January/February\n                    - Review period: January 31 to April 30\n\n                    2. INFORMAL REVIEW:\n                    - Contact assessor for clarification\n                    - Submit additional property information\n                    - Request reconsideration of assessment\n\n                    3. FORMAL APPEAL TO PROPERTY ASSESSMENT APPEAL BOARD:\n                    - File Form 4 within 30 days of assessment notice\n                    - Hearing scheduled within 6-12 months\n                    - Can appear in person, by agent, or in writing\n                    - Decision binding on both parties\n\n                    4. JUDICIAL REVIEW:\n                    - Appeal to Supreme Court within 60 days\n                    - Grounds: error of law, lack of jurisdiction\n                    - Full court review of decision\n\n                    5. ALTERNATIVE DISPUTE RESOLUTION:\n                    - Mediation available through BC Assessment\n                    - Settlement conferences\n                    - Simplified procedures for small disputes\n                    ",
+      "solutions": [
+        "request informal review",
+        "file formal appeal",
+        "seek judicial review",
+        "use mediation"
+      ]
+    }
+  ]
+}

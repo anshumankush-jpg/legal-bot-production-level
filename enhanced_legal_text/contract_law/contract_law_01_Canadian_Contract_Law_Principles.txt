@@ -1,0 +1,48 @@
+LEGAL DOCUMENT - Canadian Contract Law Principles
+Category: Contract Law
+Type: common_law
+Jurisdictions: Canada, Ontario, British Columbia
+
+CONTENT:
+CANADIAN CONTRACT LAW PRINCIPLES:
+
+                    1. CONTRACT FORMATION REQUIREMENTS:
+                    - Offer: clear, certain, communicated
+                    - Acceptance: unqualified, communicated
+                    - Consideration: something of value exchanged
+                    - Intention to create legal relations
+                    - Capacity: parties must be legally capable
+
+                    2. CONTRACTUAL TERMS:
+                    - Express terms: clearly stated
+                    - Implied terms: necessary for contract operation
+                    - Conditions: essential terms (breach allows termination)
+                    - Warranties: non-essential terms (breach allows damages only)
+                    - Innominate terms: depends on breach consequences
+
+                    3. VITIATING FACTORS (VOID OR VOIDABLE):
+                    - Misrepresentation: false statement inducing contract
+                    - Duress: coercion or threats
+                    - Undue influence: abuse of power relationship
+                    - Illegality: contrary to public policy
+                    - Mistake: fundamental error about contract terms
+
+                    4. DISCHARGE OF CONTRACT:
+                    - Performance: complete execution
+                    - Agreement: mutual consent to end
+                    - Breach: failure to perform obligations
+                    - Frustration: impossible to perform due to unforeseen events
+                    - Operation of law: bankruptcy, death, etc.
+
+PRACTICAL SOLUTIONS:
+• negotiate settlement
+• seek specific performance
+• claim damages
+• terminate contract
+
+REFERENCE INFORMATION:
+- URL: N/A
+- Sections: 
+- Document Type: common_law
+
+This document provides comprehensive legal information and practical solutions for contract law matters.

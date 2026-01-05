@@ -1,0 +1,45 @@
+{
+  "title": "Canadian Criminal Law - Offenses, Defenses & Procedures",
+  "jurisdictions": [
+    "Federal",
+    "Ontario",
+    "British Columbia"
+  ],
+  "categories": [
+    "assault",
+    "theft",
+    "fraud",
+    " DUI",
+    "defenses"
+  ],
+  "documents": [
+    {
+      "type": "statute",
+      "title": "Canadian Criminal Code",
+      "url": "https://laws-lois.justice.gc.ca/eng/acts/C-46/",
+      "sections": [
+        "assault",
+        "theft",
+        "fraud",
+        "defenses"
+      ],
+      "solutions": [
+        "retain lawyer",
+        "apply for bail",
+        "plead guilty",
+        "go to trial"
+      ]
+    },
+    {
+      "type": "guide",
+      "title": "Canadian Criminal Law Defenses and Procedures",
+      "content": "\n                    CANADIAN CRIMINAL LAW DEFENSES AND PROCEDURES:\n\n                    1. GENERAL DEFENSES:\n                    - Not criminally responsible (mental disorder)\n                    - Automatism (unconscious act)\n                    - Intoxication (not available for general intent crimes)\n                    - Self-defense (reasonable force)\n                    - Defense of others or property\n                    - Necessity (lesser evil)\n\n                    2. SPECIFIC DEFENSES BY OFFENSE:\n                    - Theft: color of right, claim of right\n                    - Assault: consent, lawful correction\n                    - Fraud: honest but mistaken belief\n                    - Sexual assault: consent, mistaken belief\n\n                    3. CRIMINAL COURT PROCESS:\n                    - Arrest and detention\n                    - Bail hearing (within 24 hours)\n                    - Preliminary inquiry (indictable offenses)\n                    - Trial: judge alone or judge and jury\n                    - Sentencing principles and ranges\n\n                    4. YOUTH CRIMINAL JUSTICE:\n                    - Ages 12-17 treated differently\n                    - Focus on rehabilitation\n                    - Extrajudicial measures for minor offenses\n                    - Youth courts and facilities\n\n                    5. APPEAL PROCESS:\n                    - Provincial court of appeal\n                    - Supreme Court of Canada (leave required)\n                    - Grounds: error of law, unreasonable verdict\n                    - Time limits strictly enforced\n\n                    6. LEGAL AID AVAILABILITY:\n                    - Duty counsel for bail hearings\n                    - Full legal aid based on income\n                    - Private bar referrals\n                    - Provincial legal aid programs\n                    ",
+      "solutions": [
+        "contact legal aid",
+        "apply for bail",
+        "retain defense lawyer",
+        "consider plea bargain"
+      ]
+    }
+  ]
+}

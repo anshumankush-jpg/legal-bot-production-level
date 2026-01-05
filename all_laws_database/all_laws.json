@@ -1,0 +1,23 @@
+{
+  "divorce": [
+    {
+      "title": "USA Divorce Laws",
+      "content": "USA DIVORCE LAWS - All 50 states, no-fault, fault grounds, property division, child custody, alimony, child support. Residency requirements by state. Common questions answered.",
+      "country": "USA"
+    }
+  ],
+  "copyright": [
+    {
+      "title": "USA Copyright Law",
+      "content": "USA COPYRIGHT LAW - 17 U.S.C. What can be copyrighted, duration, exclusive rights, fair use, DMCA takedown process, content owner rights.",
+      "country": "USA"
+    }
+  ],
+  "commercial_vehicle": [
+    {
+      "title": "FMCSR Oversized Load",
+      "content": "FMCSR OVERSIZED LOAD REGULATIONS - Permits required, safety strap requirements (DOT-approved, not regular straps), escort vehicles, route restrictions, penalties for violations including non-safety straps.",
+      "country": "USA"
+    }
+  ]
+}

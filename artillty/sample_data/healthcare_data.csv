@@ -1,0 +1,17 @@
+Patient ID,Age,Diagnosis,Treatment,Outcome,Follow-up Days
+P001,45,Hypertension,Medication,Improved,30
+P002,62,Diabetes Type 2,Insulin Therapy,Stable,60
+P003,38,Asthma,Inhaler,Improved,90
+P004,55,Heart Disease,Cardiac Medication,Stable,30
+P005,29,Anxiety,Therapy,Improved,120
+P006,71,Arthritis,Pain Management,Stable,60
+P007,42,Migraine,Preventive Medication,Improved,90
+P008,58,High Cholesterol,Statins,Improved,30
+P009,35,Depression,Antidepressants,Improved,120
+P010,50,Type 2 Diabetes,Diet and Exercise,Improved,60
+P011,67,Osteoporosis,Calcium Supplements,Stable,90
+P012,41,Allergies,Antihistamines,Improved,30
+P013,53,COPD,Bronchodilators,Stable,60
+P014,39,Insomnia,Sleep Therapy,Improved,90
+P015,64,Parkinson's,Levodopa,Stable,120
+

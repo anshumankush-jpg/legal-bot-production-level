@@ -1,0 +1,99 @@
+{
+  "case_id": "CAN-ON-TRAFFIC-0001",
+  "jurisdiction": {
+    "country": "Canada",
+    "region_type": "province",
+    "region_code": "ON",
+    "court_level": "Provincial Court"
+  },
+  "case_metadata": {
+    "year": 2019,
+    "area_of_law": "traffic",
+    "offence_code": "HTA 128(1)",
+    "offence_label": "Speeding 30 km/h over limit",
+    "real_case_reference": null
+  },
+  "facts": {
+    "short_summary": "Driver stopped for going 30 km/h over limit on a 60 km/h urban road with no prior record.",
+    "detailed_facts": "On May 3, 2019, at approximately 15:30, the driver was travelling 90 km/h in a 60 km/h zone on an urban arterial road in Toronto. The officer used a handheld radar device. Weather was clear, traffic moderate, no collision or unsafe maneuvers were observed. The driver has no previous convictions and holds a full G licence.",
+    "aggravating_factors": [
+      "30 km/h over posted limit"
+    ],
+    "mitigating_factors": [
+      "No prior record",
+      "Good driving conditions",
+      "Cooperative with officer"
+    ],
+    "defence_issues_spotted": [
+      "Radar calibration not yet confirmed",
+      "Officer notes not reviewed"
+    ]
+  },
+  "law": {
+    "statutes_applied": [
+      {
+        "name": "Highway Traffic Act",
+        "citation": "R.S.O. 1990, c. H.8, s. 128(1)",
+        "key_elements": [
+          "Vehicle operated on a highway",
+          "Exceeding maximum speed limit posted or prescribed by regulation"
+        ]
+      }
+    ],
+    "guideline_docs": [
+      "Ontario demerit point system",
+      "Local crown policy on speeding reductions"
+    ]
+  },
+  "outcome_if_known": {
+    "is_real_outcome": false,
+    "summary": null,
+    "sentence": null
+  },
+  "paralegal_advice": {
+    "client_profile": {
+      "goal_priority": [
+        "avoid_demerit_points",
+        "avoid_insurance_increase",
+        "minimize_time_in_court"
+      ],
+      "risk_tolerance": "medium"
+    },
+    "advice_variants": [
+      {
+        "id": "A1",
+        "style": "conservative",
+        "short_label": "Seek reduction, avoid trial",
+        "full_advice_text": "Given you were 30 km/h over the limit with no prior record, a common practical approach in Ontario is to request an early resolution or meeting with the prosecutor. The goal is to seek a plea to a lower speed or a less serious offence that carries fewer demerit points and a smaller insurance impact. Before that meeting, obtain and review the officer's notes through disclosure. If there are no obvious technical defences and you want to minimize risk and time, a negotiated reduction is often more predictable than a full trial. This is general information only and not legal advice; you should speak with a licensed lawyer or paralegal about your exact circumstances.",
+        "risk_level": "low",
+        "likely_benefits": [
+          "Reduced demerit points",
+          "Improved insurance impact",
+          "Less time and stress than trial"
+        ],
+        "key_reasons": [
+          "No prior record",
+          "Moderate over-speed (not stunt driving)",
+          "High likelihood of some reduction in many courts"
+        ]
+      },
+      {
+        "id": "A2",
+        "style": "aggressive",
+        "short_label": "Consider trial and technical defence",
+        "full_advice_text": "If you are prepared for more uncertainty and time in court, you can plead not guilty and set the matter for trial. Request full disclosure, including the officer's notes, radar manual pages, and calibration records. A paralegal or lawyer can review whether the officer was properly trained, whether the device was tested correctly, and whether there are gaps in the prosecution's evidence. If a significant weakness appears, you might obtain a withdrawal or an acquittal. However, if the evidence is strong, you could end up with a conviction close to the original speed. This is general information only and not legal advice; you should speak with a licensed lawyer or paralegal about your exact circumstances.",
+        "risk_level": "medium",
+        "likely_benefits": [
+          "Possibility of full withdrawal or acquittal",
+          "Leverage to negotiate better plea"
+        ],
+        "key_reasons": [
+          "Calibration or training gaps sometimes occur",
+          "Disclosure might reveal weaknesses"
+        ]
+      }
+    ],
+    "universal_disclaimer": "These are general informational examples based on typical approaches in this jurisdiction. They are not legal advice. For advice about your specific case, consult a licensed lawyer or paralegal."
+  }
+}
+

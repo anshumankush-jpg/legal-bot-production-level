@@ -1,0 +1,64 @@
+<div class="setup-container">
+  <div class="setup-card">
+    <!-- Welcome Message -->
+    <div class="welcome-message">
+      <p>Hi! Welcome to Legal AI Assistant. I would like to know which province/state you need legal information about.</p>
+    </div>
+
+    <!-- Setup Form -->
+    <form [formGroup]="setupForm" (ngSubmit)="finishSetup()" class="setup-form">
+      <h2>Please provide more details about your situation.</h2>
+      
+      <!-- Offense Number -->
+      <div class="form-group">
+        <label for="offenceNumber">Offense Number *</label>
+        <input
+          type="text"
+          id="offenceNumber"
+          formControlName="offenceNumber"
+          placeholder="e.g., HTA 128"
+          [class.error]="setupForm.get('offenceNumber')?.invalid && setupForm.get('offenceNumber')?.touched"
+        />
+        <span class="error-text" *ngIf="setupForm.get('offenceNumber')?.invalid && setupForm.get('offenceNumber')?.touched">
+          Offense number is required
+        </span>
+      </div>
+
+      <!-- Location -->
+      <div class="form-group">
+        <label for="location">Where were you caught (City/Location) *</label>
+        <input
+          type="text"
+          id="location"
+          formControlName="location"
+          placeholder="e.g., Toronto, ON"
+          [class.error]="setupForm.get('location')?.invalid && setupForm.get('location')?.touched"
+        />
+        <span class="error-text" *ngIf="setupForm.get('location')?.invalid && setupForm.get('location')?.touched">
+          Location is required
+        </span>
+      </div>
+
+      <!-- Additional Information -->
+      <div class="form-group">
+        <label for="additionalInfo">Any additional Information?</label>
+        <textarea
+          id="additionalInfo"
+          formControlName="additionalInfo"
+          placeholder="Any other relevant details..."
+          rows="4"
+        ></textarea>
+      </div>
+
+      <!-- Submit Button -->
+      <button
+        type="submit"
+        class="btn-primary"
+        [disabled]="setupForm.invalid || isLoading"
+      >
+        <span *ngIf="!isLoading">Continue to Chat</span>
+        <span *ngIf="isLoading">Loading...</span>
+      </button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,55 @@
+# PLAZA-AI Environment Configuration Template
+# Copy this to .env in the backend directory and fill in your values
+
+# ============================================
+# OpenAI Configuration (Required)
+# ============================================
+# Get API key from: https://platform.openai.com/api-keys
+OPENAI_API_KEY=sk-your-openai-api-key-here
+
+# Chat Model (gpt-4o-mini is cheapest - 94% savings!)
+OPENAI_CHAT_MODEL=gpt-4o-mini
+OPENAI_TEMPERATURE=0.2
+OPENAI_MAX_TOKENS=1500
+
+# Embedding Model
+OPENAI_EMBEDDING_MODEL=text-embedding-ada-002
+
+# ============================================
+# LLM Provider Selection
+# ============================================
+# Options: "openai", "azure", "ollama", "gemini", "huggingface"
+LLM_PROVIDER=openai
+
+# ============================================
+# Embedding Provider Selection
+# ============================================
+# Options: "openai" (paid, cloud), "rtld" (sentence_transformers - free, local)
+# System will try sentence_transformers first, fallback to OpenAI if it fails
+EMBEDDING_PROVIDER=openai
+
+# ============================================
+# Free LLM Providers (Optional)
+# ============================================
+
+# Ollama (100% free, local, no API key needed!)
+# Install from: https://ollama.ai
+# OLLAMA_BASE_URL=http://localhost:11434
+# OLLAMA_MODEL=llama3.2
+
+# Google Gemini (Free tier: 15 RPM, 1M tokens/day)
+# Get API key from: https://makersuite.google.com/app/apikey
+# GEMINI_API_KEY=your-gemini-api-key-here
+# GEMINI_MODEL=gemini-1.5-flash
+
+# Hugging Face (Free tier available)
+# Get token from: https://huggingface.co/settings/tokens
+# HUGGINGFACE_API_KEY=your-huggingface-token-here
+# HUGGINGFACE_MODEL=mistralai/Mistral-7B-Instruct-v0.2
+
+# ============================================
+# Server Configuration
+# ============================================
+HOST=0.0.0.0
+PORT=8000
+DEBUG=False

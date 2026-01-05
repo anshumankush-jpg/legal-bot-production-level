@@ -1,0 +1,49 @@
+# Core Embedding Models
+sentence-transformers>=2.2.0
+transformers>=4.30.0
+torch>=2.0.0
+torchvision>=0.15.0
+
+# Multi-modal Support
+# Note: CLIP must be installed separately: pip install git+https://github.com/openai/CLIP.git
+Pillow>=10.0.0
+
+# Vector Database
+faiss-cpu>=1.7.4  # FAISS vector database
+
+# Document Processing
+pypdf2>=3.0.0
+python-docx>=1.0.0
+openpyxl>=3.1.0
+pandas>=2.0.0
+pdfplumber>=0.10.0
+PyMuPDF>=1.23.0  # Advanced PDF processing
+
+# OCR Support
+pytesseract>=0.3.10
+opencv-python>=4.8.0
+# easyocr>=1.7.0  # Optional, heavier dependency
+
+# API Framework
+fastapi>=0.100.0
+uvicorn>=0.23.0
+pydantic>=2.0.0
+python-multipart>=0.0.6
+
+# GCP Support (optional)
+google-cloud-storage>=2.10.0
+google-cloud-firestore>=2.11.0
+google-cloud-secret-manager>=2.16.0
+
+# Utilities
+numpy>=1.24.0
+requests>=2.31.0
+python-dotenv>=1.0.0
+aiofiles>=23.0.0
+
+# Testing
+pytest>=7.0.0
+pytest-asyncio>=0.21.0
+
+# Logging and Monitoring
+structlog>=23.0.0  # Optional, for structured logging

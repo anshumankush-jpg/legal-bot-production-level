@@ -1,0 +1,29 @@
+{
+  "title": "Canadian Immigration Law - Applications & Appeals",
+  "jurisdictions": [
+    "Federal"
+  ],
+  "categories": [
+    "applications",
+    "appeals",
+    "refugees",
+    "citizenship"
+  ],
+  "documents": [
+    {
+      "type": "statute",
+      "title": "Immigration and Refugee Protection Act",
+      "url": "https://laws-lois.justice.gc.ca/eng/acts/I-2.5/",
+      "sections": [
+        "applications",
+        "appeals",
+        "removals"
+      ],
+      "solutions": [
+        "apply online",
+        "appeal decision",
+        "seek judicial review"
+      ]
+    }
+  ]
+}

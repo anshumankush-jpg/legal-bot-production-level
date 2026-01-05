@@ -1,0 +1,109 @@
+{
+  "case_id": "CAN-QC-TRAFFIC-0003",
+  "jurisdiction": {
+    "country": "Canada",
+    "region_type": "province",
+    "region_code": "QC",
+    "court_level": "Court of Quebec, Criminal and Penal Division"
+  },
+  "case_metadata": {
+    "year": 2023,
+    "area_of_law": "traffic",
+    "offence_code": "HSC 327",
+    "offence_label": "Speeding 50 km/h over limit (stunt driving equivalent)",
+    "real_case_reference": null
+  },
+  "facts": {
+    "short_summary": "Driver charged with excessive speeding (50+ km/h over limit) on highway. Vehicle impounded, licence suspended immediately.",
+    "detailed_facts": "On July 22, 2023, at 23:15, the driver was travelling 150 km/h in a 100 km/h zone on Highway 40 near Montreal. The officer used laser speed detection. The vehicle was immediately impounded for 7 days, and the driver's licence was suspended for 7 days. The driver has no prior traffic violations. Weather was clear, late night with light traffic. Driver is a 25-year-old with a Class 5 licence for 3 years.",
+    "aggravating_factors": [
+      "50 km/h over posted limit (serious offence)",
+      "Immediate vehicle impoundment",
+      "Immediate licence suspension",
+      "Late night driving"
+    ],
+    "mitigating_factors": [
+      "No prior record",
+      "No collision or property damage",
+      "Cooperative with officer",
+      "Good weather conditions"
+    ],
+    "defence_issues_spotted": [
+      "Laser device calibration records needed",
+      "Officer training records for laser use",
+      "Potential for challenging impoundment if charge reduced"
+    ]
+  },
+  "law": {
+    "statutes_applied": [
+      {
+        "name": "Highway Safety Code",
+        "citation": "CQLR, c. C-24.2, s. 327",
+        "key_elements": [
+          "Exceeding speed limit by 50 km/h or more",
+          "Vehicle operated on public road"
+        ]
+      }
+    ],
+    "guideline_docs": [
+      "Quebec Highway Safety Code",
+      "Quebec vehicle impoundment regulations",
+      "Quebec demerit point system"
+    ]
+  },
+  "outcome_if_known": {
+    "is_real_outcome": false,
+    "summary": null,
+    "sentence": null
+  },
+  "paralegal_advice": {
+    "client_profile": {
+      "goal_priority": [
+        "reduce_charge_below_50kmh_threshold",
+        "avoid_extended_impoundment",
+        "minimize_insurance_impact",
+        "avoid_criminal_record"
+      ],
+      "risk_tolerance": "low"
+    },
+    "advice_variants": [
+      {
+        "id": "A1",
+        "style": "conservative",
+        "short_label": "Urgent: Seek immediate reduction to avoid severe penalties",
+        "full_advice_text": "This is a serious charge in Quebec. If convicted at 50+ km/h over, you face significant penalties including extended impoundment, high fines, and severe insurance consequences. Your immediate priority should be to consult with a lawyer or paralegal who can attempt to negotiate a reduction to below 50 km/h over the limit. If successful, this can significantly reduce the penalties. The 7-day impoundment and suspension have already occurred, but a reduction in the charge can prevent longer-term consequences. Time is critical - act quickly to preserve your rights and explore all options. This is general information only and not legal advice; you should speak with a licensed lawyer or paralegal about your exact circumstances.",
+        "risk_level": "low",
+        "likely_benefits": [
+          "Potential reduction below 50 km/h threshold",
+          "Avoidance of extended impoundment periods",
+          "Reduced insurance impact",
+          "Lower fines"
+        ],
+        "key_reasons": [
+          "No prior record is a strong mitigating factor",
+          "Early negotiation may yield better results",
+          "50 km/h threshold has severe consequences"
+        ]
+      },
+      {
+        "id": "A2",
+        "style": "moderate",
+        "short_label": "Review disclosure, then negotiate or proceed to trial",
+        "full_advice_text": "Given the severity of this charge, you should obtain full disclosure including the laser calibration records, officer training certificates, and all notes. A qualified legal professional can review whether there are any technical weaknesses in the prosecution's case. If weaknesses exist, you may have leverage for a better plea deal or grounds for a trial defence. However, laser evidence is generally reliable, and the penalties for losing at trial are severe. A strategic approach would be to review disclosure first, then decide whether to negotiate or proceed to trial based on the strength of the evidence. This is general information only and not legal advice; you should speak with a licensed lawyer or paralegal about your exact circumstances.",
+        "risk_level": "medium",
+        "likely_benefits": [
+          "Informed decision based on evidence strength",
+          "Potential for better negotiation position",
+          "Possibility of technical defence if weaknesses found"
+        ],
+        "key_reasons": [
+          "Disclosure review is essential for serious charges",
+          "Technical defences sometimes exist",
+          "Better informed negotiation position"
+        ]
+      }
+    ],
+    "universal_disclaimer": "These are general informational examples based on typical approaches in this jurisdiction. They are not legal advice. For advice about your specific case, consult a licensed lawyer or paralegal."
+  }
+}
+

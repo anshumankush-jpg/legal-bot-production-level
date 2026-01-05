@@ -1,0 +1,62 @@
+LEGAL DOCUMENT - Ontario Contract Breach Remedies and Small Claims Court
+Category: Contract Law
+Type: guide
+Jurisdictions: Canada, Ontario, British Columbia
+
+CONTENT:
+ONTARIO CONTRACT BREACH REMEDIES:
+
+                    1. COMMON LAW REMEDIES:
+                    - Compensatory damages: restore to position had contract been performed
+                    - Consequential damages: foreseeable losses from breach
+                    - Punitive damages: exceptional cases for egregious conduct
+                    - Nominal damages: technical breach but no actual loss
+
+                    2. EQUITABLE REMEDIES:
+                    - Specific performance: court orders contract completion
+                    - Injunction: prevents certain actions or requires actions
+                    - Rectification: corrects written contract mistakes
+
+                    3. LIMITATIONS:
+                    - Mitigation: duty to minimize losses
+                    - Remoteness: damages must be foreseeable
+                    - Contributory negligence: reduces recoverable damages
+                    - Liquidated damages: pre-agreed damage amounts
+
+                    4. SMALL CLAIMS COURT PROCESS:
+                    - Claims up to $35,000 (as of 2023)
+                    - No lawyers required (but allowed)
+                    - Filing fee: $75-$279 depending on claim amount
+                    - Defendant has 20 days to respond
+                    - Settlement conferences available
+                    - Trial within 6 months of filing
+
+                    5. COLLECTION OF JUDGMENT:
+                    - Writ of seizure and sale for property
+                    - Garnishment of wages/bank accounts
+                    - Examination in aid of execution
+                    - Private sheriff services may be needed
+
+                    6. ALTERNATIVE DISPUTE RESOLUTION:
+                    - Mediation: neutral third party facilitates settlement
+                    - Arbitration: binding decision by private arbitrator
+                    - Court-annexed mediation programs
+                    - Early neutral evaluation
+
+                    7. LIMITATION PERIODS:
+                    - Contract claims: 2 years from breach discovery
+                    - Tort claims: 2 years from incident
+                    - Property claims: 10 years from purchase
+
+PRACTICAL SOLUTIONS:
+• file small claims court application
+• hire lawyer
+• attempt mediation
+• enforce judgment
+
+REFERENCE INFORMATION:
+- URL: N/A
+- Sections: 
+- Document Type: guide
+
+This document provides comprehensive legal information and practical solutions for contract law matters.

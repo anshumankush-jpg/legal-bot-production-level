@@ -1,0 +1,105 @@
+{
+  "case_id": "USA-CA-TRAFFIC-0001",
+  "jurisdiction": {
+    "country": "USA",
+    "region_type": "state",
+    "region_code": "CA",
+    "court_level": "Superior Court - Traffic Division"
+  },
+  "case_metadata": {
+    "year": 2023,
+    "area_of_law": "traffic",
+    "offence_code": "CVC 22350",
+    "offence_label": "Basic Speed Law - Unsafe speed for conditions",
+    "real_case_reference": null
+  },
+  "facts": {
+    "short_summary": "Driver cited for unsafe speed during rain. Officer estimated speed at 75 mph in 65 mph zone during heavy rain.",
+    "detailed_facts": "On March 10, 2023, at 14:20, the driver was travelling on Interstate 5 in California during heavy rain. The officer observed the vehicle and estimated the speed at approximately 75 mph in a 65 mph zone. The officer did not use radar or laser, relying on visual estimation and pacing. The driver maintains they were driving safely for conditions. Weather was heavy rain, visibility reduced. Driver has a clean record for 5 years, holds a Class C California driver's licence.",
+    "aggravating_factors": [
+      "Heavy rain conditions",
+      "Officer's observation of unsafe speed",
+      "Interstate highway with other traffic"
+    ],
+    "mitigating_factors": [
+      "Clean driving record",
+      "No collision or accident",
+      "Driver's account of safe driving",
+      "No radar/laser evidence"
+    ],
+    "defence_issues_spotted": [
+      "No objective speed measurement device used",
+      "Officer's visual estimation may be challengeable",
+      "Pacing method not clearly documented"
+    ]
+  },
+  "law": {
+    "statutes_applied": [
+      {
+        "name": "California Vehicle Code",
+        "citation": "Cal. Veh. Code § 22350",
+        "key_elements": [
+          "Vehicle operated on highway",
+          "Speed not reasonable or prudent for conditions",
+          "Endangering safety of persons or property"
+        ]
+      }
+    ],
+    "guideline_docs": [
+      "California DMV point system",
+      "California traffic school options"
+    ]
+  },
+  "outcome_if_known": {
+    "is_real_outcome": false,
+    "summary": null,
+    "sentence": null
+  },
+  "paralegal_advice": {
+    "client_profile": {
+      "goal_priority": [
+        "avoid_points_on_license",
+        "challenge_officer_estimation",
+        "minimize_insurance_impact"
+      ],
+      "risk_tolerance": "medium"
+    },
+    "advice_variants": [
+      {
+        "id": "A1",
+        "style": "moderate",
+        "short_label": "Request trial by written declaration or negotiate",
+        "full_advice_text": "In California, you have the option of a trial by written declaration, which can be less time-consuming than an in-person trial. Since the officer used visual estimation rather than radar or laser, there may be room to challenge the accuracy. You can also request an in-person trial if you prefer. Given your clean record, the court may be willing to reduce the charge or offer traffic school to avoid points. California allows traffic school once every 18 months to mask a violation from your insurance. Consider requesting disclosure of the officer's notes and training records. This is general information only and not legal advice; you should speak with a licensed attorney about your exact circumstances.",
+        "risk_level": "low",
+        "likely_benefits": [
+          "Trial by written declaration is convenient",
+          "Traffic school option to avoid points",
+          "Clean record may help with negotiation"
+        ],
+        "key_reasons": [
+          "Visual estimation is less precise than radar",
+          "Traffic school available to mask violation",
+          "Clean record is a strong mitigating factor"
+        ]
+      },
+      {
+        "id": "A2",
+        "style": "aggressive",
+        "short_label": "Challenge visual estimation at trial",
+        "full_advice_text": "Visual speed estimation by officers is generally less reliable than radar or laser devices. You can challenge the officer's ability to accurately estimate speed, especially in adverse weather conditions. Request the officer's training records regarding visual speed estimation, and consider whether the pacing method (if used) was properly executed. If the officer cannot provide adequate evidence of training or if there are inconsistencies in the notes, you may have a defence. However, officers are trained in speed estimation, and courts often give weight to their testimony. If you lose, you'll face the full penalty. This is general information only and not legal advice; you should speak with a licensed attorney about your exact circumstances.",
+        "risk_level": "medium",
+        "likely_benefits": [
+          "Possibility of acquittal if estimation is successfully challenged",
+          "No points or fine if successful"
+        ],
+        "key_reasons": [
+          "Visual estimation is less reliable than devices",
+          "Weather conditions may affect accuracy",
+          "Training records may reveal gaps"
+        ]
+      }
+    ],
+    "universal_disclaimer": "These are general informational examples based on typical approaches in this jurisdiction. They are not legal advice. For advice about your specific case, consult a licensed attorney."
+  }
+}
+

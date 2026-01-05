@@ -1,0 +1,602 @@
+[
+  {
+    "title": "California - Speeding Violations",
+    "content": "California Speeding Laws\n\nBasic Speed Law:\n- Must not drive at a speed greater than is reasonable and prudent\n- Must consider traffic, weather, road conditions, and visibility\n\nMaximum Speed Limits:\n- Urban areas: Typically 25-35 mph\n- Rural highways: Typically 55-65 mph\n- Freeways: Typically 65-75 mph (varies by state)\n\nPenalties for Speeding:\n- 1-10 mph over: Typically $100-$200 fine, possible points\n- 11-20 mph over: Typically $200-$400 fine, points, possible license suspension\n- 21+ mph over: Typically $400-$1000+ fine, mandatory court appearance, possible jail\n\nCommon Questions:\n- What is the speed limit in California?\n- How many points for speeding in California?\n- Can I fight a speeding ticket in California?\n- What is the fine for speeding in California?\n- Does speeding affect insurance in California?\n- Can I take traffic school to avoid points in California?\n- What is the difference between absolute and presumed speed limits?",
+    "jurisdiction": "California",
+    "country": "USA",
+    "category": "traffic",
+    "tags": [
+      "speeding",
+      "traffic",
+      "california"
+    ]
+  },
+  {
+    "title": "Texas - Speeding Violations",
+    "content": "Texas Speeding Laws\n\nBasic Speed Law:\n- Must not drive at a speed greater than is reasonable and prudent\n- Must consider traffic, weather, road conditions, and visibility\n\nMaximum Speed Limits:\n- Urban areas: Typically 25-35 mph\n- Rural highways: Typically 55-65 mph\n- Freeways: Typically 65-75 mph (varies by state)\n\nPenalties for Speeding:\n- 1-10 mph over: Typically $100-$200 fine, possible points\n- 11-20 mph over: Typically $200-$400 fine, points, possible license suspension\n- 21+ mph over: Typically $400-$1000+ fine, mandatory court appearance, possible jail\n\nCommon Questions:\n- What is the speed limit in Texas?\n- How many points for speeding in Texas?\n- Can I fight a speeding ticket in Texas?\n- What is the fine for speeding in Texas?\n- Does speeding affect insurance in Texas?\n- Can I take traffic school to avoid points in Texas?\n- What is the difference between absolute and presumed speed limits?",
+    "jurisdiction": "Texas",
+    "country": "USA",
+    "category": "traffic",
+    "tags": [
+      "speeding",
+      "traffic",
+      "texas"
+    ]
+  },
+  {
+    "title": "Florida - Speeding Violations",
+    "content": "Florida Speeding Laws\n\nBasic Speed Law:\n- Must not drive at a speed greater than is reasonable and prudent\n- Must consider traffic, weather, road conditions, and visibility\n\nMaximum Speed Limits:\n- Urban areas: Typically 25-35 mph\n- Rural highways: Typically 55-65 mph\n- Freeways: Typically 65-75 mph (varies by state)\n\nPenalties for Speeding:\n- 1-10 mph over: Typically $100-$200 fine, possible points\n- 11-20 mph over: Typically $200-$400 fine, points, possible license suspension\n- 21+ mph over: Typically $400-$1000+ fine, mandatory court appearance, possible jail\n\nCommon Questions:\n- What is the speed limit in Florida?\n- How many points for speeding in Florida?\n- Can I fight a speeding ticket in Florida?\n- What is the fine for speeding in Florida?\n- Does speeding affect insurance in Florida?\n- Can I take traffic school to avoid points in Florida?\n- What is the difference between absolute and presumed speed limits?",
+    "jurisdiction": "Florida",
+    "country": "USA",
+    "category": "traffic",
+    "tags": [
+      "speeding",
+      "traffic",
+      "florida"
+    ]
+  },
+  {
+    "title": "New York - Speeding Violations",
+    "content": "New York Speeding Laws\n\nBasic Speed Law:\n- Must not drive at a speed greater than is reasonable and prudent\n- Must consider traffic, weather, road conditions, and visibility\n\nMaximum Speed Limits:\n- Urban areas: Typically 25-35 mph\n- Rural highways: Typically 55-65 mph\n- Freeways: Typically 65-75 mph (varies by state)\n\nPenalties for Speeding:\n- 1-10 mph over: Typically $100-$200 fine, possible points\n- 11-20 mph over: Typically $200-$400 fine, points, possible license suspension\n- 21+ mph over: Typically $400-$1000+ fine, mandatory court appearance, possible jail\n\nCommon Questions:\n- What is the speed limit in New York?\n- How many points for speeding in New York?\n- Can I fight a speeding ticket in New York?\n- What is the fine for speeding in New York?\n- Does speeding affect insurance in New York?\n- Can I take traffic school to avoid points in New York?\n- What is the difference between absolute and presumed speed limits?",
+    "jurisdiction": "New York",
+    "country": "USA",
+    "category": "traffic",
+    "tags": [
+      "speeding",
+      "traffic",
+      "new_york"
+    ]
+  },
+  {
+    "title": "Illinois - Speeding Violations",
+    "content": "Illinois Speeding Laws\n\nBasic Speed Law:\n- Must not drive at a speed greater than is reasonable and prudent\n- Must consider traffic, weather, road conditions, and visibility\n\nMaximum Speed Limits:\n- Urban areas: Typically 25-35 mph\n- Rural highways: Typically 55-65 mph\n- Freeways: Typically 65-75 mph (varies by state)\n\nPenalties for Speeding:\n- 1-10 mph over: Typically $100-$200 fine, possible points\n- 11-20 mph over: Typically $200-$400 fine, points, possible license suspension\n- 21+ mph over: Typically $400-$1000+ fine, mandatory court appearance, possible jail\n\nCommon Questions:\n- What is the speed limit in Illinois?\n- How many points for speeding in Illinois?\n- Can I fight a speeding ticket in Illinois?\n- What is the fine for speeding in Illinois?\n- Does speeding affect insurance in Illinois?\n- Can I take traffic school to avoid points in Illinois?\n- What is the difference between absolute and presumed speed limits?",
+    "jurisdiction": "Illinois",
+    "country": "USA",
+    "category": "traffic",
+    "tags": [
+      "speeding",
+      "traffic",
+      "illinois"
+    ]
+  },
+  {
+    "title": "Pennsylvania - Speeding Violations",
+    "content": "Pennsylvania Speeding Laws\n\nBasic Speed Law:\n- Must not drive at a speed greater than is reasonable and prudent\n- Must consider traffic, weather, road conditions, and visibility\n\nMaximum Speed Limits:\n- Urban areas: Typically 25-35 mph\n- Rural highways: Typically 55-65 mph\n- Freeways: Typically 65-75 mph (varies by state)\n\nPenalties for Speeding:\n- 1-10 mph over: Typically $100-$200 fine, possible points\n- 11-20 mph over: Typically $200-$400 fine, points, possible license suspension\n- 21+ mph over: Typically $400-$1000+ fine, mandatory court appearance, possible jail\n\nCommon Questions:\n- What is the speed limit in Pennsylvania?\n- How many points for speeding in Pennsylvania?\n- Can I fight a speeding ticket in Pennsylvania?\n- What is the fine for speeding in Pennsylvania?\n- Does speeding affect insurance in Pennsylvania?\n- Can I take traffic school to avoid points in Pennsylvania?\n- What is the difference between absolute and presumed speed limits?",
+    "jurisdiction": "Pennsylvania",
+    "country": "USA",
+    "category": "traffic",
+    "tags": [
+      "speeding",
+      "traffic",
+      "pennsylvania"
+    ]
+  },
+  {
+    "title": "Ohio - Speeding Violations",
+    "content": "Ohio Speeding Laws\n\nBasic Speed Law:\n- Must not drive at a speed greater than is reasonable and prudent\n- Must consider traffic, weather, road conditions, and visibility\n\nMaximum Speed Limits:\n- Urban areas: Typically 25-35 mph\n- Rural highways: Typically 55-65 mph\n- Freeways: Typically 65-75 mph (varies by state)\n\nPenalties for Speeding:\n- 1-10 mph over: Typically $100-$200 fine, possible points\n- 11-20 mph over: Typically $200-$400 fine, points, possible license suspension\n- 21+ mph over: Typically $400-$1000+ fine, mandatory court appearance, possible jail\n\nCommon Questions:\n- What is the speed limit in Ohio?\n- How many points for speeding in Ohio?\n- Can I fight a speeding ticket in Ohio?\n- What is the fine for speeding in Ohio?\n- Does speeding affect insurance in Ohio?\n- Can I take traffic school to avoid points in Ohio?\n- What is the difference between absolute and presumed speed limits?",
+    "jurisdiction": "Ohio",
+    "country": "USA",
+    "category": "traffic",
+    "tags": [
+      "speeding",
+      "traffic",
+      "ohio"
+    ]
+  },
+  {
+    "title": "Georgia - Speeding Violations",
+    "content": "Georgia Speeding Laws\n\nBasic Speed Law:\n- Must not drive at a speed greater than is reasonable and prudent\n- Must consider traffic, weather, road conditions, and visibility\n\nMaximum Speed Limits:\n- Urban areas: Typically 25-35 mph\n- Rural highways: Typically 55-65 mph\n- Freeways: Typically 65-75 mph (varies by state)\n\nPenalties for Speeding:\n- 1-10 mph over: Typically $100-$200 fine, possible points\n- 11-20 mph over: Typically $200-$400 fine, points, possible license suspension\n- 21+ mph over: Typically $400-$1000+ fine, mandatory court appearance, possible jail\n\nCommon Questions:\n- What is the speed limit in Georgia?\n- How many points for speeding in Georgia?\n- Can I fight a speeding ticket in Georgia?\n- What is the fine for speeding in Georgia?\n- Does speeding affect insurance in Georgia?\n- Can I take traffic school to avoid points in Georgia?\n- What is the difference between absolute and presumed speed limits?",
+    "jurisdiction": "Georgia",
+    "country": "USA",
+    "category": "traffic",
+    "tags": [
+      "speeding",
+      "traffic",
+      "georgia"
+    ]
+  },
+  {
+    "title": "North Carolina - Speeding Violations",
+    "content": "North Carolina Speeding Laws\n\nBasic Speed Law:\n- Must not drive at a speed greater than is reasonable and prudent\n- Must consider traffic, weather, road conditions, and visibility\n\nMaximum Speed Limits:\n- Urban areas: Typically 25-35 mph\n- Rural highways: Typically 55-65 mph\n- Freeways: Typically 65-75 mph (varies by state)\n\nPenalties for Speeding:\n- 1-10 mph over: Typically $100-$200 fine, possible points\n- 11-20 mph over: Typically $200-$400 fine, points, possible license suspension\n- 21+ mph over: Typically $400-$1000+ fine, mandatory court appearance, possible jail\n\nCommon Questions:\n- What is the speed limit in North Carolina?\n- How many points for speeding in North Carolina?\n- Can I fight a speeding ticket in North Carolina?\n- What is the fine for speeding in North Carolina?\n- Does speeding affect insurance in North Carolina?\n- Can I take traffic school to avoid points in North Carolina?\n- What is the difference between absolute and presumed speed limits?",
+    "jurisdiction": "North Carolina",
+    "country": "USA",
+    "category": "traffic",
+    "tags": [
+      "speeding",
+      "traffic",
+      "north_carolina"
+    ]
+  },
+  {
+    "title": "Michigan - Speeding Violations",
+    "content": "Michigan Speeding Laws\n\nBasic Speed Law:\n- Must not drive at a speed greater than is reasonable and prudent\n- Must consider traffic, weather, road conditions, and visibility\n\nMaximum Speed Limits:\n- Urban areas: Typically 25-35 mph\n- Rural highways: Typically 55-65 mph\n- Freeways: Typically 65-75 mph (varies by state)\n\nPenalties for Speeding:\n- 1-10 mph over: Typically $100-$200 fine, possible points\n- 11-20 mph over: Typically $200-$400 fine, points, possible license suspension\n- 21+ mph over: Typically $400-$1000+ fine, mandatory court appearance, possible jail\n\nCommon Questions:\n- What is the speed limit in Michigan?\n- How many points for speeding in Michigan?\n- Can I fight a speeding ticket in Michigan?\n- What is the fine for speeding in Michigan?\n- Does speeding affect insurance in Michigan?\n- Can I take traffic school to avoid points in Michigan?\n- What is the difference between absolute and presumed speed limits?",
+    "jurisdiction": "Michigan",
+    "country": "USA",
+    "category": "traffic",
+    "tags": [
+      "speeding",
+      "traffic",
+      "michigan"
+    ]
+  },
+  {
+    "title": "New Jersey - Speeding Violations",
+    "content": "New Jersey Speeding Laws\n\nBasic Speed Law:\n- Must not drive at a speed greater than is reasonable and prudent\n- Must consider traffic, weather, road conditions, and visibility\n\nMaximum Speed Limits:\n- Urban areas: Typically 25-35 mph\n- Rural highways: Typically 55-65 mph\n- Freeways: Typically 65-75 mph (varies by state)\n\nPenalties for Speeding:\n- 1-10 mph over: Typically $100-$200 fine, possible points\n- 11-20 mph over: Typically $200-$400 fine, points, possible license suspension\n- 21+ mph over: Typically $400-$1000+ fine, mandatory court appearance, possible jail\n\nCommon Questions:\n- What is the speed limit in New Jersey?\n- How many points for speeding in New Jersey?\n- Can I fight a speeding ticket in New Jersey?\n- What is the fine for speeding in New Jersey?\n- Does speeding affect insurance in New Jersey?\n- Can I take traffic school to avoid points in New Jersey?\n- What is the difference between absolute and presumed speed limits?",
+    "jurisdiction": "New Jersey",
+    "country": "USA",
+    "category": "traffic",
+    "tags": [
+      "speeding",
+      "traffic",
+      "new_jersey"
+    ]
+  },
+  {
+    "title": "Virginia - Speeding Violations",
+    "content": "Virginia Speeding Laws\n\nBasic Speed Law:\n- Must not drive at a speed greater than is reasonable and prudent\n- Must consider traffic, weather, road conditions, and visibility\n\nMaximum Speed Limits:\n- Urban areas: Typically 25-35 mph\n- Rural highways: Typically 55-65 mph\n- Freeways: Typically 65-75 mph (varies by state)\n\nPenalties for Speeding:\n- 1-10 mph over: Typically $100-$200 fine, possible points\n- 11-20 mph over: Typically $200-$400 fine, points, possible license suspension\n- 21+ mph over: Typically $400-$1000+ fine, mandatory court appearance, possible jail\n\nCommon Questions:\n- What is the speed limit in Virginia?\n- How many points for speeding in Virginia?\n- Can I fight a speeding ticket in Virginia?\n- What is the fine for speeding in Virginia?\n- Does speeding affect insurance in Virginia?\n- Can I take traffic school to avoid points in Virginia?\n- What is the difference between absolute and presumed speed limits?",
+    "jurisdiction": "Virginia",
+    "country": "USA",
+    "category": "traffic",
+    "tags": [
+      "speeding",
+      "traffic",
+      "virginia"
+    ]
+  },
+  {
+    "title": "Washington - Speeding Violations",
+    "content": "Washington Speeding Laws\n\nBasic Speed Law:\n- Must not drive at a speed greater than is reasonable and prudent\n- Must consider traffic, weather, road conditions, and visibility\n\nMaximum Speed Limits:\n- Urban areas: Typically 25-35 mph\n- Rural highways: Typically 55-65 mph\n- Freeways: Typically 65-75 mph (varies by state)\n\nPenalties for Speeding:\n- 1-10 mph over: Typically $100-$200 fine, possible points\n- 11-20 mph over: Typically $200-$400 fine, points, possible license suspension\n- 21+ mph over: Typically $400-$1000+ fine, mandatory court appearance, possible jail\n\nCommon Questions:\n- What is the speed limit in Washington?\n- How many points for speeding in Washington?\n- Can I fight a speeding ticket in Washington?\n- What is the fine for speeding in Washington?\n- Does speeding affect insurance in Washington?\n- Can I take traffic school to avoid points in Washington?\n- What is the difference between absolute and presumed speed limits?",
+    "jurisdiction": "Washington",
+    "country": "USA",
+    "category": "traffic",
+    "tags": [
+      "speeding",
+      "traffic",
+      "washington"
+    ]
+  },
+  {
+    "title": "Arizona - Speeding Violations",
+    "content": "Arizona Speeding Laws\n\nBasic Speed Law:\n- Must not drive at a speed greater than is reasonable and prudent\n- Must consider traffic, weather, road conditions, and visibility\n\nMaximum Speed Limits:\n- Urban areas: Typically 25-35 mph\n- Rural highways: Typically 55-65 mph\n- Freeways: Typically 65-75 mph (varies by state)\n\nPenalties for Speeding:\n- 1-10 mph over: Typically $100-$200 fine, possible points\n- 11-20 mph over: Typically $200-$400 fine, points, possible license suspension\n- 21+ mph over: Typically $400-$1000+ fine, mandatory court appearance, possible jail\n\nCommon Questions:\n- What is the speed limit in Arizona?\n- How many points for speeding in Arizona?\n- Can I fight a speeding ticket in Arizona?\n- What is the fine for speeding in Arizona?\n- Does speeding affect insurance in Arizona?\n- Can I take traffic school to avoid points in Arizona?\n- What is the difference between absolute and presumed speed limits?",
+    "jurisdiction": "Arizona",
+    "country": "USA",
+    "category": "traffic",
+    "tags": [
+      "speeding",
+      "traffic",
+      "arizona"
+    ]
+  },
+  {
+    "title": "Massachusetts - Speeding Violations",
+    "content": "Massachusetts Speeding Laws\n\nBasic Speed Law:\n- Must not drive at a speed greater than is reasonable and prudent\n- Must consider traffic, weather, road conditions, and visibility\n\nMaximum Speed Limits:\n- Urban areas: Typically 25-35 mph\n- Rural highways: Typically 55-65 mph\n- Freeways: Typically 65-75 mph (varies by state)\n\nPenalties for Speeding:\n- 1-10 mph over: Typically $100-$200 fine, possible points\n- 11-20 mph over: Typically $200-$400 fine, points, possible license suspension\n- 21+ mph over: Typically $400-$1000+ fine, mandatory court appearance, possible jail\n\nCommon Questions:\n- What is the speed limit in Massachusetts?\n- How many points for speeding in Massachusetts?\n- Can I fight a speeding ticket in Massachusetts?\n- What is the fine for speeding in Massachusetts?\n- Does speeding affect insurance in Massachusetts?\n- Can I take traffic school to avoid points in Massachusetts?\n- What is the difference between absolute and presumed speed limits?",
+    "jurisdiction": "Massachusetts",
+    "country": "USA",
+    "category": "traffic",
+    "tags": [
+      "speeding",
+      "traffic",
+      "massachusetts"
+    ]
+  },
+  {
+    "title": "Tennessee - Speeding Violations",
+    "content": "Tennessee Speeding Laws\n\nBasic Speed Law:\n- Must not drive at a speed greater than is reasonable and prudent\n- Must consider traffic, weather, road conditions, and visibility\n\nMaximum Speed Limits:\n- Urban areas: Typically 25-35 mph\n- Rural highways: Typically 55-65 mph\n- Freeways: Typically 65-75 mph (varies by state)\n\nPenalties for Speeding:\n- 1-10 mph over: Typically $100-$200 fine, possible points\n- 11-20 mph over: Typically $200-$400 fine, points, possible license suspension\n- 21+ mph over: Typically $400-$1000+ fine, mandatory court appearance, possible jail\n\nCommon Questions:\n- What is the speed limit in Tennessee?\n- How many points for speeding in Tennessee?\n- Can I fight a speeding ticket in Tennessee?\n- What is the fine for speeding in Tennessee?\n- Does speeding affect insurance in Tennessee?\n- Can I take traffic school to avoid points in Tennessee?\n- What is the difference between absolute and presumed speed limits?",
+    "jurisdiction": "Tennessee",
+    "country": "USA",
+    "category": "traffic",
+    "tags": [
+      "speeding",
+      "traffic",
+      "tennessee"
+    ]
+  },
+  {
+    "title": "Indiana - Speeding Violations",
+    "content": "Indiana Speeding Laws\n\nBasic Speed Law:\n- Must not drive at a speed greater than is reasonable and prudent\n- Must consider traffic, weather, road conditions, and visibility\n\nMaximum Speed Limits:\n- Urban areas: Typically 25-35 mph\n- Rural highways: Typically 55-65 mph\n- Freeways: Typically 65-75 mph (varies by state)\n\nPenalties for Speeding:\n- 1-10 mph over: Typically $100-$200 fine, possible points\n- 11-20 mph over: Typically $200-$400 fine, points, possible license suspension\n- 21+ mph over: Typically $400-$1000+ fine, mandatory court appearance, possible jail\n\nCommon Questions:\n- What is the speed limit in Indiana?\n- How many points for speeding in Indiana?\n- Can I fight a speeding ticket in Indiana?\n- What is the fine for speeding in Indiana?\n- Does speeding affect insurance in Indiana?\n- Can I take traffic school to avoid points in Indiana?\n- What is the difference between absolute and presumed speed limits?",
+    "jurisdiction": "Indiana",
+    "country": "USA",
+    "category": "traffic",
+    "tags": [
+      "speeding",
+      "traffic",
+      "indiana"
+    ]
+  },
+  {
+    "title": "Missouri - Speeding Violations",
+    "content": "Missouri Speeding Laws\n\nBasic Speed Law:\n- Must not drive at a speed greater than is reasonable and prudent\n- Must consider traffic, weather, road conditions, and visibility\n\nMaximum Speed Limits:\n- Urban areas: Typically 25-35 mph\n- Rural highways: Typically 55-65 mph\n- Freeways: Typically 65-75 mph (varies by state)\n\nPenalties for Speeding:\n- 1-10 mph over: Typically $100-$200 fine, possible points\n- 11-20 mph over: Typically $200-$400 fine, points, possible license suspension\n- 21+ mph over: Typically $400-$1000+ fine, mandatory court appearance, possible jail\n\nCommon Questions:\n- What is the speed limit in Missouri?\n- How many points for speeding in Missouri?\n- Can I fight a speeding ticket in Missouri?\n- What is the fine for speeding in Missouri?\n- Does speeding affect insurance in Missouri?\n- Can I take traffic school to avoid points in Missouri?\n- What is the difference between absolute and presumed speed limits?",
+    "jurisdiction": "Missouri",
+    "country": "USA",
+    "category": "traffic",
+    "tags": [
+      "speeding",
+      "traffic",
+      "missouri"
+    ]
+  },
+  {
+    "title": "Maryland - Speeding Violations",
+    "content": "Maryland Speeding Laws\n\nBasic Speed Law:\n- Must not drive at a speed greater than is reasonable and prudent\n- Must consider traffic, weather, road conditions, and visibility\n\nMaximum Speed Limits:\n- Urban areas: Typically 25-35 mph\n- Rural highways: Typically 55-65 mph\n- Freeways: Typically 65-75 mph (varies by state)\n\nPenalties for Speeding:\n- 1-10 mph over: Typically $100-$200 fine, possible points\n- 11-20 mph over: Typically $200-$400 fine, points, possible license suspension\n- 21+ mph over: Typically $400-$1000+ fine, mandatory court appearance, possible jail\n\nCommon Questions:\n- What is the speed limit in Maryland?\n- How many points for speeding in Maryland?\n- Can I fight a speeding ticket in Maryland?\n- What is the fine for speeding in Maryland?\n- Does speeding affect insurance in Maryland?\n- Can I take traffic school to avoid points in Maryland?\n- What is the difference between absolute and presumed speed limits?",
+    "jurisdiction": "Maryland",
+    "country": "USA",
+    "category": "traffic",
+    "tags": [
+      "speeding",
+      "traffic",
+      "maryland"
+    ]
+  },
+  {
+    "title": "Wisconsin - Speeding Violations",
+    "content": "Wisconsin Speeding Laws\n\nBasic Speed Law:\n- Must not drive at a speed greater than is reasonable and prudent\n- Must consider traffic, weather, road conditions, and visibility\n\nMaximum Speed Limits:\n- Urban areas: Typically 25-35 mph\n- Rural highways: Typically 55-65 mph\n- Freeways: Typically 65-75 mph (varies by state)\n\nPenalties for Speeding:\n- 1-10 mph over: Typically $100-$200 fine, possible points\n- 11-20 mph over: Typically $200-$400 fine, points, possible license suspension\n- 21+ mph over: Typically $400-$1000+ fine, mandatory court appearance, possible jail\n\nCommon Questions:\n- What is the speed limit in Wisconsin?\n- How many points for speeding in Wisconsin?\n- Can I fight a speeding ticket in Wisconsin?\n- What is the fine for speeding in Wisconsin?\n- Does speeding affect insurance in Wisconsin?\n- Can I take traffic school to avoid points in Wisconsin?\n- What is the difference between absolute and presumed speed limits?",
+    "jurisdiction": "Wisconsin",
+    "country": "USA",
+    "category": "traffic",
+    "tags": [
+      "speeding",
+      "traffic",
+      "wisconsin"
+    ]
+  },
+  {
+    "title": "Colorado - Speeding Violations",
+    "content": "Colorado Speeding Laws\n\nBasic Speed Law:\n- Must not drive at a speed greater than is reasonable and prudent\n- Must consider traffic, weather, road conditions, and visibility\n\nMaximum Speed Limits:\n- Urban areas: Typically 25-35 mph\n- Rural highways: Typically 55-65 mph\n- Freeways: Typically 65-75 mph (varies by state)\n\nPenalties for Speeding:\n- 1-10 mph over: Typically $100-$200 fine, possible points\n- 11-20 mph over: Typically $200-$400 fine, points, possible license suspension\n- 21+ mph over: Typically $400-$1000+ fine, mandatory court appearance, possible jail\n\nCommon Questions:\n- What is the speed limit in Colorado?\n- How many points for speeding in Colorado?\n- Can I fight a speeding ticket in Colorado?\n- What is the fine for speeding in Colorado?\n- Does speeding affect insurance in Colorado?\n- Can I take traffic school to avoid points in Colorado?\n- What is the difference between absolute and presumed speed limits?",
+    "jurisdiction": "Colorado",
+    "country": "USA",
+    "category": "traffic",
+    "tags": [
+      "speeding",
+      "traffic",
+      "colorado"
+    ]
+  },
+  {
+    "title": "Minnesota - Speeding Violations",
+    "content": "Minnesota Speeding Laws\n\nBasic Speed Law:\n- Must not drive at a speed greater than is reasonable and prudent\n- Must consider traffic, weather, road conditions, and visibility\n\nMaximum Speed Limits:\n- Urban areas: Typically 25-35 mph\n- Rural highways: Typically 55-65 mph\n- Freeways: Typically 65-75 mph (varies by state)\n\nPenalties for Speeding:\n- 1-10 mph over: Typically $100-$200 fine, possible points\n- 11-20 mph over: Typically $200-$400 fine, points, possible license suspension\n- 21+ mph over: Typically $400-$1000+ fine, mandatory court appearance, possible jail\n\nCommon Questions:\n- What is the speed limit in Minnesota?\n- How many points for speeding in Minnesota?\n- Can I fight a speeding ticket in Minnesota?\n- What is the fine for speeding in Minnesota?\n- Does speeding affect insurance in Minnesota?\n- Can I take traffic school to avoid points in Minnesota?\n- What is the difference between absolute and presumed speed limits?",
+    "jurisdiction": "Minnesota",
+    "country": "USA",
+    "category": "traffic",
+    "tags": [
+      "speeding",
+      "traffic",
+      "minnesota"
+    ]
+  },
+  {
+    "title": "South Carolina - Speeding Violations",
+    "content": "South Carolina Speeding Laws\n\nBasic Speed Law:\n- Must not drive at a speed greater than is reasonable and prudent\n- Must consider traffic, weather, road conditions, and visibility\n\nMaximum Speed Limits:\n- Urban areas: Typically 25-35 mph\n- Rural highways: Typically 55-65 mph\n- Freeways: Typically 65-75 mph (varies by state)\n\nPenalties for Speeding:\n- 1-10 mph over: Typically $100-$200 fine, possible points\n- 11-20 mph over: Typically $200-$400 fine, points, possible license suspension\n- 21+ mph over: Typically $400-$1000+ fine, mandatory court appearance, possible jail\n\nCommon Questions:\n- What is the speed limit in South Carolina?\n- How many points for speeding in South Carolina?\n- Can I fight a speeding ticket in South Carolina?\n- What is the fine for speeding in South Carolina?\n- Does speeding affect insurance in South Carolina?\n- Can I take traffic school to avoid points in South Carolina?\n- What is the difference between absolute and presumed speed limits?",
+    "jurisdiction": "South Carolina",
+    "country": "USA",
+    "category": "traffic",
+    "tags": [
+      "speeding",
+      "traffic",
+      "south_carolina"
+    ]
+  },
+  {
+    "title": "Alabama - Speeding Violations",
+    "content": "Alabama Speeding Laws\n\nBasic Speed Law:\n- Must not drive at a speed greater than is reasonable and prudent\n- Must consider traffic, weather, road conditions, and visibility\n\nMaximum Speed Limits:\n- Urban areas: Typically 25-35 mph\n- Rural highways: Typically 55-65 mph\n- Freeways: Typically 65-75 mph (varies by state)\n\nPenalties for Speeding:\n- 1-10 mph over: Typically $100-$200 fine, possible points\n- 11-20 mph over: Typically $200-$400 fine, points, possible license suspension\n- 21+ mph over: Typically $400-$1000+ fine, mandatory court appearance, possible jail\n\nCommon Questions:\n- What is the speed limit in Alabama?\n- How many points for speeding in Alabama?\n- Can I fight a speeding ticket in Alabama?\n- What is the fine for speeding in Alabama?\n- Does speeding affect insurance in Alabama?\n- Can I take traffic school to avoid points in Alabama?\n- What is the difference between absolute and presumed speed limits?",
+    "jurisdiction": "Alabama",
+    "country": "USA",
+    "category": "traffic",
+    "tags": [
+      "speeding",
+      "traffic",
+      "alabama"
+    ]
+  },
+  {
+    "title": "Louisiana - Speeding Violations",
+    "content": "Louisiana Speeding Laws\n\nBasic Speed Law:\n- Must not drive at a speed greater than is reasonable and prudent\n- Must consider traffic, weather, road conditions, and visibility\n\nMaximum Speed Limits:\n- Urban areas: Typically 25-35 mph\n- Rural highways: Typically 55-65 mph\n- Freeways: Typically 65-75 mph (varies by state)\n\nPenalties for Speeding:\n- 1-10 mph over: Typically $100-$200 fine, possible points\n- 11-20 mph over: Typically $200-$400 fine, points, possible license suspension\n- 21+ mph over: Typically $400-$1000+ fine, mandatory court appearance, possible jail\n\nCommon Questions:\n- What is the speed limit in Louisiana?\n- How many points for speeding in Louisiana?\n- Can I fight a speeding ticket in Louisiana?\n- What is the fine for speeding in Louisiana?\n- Does speeding affect insurance in Louisiana?\n- Can I take traffic school to avoid points in Louisiana?\n- What is the difference between absolute and presumed speed limits?",
+    "jurisdiction": "Louisiana",
+    "country": "USA",
+    "category": "traffic",
+    "tags": [
+      "speeding",
+      "traffic",
+      "louisiana"
+    ]
+  },
+  {
+    "title": "Kentucky - Speeding Violations",
+    "content": "Kentucky Speeding Laws\n\nBasic Speed Law:\n- Must not drive at a speed greater than is reasonable and prudent\n- Must consider traffic, weather, road conditions, and visibility\n\nMaximum Speed Limits:\n- Urban areas: Typically 25-35 mph\n- Rural highways: Typically 55-65 mph\n- Freeways: Typically 65-75 mph (varies by state)\n\nPenalties for Speeding:\n- 1-10 mph over: Typically $100-$200 fine, possible points\n- 11-20 mph over: Typically $200-$400 fine, points, possible license suspension\n- 21+ mph over: Typically $400-$1000+ fine, mandatory court appearance, possible jail\n\nCommon Questions:\n- What is the speed limit in Kentucky?\n- How many points for speeding in Kentucky?\n- Can I fight a speeding ticket in Kentucky?\n- What is the fine for speeding in Kentucky?\n- Does speeding affect insurance in Kentucky?\n- Can I take traffic school to avoid points in Kentucky?\n- What is the difference between absolute and presumed speed limits?",
+    "jurisdiction": "Kentucky",
+    "country": "USA",
+    "category": "traffic",
+    "tags": [
+      "speeding",
+      "traffic",
+      "kentucky"
+    ]
+  },
+  {
+    "title": "Oregon - Speeding Violations",
+    "content": "Oregon Speeding Laws\n\nBasic Speed Law:\n- Must not drive at a speed greater than is reasonable and prudent\n- Must consider traffic, weather, road conditions, and visibility\n\nMaximum Speed Limits:\n- Urban areas: Typically 25-35 mph\n- Rural highways: Typically 55-65 mph\n- Freeways: Typically 65-75 mph (varies by state)\n\nPenalties for Speeding:\n- 1-10 mph over: Typically $100-$200 fine, possible points\n- 11-20 mph over: Typically $200-$400 fine, points, possible license suspension\n- 21+ mph over: Typically $400-$1000+ fine, mandatory court appearance, possible jail\n\nCommon Questions:\n- What is the speed limit in Oregon?\n- How many points for speeding in Oregon?\n- Can I fight a speeding ticket in Oregon?\n- What is the fine for speeding in Oregon?\n- Does speeding affect insurance in Oregon?\n- Can I take traffic school to avoid points in Oregon?\n- What is the difference between absolute and presumed speed limits?",
+    "jurisdiction": "Oregon",
+    "country": "USA",
+    "category": "traffic",
+    "tags": [
+      "speeding",
+      "traffic",
+      "oregon"
+    ]
+  },
+  {
+    "title": "Oklahoma - Speeding Violations",
+    "content": "Oklahoma Speeding Laws\n\nBasic Speed Law:\n- Must not drive at a speed greater than is reasonable and prudent\n- Must consider traffic, weather, road conditions, and visibility\n\nMaximum Speed Limits:\n- Urban areas: Typically 25-35 mph\n- Rural highways: Typically 55-65 mph\n- Freeways: Typically 65-75 mph (varies by state)\n\nPenalties for Speeding:\n- 1-10 mph over: Typically $100-$200 fine, possible points\n- 11-20 mph over: Typically $200-$400 fine, points, possible license suspension\n- 21+ mph over: Typically $400-$1000+ fine, mandatory court appearance, possible jail\n\nCommon Questions:\n- What is the speed limit in Oklahoma?\n- How many points for speeding in Oklahoma?\n- Can I fight a speeding ticket in Oklahoma?\n- What is the fine for speeding in Oklahoma?\n- Does speeding affect insurance in Oklahoma?\n- Can I take traffic school to avoid points in Oklahoma?\n- What is the difference between absolute and presumed speed limits?",
+    "jurisdiction": "Oklahoma",
+    "country": "USA",
+    "category": "traffic",
+    "tags": [
+      "speeding",
+      "traffic",
+      "oklahoma"
+    ]
+  },
+  {
+    "title": "Connecticut - Speeding Violations",
+    "content": "Connecticut Speeding Laws\n\nBasic Speed Law:\n- Must not drive at a speed greater than is reasonable and prudent\n- Must consider traffic, weather, road conditions, and visibility\n\nMaximum Speed Limits:\n- Urban areas: Typically 25-35 mph\n- Rural highways: Typically 55-65 mph\n- Freeways: Typically 65-75 mph (varies by state)\n\nPenalties for Speeding:\n- 1-10 mph over: Typically $100-$200 fine, possible points\n- 11-20 mph over: Typically $200-$400 fine, points, possible license suspension\n- 21+ mph over: Typically $400-$1000+ fine, mandatory court appearance, possible jail\n\nCommon Questions:\n- What is the speed limit in Connecticut?\n- How many points for speeding in Connecticut?\n- Can I fight a speeding ticket in Connecticut?\n- What is the fine for speeding in Connecticut?\n- Does speeding affect insurance in Connecticut?\n- Can I take traffic school to avoid points in Connecticut?\n- What is the difference between absolute and presumed speed limits?",
+    "jurisdiction": "Connecticut",
+    "country": "USA",
+    "category": "traffic",
+    "tags": [
+      "speeding",
+      "traffic",
+      "connecticut"
+    ]
+  },
+  {
+    "title": "Utah - Speeding Violations",
+    "content": "Utah Speeding Laws\n\nBasic Speed Law:\n- Must not drive at a speed greater than is reasonable and prudent\n- Must consider traffic, weather, road conditions, and visibility\n\nMaximum Speed Limits:\n- Urban areas: Typically 25-35 mph\n- Rural highways: Typically 55-65 mph\n- Freeways: Typically 65-75 mph (varies by state)\n\nPenalties for Speeding:\n- 1-10 mph over: Typically $100-$200 fine, possible points\n- 11-20 mph over: Typically $200-$400 fine, points, possible license suspension\n- 21+ mph over: Typically $400-$1000+ fine, mandatory court appearance, possible jail\n\nCommon Questions:\n- What is the speed limit in Utah?\n- How many points for speeding in Utah?\n- Can I fight a speeding ticket in Utah?\n- What is the fine for speeding in Utah?\n- Does speeding affect insurance in Utah?\n- Can I take traffic school to avoid points in Utah?\n- What is the difference between absolute and presumed speed limits?",
+    "jurisdiction": "Utah",
+    "country": "USA",
+    "category": "traffic",
+    "tags": [
+      "speeding",
+      "traffic",
+      "utah"
+    ]
+  },
+  {
+    "title": "Iowa - Speeding Violations",
+    "content": "Iowa Speeding Laws\n\nBasic Speed Law:\n- Must not drive at a speed greater than is reasonable and prudent\n- Must consider traffic, weather, road conditions, and visibility\n\nMaximum Speed Limits:\n- Urban areas: Typically 25-35 mph\n- Rural highways: Typically 55-65 mph\n- Freeways: Typically 65-75 mph (varies by state)\n\nPenalties for Speeding:\n- 1-10 mph over: Typically $100-$200 fine, possible points\n- 11-20 mph over: Typically $200-$400 fine, points, possible license suspension\n- 21+ mph over: Typically $400-$1000+ fine, mandatory court appearance, possible jail\n\nCommon Questions:\n- What is the speed limit in Iowa?\n- How many points for speeding in Iowa?\n- Can I fight a speeding ticket in Iowa?\n- What is the fine for speeding in Iowa?\n- Does speeding affect insurance in Iowa?\n- Can I take traffic school to avoid points in Iowa?\n- What is the difference between absolute and presumed speed limits?",
+    "jurisdiction": "Iowa",
+    "country": "USA",
+    "category": "traffic",
+    "tags": [
+      "speeding",
+      "traffic",
+      "iowa"
+    ]
+  },
+  {
+    "title": "Nevada - Speeding Violations",
+    "content": "Nevada Speeding Laws\n\nBasic Speed Law:\n- Must not drive at a speed greater than is reasonable and prudent\n- Must consider traffic, weather, road conditions, and visibility\n\nMaximum Speed Limits:\n- Urban areas: Typically 25-35 mph\n- Rural highways: Typically 55-65 mph\n- Freeways: Typically 65-75 mph (varies by state)\n\nPenalties for Speeding:\n- 1-10 mph over: Typically $100-$200 fine, possible points\n- 11-20 mph over: Typically $200-$400 fine, points, possible license suspension\n- 21+ mph over: Typically $400-$1000+ fine, mandatory court appearance, possible jail\n\nCommon Questions:\n- What is the speed limit in Nevada?\n- How many points for speeding in Nevada?\n- Can I fight a speeding ticket in Nevada?\n- What is the fine for speeding in Nevada?\n- Does speeding affect insurance in Nevada?\n- Can I take traffic school to avoid points in Nevada?\n- What is the difference between absolute and presumed speed limits?",
+    "jurisdiction": "Nevada",
+    "country": "USA",
+    "category": "traffic",
+    "tags": [
+      "speeding",
+      "traffic",
+      "nevada"
+    ]
+  },
+  {
+    "title": "Arkansas - Speeding Violations",
+    "content": "Arkansas Speeding Laws\n\nBasic Speed Law:\n- Must not drive at a speed greater than is reasonable and prudent\n- Must consider traffic, weather, road conditions, and visibility\n\nMaximum Speed Limits:\n- Urban areas: Typically 25-35 mph\n- Rural highways: Typically 55-65 mph\n- Freeways: Typically 65-75 mph (varies by state)\n\nPenalties for Speeding:\n- 1-10 mph over: Typically $100-$200 fine, possible points\n- 11-20 mph over: Typically $200-$400 fine, points, possible license suspension\n- 21+ mph over: Typically $400-$1000+ fine, mandatory court appearance, possible jail\n\nCommon Questions:\n- What is the speed limit in Arkansas?\n- How many points for speeding in Arkansas?\n- Can I fight a speeding ticket in Arkansas?\n- What is the fine for speeding in Arkansas?\n- Does speeding affect insurance in Arkansas?\n- Can I take traffic school to avoid points in Arkansas?\n- What is the difference between absolute and presumed speed limits?",
+    "jurisdiction": "Arkansas",
+    "country": "USA",
+    "category": "traffic",
+    "tags": [
+      "speeding",
+      "traffic",
+      "arkansas"
+    ]
+  },
+  {
+    "title": "Mississippi - Speeding Violations",
+    "content": "Mississippi Speeding Laws\n\nBasic Speed Law:\n- Must not drive at a speed greater than is reasonable and prudent\n- Must consider traffic, weather, road conditions, and visibility\n\nMaximum Speed Limits:\n- Urban areas: Typically 25-35 mph\n- Rural highways: Typically 55-65 mph\n- Freeways: Typically 65-75 mph (varies by state)\n\nPenalties for Speeding:\n- 1-10 mph over: Typically $100-$200 fine, possible points\n- 11-20 mph over: Typically $200-$400 fine, points, possible license suspension\n- 21+ mph over: Typically $400-$1000+ fine, mandatory court appearance, possible jail\n\nCommon Questions:\n- What is the speed limit in Mississippi?\n- How many points for speeding in Mississippi?\n- Can I fight a speeding ticket in Mississippi?\n- What is the fine for speeding in Mississippi?\n- Does speeding affect insurance in Mississippi?\n- Can I take traffic school to avoid points in Mississippi?\n- What is the difference between absolute and presumed speed limits?",
+    "jurisdiction": "Mississippi",
+    "country": "USA",
+    "category": "traffic",
+    "tags": [
+      "speeding",
+      "traffic",
+      "mississippi"
+    ]
+  },
+  {
+    "title": "Kansas - Speeding Violations",
+    "content": "Kansas Speeding Laws\n\nBasic Speed Law:\n- Must not drive at a speed greater than is reasonable and prudent\n- Must consider traffic, weather, road conditions, and visibility\n\nMaximum Speed Limits:\n- Urban areas: Typically 25-35 mph\n- Rural highways: Typically 55-65 mph\n- Freeways: Typically 65-75 mph (varies by state)\n\nPenalties for Speeding:\n- 1-10 mph over: Typically $100-$200 fine, possible points\n- 11-20 mph over: Typically $200-$400 fine, points, possible license suspension\n- 21+ mph over: Typically $400-$1000+ fine, mandatory court appearance, possible jail\n\nCommon Questions:\n- What is the speed limit in Kansas?\n- How many points for speeding in Kansas?\n- Can I fight a speeding ticket in Kansas?\n- What is the fine for speeding in Kansas?\n- Does speeding affect insurance in Kansas?\n- Can I take traffic school to avoid points in Kansas?\n- What is the difference between absolute and presumed speed limits?",
+    "jurisdiction": "Kansas",
+    "country": "USA",
+    "category": "traffic",
+    "tags": [
+      "speeding",
+      "traffic",
+      "kansas"
+    ]
+  },
+  {
+    "title": "New Mexico - Speeding Violations",
+    "content": "New Mexico Speeding Laws\n\nBasic Speed Law:\n- Must not drive at a speed greater than is reasonable and prudent\n- Must consider traffic, weather, road conditions, and visibility\n\nMaximum Speed Limits:\n- Urban areas: Typically 25-35 mph\n- Rural highways: Typically 55-65 mph\n- Freeways: Typically 65-75 mph (varies by state)\n\nPenalties for Speeding:\n- 1-10 mph over: Typically $100-$200 fine, possible points\n- 11-20 mph over: Typically $200-$400 fine, points, possible license suspension\n- 21+ mph over: Typically $400-$1000+ fine, mandatory court appearance, possible jail\n\nCommon Questions:\n- What is the speed limit in New Mexico?\n- How many points for speeding in New Mexico?\n- Can I fight a speeding ticket in New Mexico?\n- What is the fine for speeding in New Mexico?\n- Does speeding affect insurance in New Mexico?\n- Can I take traffic school to avoid points in New Mexico?\n- What is the difference between absolute and presumed speed limits?",
+    "jurisdiction": "New Mexico",
+    "country": "USA",
+    "category": "traffic",
+    "tags": [
+      "speeding",
+      "traffic",
+      "new_mexico"
+    ]
+  },
+  {
+    "title": "Nebraska - Speeding Violations",
+    "content": "Nebraska Speeding Laws\n\nBasic Speed Law:\n- Must not drive at a speed greater than is reasonable and prudent\n- Must consider traffic, weather, road conditions, and visibility\n\nMaximum Speed Limits:\n- Urban areas: Typically 25-35 mph\n- Rural highways: Typically 55-65 mph\n- Freeways: Typically 65-75 mph (varies by state)\n\nPenalties for Speeding:\n- 1-10 mph over: Typically $100-$200 fine, possible points\n- 11-20 mph over: Typically $200-$400 fine, points, possible license suspension\n- 21+ mph over: Typically $400-$1000+ fine, mandatory court appearance, possible jail\n\nCommon Questions:\n- What is the speed limit in Nebraska?\n- How many points for speeding in Nebraska?\n- Can I fight a speeding ticket in Nebraska?\n- What is the fine for speeding in Nebraska?\n- Does speeding affect insurance in Nebraska?\n- Can I take traffic school to avoid points in Nebraska?\n- What is the difference between absolute and presumed speed limits?",
+    "jurisdiction": "Nebraska",
+    "country": "USA",
+    "category": "traffic",
+    "tags": [
+      "speeding",
+      "traffic",
+      "nebraska"
+    ]
+  },
+  {
+    "title": "West Virginia - Speeding Violations",
+    "content": "West Virginia Speeding Laws\n\nBasic Speed Law:\n- Must not drive at a speed greater than is reasonable and prudent\n- Must consider traffic, weather, road conditions, and visibility\n\nMaximum Speed Limits:\n- Urban areas: Typically 25-35 mph\n- Rural highways: Typically 55-65 mph\n- Freeways: Typically 65-75 mph (varies by state)\n\nPenalties for Speeding:\n- 1-10 mph over: Typically $100-$200 fine, possible points\n- 11-20 mph over: Typically $200-$400 fine, points, possible license suspension\n- 21+ mph over: Typically $400-$1000+ fine, mandatory court appearance, possible jail\n\nCommon Questions:\n- What is the speed limit in West Virginia?\n- How many points for speeding in West Virginia?\n- Can I fight a speeding ticket in West Virginia?\n- What is the fine for speeding in West Virginia?\n- Does speeding affect insurance in West Virginia?\n- Can I take traffic school to avoid points in West Virginia?\n- What is the difference between absolute and presumed speed limits?",
+    "jurisdiction": "West Virginia",
+    "country": "USA",
+    "category": "traffic",
+    "tags": [
+      "speeding",
+      "traffic",
+      "west_virginia"
+    ]
+  },
+  {
+    "title": "Idaho - Speeding Violations",
+    "content": "Idaho Speeding Laws\n\nBasic Speed Law:\n- Must not drive at a speed greater than is reasonable and prudent\n- Must consider traffic, weather, road conditions, and visibility\n\nMaximum Speed Limits:\n- Urban areas: Typically 25-35 mph\n- Rural highways: Typically 55-65 mph\n- Freeways: Typically 65-75 mph (varies by state)\n\nPenalties for Speeding:\n- 1-10 mph over: Typically $100-$200 fine, possible points\n- 11-20 mph over: Typically $200-$400 fine, points, possible license suspension\n- 21+ mph over: Typically $400-$1000+ fine, mandatory court appearance, possible jail\n\nCommon Questions:\n- What is the speed limit in Idaho?\n- How many points for speeding in Idaho?\n- Can I fight a speeding ticket in Idaho?\n- What is the fine for speeding in Idaho?\n- Does speeding affect insurance in Idaho?\n- Can I take traffic school to avoid points in Idaho?\n- What is the difference between absolute and presumed speed limits?",
+    "jurisdiction": "Idaho",
+    "country": "USA",
+    "category": "traffic",
+    "tags": [
+      "speeding",
+      "traffic",
+      "idaho"
+    ]
+  },
+  {
+    "title": "Hawaii - Speeding Violations",
+    "content": "Hawaii Speeding Laws\n\nBasic Speed Law:\n- Must not drive at a speed greater than is reasonable and prudent\n- Must consider traffic, weather, road conditions, and visibility\n\nMaximum Speed Limits:\n- Urban areas: Typically 25-35 mph\n- Rural highways: Typically 55-65 mph\n- Freeways: Typically 65-75 mph (varies by state)\n\nPenalties for Speeding:\n- 1-10 mph over: Typically $100-$200 fine, possible points\n- 11-20 mph over: Typically $200-$400 fine, points, possible license suspension\n- 21+ mph over: Typically $400-$1000+ fine, mandatory court appearance, possible jail\n\nCommon Questions:\n- What is the speed limit in Hawaii?\n- How many points for speeding in Hawaii?\n- Can I fight a speeding ticket in Hawaii?\n- What is the fine for speeding in Hawaii?\n- Does speeding affect insurance in Hawaii?\n- Can I take traffic school to avoid points in Hawaii?\n- What is the difference between absolute and presumed speed limits?",
+    "jurisdiction": "Hawaii",
+    "country": "USA",
+    "category": "traffic",
+    "tags": [
+      "speeding",
+      "traffic",
+      "hawaii"
+    ]
+  },
+  {
+    "title": "New Hampshire - Speeding Violations",
+    "content": "New Hampshire Speeding Laws\n\nBasic Speed Law:\n- Must not drive at a speed greater than is reasonable and prudent\n- Must consider traffic, weather, road conditions, and visibility\n\nMaximum Speed Limits:\n- Urban areas: Typically 25-35 mph\n- Rural highways: Typically 55-65 mph\n- Freeways: Typically 65-75 mph (varies by state)\n\nPenalties for Speeding:\n- 1-10 mph over: Typically $100-$200 fine, possible points\n- 11-20 mph over: Typically $200-$400 fine, points, possible license suspension\n- 21+ mph over: Typically $400-$1000+ fine, mandatory court appearance, possible jail\n\nCommon Questions:\n- What is the speed limit in New Hampshire?\n- How many points for speeding in New Hampshire?\n- Can I fight a speeding ticket in New Hampshire?\n- What is the fine for speeding in New Hampshire?\n- Does speeding affect insurance in New Hampshire?\n- Can I take traffic school to avoid points in New Hampshire?\n- What is the difference between absolute and presumed speed limits?",
+    "jurisdiction": "New Hampshire",
+    "country": "USA",
+    "category": "traffic",
+    "tags": [
+      "speeding",
+      "traffic",
+      "new_hampshire"
+    ]
+  },
+  {
+    "title": "Maine - Speeding Violations",
+    "content": "Maine Speeding Laws\n\nBasic Speed Law:\n- Must not drive at a speed greater than is reasonable and prudent\n- Must consider traffic, weather, road conditions, and visibility\n\nMaximum Speed Limits:\n- Urban areas: Typically 25-35 mph\n- Rural highways: Typically 55-65 mph\n- Freeways: Typically 65-75 mph (varies by state)\n\nPenalties for Speeding:\n- 1-10 mph over: Typically $100-$200 fine, possible points\n- 11-20 mph over: Typically $200-$400 fine, points, possible license suspension\n- 21+ mph over: Typically $400-$1000+ fine, mandatory court appearance, possible jail\n\nCommon Questions:\n- What is the speed limit in Maine?\n- How many points for speeding in Maine?\n- Can I fight a speeding ticket in Maine?\n- What is the fine for speeding in Maine?\n- Does speeding affect insurance in Maine?\n- Can I take traffic school to avoid points in Maine?\n- What is the difference between absolute and presumed speed limits?",
+    "jurisdiction": "Maine",
+    "country": "USA",
+    "category": "traffic",
+    "tags": [
+      "speeding",
+      "traffic",
+      "maine"
+    ]
+  },
+  {
+    "title": "Montana - Speeding Violations",
+    "content": "Montana Speeding Laws\n\nBasic Speed Law:\n- Must not drive at a speed greater than is reasonable and prudent\n- Must consider traffic, weather, road conditions, and visibility\n\nMaximum Speed Limits:\n- Urban areas: Typically 25-35 mph\n- Rural highways: Typically 55-65 mph\n- Freeways: Typically 65-75 mph (varies by state)\n\nPenalties for Speeding:\n- 1-10 mph over: Typically $100-$200 fine, possible points\n- 11-20 mph over: Typically $200-$400 fine, points, possible license suspension\n- 21+ mph over: Typically $400-$1000+ fine, mandatory court appearance, possible jail\n\nCommon Questions:\n- What is the speed limit in Montana?\n- How many points for speeding in Montana?\n- Can I fight a speeding ticket in Montana?\n- What is the fine for speeding in Montana?\n- Does speeding affect insurance in Montana?\n- Can I take traffic school to avoid points in Montana?\n- What is the difference between absolute and presumed speed limits?",
+    "jurisdiction": "Montana",
+    "country": "USA",
+    "category": "traffic",
+    "tags": [
+      "speeding",
+      "traffic",
+      "montana"
+    ]
+  },
+  {
+    "title": "Rhode Island - Speeding Violations",
+    "content": "Rhode Island Speeding Laws\n\nBasic Speed Law:\n- Must not drive at a speed greater than is reasonable and prudent\n- Must consider traffic, weather, road conditions, and visibility\n\nMaximum Speed Limits:\n- Urban areas: Typically 25-35 mph\n- Rural highways: Typically 55-65 mph\n- Freeways: Typically 65-75 mph (varies by state)\n\nPenalties for Speeding:\n- 1-10 mph over: Typically $100-$200 fine, possible points\n- 11-20 mph over: Typically $200-$400 fine, points, possible license suspension\n- 21+ mph over: Typically $400-$1000+ fine, mandatory court appearance, possible jail\n\nCommon Questions:\n- What is the speed limit in Rhode Island?\n- How many points for speeding in Rhode Island?\n- Can I fight a speeding ticket in Rhode Island?\n- What is the fine for speeding in Rhode Island?\n- Does speeding affect insurance in Rhode Island?\n- Can I take traffic school to avoid points in Rhode Island?\n- What is the difference between absolute and presumed speed limits?",
+    "jurisdiction": "Rhode Island",
+    "country": "USA",
+    "category": "traffic",
+    "tags": [
+      "speeding",
+      "traffic",
+      "rhode_island"
+    ]
+  },
+  {
+    "title": "Delaware - Speeding Violations",
+    "content": "Delaware Speeding Laws\n\nBasic Speed Law:\n- Must not drive at a speed greater than is reasonable and prudent\n- Must consider traffic, weather, road conditions, and visibility\n\nMaximum Speed Limits:\n- Urban areas: Typically 25-35 mph\n- Rural highways: Typically 55-65 mph\n- Freeways: Typically 65-75 mph (varies by state)\n\nPenalties for Speeding:\n- 1-10 mph over: Typically $100-$200 fine, possible points\n- 11-20 mph over: Typically $200-$400 fine, points, possible license suspension\n- 21+ mph over: Typically $400-$1000+ fine, mandatory court appearance, possible jail\n\nCommon Questions:\n- What is the speed limit in Delaware?\n- How many points for speeding in Delaware?\n- Can I fight a speeding ticket in Delaware?\n- What is the fine for speeding in Delaware?\n- Does speeding affect insurance in Delaware?\n- Can I take traffic school to avoid points in Delaware?\n- What is the difference between absolute and presumed speed limits?",
+    "jurisdiction": "Delaware",
+    "country": "USA",
+    "category": "traffic",
+    "tags": [
+      "speeding",
+      "traffic",
+      "delaware"
+    ]
+  },
+  {
+    "title": "South Dakota - Speeding Violations",
+    "content": "South Dakota Speeding Laws\n\nBasic Speed Law:\n- Must not drive at a speed greater than is reasonable and prudent\n- Must consider traffic, weather, road conditions, and visibility\n\nMaximum Speed Limits:\n- Urban areas: Typically 25-35 mph\n- Rural highways: Typically 55-65 mph\n- Freeways: Typically 65-75 mph (varies by state)\n\nPenalties for Speeding:\n- 1-10 mph over: Typically $100-$200 fine, possible points\n- 11-20 mph over: Typically $200-$400 fine, points, possible license suspension\n- 21+ mph over: Typically $400-$1000+ fine, mandatory court appearance, possible jail\n\nCommon Questions:\n- What is the speed limit in South Dakota?\n- How many points for speeding in South Dakota?\n- Can I fight a speeding ticket in South Dakota?\n- What is the fine for speeding in South Dakota?\n- Does speeding affect insurance in South Dakota?\n- Can I take traffic school to avoid points in South Dakota?\n- What is the difference between absolute and presumed speed limits?",
+    "jurisdiction": "South Dakota",
+    "country": "USA",
+    "category": "traffic",
+    "tags": [
+      "speeding",
+      "traffic",
+      "south_dakota"
+    ]
+  },
+  {
+    "title": "North Dakota - Speeding Violations",
+    "content": "North Dakota Speeding Laws\n\nBasic Speed Law:\n- Must not drive at a speed greater than is reasonable and prudent\n- Must consider traffic, weather, road conditions, and visibility\n\nMaximum Speed Limits:\n- Urban areas: Typically 25-35 mph\n- Rural highways: Typically 55-65 mph\n- Freeways: Typically 65-75 mph (varies by state)\n\nPenalties for Speeding:\n- 1-10 mph over: Typically $100-$200 fine, possible points\n- 11-20 mph over: Typically $200-$400 fine, points, possible license suspension\n- 21+ mph over: Typically $400-$1000+ fine, mandatory court appearance, possible jail\n\nCommon Questions:\n- What is the speed limit in North Dakota?\n- How many points for speeding in North Dakota?\n- Can I fight a speeding ticket in North Dakota?\n- What is the fine for speeding in North Dakota?\n- Does speeding affect insurance in North Dakota?\n- Can I take traffic school to avoid points in North Dakota?\n- What is the difference between absolute and presumed speed limits?",
+    "jurisdiction": "North Dakota",
+    "country": "USA",
+    "category": "traffic",
+    "tags": [
+      "speeding",
+      "traffic",
+      "north_dakota"
+    ]
+  },
+  {
+    "title": "Alaska - Speeding Violations",
+    "content": "Alaska Speeding Laws\n\nBasic Speed Law:\n- Must not drive at a speed greater than is reasonable and prudent\n- Must consider traffic, weather, road conditions, and visibility\n\nMaximum Speed Limits:\n- Urban areas: Typically 25-35 mph\n- Rural highways: Typically 55-65 mph\n- Freeways: Typically 65-75 mph (varies by state)\n\nPenalties for Speeding:\n- 1-10 mph over: Typically $100-$200 fine, possible points\n- 11-20 mph over: Typically $200-$400 fine, points, possible license suspension\n- 21+ mph over: Typically $400-$1000+ fine, mandatory court appearance, possible jail\n\nCommon Questions:\n- What is the speed limit in Alaska?\n- How many points for speeding in Alaska?\n- Can I fight a speeding ticket in Alaska?\n- What is the fine for speeding in Alaska?\n- Does speeding affect insurance in Alaska?\n- Can I take traffic school to avoid points in Alaska?\n- What is the difference between absolute and presumed speed limits?",
+    "jurisdiction": "Alaska",
+    "country": "USA",
+    "category": "traffic",
+    "tags": [
+      "speeding",
+      "traffic",
+      "alaska"
+    ]
+  },
+  {
+    "title": "Vermont - Speeding Violations",
+    "content": "Vermont Speeding Laws\n\nBasic Speed Law:\n- Must not drive at a speed greater than is reasonable and prudent\n- Must consider traffic, weather, road conditions, and visibility\n\nMaximum Speed Limits:\n- Urban areas: Typically 25-35 mph\n- Rural highways: Typically 55-65 mph\n- Freeways: Typically 65-75 mph (varies by state)\n\nPenalties for Speeding:\n- 1-10 mph over: Typically $100-$200 fine, possible points\n- 11-20 mph over: Typically $200-$400 fine, points, possible license suspension\n- 21+ mph over: Typically $400-$1000+ fine, mandatory court appearance, possible jail\n\nCommon Questions:\n- What is the speed limit in Vermont?\n- How many points for speeding in Vermont?\n- Can I fight a speeding ticket in Vermont?\n- What is the fine for speeding in Vermont?\n- Does speeding affect insurance in Vermont?\n- Can I take traffic school to avoid points in Vermont?\n- What is the difference between absolute and presumed speed limits?",
+    "jurisdiction": "Vermont",
+    "country": "USA",
+    "category": "traffic",
+    "tags": [
+      "speeding",
+      "traffic",
+      "vermont"
+    ]
+  },
+  {
+    "title": "Wyoming - Speeding Violations",
+    "content": "Wyoming Speeding Laws\n\nBasic Speed Law:\n- Must not drive at a speed greater than is reasonable and prudent\n- Must consider traffic, weather, road conditions, and visibility\n\nMaximum Speed Limits:\n- Urban areas: Typically 25-35 mph\n- Rural highways: Typically 55-65 mph\n- Freeways: Typically 65-75 mph (varies by state)\n\nPenalties for Speeding:\n- 1-10 mph over: Typically $100-$200 fine, possible points\n- 11-20 mph over: Typically $200-$400 fine, points, possible license suspension\n- 21+ mph over: Typically $400-$1000+ fine, mandatory court appearance, possible jail\n\nCommon Questions:\n- What is the speed limit in Wyoming?\n- How many points for speeding in Wyoming?\n- Can I fight a speeding ticket in Wyoming?\n- What is the fine for speeding in Wyoming?\n- Does speeding affect insurance in Wyoming?\n- Can I take traffic school to avoid points in Wyoming?\n- What is the difference between absolute and presumed speed limits?",
+    "jurisdiction": "Wyoming",
+    "country": "USA",
+    "category": "traffic",
+    "tags": [
+      "speeding",
+      "traffic",
+      "wyoming"
+    ]
+  }
+]

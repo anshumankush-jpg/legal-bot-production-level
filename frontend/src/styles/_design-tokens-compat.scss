@@ -1,0 +1,33 @@
+// Compatibility layer for design tokens
+// Maps user's expected variable names to actual design tokens
+
+@import './design-tokens';
+
+// Color aliases for compatibility
+$color-navy: $primary-navy;
+$color-navy-dark: $primary-navy-dark;
+$color-navy-light: $primary-navy-light;
+$color-teal: $accent-teal;
+$color-teal-dark: $accent-teal-dark;
+$color-teal-light: $accent-teal-light;
+$color-blue: $secondary-blue;
+$color-purple: $secondary-purple;
+
+$color-background-light: $background-light;
+$color-background-white: $background-white;
+$color-surface: $surface;
+$color-surface-hover: $surface-hover;
+
+$color-text-primary: $text-primary;
+$color-text-secondary: $text-secondary;
+$color-text-disabled: $text-disabled;
+$color-text-on-primary: $text-on-primary;
+
+$color-success: $success;
+$color-warning: $warning;
+$color-error: $error;
+$color-info: $info;
+
+$color-border: $border-light;
+$color-border-medium: $border-medium;
+$color-border-dark: $border-dark;

@@ -1,0 +1,47 @@
+{
+  "timestamp": "2026-01-04T13:05:10.566645",
+  "summary": {
+    "total": 6,
+    "passed": 0,
+    "failed": 6,
+    "warned": 0
+  },
+  "tests": [
+    {
+      "test": "Backend Health",
+      "status": "FAIL",
+      "details": "Error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5)",
+      "timestamp": "2026-01-03T03:34:18.852860"
+    },
+    {
+      "test": "Root Endpoint",
+      "status": "FAIL",
+      "details": "Error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5)",
+      "timestamp": "2026-01-03T03:34:25.912072"
+    },
+    {
+      "test": "OpenAI API Key",
+      "status": "FAIL",
+      "details": "Error: Connection error.",
+      "timestamp": "2026-01-03T06:03:31.895663"
+    },
+    {
+      "test": "Vector Store",
+      "status": "FAIL",
+      "details": "Error: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5)",
+      "timestamp": "2026-01-03T12:27:45.837547"
+    },
+    {
+      "test": "Chat Endpoint",
+      "status": "FAIL",
+      "details": "Request timed out after 60s",
+      "timestamp": "2026-01-04T13:03:38.457353"
+    },
+    {
+      "test": "Complex Chat",
+      "status": "FAIL",
+      "details": "Request timed out after 90s - backend may be slow",
+      "timestamp": "2026-01-04T13:05:10.557258"
+    }
+  ]
+}

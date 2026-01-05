@@ -1,0 +1,108 @@
+{
+  "case_id": "USA-TX-TRAFFIC-0003",
+  "jurisdiction": {
+    "country": "USA",
+    "region_type": "state",
+    "region_code": "TX",
+    "court_level": "Justice of the Peace Court"
+  },
+  "case_metadata": {
+    "year": 2023,
+    "area_of_law": "traffic",
+    "offence_code": "TTC 545.352",
+    "offence_label": "Reckless driving",
+    "real_case_reference": null
+  },
+  "facts": {
+    "short_summary": "Driver charged with reckless driving after passing multiple vehicles in no-passing zone. No collision occurred.",
+    "detailed_facts": "On September 18, 2023, at 16:45, the driver was travelling on a two-lane rural highway in Texas. The driver passed three vehicles in a row in a marked no-passing zone. The officer observed the maneuver from an oncoming position. No collision occurred, and the driver completed the passes safely. Weather was clear, good visibility. The driver has a clean record for 8 years, holds a Texas Class C driver's licence. The driver maintains they believed it was safe to pass and did not see the no-passing zone markings.",
+    "aggravating_factors": [
+      "Passing in no-passing zone",
+      "Multiple vehicles passed",
+      "Officer directly observed violation"
+    ],
+    "mitigating_factors": [
+      "No collision or property damage",
+      "Clean driving record",
+      "Good weather conditions",
+      "Driver's account of not seeing markings"
+    ],
+    "defence_issues_spotted": [
+      "No-passing zone markings may need verification",
+      "Officer's observation from distance",
+      "Driver's account of not seeing markings"
+    ]
+  },
+  "law": {
+    "statutes_applied": [
+      {
+        "name": "Texas Transportation Code",
+        "citation": "Tex. Transp. Code § 545.352",
+        "key_elements": [
+          "Vehicle operated on highway",
+          "Driving in willful or wanton disregard for safety",
+          "Endangering persons or property"
+        ]
+      }
+    ],
+    "guideline_docs": [
+      "Texas Department of Public Safety point system",
+      "Texas defensive driving course options"
+    ]
+  },
+  "outcome_if_known": {
+    "is_real_outcome": false,
+    "summary": null,
+    "sentence": null
+  },
+  "paralegal_advice": {
+    "client_profile": {
+      "goal_priority": [
+        "avoid_reckless_driving_conviction",
+        "reduce_to_lesser_offence",
+        "minimize_insurance_impact",
+        "avoid_criminal_record"
+      ],
+      "risk_tolerance": "low"
+    },
+    "advice_variants": [
+      {
+        "id": "A1",
+        "style": "conservative",
+        "short_label": "Urgent: Seek reduction to non-reckless violation",
+        "full_advice_text": "Reckless driving in Texas is a serious charge that can have significant consequences including points, insurance increases, and potential criminal record implications depending on circumstances. Your clean record is a strong mitigating factor. You should immediately consult with an attorney to attempt to negotiate a reduction to a less serious violation such as improper passing or speeding. Reckless driving requires proof of 'willful or wanton disregard,' which may be challengeable if the passing was done safely despite the zone violation. Texas also offers defensive driving courses that can help with certain violations. Act quickly to preserve your options. This is general information only and not legal advice; you should speak with a licensed attorney about your exact circumstances.",
+        "risk_level": "low",
+        "likely_benefits": [
+          "Avoidance of reckless driving conviction",
+          "Reduced points and insurance impact",
+          "Potential for defensive driving course",
+          "Less severe long-term consequences"
+        ],
+        "key_reasons": [
+          "Clean record is very strong mitigating factor",
+          "Reckless driving requires specific mental state",
+          "Safe completion of passes may support reduction"
+        ]
+      },
+      {
+        "id": "A2",
+        "style": "moderate",
+        "short_label": "Review evidence and challenge 'reckless' element",
+        "full_advice_text": "Reckless driving requires proof that you drove with 'willful or wanton disregard' for safety. If you passed safely without endangering anyone, you may be able to challenge whether your conduct met this standard. Request disclosure including photos of the no-passing zone markings, the officer's notes, and any dashcam footage if available. If the markings were faded or unclear, or if your passing was demonstrably safe, you may have a defence. However, passing in a no-passing zone is still a violation, and if the evidence is strong, you risk a conviction. Consider this approach if you're prepared for the uncertainty of trial. This is general information only and not legal advice; you should speak with a licensed attorney about your exact circumstances.",
+        "risk_level": "medium",
+        "likely_benefits": [
+          "Possibility of acquittal on reckless charge",
+          "Potential reduction to lesser violation",
+          "If successful, avoidance of serious consequences"
+        ],
+        "key_reasons": [
+          "'Reckless' requires specific proof of disregard",
+          "Safe passing may not meet reckless standard",
+          "Marking visibility may be challengeable"
+        ]
+      }
+    ],
+    "universal_disclaimer": "These are general informational examples based on typical approaches in this jurisdiction. They are not legal advice. For advice about your specific case, consult a licensed attorney."
+  }
+}
+

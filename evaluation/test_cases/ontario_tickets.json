@@ -1,0 +1,83 @@
+{
+  "test_cases": [
+    {
+      "id": "test_001",
+      "jurisdiction": "Ontario",
+      "ticket_data": {
+        "offence_code": "HTA 128(1)",
+        "offence_description": "Speeding - 45 km/h in a 30 km/h zone",
+        "fine_amount": 95.00,
+        "demerit_points": 3
+      },
+      "question": "What are my options for this ticket?",
+      "expected_output": {
+        "must_include": [
+          "3 demerit points",
+          "fine of $95",
+          "Option 1: Fight",
+          "Option 2: Pay",
+          "15 days to dispute",
+          "disclaimer"
+        ],
+        "must_not_include": [
+          "guarantee",
+          "you will win"
+        ],
+        "offence_identified": true,
+        "demerit_points_correct": true,
+        "options_presented": true
+      }
+    },
+    {
+      "id": "test_002",
+      "jurisdiction": "Ontario",
+      "ticket_data": {
+        "offence_code": "HTA 144(18)",
+        "offence_description": "Fail to stop at red light",
+        "fine_amount": 200.00,
+        "demerit_points": 3
+      },
+      "question": "What happens if I get 3 demerit points?",
+      "expected_output": {
+        "must_include": [
+          "3 demerit points",
+          "insurance impact",
+          "minor increase",
+          "disclaimer"
+        ],
+        "offence_identified": true,
+        "consequences_explained": true
+      }
+    },
+    {
+      "id": "test_003",
+      "jurisdiction": "Ontario",
+      "ticket_data": {
+        "offence_code": "HTA 78.1(1)",
+        "offence_description": "Distracted driving - using handheld device",
+        "fine_amount": 615.00,
+        "demerit_points": 3
+      },
+      "question": "How do I fight this ticket?",
+      "expected_output": {
+        "must_include": [
+          "request disclosure",
+          "file trial request",
+          "15 days deadline",
+          "disclaimer"
+        ],
+        "process_explained": true,
+        "deadline_mentioned": true
+      }
+    }
+  ],
+  "evaluation_criteria": {
+    "offence_identification": "System correctly identifies the offence from ticket data",
+    "demerit_points": "System correctly states demerit points",
+    "options_presented": "System presents both FIGHT and PAY options",
+    "legal_accuracy": "Legal facts are correct according to jurisdiction",
+    "disclaimer_present": "Disclaimer is included in every response",
+    "no_guarantees": "System does not guarantee outcomes"
+  }
+}
+

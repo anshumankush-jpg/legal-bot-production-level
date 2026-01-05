@@ -1,0 +1,29 @@
+﻿US CASE LAW API NOTES
+=====================
+
+1. COURTLISTENER API
+   Endpoint: https://www.courtlistener.com/api/rest/v3
+   Status: 403 Forbidden (Requires Authentication)
+   
+   To use CourtListener API:
+   - Sign up at: https://www.courtlistener.com/api/
+   - Get your API key
+   - Use: curl -H "Authorization: Token YOUR_API_KEY" ...
+   
+   Free tier available with registration.
+
+2. OPENLAWS API
+   Endpoint: https://api.openlaws.us/api/v1
+   Status: Requires API Key
+   
+   To use OpenLaws API:
+   - Sign up at: https://api.openlaws.us
+   - Get your API key
+   - Use: curl -H "Authorization: Bearer YOUR_API_KEY" ...
+
+Alternative Sources for US Case Law:
+- Google Scholar Case Law: https://scholar.google.com (free, no API)
+- Justia: https://law.justia.com (free, limited API)
+- Fastcase: https://www.fastcase.com (subscription)
+- Westlaw: https://www.westlaw.com (subscription)
+- LexisNexis: https://www.lexisnexis.com (subscription)

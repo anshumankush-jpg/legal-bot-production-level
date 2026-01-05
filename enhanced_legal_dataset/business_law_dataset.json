@@ -1,0 +1,30 @@
+{
+  "title": "Canadian Business Law - Incorporation & Regulation",
+  "jurisdictions": [
+    "Federal",
+    "Ontario",
+    "British Columbia"
+  ],
+  "categories": [
+    "incorporation",
+    "corporate governance",
+    "regulatory compliance"
+  ],
+  "documents": [
+    {
+      "type": "statute",
+      "title": "Canada Business Corporations Act",
+      "url": "https://laws-lois.justice.gc.ca/eng/acts/C-44/",
+      "sections": [
+        "incorporation",
+        "directors",
+        "shareholders"
+      ],
+      "solutions": [
+        "file articles",
+        "appoint directors",
+        "maintain records"
+      ]
+    }
+  ]
+}

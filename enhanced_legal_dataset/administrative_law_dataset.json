@@ -1,0 +1,26 @@
+{
+  "title": "Canadian Administrative Law - Tribunals & Appeals",
+  "jurisdictions": [
+    "Federal",
+    "Ontario",
+    "British Columbia"
+  ],
+  "categories": [
+    "tribunals",
+    "appeals",
+    "judicial review"
+  ],
+  "documents": [
+    {
+      "type": "guide",
+      "title": "Administrative Law Procedures and Appeals",
+      "content": "\n                    CANADIAN ADMINISTRATIVE LAW PROCEDURES:\n\n                    1. ADMINISTRATIVE TRIBUNALS:\n                    - Specialized decision-making bodies\n                    - Less formal than courts\n                    - Expert decision-makers\n                    - Binding decisions subject to judicial review\n\n                    2. APPEAL RIGHTS:\n                    - Internal tribunal appeals\n                    - Judicial review in superior courts\n                    - Grounds: reasonableness, correctness, patent unreasonableness\n                    - Time limits strictly enforced (30-60 days typical)\n\n                    3. JUDICIAL REVIEW PROCESS:\n                    - Federal Court (federal matters)\n                    - Provincial superior courts\n                    - Standard of review analysis required\n                    - Leave to appeal may be required\n\n                    4. COMMON ADMINISTRATIVE BODIES:\n                    - Immigration and Refugee Board\n                    - Human Rights Tribunals\n                    - Labour Relations Boards\n                    - Property Assessment Appeal Boards\n                    - Landlord and Tenant Boards\n\n                    5. PROCEDURAL FAIRNESS:\n                    - Right to notice of hearing\n                    - Right to be heard (oral/written)\n                    - Right to impartial decision-maker\n                    - Right to reasons for decision\n\n                    6. REMEDIES AVAILABLE:\n                    - Quashing of decision\n                    - Remitting for redetermination\n                    - Damages in exceptional cases\n                    - Declaratory relief\n                    ",
+      "solutions": [
+        "appeal to tribunal",
+        "seek judicial review",
+        "apply for leave",
+        "retain administrative lawyer"
+      ]
+    }
+  ]
+}

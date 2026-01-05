@@ -1,0 +1,31 @@
+{
+  "title": "Canadian Tax Law - Income Tax & Compliance",
+  "jurisdictions": [
+    "Federal",
+    "Ontario",
+    "British Columbia"
+  ],
+  "categories": [
+    "income tax",
+    "GST",
+    "corporate tax",
+    "self-employment"
+  ],
+  "documents": [
+    {
+      "type": "statute",
+      "title": "Income Tax Act",
+      "url": "https://laws-lois.justice.gc.ca/eng/acts/I-3.3/",
+      "sections": [
+        "self-employment",
+        "deductions",
+        "tax credits"
+      ],
+      "solutions": [
+        "file tax return",
+        "claim deductions",
+        "pay installments"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+﻿CANADIAN CASE LAW API NOTES
+==========================
+
+API Attempted: https://api.a2aj.ca/cases
+Status: 404 Not Found
+
+The Canadian case law API may:
+1. Require authentication/API key
+2. Have changed its endpoint URL
+3. No longer be publicly available
+
+Alternative Sources for Canadian Case Law:
+- CanLII (Canadian Legal Information Institute): https://www.canlii.org
+- LexisNexis Canada
+- Westlaw Canada
+- Provincial court websites
+
+To access CanLII programmatically:
+- CanLII API: https://api.canlii.org (requires API key)
+- CanLII Search: https://www.canlii.org/en/search.html

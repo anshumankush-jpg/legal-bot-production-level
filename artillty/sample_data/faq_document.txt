@@ -1,0 +1,47 @@
+Frequently Asked Questions - Embedding Server
+
+Q: What is an embedding?
+A: An embedding is a numerical representation of text, images, or other data that captures semantic meaning. Similar items have similar embeddings.
+
+Q: How does the embedding server work?
+A: The server uses machine learning models to convert content into high-dimensional vectors. These vectors can be searched to find similar content.
+
+Q: What types of content can be embedded?
+A: The server supports text, images, tables, and documents (PDF, DOCX, CSV, TXT). It automatically detects the content type.
+
+Q: How fast is the search?
+A: Search queries typically complete in 1-2 milliseconds using FAISS, making it suitable for real-time applications.
+
+Q: Is the service free?
+A: Yes! The server uses open-source models (SentenceTransformer, CLIP) and FAISS, all of which are completely free.
+
+Q: Can I use this for production?
+A: Absolutely. The server is production-ready and can handle millions of vectors. It's used by companies like Facebook and OpenAI.
+
+Q: How do I embed a document?
+A: Simply upload your PDF, DOCX, or other document file. The server will automatically extract text and tables, then create embeddings.
+
+Q: Can I search across different content types?
+A: Yes! You can search across text, images, tables, and documents in a single query. The server uses a unified embedding space.
+
+Q: How accurate is the search?
+A: The server achieves 40% retrieval accuracy for text (top 5 results), which is comparable to paid services while being completely free.
+
+Q: Do I need internet?
+A: No! The server runs entirely offline. All models are downloaded once and stored locally.
+
+Q: Can I save my index?
+A: Yes, you can save the FAISS index to disk and load it later. This allows you to persist your embeddings.
+
+Q: What's the maximum number of vectors?
+A: FAISS can handle millions of vectors efficiently. The exact limit depends on your available RAM.
+
+Q: How do I improve search accuracy?
+A: You can use larger embedding models, fine-tune models on your data, or add reranking for better results.
+
+Q: Is my data private?
+A: Yes! All processing happens locally on your server. Your data never leaves your infrastructure.
+
+Q: Can I use GPU acceleration?
+A: Yes, if you have a CUDA-compatible GPU, the server will automatically use it for faster processing.
+

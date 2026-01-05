@@ -1,0 +1,64 @@
+[
+  {
+    "title": "18 U.S.C. § 371 - Conspiracy to Defraud the United States",
+    "content": "18 U.S.C. § 371 - Conspiracy to Defraud the United States\n\nElements:\n- Two or more persons conspire\n- To commit any offense against the United States\n- Or to defraud the United States\n- One or more persons do any act to effect the object of the conspiracy\n\nPenalties:\n- Fine up to $250,000 (individual) or $500,000 (organization)\n- Imprisonment up to 5 years\n- Or both\n\nCommon Questions:\n- What constitutes conspiracy under federal law?\n- What is the difference between conspiracy and attempt?\n- Can you be charged with conspiracy if the underlying crime wasn't completed?\n- What is the statute of limitations for conspiracy?\n- Can you withdraw from a conspiracy?",
+    "jurisdiction": "Federal",
+    "country": "USA",
+    "category": "criminal",
+    "tags": [
+      "conspiracy",
+      "federal",
+      "criminal"
+    ]
+  },
+  {
+    "title": "18 U.S.C. § 1341 - Mail Fraud",
+    "content": "18 U.S.C. § 1341 - Mail Fraud\n\nElements:\n- Devising or intending to devise a scheme to defraud\n- Using the mail or causing mail to be used\n- For the purpose of executing the scheme\n\nPenalties:\n- Fine up to $1,000,000\n- Imprisonment up to 20 years\n- Or both\n\nCommon Questions:\n- What constitutes mail fraud?\n- Does email count as mail fraud?\n- What is wire fraud vs mail fraud?\n- What is the statute of limitations for mail fraud?\n- Can you be charged with both mail fraud and the underlying crime?",
+    "jurisdiction": "Federal",
+    "country": "USA",
+    "category": "criminal",
+    "tags": [
+      "fraud",
+      "mail",
+      "federal"
+    ]
+  },
+  {
+    "title": "18 U.S.C. § 1343 - Wire Fraud",
+    "content": "18 U.S.C. § 1343 - Wire Fraud\n\nElements:\n- Devising or intending to devise a scheme to defraud\n- Transmitting or causing transmission by wire, radio, or television\n- In interstate or foreign commerce\n- For the purpose of executing the scheme\n\nPenalties:\n- Fine up to $1,000,000\n- Imprisonment up to 20 years\n- Or both\n\nCommon Questions:\n- What is wire fraud?\n- Does internet communication count as wire fraud?\n- What is the difference between wire fraud and mail fraud?\n- Can wire fraud be charged for intrastate communications?\n- What are common wire fraud schemes?",
+    "jurisdiction": "Federal",
+    "country": "USA",
+    "category": "criminal",
+    "tags": [
+      "fraud",
+      "wire",
+      "federal",
+      "internet"
+    ]
+  },
+  {
+    "title": "18 U.S.C. § 1956 - Money Laundering",
+    "content": "18 U.S.C. § 1956 - Money Laundering\n\nElements:\n- Knowingly conducts or attempts to conduct a financial transaction\n- Involving proceeds of specified unlawful activity\n- With intent to promote, conceal, or avoid reporting requirement\n\nPenalties:\n- Fine up to $500,000 or twice the value of property involved\n- Imprisonment up to 20 years\n- Or both\n\nCommon Questions:\n- What is money laundering?\n- What constitutes a financial transaction?\n- What is the difference between money laundering and structuring?\n- Can you be charged with money laundering if you didn't know the source?\n- What are the reporting requirements for large cash transactions?",
+    "jurisdiction": "Federal",
+    "country": "USA",
+    "category": "criminal",
+    "tags": [
+      "money_laundering",
+      "financial_crime",
+      "federal"
+    ]
+  },
+  {
+    "title": "21 U.S.C. § 841 - Controlled Substances Act",
+    "content": "21 U.S.C. § 841 - Controlled Substances Act (Drug Trafficking)\n\nElements:\n- Knowingly or intentionally\n- Manufacture, distribute, or dispense\n- A controlled substance\n- Or possess with intent to manufacture, distribute, or dispense\n\nPenalties (varies by drug type and quantity):\n- Schedule I or II: Up to 20 years, fine up to $1,000,000\n- Schedule III: Up to 5 years, fine up to $250,000\n- Schedule IV: Up to 3 years, fine up to $250,000\n- Schedule V: Up to 1 year, fine up to $100,000\n\nCommon Questions:\n- What are the different drug schedules?\n- What is the difference between possession and trafficking?\n- What are mandatory minimum sentences for drug crimes?\n- Can you be charged federally and state for the same drug crime?\n- What is the difference between distribution and manufacturing?",
+    "jurisdiction": "Federal",
+    "country": "USA",
+    "category": "criminal",
+    "tags": [
+      "drugs",
+      "controlled_substances",
+      "trafficking",
+      "federal"
+    ]
+  }
+]
