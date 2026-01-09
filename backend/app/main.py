@@ -260,6 +260,12 @@ class GenerateSummaryRequest(BaseModel):
     messages: List[Dict[str, Any]]
     metadata: Optional[Dict[str, Any]] = None
 
+class DocumentGenerationRequest(BaseModel):
+    document_type: str
+    form_data: Dict[str, Any]
+    jurisdiction: Optional[str] = None
+    user_id: Optional[str] = 'default_user'
+
 
 def generate_structured_answer(question: str, results: List[Dict], citations: List[Dict]) -> str:
     """
@@ -994,6 +1000,49 @@ async def generate_amendment(request: AmendmentRequest, authorization: Optional[
     except Exception as e:
         logger.error(f"Amendment generation error: {e}", exc_info=True)
         raise HTTPException(status_code=500, detail=f"Amendment generation failed: {str(e)}")
+
+
+@app.post("/api/legal/generate-document")
+async def generate_legal_document(request: DocumentGenerationRequest, authorization: Optional[str] = Header(None)):
+    """
+    Generate comprehensive legal documents (sue letters, contracts, NDAs, wills, etc.).
+    Requires STANDARD role or higher.
+    """
+    try:
+        # Check permissions
+        from app.services.rbac_service import get_rbac_service, UserRole
+        rbac = get_rbac_service()
+        
+        user_role = UserRole.STANDARD
+        if authorization:
+            token = authorization.replace("Bearer ", "")
+            user_role = rbac.get_user_role_from_token(token) or UserRole.STANDARD
+        
+        access_check = rbac.can_use_api(user_role, "document_generation")
+        if not access_check["has_access"]:
+            upgrade_info = rbac.get_upgrade_recommendation(user_role, "Document Generation API")
+            return {
+                "success": False,
+                "error": "Access denied",
+                "upgrade_info": upgrade_info
+            }
+        
+        # Use document generation service
+        from app.services.document_generation_service import get_document_generation_service
+        doc_gen_service = get_document_generation_service()
+        
+        result = await doc_gen_service.generate_document(
+            document_type=request.document_type,
+            form_data=request.form_data,
+            jurisdiction=request.jurisdiction,
+            user_id=request.user_id
+        )
+        
+        return result
+        
+    except Exception as e:
+        logger.error(f"Document generation error: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail=f"Document generation failed: {str(e)}")
 
 
 @app.post("/api/legal/search-statutes")

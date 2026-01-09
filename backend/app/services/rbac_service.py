@@ -37,6 +37,7 @@ class Permission(str, Enum):
     API_AMENDMENT_GENERATION = "api:amendment_generation"
     API_STATUTE_SEARCH = "api:statute_search"
     API_TRANSLATION = "api:translation"
+    API_DOCUMENT_GENERATION = "api:document_generation"
     
     # History permissions
     HISTORY_VIEW = "history:view"
@@ -66,6 +67,7 @@ class RBACService:
             Permission.HISTORY_VIEW,
             Permission.HISTORY_SEARCH,
             Permission.API_TRANSLATION,
+            Permission.API_DOCUMENT_GENERATION,
         },
         UserRole.PREMIUM: {
             Permission.CHAT_BASIC,
@@ -200,6 +202,7 @@ class RBACService:
             "amendment_generation": Permission.API_AMENDMENT_GENERATION,
             "statute_search": Permission.API_STATUTE_SEARCH,
             "translation": Permission.API_TRANSLATION,
+            "document_generation": Permission.API_DOCUMENT_GENERATION,
         }
         
         required_permission = api_permission_map.get(api_name)

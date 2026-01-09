@@ -6,6 +6,7 @@ import GovernmentResources from './GovernmentResources';
 import VoiceChat from './VoiceChat';
 import CaseLookup from './CaseLookup';
 import AmendmentGenerator from './AmendmentGenerator';
+import DocumentGenerator from './DocumentGenerator';
 import ChatHistorySearch from './ChatHistorySearch';
 import AISummaryModal from './AISummaryModal';
 
@@ -32,6 +33,7 @@ const ChatInterface = ({ preferences, lawTypeSelection, onResetPreferences, onCh
   const [dragCounter, setDragCounter] = useState(0);
   const [showCaseLookup, setShowCaseLookup] = useState(false);
   const [showAmendmentGenerator, setShowAmendmentGenerator] = useState(false);
+  const [showDocumentGenerator, setShowDocumentGenerator] = useState(false);
   const [showChatHistory, setShowChatHistory] = useState(false);
   const [showAISummary, setShowAISummary] = useState(false);
   const [sessionId] = useState('session_' + Date.now());
@@ -1484,6 +1486,13 @@ const ChatInterface = ({ preferences, lawTypeSelection, onResetPreferences, onCh
                   </button>
                   <button 
                     className="reset-prefs-btn" 
+                    onClick={() => setShowDocumentGenerator(true)} 
+                    title="Generate legal documents"
+                  >
+                    📄 Documents
+                  </button>
+                  <button 
+                    className="reset-prefs-btn" 
                     onClick={() => setShowChatHistory(true)} 
                     title="Search chat history"
                   >
@@ -1580,6 +1589,15 @@ const ChatInterface = ({ preferences, lawTypeSelection, onResetPreferences, onCh
         <AmendmentGenerator 
           onClose={() => setShowAmendmentGenerator(false)}
           lawCategory={lawTypeSelection?.lawType}
+        />
+      )}
+
+      {/* Document Generator Modal */}
+      {showDocumentGenerator && (
+        <DocumentGenerator 
+          onClose={() => setShowDocumentGenerator(false)}
+          lawCategory={lawTypeSelection?.lawType}
+          userId={userId}
         />
       )}
 
