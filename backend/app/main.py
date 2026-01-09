@@ -1,4 +1,12 @@
 """FastAPI application entry point."""
+# Load environment variables FIRST, before any other imports
+from pathlib import Path as _Path
+from dotenv import load_dotenv
+
+# Find .env file in backend directory (parent of app directory)
+_env_path = _Path(__file__).parent.parent / ".env"
+load_dotenv(_env_path)  # Explicitly load from backend/.env
+
 import logging
 import os
 import uuid
@@ -116,6 +124,31 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Include API routers
+try:
+    # Import auth router
+    from app.api.routes import auth
+    app.include_router(auth.router)
+    logger.info("[OK] Auth router included")
+except Exception as e:
+    logger.warning(f"Auth router not available: {e}")
+
+try:
+    # Import employee router
+    from app.api.routes import employee
+    app.include_router(employee.router)
+    logger.info("[OK] Employee router included")
+except Exception as e:
+    logger.warning(f"Employee router not available: {e}")
+
+try:
+    # Import email router
+    from app.api.routes import email
+    app.include_router(email.router)
+    logger.info("[OK] Email router included")
+except Exception as e:
+    logger.warning(f"Email router not available: {e}")
 
 # Include legacy routers (if available) - DISABLED to avoid conflicts with artillery endpoints
 # The artillery endpoints are defined directly in this file and should be used instead
@@ -601,7 +634,7 @@ async def simple_chat(request: ChatRequest):
         
         # Simple prompt
         messages = [
-            {'role': 'system', 'content': 'You are LeguBot, a helpful legal information assistant. Answer questions clearly and conversationally, like ChatGPT. Start with a direct answer.'},
+            {'role': 'system', 'content': 'You are LeguBot, a helpful legal information assistant. Answer questions clearly and conversationally, like ChatGPT. Start with a direct answer.\n\n**IMPORTANT FORMATTING RULES:**\n- Write in clean, professional plain text - do not use markdown syntax like asterisks (** or ***)\n- For main points, use clear section headers with colons: "Direct Answer:" or "Key Points:"\n- Use natural text structure and capitalization for emphasis, not markdown symbols\n- Keep your response clean and professional without visible formatting symbols'},
             {'role': 'user', 'content': request.message}
         ]
         
@@ -1408,7 +1441,7 @@ async def transcribe_audio(file: UploadFile = File(...)):
         # Read audio file
         audio_data = await file.read()
         
-        # Create OpenAI client
+        # Create OpenAI client - only pass api_key (proxies is not supported)
         client = openai.OpenAI(api_key=settings.OPENAI_API_KEY)
         
         # Transcribe using Whisper
@@ -1449,7 +1482,7 @@ async def text_to_speech(request: VoiceChatRequest):
         
         logger.info(f"[VOICE] TTS request - Language: {request.language}, Voice: {selected_voice}, Text length: {len(request.text)}")
         
-        # Create OpenAI client
+        # Create OpenAI client - only pass api_key (proxies is not supported)
         client = openai.OpenAI(api_key=settings.OPENAI_API_KEY)
         
         # Generate speech

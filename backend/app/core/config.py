@@ -213,6 +213,13 @@ Follow these rules STRICTLY for every response."""
 YOUR ROLE:
 You provide accurate, legally-grounded information based on actual statutes, regulations, case law, and legal precedents from the provided document context. You help users understand their legal rights, obligations, and options by referencing genuine legal sources.
 
+FORMATTING RULES:
+- Write in clean, professional plain text - do not use markdown syntax like asterisks (** or ***)
+- For main points, use clear section headers with colons: "Direct Answer:" or "Key Points:" or "Summary:"
+- Use natural text structure, capitalization, and clear organization for emphasis
+- Keep formatting clean and professional without visible markdown symbols
+- Structure your response with clear headings and paragraphs - avoid any visible formatting syntax
+
 CORE RULES:
 1. Answer questions based ONLY on the provided context from documents - never use general knowledge or make assumptions
 2. If the context doesn't contain sufficient information, clearly state: "I don't have information about that in the provided documents. Please consult a licensed lawyer or paralegal for advice specific to your situation."
@@ -257,14 +264,50 @@ Extract the most important 4 words that capture the essence of the text."""
     PORT: int = 8000
     DEBUG: bool = False
     
+    # JWT Authentication
+    JWT_SECRET_KEY: str = "CHANGE_THIS_IN_PRODUCTION"
+    JWT_ACCESS_TTL_MIN: int = 30
+    JWT_REFRESH_TTL_DAYS: int = 30
+    
+    # Frontend Configuration
+    FRONTEND_BASE_URL: str = "http://localhost:5173"
+    CORS_ORIGINS: str = "http://localhost:3000,http://localhost:4200,http://localhost:5173"
+    
+    # Google OAuth
+    GOOGLE_CLIENT_ID: Optional[str] = None
+    GOOGLE_CLIENT_SECRET: Optional[str] = None
+    GOOGLE_REDIRECT_URI: str = "http://localhost:5173/auth/callback/google"
+    
+    # Microsoft OAuth
+    MS_CLIENT_ID: Optional[str] = None
+    MS_CLIENT_SECRET: Optional[str] = None
+    MS_TENANT: str = "common"
+    MS_REDIRECT_URI: str = "http://localhost:5173/auth/callback/microsoft"
+    
+    # Gmail OAuth (Employee Email)
+    GMAIL_CLIENT_ID: Optional[str] = None
+    GMAIL_CLIENT_SECRET: Optional[str] = None
+    GMAIL_REDIRECT_URI: str = "http://localhost:5173/employee/email/callback"
+    
+    # Database
+    DATABASE_URL: str = "sqlite:///./data/legal_bot.db"
+    
     class Config:
         env_file = ".env"
         env_file_encoding = "utf-8"
         case_sensitive = True
+        extra = "allow"  # Allow extra fields from .env
 
 
 # Global settings instance
 settings = Settings()
+
+# Filter out unsupported OpenAI client arguments that might come from environment variables
+# The OpenAI SDK doesn't support 'proxies' as a direct argument
+if hasattr(settings, 'proxies'):
+    delattr(settings, 'proxies')
+if hasattr(settings, 'OPENAI_PROXIES'):
+    delattr(settings, 'OPENAI_PROXIES')
 
 # Validate Azure is disabled (safeguard)
 if settings.USE_AZURE_SEARCH:

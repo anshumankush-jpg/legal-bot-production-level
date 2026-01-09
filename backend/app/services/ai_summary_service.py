@@ -355,6 +355,7 @@ def get_ai_summary_service():
         try:
             from app.core.config import settings
             import openai
+            # Only pass api_key - proxies and other unsupported args are not allowed
             client = openai.OpenAI(api_key=settings.OPENAI_API_KEY) if settings.OPENAI_API_KEY else None
             _ai_summary_service = AISummaryService(openai_client=client)
         except:

@@ -77,6 +77,7 @@ class OpenAIProvider(EmbeddingProvider):
         """Generate embeddings using OpenAI."""
         try:
             from openai import OpenAI
+            # Only pass api_key - proxies and other unsupported args are not allowed
             client = OpenAI(api_key=self.api_key)
 
             response = client.embeddings.create(
