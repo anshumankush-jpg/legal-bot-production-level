@@ -12,6 +12,7 @@ from pydantic import BaseModel
 from typing import Optional, List, Dict, Any
 import openai
 from io import BytesIO
+from fastapi import Header
 
 # Fix import paths - add project root to sys.path
 project_root = Path(__file__).parent.parent
@@ -232,6 +233,32 @@ class VoiceChatRequest(BaseModel):
     text: str
     language: Optional[str] = 'en'
     voice: Optional[str] = 'alloy'
+
+class CaseLookupRequest(BaseModel):
+    query: str
+    jurisdiction: Optional[str] = None
+    year_from: Optional[int] = None
+    year_to: Optional[int] = None
+    limit: int = 10
+
+class AmendmentRequest(BaseModel):
+    document_type: str
+    case_details: Dict[str, Any]
+    jurisdiction: Optional[str] = None
+
+class TranslationRequest(BaseModel):
+    text: str
+    target_language: str
+    source_language: Optional[str] = None
+
+class ChatHistorySearchRequest(BaseModel):
+    user_id: str
+    search_query: str
+    limit: int = 20
+
+class GenerateSummaryRequest(BaseModel):
+    messages: List[Dict[str, Any]]
+    metadata: Optional[Dict[str, Any]] = None
 
 
 def generate_structured_answer(question: str, results: List[Dict], citations: List[Dict]) -> str:
@@ -874,6 +901,451 @@ async def health_check():
         "openai_configured": bool(settings and settings.OPENAI_API_KEY) if LEGACY_SYSTEMS_AVAILABLE else False,
         "version": "1.0.0"
     }
+
+
+# ============================================================================
+# LEGAL API INTEGRATIONS - Case Lookup, Amendments, Translation
+# ============================================================================
+
+@app.post("/api/legal/case-lookup")
+async def case_lookup(request: CaseLookupRequest, authorization: Optional[str] = Header(None)):
+    """
+    Search for legal cases using integrated legal APIs.
+    Requires PREMIUM role or higher.
+    """
+    try:
+        # Check permissions
+        from app.services.rbac_service import get_rbac_service, UserRole
+        rbac = get_rbac_service()
+        
+        # Extract role from token or default to STANDARD for demo
+        user_role = UserRole.STANDARD
+        if authorization:
+            token = authorization.replace("Bearer ", "")
+            user_role = rbac.get_user_role_from_token(token) or UserRole.STANDARD
+        
+        # Check API access
+        access_check = rbac.can_use_api(user_role, "case_lookup")
+        if not access_check["has_access"]:
+            upgrade_info = rbac.get_upgrade_recommendation(user_role, "Case Lookup API")
+            return {
+                "success": False,
+                "error": "Access denied",
+                "upgrade_info": upgrade_info
+            }
+        
+        # Use legal API integration service
+        from app.services.legal_api_integrations import get_legal_api_service
+        legal_api = get_legal_api_service()
+        
+        # Try CaseText first, fallback to LexisNexis
+        result = await legal_api.case_lookup_casetext(
+            query=request.query,
+            jurisdiction=request.jurisdiction,
+            year_from=request.year_from,
+            year_to=request.year_to,
+            limit=request.limit
+        )
+        
+        return result
+        
+    except Exception as e:
+        logger.error(f"Case lookup error: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail=f"Case lookup failed: {str(e)}")
+
+
+@app.post("/api/legal/generate-amendment")
+async def generate_amendment(request: AmendmentRequest, authorization: Optional[str] = Header(None)):
+    """
+    Generate legal amendments using integrated legal APIs.
+    Requires PREMIUM role or higher.
+    """
+    try:
+        # Check permissions
+        from app.services.rbac_service import get_rbac_service, UserRole
+        rbac = get_rbac_service()
+        
+        user_role = UserRole.STANDARD
+        if authorization:
+            token = authorization.replace("Bearer ", "")
+            user_role = rbac.get_user_role_from_token(token) or UserRole.STANDARD
+        
+        access_check = rbac.can_use_api(user_role, "amendment_generation")
+        if not access_check["has_access"]:
+            upgrade_info = rbac.get_upgrade_recommendation(user_role, "Amendment Generation API")
+            return {
+                "success": False,
+                "error": "Access denied",
+                "upgrade_info": upgrade_info
+            }
+        
+        # Use legal API integration service
+        from app.services.legal_api_integrations import get_legal_api_service
+        legal_api = get_legal_api_service()
+        
+        result = await legal_api.generate_amendment_legalzoom(
+            document_type=request.document_type,
+            case_details=request.case_details,
+            jurisdiction=request.jurisdiction
+        )
+        
+        return result
+        
+    except Exception as e:
+        logger.error(f"Amendment generation error: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail=f"Amendment generation failed: {str(e)}")
+
+
+@app.post("/api/legal/search-statutes")
+async def search_statutes(
+    query: str,
+    jurisdiction: str = "US",
+    law_type: Optional[str] = None,
+    authorization: Optional[str] = Header(None)
+):
+    """
+    Search for statutes and regulations.
+    Requires STANDARD role or higher.
+    """
+    try:
+        # Check permissions
+        from app.services.rbac_service import get_rbac_service, UserRole
+        rbac = get_rbac_service()
+        
+        user_role = UserRole.STANDARD
+        if authorization:
+            token = authorization.replace("Bearer ", "")
+            user_role = rbac.get_user_role_from_token(token) or UserRole.STANDARD
+        
+        access_check = rbac.can_use_api(user_role, "statute_search")
+        if not access_check["has_access"]:
+            upgrade_info = rbac.get_upgrade_recommendation(user_role, "Statute Search API")
+            return {
+                "success": False,
+                "error": "Access denied",
+                "upgrade_info": upgrade_info
+            }
+        
+        # Use legal API integration service
+        from app.services.legal_api_integrations import get_legal_api_service
+        legal_api = get_legal_api_service()
+        
+        result = await legal_api.search_statutes(
+            query=query,
+            jurisdiction=jurisdiction,
+            law_type=law_type
+        )
+        
+        return result
+        
+    except Exception as e:
+        logger.error(f"Statute search error: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail=f"Statute search failed: {str(e)}")
+
+
+# ============================================================================
+# TRANSLATION API
+# ============================================================================
+
+@app.post("/api/translate")
+async def translate_text(request: TranslationRequest, authorization: Optional[str] = Header(None)):
+    """
+    Translate text to target language.
+    Available for STANDARD role and higher.
+    """
+    try:
+        # Check permissions
+        from app.services.rbac_service import get_rbac_service, UserRole
+        rbac = get_rbac_service()
+        
+        user_role = UserRole.STANDARD
+        if authorization:
+            token = authorization.replace("Bearer ", "")
+            user_role = rbac.get_user_role_from_token(token) or UserRole.STANDARD
+        
+        access_check = rbac.can_use_api(user_role, "translation")
+        if not access_check["has_access"]:
+            upgrade_info = rbac.get_upgrade_recommendation(user_role, "Translation API")
+            return {
+                "success": False,
+                "error": "Access denied",
+                "upgrade_info": upgrade_info
+            }
+        
+        # Use translation service
+        from app.services.translation_service import get_translation_service
+        translation_service = get_translation_service()
+        
+        result = await translation_service.translate_text(
+            text=request.text,
+            target_language=request.target_language,
+            source_language=request.source_language
+        )
+        
+        return result
+        
+    except Exception as e:
+        logger.error(f"Translation error: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail=f"Translation failed: {str(e)}")
+
+
+@app.get("/api/translate/languages")
+async def get_supported_languages():
+    """Get list of supported languages for translation."""
+    from app.services.translation_service import get_translation_service
+    translation_service = get_translation_service()
+    
+    return {
+        "languages": translation_service.get_supported_languages()
+    }
+
+
+# ============================================================================
+# CHAT HISTORY API
+# ============================================================================
+
+@app.post("/api/chat-history/save")
+async def save_chat_message(
+    user_id: str,
+    session_id: str,
+    message: str,
+    response: str,
+    metadata: Optional[Dict[str, Any]] = None
+):
+    """Save a chat message to history."""
+    try:
+        from app.services.chat_history_service import get_chat_history_service
+        chat_history = get_chat_history_service(storage_type="local")
+        
+        message_id = await chat_history.save_message(
+            user_id=user_id,
+            session_id=session_id,
+            message=message,
+            response=response,
+            metadata=metadata
+        )
+        
+        return {
+            "success": True,
+            "message_id": message_id
+        }
+        
+    except Exception as e:
+        logger.error(f"Failed to save chat message: {e}")
+        raise HTTPException(status_code=500, detail=f"Failed to save message: {str(e)}")
+
+
+@app.get("/api/chat-history/session/{user_id}/{session_id}")
+async def get_session_history(user_id: str, session_id: str, limit: int = 50):
+    """Get chat history for a specific session."""
+    try:
+        from app.services.chat_history_service import get_chat_history_service
+        chat_history = get_chat_history_service(storage_type="local")
+        
+        messages = await chat_history.get_session_history(
+            user_id=user_id,
+            session_id=session_id,
+            limit=limit
+        )
+        
+        return {
+            "success": True,
+            "messages": messages,
+            "count": len(messages)
+        }
+        
+    except Exception as e:
+        logger.error(f"Failed to get session history: {e}")
+        raise HTTPException(status_code=500, detail=f"Failed to get history: {str(e)}")
+
+
+@app.get("/api/chat-history/sessions/{user_id}")
+async def get_user_sessions(user_id: str, limit: int = 20):
+    """Get all chat sessions for a user."""
+    try:
+        from app.services.chat_history_service import get_chat_history_service
+        chat_history = get_chat_history_service(storage_type="local")
+        
+        sessions = await chat_history.get_user_sessions(
+            user_id=user_id,
+            limit=limit
+        )
+        
+        return {
+            "success": True,
+            "sessions": sessions,
+            "count": len(sessions)
+        }
+        
+    except Exception as e:
+        logger.error(f"Failed to get user sessions: {e}")
+        raise HTTPException(status_code=500, detail=f"Failed to get sessions: {str(e)}")
+
+
+@app.post("/api/chat-history/search")
+async def search_chat_history(request: ChatHistorySearchRequest):
+    """Search through chat history."""
+    try:
+        from app.services.chat_history_service import get_chat_history_service
+        chat_history = get_chat_history_service(storage_type="local")
+        
+        results = await chat_history.search_chat_history(
+            user_id=request.user_id,
+            search_query=request.search_query,
+            limit=request.limit
+        )
+        
+        return {
+            "success": True,
+            "results": results,
+            "count": len(results)
+        }
+        
+    except Exception as e:
+        logger.error(f"Failed to search chat history: {e}")
+        raise HTTPException(status_code=500, detail=f"Search failed: {str(e)}")
+
+
+@app.delete("/api/chat-history/session/{user_id}/{session_id}")
+async def delete_session(user_id: str, session_id: str):
+    """Delete a chat session."""
+    try:
+        from app.services.chat_history_service import get_chat_history_service
+        chat_history = get_chat_history_service(storage_type="local")
+        
+        success = await chat_history.delete_session(
+            user_id=user_id,
+            session_id=session_id
+        )
+        
+        return {
+            "success": success,
+            "message": "Session deleted successfully" if success else "Failed to delete session"
+        }
+        
+    except Exception as e:
+        logger.error(f"Failed to delete session: {e}")
+        raise HTTPException(status_code=500, detail=f"Delete failed: {str(e)}")
+
+
+# ============================================================================
+# AI SUMMARY GENERATION API
+# ============================================================================
+
+@app.post("/api/chat/generate-summary")
+async def generate_ai_summary(request: GenerateSummaryRequest):
+    """
+    Generate AI-powered case summary from conversation.
+    Analyzes the conversation and provides comprehensive legal case summary.
+    """
+    try:
+        from app.services.ai_summary_service import get_ai_summary_service
+        
+        ai_summary_service = get_ai_summary_service()
+        
+        logger.info(f"[AI_SUMMARY] Generating summary for {len(request.messages)} messages")
+        
+        result = await ai_summary_service.generate_case_summary(
+            messages=request.messages,
+            metadata=request.metadata
+        )
+        
+        logger.info(f"[AI_SUMMARY] Summary generated successfully")
+        
+        return result
+        
+    except Exception as e:
+        logger.error(f"Failed to generate AI summary: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail=f"Summary generation failed: {str(e)}")
+
+
+# ============================================================================
+# RBAC API
+# ============================================================================
+
+@app.post("/api/auth/token")
+async def generate_auth_token(user_id: str, role: str = "standard"):
+    """Generate authentication token for a user."""
+    try:
+        from app.services.rbac_service import get_rbac_service, UserRole
+        rbac = get_rbac_service()
+        
+        # Convert role string to UserRole enum
+        try:
+            user_role = UserRole(role.lower())
+        except ValueError:
+            user_role = UserRole.STANDARD
+        
+        token = rbac.generate_token(user_id=user_id, role=user_role)
+        permissions = rbac.get_role_permissions(user_role)
+        limits = rbac.get_role_limits(user_role)
+        
+        return {
+            "success": True,
+            "token": token,
+            "role": user_role.value,
+            "permissions": [p.value for p in permissions],
+            "limits": limits
+        }
+        
+    except Exception as e:
+        logger.error(f"Failed to generate token: {e}")
+        raise HTTPException(status_code=500, detail=f"Token generation failed: {str(e)}")
+
+
+@app.get("/api/auth/verify")
+async def verify_token(authorization: str = Header(...)):
+    """Verify authentication token."""
+    try:
+        from app.services.rbac_service import get_rbac_service
+        rbac = get_rbac_service()
+        
+        token = authorization.replace("Bearer ", "")
+        payload = rbac.verify_token(token)
+        
+        if not payload:
+            raise HTTPException(status_code=401, detail="Invalid or expired token")
+        
+        return {
+            "success": True,
+            "valid": True,
+            "user_id": payload.get("user_id"),
+            "role": payload.get("role"),
+            "permissions": payload.get("permissions", [])
+        }
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Token verification failed: {e}")
+        raise HTTPException(status_code=500, detail=f"Verification failed: {str(e)}")
+
+
+@app.get("/api/auth/check-access")
+async def check_api_access(
+    api_name: str,
+    authorization: Optional[str] = Header(None)
+):
+    """Check if user has access to a specific API."""
+    try:
+        from app.services.rbac_service import get_rbac_service, UserRole
+        rbac = get_rbac_service()
+        
+        user_role = UserRole.GUEST
+        if authorization:
+            token = authorization.replace("Bearer ", "")
+            user_role = rbac.get_user_role_from_token(token) or UserRole.GUEST
+        
+        access_info = rbac.can_use_api(user_role, api_name)
+        
+        if not access_info["has_access"]:
+            access_info["upgrade_info"] = rbac.get_upgrade_recommendation(user_role, api_name)
+        
+        return access_info
+        
+    except Exception as e:
+        logger.error(f"Access check failed: {e}")
+        raise HTTPException(status_code=500, detail=f"Access check failed: {str(e)}")
 
 
 # Voice Chat Endpoints - OpenAI TTS and Whisper

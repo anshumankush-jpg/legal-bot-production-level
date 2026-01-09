@@ -209,6 +209,40 @@ This uses your browser's FREE speech recognition - no API costs!`;
     };
     utterance.lang = langMap[preferences?.language?.code || 'en'] || 'en-US';
     
+    // Select best voice for language
+    const voices = window.speechSynthesis.getVoices();
+    const selectedLang = preferences?.language?.code || 'en';
+    
+    const voicePreferences = {
+      'en': ['Microsoft Mark', 'Microsoft David', 'Google US English Male'],
+      'hi': ['Google हिन्दी', 'Microsoft Hemant', 'Google Hindi'],
+      'fr': ['Google français', 'Microsoft Paul', 'Google French'],
+      'es': ['Google español', 'Microsoft Pablo', 'Google Spanish'],
+      'pa': ['Google ਪੰਜਾਬੀ', 'Google Punjabi'],
+      'zh': ['Google 普通话', 'Microsoft Kangkang', 'Google Chinese']
+    };
+    
+    const preferredNames = voicePreferences[selectedLang] || voicePreferences['en'];
+    let selectedVoice = null;
+    
+    // Try to find preferred voice
+    for (const name of preferredNames) {
+      selectedVoice = voices.find(v => v.name.includes(name));
+      if (selectedVoice) {
+        console.log('🔊 Using voice:', selectedVoice.name);
+        break;
+      }
+    }
+    
+    // Fallback to language code match
+    if (!selectedVoice) {
+      selectedVoice = voices.find(v => v.lang.startsWith(selectedLang));
+    }
+    
+    if (selectedVoice) {
+      utterance.voice = selectedVoice;
+    }
+    
     // Voice settings
     utterance.rate = 0.95;
     utterance.pitch = 1.0;

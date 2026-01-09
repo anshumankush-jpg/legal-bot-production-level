@@ -4,6 +4,10 @@ import EnhancedLegalResponse from './EnhancedLegalResponse';
 import RecentUpdates from './RecentUpdates';
 import GovernmentResources from './GovernmentResources';
 import VoiceChat from './VoiceChat';
+import CaseLookup from './CaseLookup';
+import AmendmentGenerator from './AmendmentGenerator';
+import ChatHistorySearch from './ChatHistorySearch';
+import AISummaryModal from './AISummaryModal';
 
 const API_URL = 'http://localhost:8000';
 
@@ -26,6 +30,11 @@ const ChatInterface = ({ preferences, lawTypeSelection, onResetPreferences, onCh
   const [showVoiceChat, setShowVoiceChat] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
   const [dragCounter, setDragCounter] = useState(0);
+  const [showCaseLookup, setShowCaseLookup] = useState(false);
+  const [showAmendmentGenerator, setShowAmendmentGenerator] = useState(false);
+  const [showChatHistory, setShowChatHistory] = useState(false);
+  const [showAISummary, setShowAISummary] = useState(false);
+  const [sessionId] = useState('session_' + Date.now());
   const messagesEndRef = useRef(null);
   const fileInputRef = useRef(null);
   const imageInputRef = useRef(null);
@@ -624,7 +633,7 @@ const ChatInterface = ({ preferences, lawTypeSelection, onResetPreferences, onCh
     const voicePreferences = {
       'en': {
         codes: ['en-US', 'en-GB', 'en-CA', 'en-AU', 'en'],
-        names: ['Google US English Male', 'Microsoft David', 'Microsoft Mark', 'Alex', 'Daniel', 'Fred'],
+        names: ['Microsoft Mark', 'Microsoft David', 'Google US English Male', 'Alex', 'Daniel', 'Fred'],
         langName: 'English'
       },
       'hi': {
@@ -1282,6 +1291,32 @@ const ChatInterface = ({ preferences, lawTypeSelection, onResetPreferences, onCh
 
       setMessages(prev => [...prev, assistantMessage]);
 
+      // Save to chat history
+      try {
+        await fetch(`${API_URL}/api/chat-history/save`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            user_id: userId,
+            session_id: sessionId,
+            message: question,
+            response: data.answer,
+            metadata: {
+              law_category: lawTypeSelection?.lawType,
+              jurisdiction: lawTypeSelection?.jurisdiction,
+              language: preferences?.language?.code,
+              country: preferences?.country,
+              province: preferences?.province
+            }
+          })
+        });
+      } catch (historyError) {
+        console.error('Failed to save chat history:', historyError);
+        // Don't throw - chat history saving is not critical
+      }
+
       // Auto-speak using FREE browser TTS if voice chat or auto-read is enabled
       if ((showVoiceChat || autoRead) && data.answer) {
         setTimeout(() => {
@@ -1371,16 +1406,25 @@ const ChatInterface = ({ preferences, lawTypeSelection, onResetPreferences, onCh
                New Chat
              </button>
              {messages.length > 2 && (
-               <button className="new-chat-btn summary-btn" onClick={handleGenerateSummary} title="Generate case summary">
-                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                   <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                   <polyline points="14 2 14 8 20 8"></polyline>
-                   <line x1="16" y1="13" x2="8" y2="13"></line>
-                   <line x1="16" y1="17" x2="8" y2="17"></line>
-                   <polyline points="10 9 9 9 8 9"></polyline>
-                 </svg>
-                 Generate Summary
-               </button>
+               <>
+                 <button className="new-chat-btn summary-btn" onClick={() => setShowAISummary(true)} title="Generate AI case summary">
+                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                     <polyline points="14 2 14 8 20 8"></polyline>
+                     <line x1="16" y1="13" x2="8" y2="13"></line>
+                     <line x1="16" y1="17" x2="8" y2="17"></line>
+                     <polyline points="10 9 9 9 8 9"></polyline>
+                   </svg>
+                   AI Summary
+                 </button>
+                 <button className="new-chat-btn summary-btn" onClick={handleGenerateSummary} title="Generate quick summary">
+                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                     <polyline points="14 2 14 8 20 8"></polyline>
+                   </svg>
+                   Quick Summary
+                 </button>
+               </>
              )}
           </div>
            {preferences && (
@@ -1423,6 +1467,27 @@ const ChatInterface = ({ preferences, lawTypeSelection, onResetPreferences, onCh
                     title="View recent legal updates"
                   >
                     📰 Recent Updates
+                  </button>
+                  <button 
+                    className="reset-prefs-btn" 
+                    onClick={() => setShowCaseLookup(true)} 
+                    title="Search legal cases"
+                  >
+                    🔍 Case Lookup
+                  </button>
+                  <button 
+                    className="reset-prefs-btn" 
+                    onClick={() => setShowAmendmentGenerator(true)} 
+                    title="Generate legal amendments"
+                  >
+                    📝 Amendments
+                  </button>
+                  <button 
+                    className="reset-prefs-btn" 
+                    onClick={() => setShowChatHistory(true)} 
+                    title="Search chat history"
+                  >
+                    💬 History
                   </button>
                 </>
               )}
@@ -1497,6 +1562,66 @@ const ChatInterface = ({ preferences, lawTypeSelection, onResetPreferences, onCh
           </div>
           <span>Uploading... {uploadProgress}%</span>
         </div>
+      )}
+
+      {/* Case Lookup Modal */}
+      {showCaseLookup && (
+        <CaseLookup 
+          onClose={() => setShowCaseLookup(false)}
+          onCaseSelected={(caseItem) => {
+            setInput(`Tell me more about ${caseItem.case_name}`);
+            setShowCaseLookup(false);
+          }}
+        />
+      )}
+
+      {/* Amendment Generator Modal */}
+      {showAmendmentGenerator && (
+        <AmendmentGenerator 
+          onClose={() => setShowAmendmentGenerator(false)}
+          lawCategory={lawTypeSelection?.lawType}
+        />
+      )}
+
+      {/* Chat History Search Modal */}
+      {showChatHistory && (
+        <ChatHistorySearch 
+          userId={userId}
+          onClose={() => setShowChatHistory(false)}
+          onMessageSelect={(message) => {
+            setInput(message.message);
+            setShowChatHistory(false);
+          }}
+          onLoadChat={(chatId) => {
+            // Load the chat from localStorage
+            const localChats = localStorage.getItem('legubot_chats');
+            if (localChats) {
+              const chats = JSON.parse(localChats);
+              const chat = chats.find(c => c.id === chatId);
+              if (chat) {
+                setMessages(chat.messages || []);
+                setCurrentChatId(chat.id);
+                setShowChatHistory(false);
+              }
+            }
+          }}
+        />
+      )}
+
+      {/* AI Summary Modal */}
+      {showAISummary && (
+        <AISummaryModal
+          messages={messages}
+          metadata={{
+            law_category: lawTypeSelection?.lawType,
+            law_type: lawTypeSelection?.lawType,
+            jurisdiction: lawTypeSelection?.jurisdiction,
+            language: preferences?.language?.code,
+            country: preferences?.country,
+            province: preferences?.province
+          }}
+          onClose={() => setShowAISummary(false)}
+        />
       )}
 
       {/* Voice Chat Component */}

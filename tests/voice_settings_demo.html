@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Settings Demo - Punjabi Support</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 1.2em;
+        }
+        
+        .setting-section {
+            margin-bottom: 35px;
+        }
+        
+        .setting-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .label-icon {
+            font-size: 1.5em;
+        }
+        
+        .language-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+        
+        .language-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            padding: 25px;
+            border: 3px solid #e0e0e0;
+            border-radius: 15px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .language-option:hover {
+            border-color: #667eea;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        .language-option.selected {
+            border-color: #667eea;
+            background: linear-gradient(135deg, #f0f4ff 0%, #e8eeff 100%);
+        }
+        
+        .language-option.punjabi {
+            border-color: #ff9800;
+        }
+        
+        .language-option.punjabi.selected {
+            border-color: #ff9800;
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+        }
+        
+        .language-flag {
+            font-size: 3em;
+        }
+        
+        .language-name {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .check-mark {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #4caf50;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .gender-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .gender-option {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 25px;
+            border: 3px solid #e0e0e0;
+            border-radius: 15px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1.2em;
+            font-weight: 600;
+            position: relative;
+        }
+        
+        .gender-option:hover {
+            border-color: #667eea;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        .gender-option.selected {
+            border-color: #667eea;
+            background: linear-gradient(135deg, #f0f4ff 0%, #e8eeff 100%);
+        }
+        
+        .gender-icon {
+            font-size: 2.5em;
+        }
+        
+        .voice-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .voice-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 25px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            background: white;
+            transition: all 0.3s;
+        }
+        
+        .voice-item.available {
+            border-color: #4caf50;
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+        }
+        
+        .voice-item.unavailable {
+            opacity: 0.6;
+            background: #f5f5f5;
+        }
+        
+        .voice-info {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .voice-name {
+            font-weight: 600;
+            color: #333;
+            font-size: 1.1em;
+        }
+        
+        .voice-provider {
+            font-size: 0.9em;
+            color: #666;
+        }
+        
+        .voice-status {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .quality-badge {
+            padding: 6px 14px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+        
+        .unavailable-text {
+            font-size: 0.9em;
+            color: #f44336;
+            font-weight: 600;
+        }
+        
+        .status-icon {
+            font-size: 1.5em;
+        }
+        
+        .test-btn {
+            width: 100%;
+            padding: 20px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.3em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .test-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+        
+        .test-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .test-btn.testing {
+            background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
+        }
+        
+        .btn-icon {
+            font-size: 1.8em;
+        }
+        
+        .spinner {
+            width: 24px;
+            height: 24px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .info-box {
+            background: #e3f2fd;
+            border-left: 5px solid #2196f3;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .info-box h3 {
+            color: #1565c0;
+            margin-bottom: 10px;
+        }
+        
+        .info-box p {
+            color: #1565c0;
+            line-height: 1.6;
+        }
+        
+        .warning-box {
+            background: #fff3e0;
+            border: 3px solid #ff9800;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+            display: flex;
+            gap: 15px;
+        }
+        
+        .warning-icon {
+            font-size: 2.5em;
+            flex-shrink: 0;
+        }
+        
+        .warning-content h4 {
+            color: #e65100;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+        
+        .warning-content p {
+            color: #e65100;
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+        
+        .warning-content ul {
+            margin-left: 20px;
+            color: #e65100;
+        }
+        
+        .warning-content li {
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+        
+        .selected-voice-box {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            border: 3px solid #4caf50;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 25px 0;
+        }
+        
+        .selected-voice-box h3 {
+            color: #2e7d32;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(46, 125, 50, 0.2);
+        }
+        
+        .info-row:last-child {
+            border-bottom: none;
+        }
+        
+        .info-label {
+            font-weight: 600;
+            color: #2e7d32;
+        }
+        
+        .info-value {
+            color: #1b5e20;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎤 Advanced Voice Settings</h1>
+        <p class="subtitle">Choose language, gender, and voice for your bot</p>
+        
+        <div class="info-box">
+            <h3>ℹ️ About This Demo</h3>
+            <p>This is a complete voice selection system with support for <strong>Punjabi</strong> and 5 other languages. Select a language and gender to see available voices, then test them!</p>
+        </div>
+        
+        <!-- Language Selection -->
+        <div class="setting-section">
+            <div class="setting-label">
+                <span class="label-icon">🌐</span>
+                Select Language
+            </div>
+            <div class="language-grid">
+                <div class="language-option" data-lang="en" onclick="selectLanguage('en')">
+                    <span class="language-flag">🇺🇸</span>
+                    <span class="language-name">English</span>
+                </div>
+                <div class="language-option" data-lang="hi" onclick="selectLanguage('hi')">
+                    <span class="language-flag">🇮🇳</span>
+                    <span class="language-name">Hindi</span>
+                </div>
+                <div class="language-option punjabi" data-lang="pa" onclick="selectLanguage('pa')">
+                    <span class="language-flag">🇮🇳</span>
+                    <span class="language-name">Punjabi</span>
+                </div>
+                <div class="language-option" data-lang="fr" onclick="selectLanguage('fr')">
+                    <span class="language-flag">🇫🇷</span>
+                    <span class="language-name">French</span>
+                </div>
+                <div class="language-option" data-lang="es" onclick="selectLanguage('es')">
+                    <span class="language-flag">🇪🇸</span>
+                    <span class="language-name">Spanish</span>
+                </div>
+                <div class="language-option" data-lang="zh" onclick="selectLanguage('zh')">
+                    <span class="language-flag">🇨🇳</span>
+                    <span class="language-name">Chinese</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Gender Selection -->
+        <div class="setting-section">
+            <div class="setting-label">
+                <span class="label-icon">👤</span>
+                Voice Gender
+            </div>
+            <div class="gender-options">
+                <div class="gender-option" data-gender="male" onclick="selectGender('male')">
+                    <span class="gender-icon">👨</span>
+                    <span>Male Voice</span>
+                </div>
+                <div class="gender-option" data-gender="female" onclick="selectGender('female')">
+                    <span class="gender-icon">👩</span>
+                    <span>Female Voice</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Available Voices -->
+        <div class="setting-section">
+            <div class="setting-label">
+                <span class="label-icon">🔊</span>
+                Available Voices
+            </div>
+            <div class="voice-list" id="voiceList">
+                <div style="text-align: center; padding: 40px; color: #999;">
+                    Select a language and gender to see available voices
+                </div>
+            </div>
+        </div>
+        
+        <!-- Selected Voice Info -->
+        <div id="selectedVoiceBox" style="display: none;"></div>
+        
+        <!-- Warning for Punjabi -->
+        <div id="punjabiWarning" style="display: none;"></div>
+        
+        <!-- Test Button -->
+        <div class="setting-section">
+            <button class="test-btn" id="testBtn" onclick="testVoice()" disabled>
+                <span class="btn-icon">🔊</span>
+                <span>Test Selected Voice</span>
+            </button>
+        </div>
+    </div>
+    
+    <script>
+        const languageConfig = {
+            en: {
+                name: 'English',
+                testText: 'Hello! This is a test of the English voice. How does it sound? I am your legal assistant.',
+                voices: {
+                    male: [
+                        { name: 'Microsoft Mark', provider: 'Microsoft', quality: 'High' },
+                        { name: 'Microsoft David', provider: 'Microsoft', quality: 'High' },
+                        { name: 'Google US English Male', provider: 'Google', quality: 'Medium' }
+                    ],
+                    female: [
+                        { name: 'Microsoft Zira', provider: 'Microsoft', quality: 'High' },
+                        { name: 'Google US English Female', provider: 'Google', quality: 'Medium' }
+                    ]
+                }
+            },
+            hi: {
+                name: 'Hindi',
+                testText: 'नमस्ते! यह हिंदी आवाज का परीक्षण है। यह कैसा लगता है? मैं आपका कानूनी सहायक हूं।',
+                voices: {
+                    male: [
+                        { name: 'Microsoft Hemant', provider: 'Microsoft', quality: 'High' },
+                        { name: 'Google हिन्दी', provider: 'Google', quality: 'Medium' }
+                    ],
+                    female: [
+                        { name: 'Microsoft Lekha', provider: 'Microsoft', quality: 'High' }
+                    ]
+                }
+            },
+            pa: {
+                name: 'Punjabi',
+                testText: 'ਸਤ ਸ੍ਰੀ ਅਕਾਲ! ਇਹ ਪੰਜਾਬੀ ਆਵਾਜ਼ ਦਾ ਟੈਸਟ ਹੈ। ਇਹ ਕਿਵੇਂ ਲੱਗਦਾ ਹੈ? ਮੈਂ ਤੁਹਾਡਾ ਕਾਨੂੰਨੀ ਸਹਾਇਕ ਹਾਂ।',
+                voices: {
+                    male: [
+                        { name: 'Google ਪੰਜਾਬੀ', provider: 'Google', quality: 'Medium' },
+                        { name: 'Google Punjabi', provider: 'Google', quality: 'Medium' }
+                    ],
+                    female: [
+                        { name: 'Google Punjabi Female', provider: 'Google', quality: 'Medium' }
+                    ]
+                }
+            },
+            fr: {
+                name: 'French',
+                testText: 'Bonjour! Ceci est un test de la voix française. Comment ça sonne? Je suis votre assistant juridique.',
+                voices: {
+                    male: [
+                        { name: 'Microsoft Paul', provider: 'Microsoft', quality: 'High' },
+                        { name: 'Google français', provider: 'Google', quality: 'Medium' }
+                    ],
+                    female: [
+                        { name: 'Microsoft Hortense', provider: 'Microsoft', quality: 'High' }
+                    ]
+                }
+            },
+            es: {
+                name: 'Spanish',
+                testText: '¡Hola! Esta es una prueba de la voz en español. ¿Cómo suena? Soy tu asistente legal.',
+                voices: {
+                    male: [
+                        { name: 'Microsoft Pablo', provider: 'Microsoft', quality: 'High' },
+                        { name: 'Google español', provider: 'Google', quality: 'Medium' }
+                    ],
+                    female: [
+                        { name: 'Microsoft Helena', provider: 'Microsoft', quality: 'High' }
+                    ]
+                }
+            },
+            zh: {
+                name: 'Chinese',
+                testText: '你好！这是中文语音测试。听起来怎么样？我是你的法律助手。',
+                voices: {
+                    male: [
+                        { name: 'Microsoft Kangkang', provider: 'Microsoft', quality: 'High' },
+                        { name: 'Google 普通话', provider: 'Google', quality: 'Medium' }
+                    ],
+                    female: [
+                        { name: 'Microsoft Yaoyao', provider: 'Microsoft', quality: 'High' }
+                    ]
+                }
+            }
+        };
+        
+        let allVoices = [];
+        let selectedLang = 'en';
+        let selectedGender = 'male';
+        let selectedVoice = null;
+        let isTesting = false;
+        
+        // Load voices
+        function loadVoices() {
+            allVoices = window.speechSynthesis.getVoices();
+            if (allVoices.length > 0) {
+                updateVoiceList();
+            }
+        }
+        
+        window.speechSynthesis.onvoiceschanged = loadVoices;
+        loadVoices();
+        
+        // Select language
+        function selectLanguage(lang) {
+            selectedLang = lang;
+            
+            // Update UI
+            document.querySelectorAll('.language-option').forEach(el => {
+                el.classList.remove('selected');
+                if (el.querySelector('.check-mark')) {
+                    el.querySelector('.check-mark').remove();
+                }
+            });
+            
+            const selected = document.querySelector(`[data-lang="${lang}"]`);
+            selected.classList.add('selected');
+            selected.innerHTML += '<span class="check-mark">✓</span>';
+            
+            updateVoiceList();
+        }
+        
+        // Select gender
+        function selectGender(gender) {
+            selectedGender = gender;
+            
+            // Update UI
+            document.querySelectorAll('.gender-option').forEach(el => {
+                el.classList.remove('selected');
+                if (el.querySelector('.check-mark')) {
+                    el.querySelector('.check-mark').remove();
+                }
+            });
+            
+            const selected = document.querySelector(`[data-gender="${gender}"]`);
+            selected.classList.add('selected');
+            selected.innerHTML += '<span class="check-mark">✓</span>';
+            
+            updateVoiceList();
+        }
+        
+        // Update voice list
+        function updateVoiceList() {
+            const config = languageConfig[selectedLang];
+            const voiceOptions = config.voices[selectedGender] || [];
+            
+            const voiceList = document.getElementById('voiceList');
+            voiceList.innerHTML = '';
+            
+            let foundVoice = null;
+            
+            voiceOptions.forEach(voiceOption => {
+                const available = allVoices.find(v => v.name.includes(voiceOption.name));
+                
+                const voiceItem = document.createElement('div');
+                voiceItem.className = `voice-item ${available ? 'available' : 'unavailable'}`;
+                voiceItem.innerHTML = `
+                    <div class="voice-info">
+                        <div class="voice-name">${available ? '✅ ' : ''}${voiceOption.name}</div>
+                        <div class="voice-provider">${voiceOption.provider}</div>
+                    </div>
+                    <div class="voice-status">
+                        ${available 
+                            ? `<span class="quality-badge">${voiceOption.quality}</span><span class="status-icon">✅</span>`
+                            : `<span class="unavailable-text">Not Installed</span><span class="status-icon">❌</span>`
+                        }
+                    </div>
+                `;
+                
+                voiceList.appendChild(voiceItem);
+                
+                if (available && !foundVoice) {
+                    foundVoice = available;
+                }
+            });
+            
+            selectedVoice = foundVoice;
+            updateSelectedVoiceBox();
+            updateTestButton();
+            updatePunjabiWarning();
+        }
+        
+        // Update selected voice box
+        function updateSelectedVoiceBox() {
+            const box = document.getElementById('selectedVoiceBox');
+            
+            if (selectedVoice) {
+                box.style.display = 'block';
+                box.className = 'selected-voice-box';
+                box.innerHTML = `
+                    <h3><span>✨</span> Currently Selected Voice</h3>
+                    <div class="info-row">
+                        <span class="info-label">Voice Name:</span>
+                        <span class="info-value">${selectedVoice.name}</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Language:</span>
+                        <span class="info-value">${selectedVoice.lang}</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Local Service:</span>
+                        <span class="info-value">${selectedVoice.localService ? 'Yes' : 'Cloud'}</span>
+                    </div>
+                `;
+            } else {
+                box.style.display = 'none';
+            }
+        }
+        
+        // Update Punjabi warning
+        function updatePunjabiWarning() {
+            const warning = document.getElementById('punjabiWarning');
+            
+            if (selectedLang === 'pa' && !selectedVoice) {
+                warning.style.display = 'block';
+                warning.className = 'warning-box';
+                warning.innerHTML = `
+                    <div class="warning-icon">⚠️</div>
+                    <div class="warning-content">
+                        <h4>Punjabi Voice Not Available</h4>
+                        <p>No Punjabi voices are currently installed on your system. You have these options:</p>
+                        <ul>
+                            <li><strong>Install Punjabi Language Pack:</strong> Go to Windows Settings → Language → Add Punjabi</li>
+                            <li><strong>Use OpenAI TTS:</strong> High-quality Punjabi voice (requires API key)</li>
+                            <li><strong>Fallback:</strong> System will use default voice as temporary solution</li>
+                        </ul>
+                    </div>
+                `;
+            } else {
+                warning.style.display = 'none';
+            }
+        }
+        
+        // Update test button
+        function updateTestButton() {
+            const btn = document.getElementById('testBtn');
+            btn.disabled = !selectedVoice || isTesting;
+        }
+        
+        // Test voice
+        function testVoice() {
+            if (!selectedVoice || isTesting) return;
+            
+            isTesting = true;
+            const btn = document.getElementById('testBtn');
+            btn.classList.add('testing');
+            btn.innerHTML = '<span class="spinner"></span><span>Testing Voice...</span>';
+            
+            const config = languageConfig[selectedLang];
+            const utterance = new SpeechSynthesisUtterance(config.testText);
+            utterance.voice = selectedVoice;
+            utterance.lang = selectedVoice.lang;
+            utterance.rate = 0.95;
+            utterance.pitch = 1.0;
+            utterance.volume = 1.0;
+            
+            utterance.onend = () => {
+                isTesting = false;
+                btn.classList.remove('testing');
+                btn.innerHTML = '<span class="btn-icon">🔊</span><span>Test Selected Voice</span>';
+                updateTestButton();
+            };
+            
+            utterance.onerror = () => {
+                isTesting = false;
+                btn.classList.remove('testing');
+                btn.innerHTML = '<span class="btn-icon">🔊</span><span>Test Selected Voice</span>';
+                updateTestButton();
+                alert('Voice test failed. Please try another voice.');
+            };
+            
+            window.speechSynthesis.cancel();
+            window.speechSynthesis.speak(utterance);
+        }
+        
+        // Initialize
+        selectLanguage('en');
+        selectGender('male');
+    </script>
+</body>
+</html>

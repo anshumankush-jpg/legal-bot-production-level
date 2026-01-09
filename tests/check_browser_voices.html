@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Available Browser Voices</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .info-box {
+            background: #f0f4ff;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+        }
+        
+        .info-box h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .search-box {
+            margin-bottom: 20px;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 15px;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            outline: none;
+        }
+        
+        .search-box input:focus {
+            border-color: #667eea;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 3em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 1em;
+            opacity: 0.9;
+        }
+        
+        .voice-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .voice-table th {
+            background: #667eea;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            position: sticky;
+            top: 0;
+        }
+        
+        .voice-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .voice-table tr:hover {
+            background: #f5f5f5;
+        }
+        
+        .voice-table tr.punjabi {
+            background: #e8f5e9;
+            font-weight: bold;
+        }
+        
+        .voice-table tr.punjabi td {
+            border-left: 4px solid #4caf50;
+        }
+        
+        .test-btn {
+            padding: 8px 16px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .test-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        .lang-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e3f2fd;
+            color: #1976d2;
+            border-radius: 12px;
+            font-size: 12px;
+            font-family: monospace;
+        }
+        
+        .no-punjabi {
+            background: #ffebee;
+            border: 2px solid #f44336;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .no-punjabi h3 {
+            color: #f44336;
+            margin-bottom: 10px;
+        }
+        
+        .has-punjabi {
+            background: #e8f5e9;
+            border: 2px solid #4caf50;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .has-punjabi h3 {
+            color: #4caf50;
+            margin-bottom: 10px;
+        }
+        
+        .instructions {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+        
+        .instructions h3 {
+            color: #ff9800;
+            margin-bottom: 15px;
+        }
+        
+        .instructions ol {
+            margin-left: 20px;
+        }
+        
+        .instructions li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        
+        code {
+            background: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Browser Voice Checker</h1>
+        <p class="subtitle">Check what voices are available in your browser</p>
+        
+        <div class="info-box">
+            <h3>ℹ️ About This Tool</h3>
+            <p>This tool shows all voices available in your browser. If Punjabi voices are not listed, you need to install them.</p>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-value" id="totalVoices">0</div>
+                <div class="stat-label">Total Voices</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="punjabiVoices">0</div>
+                <div class="stat-label">Punjabi Voices</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="totalLanguages">0</div>
+                <div class="stat-label">Languages</div>
+            </div>
+        </div>
+        
+        <div id="punjabiStatus"></div>
+        
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="🔍 Search voices by name or language (e.g., 'punjabi', 'pa', 'hindi')...">
+        </div>
+        
+        <table class="voice-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Voice Name</th>
+                    <th>Language</th>
+                    <th>Local</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="voiceList">
+                <tr>
+                    <td colspan="5" style="text-align: center; padding: 40px;">
+                        Loading voices...
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="instructions">
+            <h3>📋 How to Install Punjabi Voice</h3>
+            
+            <h4>For Chrome/Edge on Windows:</h4>
+            <ol>
+                <li>Go to <code>chrome://settings/languages</code></li>
+                <li>Click "Add languages"</li>
+                <li>Search for "Punjabi" or "ਪੰਜਾਬੀ"</li>
+                <li>Select "Punjabi (India)" and click "Add"</li>
+                <li>Restart your browser</li>
+                <li>Reload this page to check</li>
+            </ol>
+            
+            <h4>For Windows 10/11:</h4>
+            <ol>
+                <li>Go to Settings → Time & Language → Language</li>
+                <li>Click "Add a language"</li>
+                <li>Search for "Punjabi"</li>
+                <li>Select "Punjabi (India)" and install</li>
+                <li>Go to Speech settings and download Punjabi speech pack</li>
+                <li>Restart browser and reload this page</li>
+            </ol>
+            
+            <h4>For Firefox:</h4>
+            <ol>
+                <li>Install Punjabi language pack on your operating system (see above)</li>
+                <li>Firefox will automatically use system voices</li>
+                <li>Restart Firefox and reload this page</li>
+            </ol>
+            
+            <h4>For Safari (macOS):</h4>
+            <ol>
+                <li>System Preferences → Accessibility → Speech</li>
+                <li>Click "System Voice" → "Customize"</li>
+                <li>Find and download Punjabi voice</li>
+                <li>Restart Safari and reload this page</li>
+            </ol>
+        </div>
+    </div>
+    
+    <script>
+        let allVoices = [];
+        
+        function loadVoices() {
+            allVoices = window.speechSynthesis.getVoices();
+            
+            if (allVoices.length === 0) {
+                setTimeout(loadVoices, 100);
+                return;
+            }
+            
+            displayVoices(allVoices);
+            updateStats();
+            checkPunjabiStatus();
+        }
+        
+        function displayVoices(voices) {
+            const tbody = document.getElementById('voiceList');
+            
+            if (voices.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; padding: 40px;">No voices found. Please wait...</td></tr>';
+                return;
+            }
+            
+            tbody.innerHTML = voices.map((voice, index) => {
+                const isPunjabi = voice.lang.startsWith('pa') || 
+                                 voice.name.toLowerCase().includes('punjabi') ||
+                                 voice.name.includes('ਪੰਜਾਬੀ');
+                
+                return `
+                    <tr class="${isPunjabi ? 'punjabi' : ''}" data-name="${voice.name.toLowerCase()}" data-lang="${voice.lang.toLowerCase()}">
+                        <td>${index + 1}</td>
+                        <td>${isPunjabi ? '⭐ ' : ''}${voice.name}</td>
+                        <td><span class="lang-badge">${voice.lang}</span></td>
+                        <td>${voice.localService ? '✅' : '☁️'}</td>
+                        <td>
+                            <button class="test-btn" onclick="testVoice('${voice.name}', '${voice.lang}')">
+                                🔊 Test
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+        
+        function updateStats() {
+            const totalVoices = allVoices.length;
+            const punjabiVoices = allVoices.filter(v => 
+                v.lang.startsWith('pa') || 
+                v.name.toLowerCase().includes('punjabi') ||
+                v.name.includes('ਪੰਜਾਬੀ')
+            ).length;
+            const languages = new Set(allVoices.map(v => v.lang.split('-')[0])).size;
+            
+            document.getElementById('totalVoices').textContent = totalVoices;
+            document.getElementById('punjabiVoices').textContent = punjabiVoices;
+            document.getElementById('totalLanguages').textContent = languages;
+        }
+        
+        function checkPunjabiStatus() {
+            const punjabiVoices = allVoices.filter(v => 
+                v.lang.startsWith('pa') || 
+                v.name.toLowerCase().includes('punjabi') ||
+                v.name.includes('ਪੰਜਾਬੀ')
+            );
+            
+            const statusDiv = document.getElementById('punjabiStatus');
+            
+            if (punjabiVoices.length > 0) {
+                statusDiv.innerHTML = `
+                    <div class="has-punjabi">
+                        <h3>✅ Punjabi Voices Found!</h3>
+                        <p>Your browser has ${punjabiVoices.length} Punjabi voice(s) installed:</p>
+                        <ul>
+                            ${punjabiVoices.map(v => `<li><strong>${v.name}</strong> (${v.lang})</li>`).join('')}
+                        </ul>
+                        <p style="margin-top: 10px;">You can now use Punjabi voice in the application!</p>
+                    </div>
+                `;
+            } else {
+                statusDiv.innerHTML = `
+                    <div class="no-punjabi">
+                        <h3>❌ No Punjabi Voices Found</h3>
+                        <p>Your browser does not have Punjabi voices installed. This is why Punjabi TTS is not working.</p>
+                        <p style="margin-top: 10px;"><strong>Solution:</strong> Follow the instructions below to install Punjabi voice.</p>
+                    </div>
+                `;
+            }
+        }
+        
+        function testVoice(voiceName, lang) {
+            const text = lang.startsWith('pa') 
+                ? 'ਸਤ ਸ੍ਰੀ ਅਕਾਲ, ਮੈਨੂੰ ਕਾਨੂੰਨੀ ਸਲਾਹ ਚਾਹੀਦੀ ਹੈ।'
+                : 'Hello, this is a test of the voice.';
+            
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = lang;
+            
+            const voice = allVoices.find(v => v.name === voiceName);
+            if (voice) {
+                utterance.voice = voice;
+            }
+            
+            window.speechSynthesis.cancel();
+            window.speechSynthesis.speak(utterance);
+        }
+        
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            
+            if (searchTerm === '') {
+                displayVoices(allVoices);
+            } else {
+                const filtered = allVoices.filter(v => 
+                    v.name.toLowerCase().includes(searchTerm) ||
+                    v.lang.toLowerCase().includes(searchTerm)
+                );
+                displayVoices(filtered);
+            }
+        });
+        
+        // Load voices
+        window.speechSynthesis.onvoiceschanged = loadVoices;
+        loadVoices();
+    </script>
+</body>
+</html>
