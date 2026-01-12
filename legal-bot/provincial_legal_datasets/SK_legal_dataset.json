@@ -1,0 +1,81 @@
+{
+  "code": "SK",
+  "name": "Saskatchewan",
+  "legal_resources": {
+    "Traffic Law": {
+      "primary_act": "Traffic Safety Act",
+      "act_url": "https://www.saskatchewan.ca/residents/driving-and-transportation/traffic-safety",
+      "topics": [
+        "Speeding violations",
+        "Careless/dangerous driving",
+        "Distracted driving",
+        "Impaired driving (DUI/DWI)",
+        "License suspensions",
+        "Demerit points",
+        "Traffic ticket disputes"
+      ]
+    },
+    "Criminal Law": {
+      "resources": [
+        "Criminal Code of Canada (Federal)",
+        "Saskatchewan Provincial Court - Criminal",
+        "Legal Aid Saskatchewan - Criminal Services"
+      ],
+      "topics": [
+        "Theft and property crimes",
+        "Assault and violent crimes",
+        "Fraud and financial crimes",
+        "Drug offenses",
+        "Criminal procedure and rights",
+        "Bail and sentencing",
+        "Criminal appeals"
+      ]
+    },
+    "Immigration Law": {
+      "programs": [
+        "Saskatchewan Immigrant Nominee Program (SINP)",
+        "Saskatchewan Settlement Services"
+      ],
+      "topics": [
+        "Provincial Nominee Programs",
+        "Work permits",
+        "Study permits",
+        "Permanent residence",
+        "Citizenship applications",
+        "Refugee claims",
+        "Immigration appeals"
+      ]
+    },
+    "Business Law": {
+      "resources": [
+        "Saskatchewan Corporate Registry",
+        "Saskatchewan Business Services",
+        "Saskatchewan Revenue - Tax"
+      ],
+      "topics": [
+        "Business incorporation",
+        "Corporate governance",
+        "Business contracts",
+        "Intellectual property",
+        "Business tax compliance",
+        "Regulatory compliance",
+        "Business licensing"
+      ]
+    },
+    "Tax Law": {
+      "resources": [
+        "Canada Revenue Agency (Federal)",
+        "Provincial Tax Authority"
+      ],
+      "topics": [
+        "Income tax",
+        "Corporate tax",
+        "GST/HST/PST",
+        "Tax audits and appeals",
+        "Tax planning",
+        "CRA disputes",
+        "Provincial tax matters"
+      ]
+    }
+  }
+}

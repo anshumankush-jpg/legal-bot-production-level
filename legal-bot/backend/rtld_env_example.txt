@@ -1,0 +1,22 @@
+# RTLD (Real-Time Learning Database) Configuration
+# Add these to your .env file for RTLD functionality
+
+# RTLD Vector Database Configuration
+RTLD_INDEX_PATH=./data/rtld_faiss/index.faiss
+RTLD_METADATA_PATH=./data/rtld_faiss/metadata.json
+RTLD_DEFAULT_INDEX_NAME=documents
+
+# RTLD Embedding Models
+RTLD_EMBEDDING_MODEL=all-MiniLM-L6-v2
+RTLD_IMAGE_MODEL=ViT-B/32
+
+# RTLD Processing Configuration
+RTLD_CHUNK_SIZE=1000
+RTLD_CHUNK_OVERLAP=200
+RTLD_MAX_UPLOAD_SIZE_MB=50
+
+# Device Configuration (auto-detects CUDA if available)
+RTLD_DEVICE=
+
+# Embedding Provider (set to 'rtld' to enable RTLD)
+EMBEDDING_PROVIDER=rtld

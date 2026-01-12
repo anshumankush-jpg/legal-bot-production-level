@@ -1,0 +1,31 @@
+{
+  "title": "Canadian Family Law - Divorce, Custody & Support",
+  "jurisdictions": [
+    "Federal",
+    "Ontario",
+    "British Columbia"
+  ],
+  "categories": [
+    "divorce",
+    "custody",
+    "support",
+    "property division"
+  ],
+  "documents": [
+    {
+      "type": "statute",
+      "title": "Federal Divorce Act",
+      "url": "https://laws-lois.justice.gc.ca/eng/acts/D-3.4/",
+      "sections": [
+        "grounds",
+        "corollary relief",
+        "custody"
+      ],
+      "solutions": [
+        "file divorce application",
+        "seek court orders",
+        "negotiate settlement"
+      ]
+    }
+  ]
+}

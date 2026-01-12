@@ -1,0 +1,385 @@
+.employee-portal {
+  display: flex;
+  min-height: 100vh;
+  background: #f7fafc;
+}
+
+.employee-sidebar {
+  width: 260px;
+  background: #2d3748;
+  color: white;
+  padding: 20px;
+  position: fixed;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.employee-header {
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #4a5568;
+}
+
+.employee-header h2 {
+  margin: 0 0 10px 0;
+  font-size: 1.5rem;
+}
+
+.employee-header p {
+  margin: 5px 0;
+  opacity: 0.9;
+}
+
+.role-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  background: #7B68EE;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.employee-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.employee-nav button {
+  width: 100%;
+  padding: 12px 16px;
+  background: transparent;
+  border: none;
+  color: white;
+  text-align: left;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.employee-nav button:hover {
+  background: #4a5568;
+}
+
+.employee-nav button.active {
+  background: #7B68EE;
+}
+
+.logout-button {
+  margin-top: 20px;
+  background: #e53e3e !important;
+}
+
+.logout-button:hover {
+  background: #c53030 !important;
+}
+
+.employee-main {
+  margin-left: 260px;
+  flex: 1;
+  padding: 40px;
+}
+
+.employee-error {
+  padding: 12px 16px;
+  background: #fee;
+  border-left: 4px solid #e53e3e;
+  border-radius: 4px;
+  color: #c53030;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.employee-error button {
+  background: none;
+  border: none;
+  color: #c53030;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.employee-dashboard h1,
+.employee-matters h1,
+.employee-email h1,
+.matter-detail h1 {
+  margin-bottom: 30px;
+  color: #2d3748;
+}
+
+.dashboard-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.stat-card {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card h3 {
+  margin: 0 0 15px 0;
+  color: #718096;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.stat-number {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #7B68EE;
+  margin: 0;
+}
+
+.stat-text {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin: 0;
+}
+
+.matters-list {
+  display: grid;
+  gap: 20px;
+}
+
+.matter-card {
+  background: white;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.matter-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.matter-card h3 {
+  margin: 0 0 10px 0;
+  color: #2d3748;
+}
+
+.matter-card p {
+  color: #718096;
+  margin: 0 0 15px 0;
+}
+
+.matter-meta {
+  display: flex;
+  gap: 15px;
+  font-size: 0.85rem;
+  color: #a0aec0;
+}
+
+.back-button {
+  padding: 8px 16px;
+  background: #e2e8f0;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.matter-info {
+  background: #f7fafc;
+  padding: 20px;
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
+.messages-list {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  margin: 20px 0;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.message {
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  background: #f7fafc;
+}
+
+.message.user {
+  background: #e6fffa;
+}
+
+.message.assistant {
+  background: #faf5ff;
+}
+
+.message strong {
+  display: block;
+  margin-bottom: 5px;
+  color: #2d3748;
+}
+
+.message p {
+  margin: 5px 0;
+  color: #4a5568;
+}
+
+.message small {
+  color: #a0aec0;
+  font-size: 0.8rem;
+}
+
+.documents-list {
+  display: grid;
+  gap: 10px;
+}
+
+.document-item {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.email-connections {
+  background: white;
+  padding: 24px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.no-connection {
+  text-align: center;
+  padding: 40px;
+}
+
+.connect-button {
+  padding: 12px 24px;
+  background: #7B68EE;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.connect-button:hover {
+  background: #6b5bd8;
+}
+
+.compose-button {
+  padding: 12px 24px;
+  background: #48bb78;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.email-compose-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 600px;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+}
+
+.modal-content input,
+.modal-content textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.modal-actions button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.modal-actions button:first-child {
+  background: #48bb78;
+  color: white;
+}
+
+.modal-actions button:last-child {
+  background: #e2e8f0;
+}
+
+.sent-emails-list {
+  display: grid;
+  gap: 15px;
+}
+
+.sent-email-item {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.sent-email-item strong {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.sent-email-item p {
+  margin: 5px 0;
+  color: #718096;
+}
+
+.sent-email-item small {
+  color: #a0aec0;
+}
+
+@media (max-width: 768px) {
+  .employee-sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+
+  .employee-main {
+    margin-left: 0;
+  }
+}

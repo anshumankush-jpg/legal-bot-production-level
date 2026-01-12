@@ -1,0 +1,81 @@
+{
+  "code": "NB",
+  "name": "New Brunswick",
+  "legal_resources": {
+    "Traffic Law": {
+      "primary_act": "Motor Vehicle Act",
+      "act_url": "https://laws.gnb.ca/en/showdoc/cs/M-17",
+      "topics": [
+        "Speeding violations",
+        "Careless/dangerous driving",
+        "Distracted driving",
+        "Impaired driving (DUI/DWI)",
+        "License suspensions",
+        "Demerit points",
+        "Traffic ticket disputes"
+      ]
+    },
+    "Criminal Law": {
+      "resources": [
+        "Criminal Code of Canada (Federal)",
+        "New Brunswick Provincial Court - Criminal",
+        "New Brunswick Legal Aid - Criminal Services"
+      ],
+      "topics": [
+        "Theft and property crimes",
+        "Assault and violent crimes",
+        "Fraud and financial crimes",
+        "Drug offenses",
+        "Criminal procedure and rights",
+        "Bail and sentencing",
+        "Criminal appeals"
+      ]
+    },
+    "Immigration Law": {
+      "programs": [
+        "New Brunswick Provincial Nominee Program",
+        "New Brunswick Settlement Services"
+      ],
+      "topics": [
+        "Provincial Nominee Programs",
+        "Work permits",
+        "Study permits",
+        "Permanent residence",
+        "Citizenship applications",
+        "Refugee claims",
+        "Immigration appeals"
+      ]
+    },
+    "Business Law": {
+      "resources": [
+        "Service New Brunswick - Corporate Registry",
+        "New Brunswick Business Services",
+        "New Brunswick Finance - Tax"
+      ],
+      "topics": [
+        "Business incorporation",
+        "Corporate governance",
+        "Business contracts",
+        "Intellectual property",
+        "Business tax compliance",
+        "Regulatory compliance",
+        "Business licensing"
+      ]
+    },
+    "Tax Law": {
+      "resources": [
+        "Canada Revenue Agency (Federal)",
+        "Provincial Tax Authority"
+      ],
+      "topics": [
+        "Income tax",
+        "Corporate tax",
+        "GST/HST/PST",
+        "Tax audits and appeals",
+        "Tax planning",
+        "CRA disputes",
+        "Provincial tax matters"
+      ]
+    }
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "case_id": "CAN-BC-TRAFFIC-0002",
+  "jurisdiction": {
+    "country": "Canada",
+    "region_type": "province",
+    "region_code": "BC",
+    "court_level": "Provincial Court"
+  },
+  "case_metadata": {
+    "year": 2022,
+    "area_of_law": "traffic",
+    "offence_code": "MVA 146(1)",
+    "offence_label": "Disobeying traffic control device - Red light",
+    "real_case_reference": null
+  },
+  "facts": {
+    "short_summary": "Driver charged with running a red light at intersection. Camera evidence exists. Driver claims light was yellow when entered intersection.",
+    "detailed_facts": "On November 15, 2022, at 08:45, the driver was approaching a major intersection in Vancouver during morning rush hour. A red light camera captured the vehicle entering the intersection after the light had turned red. The driver maintains they entered on a yellow light and the camera triggered incorrectly. Weather was clear, visibility good. Driver has one previous speeding ticket from 2020. Holds a Class 5 licence.",
+    "aggravating_factors": [
+      "Red light camera evidence",
+      "Previous traffic violation on record",
+      "Rush hour traffic conditions"
+    ],
+    "mitigating_factors": [
+      "Driver's consistent account of yellow light",
+      "Single prior violation (not recent)",
+      "No collision or property damage"
+    ],
+    "defence_issues_spotted": [
+      "Timing of yellow light duration may be reviewable",
+      "Camera calibration records needed",
+      "Potential timing discrepancy between camera and actual light change"
+    ]
+  },
+  "law": {
+    "statutes_applied": [
+      {
+        "name": "Motor Vehicle Act",
+        "citation": "R.S.B.C. 1996, c. 318, s. 146(1)",
+        "key_elements": [
+          "Vehicle entered intersection",
+          "Traffic control signal displayed red",
+          "Vehicle proceeded through intersection"
+        ]
+      }
+    ],
+    "guideline_docs": [
+      "BC red light camera program guidelines",
+      "BC demerit point schedule"
+    ]
+  },
+  "outcome_if_known": {
+    "is_real_outcome": false,
+    "summary": null,
+    "sentence": null
+  },
+  "paralegal_advice": {
+    "client_profile": {
+      "goal_priority": [
+        "avoid_demerit_points",
+        "challenge_camera_accuracy",
+        "minimize_financial_penalty"
+      ],
+      "risk_tolerance": "medium"
+    },
+    "advice_variants": [
+      {
+        "id": "A1",
+        "style": "conservative",
+        "short_label": "Request disclosure and negotiate",
+        "full_advice_text": "Red light camera cases in BC can sometimes be resolved through early resolution if you have a reasonable explanation. Request full disclosure including the camera calibration records, timing data, and any maintenance logs. If the camera evidence is strong and your account cannot be substantiated, consider negotiating a plea to a lesser offence or seeking a reduction in the fine. Camera evidence is generally considered reliable, but technical issues do occur. This is general information only and not legal advice; you should speak with a licensed lawyer or paralegal about your exact circumstances.",
+        "risk_level": "low",
+        "likely_benefits": [
+          "Potential fine reduction",
+          "Avoidance of full demerit points if reduced",
+          "Faster resolution"
+        ],
+        "key_reasons": [
+          "Camera evidence is typically strong",
+          "Early resolution may offer better terms",
+          "One prior violation is not severe"
+        ]
+      },
+      {
+        "id": "A2",
+        "style": "aggressive",
+        "short_label": "Challenge camera evidence at trial",
+        "full_advice_text": "If you genuinely believe the light was yellow when you entered, you can challenge the camera evidence at trial. This requires obtaining expert review of the camera timing, calibration records, and potentially the traffic signal timing data. The prosecution must prove beyond a reasonable doubt that the light was red when you entered. If there are any gaps in the camera maintenance records, timing discrepancies, or if the yellow light duration was shorter than the minimum required, you may have a defence. However, camera evidence is generally strong, and if you lose, you'll face the full penalty plus court costs. This is general information only and not legal advice; you should speak with a licensed lawyer or paralegal about your exact circumstances.",
+        "risk_level": "high",
+        "likely_benefits": [
+          "Possibility of full acquittal",
+          "If successful, no demerit points or fine"
+        ],
+        "key_reasons": [
+          "Camera timing can sometimes be challenged",
+          "Yellow light duration requirements exist",
+          "Calibration records may have gaps"
+        ]
+      }
+    ],
+    "universal_disclaimer": "These are general informational examples based on typical approaches in this jurisdiction. They are not legal advice. For advice about your specific case, consult a licensed lawyer or paralegal."
+  }
+}
+

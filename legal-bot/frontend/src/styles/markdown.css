@@ -1,0 +1,347 @@
+/* ============================================
+   MARKDOWN STYLES - ChatGPT Style
+   ============================================ */
+
+/* Base content container */
+.markdown-content {
+  font-family: var(--font-sans, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+  font-size: var(--text-base, 0.9375rem);
+  line-height: var(--leading-relaxed, 1.7);
+  color: var(--text-primary, #ececec);
+}
+
+/* ========== HEADINGS ========== */
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3,
+.markdown-content h4,
+.markdown-content h5,
+.markdown-content h6 {
+  font-weight: var(--font-semibold, 600);
+  color: var(--text-primary, #ececec);
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  line-height: var(--leading-tight, 1.3);
+}
+
+.markdown-content h1:first-child,
+.markdown-content h2:first-child,
+.markdown-content h3:first-child,
+.markdown-content h4:first-child {
+  margin-top: 0;
+}
+
+.markdown-content h1 { font-size: 1.5rem; }
+.markdown-content h2 { font-size: 1.25rem; }
+.markdown-content h3 { font-size: 1.125rem; }
+.markdown-content h4 { font-size: 1rem; }
+.markdown-content h5 { font-size: 0.9375rem; }
+.markdown-content h6 { font-size: 0.875rem; color: var(--text-secondary, #b4b4b4); }
+
+/* ========== PARAGRAPHS ========== */
+.markdown-content p {
+  margin: 0 0 1em 0;
+  line-height: var(--leading-relaxed, 1.7);
+}
+
+.markdown-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* ========== LISTS ========== */
+.markdown-content ul,
+.markdown-content ol {
+  margin: 0.5em 0 1em 0;
+  padding-left: 1.5em;
+}
+
+.markdown-content li {
+  margin: 0.35em 0;
+  line-height: var(--leading-relaxed, 1.7);
+  color: var(--text-secondary, #d1d1d1);
+}
+
+.markdown-content li strong {
+  color: var(--text-primary, #ececec);
+}
+
+.markdown-content ul { list-style-type: disc; }
+.markdown-content ol { list-style-type: decimal; }
+
+.markdown-content ul ul,
+.markdown-content ol ol,
+.markdown-content ul ol,
+.markdown-content ol ul {
+  margin: 0.25em 0;
+}
+
+/* ========== INLINE STYLES ========== */
+.markdown-content strong,
+.markdown-content b {
+  font-weight: var(--font-semibold, 600);
+  color: var(--text-primary, #ececec);
+}
+
+.markdown-content em,
+.markdown-content i {
+  font-style: italic;
+}
+
+.markdown-content u {
+  text-decoration: underline;
+  text-decoration-color: var(--text-muted, #8e8e8e);
+  text-underline-offset: 2px;
+}
+
+.markdown-content del,
+.markdown-content s {
+  text-decoration: line-through;
+  color: var(--text-muted, #8e8e8e);
+}
+
+.markdown-content mark {
+  background: rgba(16, 163, 127, 0.2);
+  color: var(--text-primary, #ececec);
+  padding: 0.1em 0.3em;
+  border-radius: 3px;
+}
+
+/* ========== LINKS ========== */
+.markdown-content a {
+  color: var(--accent-link, #7ab8f5);
+  text-decoration: underline;
+  text-decoration-color: rgba(122, 184, 245, 0.4);
+  text-underline-offset: 2px;
+  transition: all 0.15s ease;
+}
+
+.markdown-content a:hover {
+  color: var(--accent-link-hover, #a8d1ff);
+  text-decoration-color: rgba(168, 209, 255, 0.7);
+}
+
+/* ========== INLINE CODE ========== */
+.markdown-content code {
+  font-family: var(--font-mono, 'SF Mono', 'Consolas', monospace);
+  font-size: 0.875em;
+  background: var(--surface-code, #1e1e1e);
+  color: #e06c75;
+  padding: 0.15em 0.4em;
+  border-radius: var(--radius-sm, 4px);
+  white-space: nowrap;
+}
+
+/* ========== CODE BLOCKS ========== */
+.markdown-content pre {
+  margin: 1em 0;
+  padding: 1rem;
+  background: var(--surface-code, #1e1e1e);
+  border: 1px solid var(--border-default, #424242);
+  border-radius: var(--radius-md, 8px);
+  overflow-x: auto;
+  position: relative;
+}
+
+.markdown-content pre code {
+  background: transparent;
+  padding: 0;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: #d4d4d4;
+  white-space: pre;
+}
+
+/* Code block header (language label) */
+.markdown-content pre::before {
+  content: attr(data-language);
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.7rem;
+  color: var(--text-muted, #8e8e8e);
+  background: rgba(255, 255, 255, 0.05);
+  border-bottom-left-radius: var(--radius-sm, 4px);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ========== BLOCKQUOTES ========== */
+.markdown-content blockquote {
+  margin: 1em 0;
+  padding: 0.75em 1em;
+  border-left: 3px solid var(--accent-primary, #10a37f);
+  background: rgba(16, 163, 127, 0.05);
+  border-radius: 0 var(--radius-sm, 4px) var(--radius-sm, 4px) 0;
+}
+
+.markdown-content blockquote p {
+  margin: 0;
+  color: var(--text-secondary, #b4b4b4);
+  font-style: italic;
+}
+
+/* ========== HORIZONTAL RULE ========== */
+.markdown-content hr {
+  border: none;
+  border-top: 1px solid var(--border-default, #424242);
+  margin: 1.5em 0;
+}
+
+/* ========== TABLES ========== */
+.markdown-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
+  font-size: 0.9375rem;
+}
+
+.markdown-content th,
+.markdown-content td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border: 1px solid var(--border-default, #424242);
+}
+
+.markdown-content th {
+  background: var(--surface-1, #2f2f2f);
+  font-weight: var(--font-semibold, 600);
+  color: var(--text-primary, #ececec);
+}
+
+.markdown-content td {
+  color: var(--text-secondary, #d1d1d1);
+}
+
+.markdown-content tr:hover td {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* ========== IMAGES ========== */
+.markdown-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-md, 8px);
+  margin: 1em 0;
+}
+
+/* ========== CALLOUT BLOCKS ========== */
+.markdown-content .callout {
+  margin: 1em 0;
+  padding: 1rem;
+  border-radius: var(--radius-md, 8px);
+  border: 1px solid;
+}
+
+.markdown-content .callout-info {
+  background: rgba(59, 130, 246, 0.1);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.markdown-content .callout-warning {
+  background: rgba(245, 166, 35, 0.1);
+  border-color: rgba(245, 166, 35, 0.3);
+}
+
+.markdown-content .callout-danger {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+.markdown-content .callout-success {
+  background: rgba(16, 163, 127, 0.1);
+  border-color: rgba(16, 163, 127, 0.3);
+}
+
+/* ========== DISCLAIMER BLOCK ========== */
+.markdown-content .disclaimer {
+  margin: 1.5em 0 0 0;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-subtle, #2f2f2f);
+  border-radius: var(--radius-md, 8px);
+  font-size: 0.8125rem;
+  color: var(--text-muted, #8e8e8e);
+  line-height: 1.6;
+}
+
+.markdown-content .disclaimer::before {
+  content: 'Disclaimer: ';
+  font-weight: var(--font-medium, 500);
+  color: var(--text-secondary, #b4b4b4);
+}
+
+/* ========== REFERENCES/SOURCES BLOCK ========== */
+.markdown-content .references {
+  margin: 1.5em 0 0 0;
+  padding: 1rem;
+  background: var(--surface-1, #2f2f2f);
+  border: 1px solid var(--border-default, #424242);
+  border-radius: var(--radius-md, 8px);
+}
+
+.markdown-content .references-title {
+  font-size: 0.8125rem;
+  font-weight: var(--font-semibold, 600);
+  color: var(--text-primary, #ececec);
+  margin: 0 0 0.5rem 0;
+}
+
+.markdown-content .references-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.markdown-content .references-list li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border-subtle, #2f2f2f);
+  font-size: 0.8125rem;
+}
+
+.markdown-content .references-list li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+/* Citation chips */
+.markdown-content .citation {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.25rem;
+  height: 1.25rem;
+  padding: 0 0.35rem;
+  background: var(--accent-primary, #10a37f);
+  color: var(--text-inverse, #212121);
+  font-size: 0.6875rem;
+  font-weight: var(--font-semibold, 600);
+  border-radius: var(--radius-sm, 4px);
+  margin: 0 0.1rem;
+  vertical-align: super;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.markdown-content .citation:hover {
+  background: var(--accent-primary-hover, #1a7f64);
+  transform: scale(1.1);
+}
+
+/* ========== TASK LISTS ========== */
+.markdown-content input[type="checkbox"] {
+  margin-right: 0.5em;
+  accent-color: var(--accent-primary, #10a37f);
+}
+
+/* ========== KEYBOARD SHORTCUTS ========== */
+.markdown-content kbd {
+  display: inline-block;
+  padding: 0.2em 0.5em;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.8em;
+  background: var(--surface-1, #2f2f2f);
+  border: 1px solid var(--border-default, #424242);
+  border-radius: var(--radius-sm, 4px);
+  box-shadow: 0 1px 0 var(--border-strong, #565656);
+}

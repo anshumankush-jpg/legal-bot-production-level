@@ -1,0 +1,46 @@
+{
+  "title": "Canadian Employment Law - Worker Rights & Obligations",
+  "jurisdictions": [
+    "Federal",
+    "Ontario",
+    "British Columbia",
+    "Alberta"
+  ],
+  "categories": [
+    "termination",
+    "wages",
+    "hours",
+    "harassment",
+    "unions"
+  ],
+  "documents": [
+    {
+      "type": "statute",
+      "title": "Ontario Employment Standards Act",
+      "url": "https://www.ontario.ca/laws/statute/00e14",
+      "sections": [
+        "termination",
+        "severance",
+        "wages",
+        "vacation"
+      ],
+      "solutions": [
+        "file complaint",
+        "seek reinstatement",
+        "claim damages",
+        "union grievance"
+      ]
+    },
+    {
+      "type": "guide",
+      "title": "Ontario Wrongful Dismissal and Termination Rights",
+      "content": "\n                    ONTARIO EMPLOYMENT TERMINATION RIGHTS:\n\n                    1. NOTICE OF TERMINATION REQUIREMENTS:\n                    - Employees with < 3 months: no notice required\n                    - 3 months - 1 year: 1 week notice\n                    - 1-3 years: 2 weeks notice\n                    - 3-6 years: 4 weeks notice\n                    - 6-9 years: 6 weeks notice\n                    - 9+ years: 8 weeks notice\n\n                    2. SEVERANCE PAY:\n                    - 5 days per year of service (up to 26 weeks)\n                    - Average of best 12 weeks' wages\n                    - No severance if working notice or pay in lieu\n\n                    3. WRONGFUL DISMISSAL CLAIMS:\n                    - Common law reasonable notice period\n                    - Often longer than statutory minimum\n                    - Damages for lost wages, benefits, bonuses\n                    - Mitigation obligation on employee\n\n                    4. CONSTRUCTIVE DISMISSAL:\n                    - Fundamental change to employment terms\n                    - Hostile work environment\n                    - Can resign and claim constructive dismissal\n                    - Same remedies as wrongful dismissal\n\n                    5. UNEMPLOYMENT INSURANCE:\n                    - Apply within 45 days of termination\n                    - Benefits: 45-55% of insurable earnings\n                    - Duration: 45 weeks maximum\n                    - Eligibility depends on work history\n\n                    6. HUMAN RIGHTS COMPLAINTS:\n                    - Discrimination based on protected grounds\n                    - Harassment or reprisal claims\n                    - File with Ontario Human Rights Tribunal\n                    - No cost to file, 1 year limitation period\n\n                    7. UNIONIZED EMPLOYEES:\n                    - Grievance through union process\n                    - Arbitration for dispute resolution\n                    - Just cause requirements for termination\n                    - Seniority protections\n                    ",
+      "solutions": [
+        "serve notice period",
+        "claim severance",
+        "file wrongful dismissal lawsuit",
+        "apply for EI"
+      ]
+    }
+  ]
+}

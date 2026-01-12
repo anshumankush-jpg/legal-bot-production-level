@@ -1,0 +1,136 @@
+<div class="chat-container">
+  <nav class="chat-nav">
+    <div class="nav-left">
+      <h1>PLAZA-AI</h1>
+    </div>
+    <div class="nav-right">
+      <a routerLink="/chat" class="nav-link">Chat</a>
+      <a routerLink="/profile" class="nav-link">Profile</a>
+    </div>
+  </nav>
+
+  <div class="chat-layout">
+    <div class="chat-main">
+      <div class="chat-messages" #chatContainer>
+        <div
+          *ngFor="let message of messages"
+          class="message"
+          [class.user]="message.role === 'user'"
+          [class.assistant]="message.role === 'assistant'"
+          [class.system]="message.role === 'assistant' && message.content.includes('uploaded')"
+        >
+          <div class="message-content">
+            <div [innerHTML]="formatStructuredResponse(message)"></div>
+
+            <!-- Citations -->
+            <div *ngIf="message.citations && message.citations.length > 0" class="citations">
+              <strong>Sources:</strong>
+              <ul>
+                <li *ngFor="let citation of message.citations">
+                  {{ citation.filename }}, Page {{ citation.page }} ({{ (citation.score * 100).toFixed(0) }}% relevant)
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="message-time">
+            {{ message.timestamp | date:'short' }}
+          </div>
+        </div>
+
+        <!-- Loading indicator -->
+        <div *ngIf="isLoading" class="message assistant">
+          <div class="message-content">
+            <div class="typing-indicator">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Upload Progress -->
+      <div *ngIf="isUploading && uploadProgress > 0 && uploadProgress < 100" class="upload-progress">
+        <div class="progress-bar">
+          <div class="progress-fill" [style.width.%]="uploadProgress"></div>
+        </div>
+        <span>Uploading... {{ uploadProgress }}%</span>
+      </div>
+
+      <!-- Input Area -->
+      <form class="input-area" (ngSubmit)="sendMessage()">
+        <div class="input-wrapper">
+          <div class="input-container">
+            <!-- Upload Menu -->
+            <div class="upload-menu" *ngIf="showUploadMenu">
+              <button type="button" class="upload-option" (click)="openFileUpload()">
+                📄 Document
+              </button>
+              <button type="button" class="upload-option" (click)="openImageUpload()">
+                🖼️ Image
+              </button>
+              <button type="button" class="upload-option" (click)="openCamera()" *ngIf="isMobile()">
+                📷 Camera
+              </button>
+            </div>
+
+            <!-- Hidden file inputs -->
+            <input
+              #fileInput
+              type="file"
+              (change)="onFileSelected($event)"
+              accept=".pdf,.docx,.txt,.doc"
+              style="display: none;"
+            />
+            <input
+              #imageInput
+              type="file"
+              (change)="onImageSelected($event)"
+              accept="image/*"
+              style="display: none;"
+            />
+            <input
+              #cameraInput
+              type="file"
+              (change)="onImageSelected($event)"
+              accept="image/*"
+              capture="environment"
+              style="display: none;"
+            />
+
+            <button
+              type="button"
+              class="upload-btn"
+              (click)="toggleUploadMenu()"
+              [disabled]="isLoading"
+              title="Upload document"
+            >
+              📎
+            </button>
+
+            <textarea
+              [(ngModel)]="currentMessage"
+              (keydown.enter)="onEnterKey($event)"
+              [disabled]="isLoading"
+              placeholder="Ask anything about your legal documents..."
+              class="chat-input"
+              rows="1"
+              name="message"
+            ></textarea>
+
+            <button
+              type="submit"
+              class="send-btn"
+              [disabled]="!currentMessage.trim() || isLoading"
+            >
+              {{ isLoading ? '⏳' : '➤' }}
+            </button>
+          </div>
+          <p class="input-footer">
+            This is general information only, not legal advice. For advice about your specific case, consult a licensed lawyer or paralegal.
+          </p>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

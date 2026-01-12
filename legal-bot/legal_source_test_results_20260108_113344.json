@@ -1,0 +1,263 @@
+{
+  "timestamp": "2026-01-08T11:33:44.891771",
+  "total_tests": 15,
+  "passed": 15,
+  "failed": 0,
+  "success_rate": 100.0,
+  "avg_relevance_score": 70.0,
+  "avg_citations": 5.0,
+  "results": [
+    {
+      "test_number": 1,
+      "category": "Criminal Law - Canada Federal",
+      "province": "Federal",
+      "question": "What are the penalties for assault under the Canadian Criminal Code?",
+      "passed": true,
+      "relevance_score": 75.0,
+      "citation_count": 5,
+      "found_sources": [
+        "Criminal Code",
+        "assault",
+        "section"
+      ],
+      "missing_sources": [
+        "C-46"
+      ]
+    },
+    {
+      "test_number": 2,
+      "category": "Traffic Law - Ontario",
+      "province": "Ontario",
+      "question": "What are the penalties for distracted driving in Ontario?",
+      "passed": true,
+      "relevance_score": 75.0,
+      "citation_count": 5,
+      "found_sources": [
+        "Ontario",
+        "distracted driving",
+        "fine"
+      ],
+      "missing_sources": [
+        "Highway Traffic Act"
+      ]
+    },
+    {
+      "test_number": 3,
+      "category": "Traffic Law - California",
+      "province": "California",
+      "question": "What is the penalty for DUI in California?",
+      "passed": true,
+      "relevance_score": 50.0,
+      "citation_count": 5,
+      "found_sources": [
+        "California",
+        "DUI"
+      ],
+      "missing_sources": [
+        "Vehicle Code",
+        "penalty"
+      ]
+    },
+    {
+      "test_number": 4,
+      "category": "Criminal Law - USA Federal",
+      "province": "Federal USA",
+      "question": "What is wire fraud under federal law?",
+      "passed": true,
+      "relevance_score": 50.0,
+      "citation_count": 5,
+      "found_sources": [
+        "wire fraud",
+        "federal"
+      ],
+      "missing_sources": [
+        "18 U.S.C.",
+        "1343"
+      ]
+    },
+    {
+      "test_number": 5,
+      "category": "Family Law - Divorce",
+      "province": "General",
+      "question": "What are the grounds for divorce in Canada?",
+      "passed": true,
+      "relevance_score": 100.0,
+      "citation_count": 5,
+      "found_sources": [
+        "divorce",
+        "grounds",
+        "separation",
+        "Canada"
+      ],
+      "missing_sources": []
+    },
+    {
+      "test_number": 6,
+      "category": "Traffic Law - British Columbia",
+      "province": "British Columbia",
+      "question": "What are the speed limits in school zones in BC?",
+      "passed": true,
+      "relevance_score": 75.0,
+      "citation_count": 5,
+      "found_sources": [
+        "British Columbia",
+        "speed",
+        "school zone"
+      ],
+      "missing_sources": [
+        "Motor Vehicle Act"
+      ]
+    },
+    {
+      "test_number": 7,
+      "category": "Criminal Law - Money Laundering",
+      "province": "Federal USA",
+      "question": "What constitutes money laundering under federal law?",
+      "passed": true,
+      "relevance_score": 50.0,
+      "citation_count": 5,
+      "found_sources": [
+        "money laundering",
+        "financial"
+      ],
+      "missing_sources": [
+        "18 U.S.C.",
+        "1956"
+      ]
+    },
+    {
+      "test_number": 8,
+      "category": "Traffic Law - Alberta",
+      "province": "Alberta",
+      "question": "What are the penalties for speeding in Alberta?",
+      "passed": true,
+      "relevance_score": 75.0,
+      "citation_count": 5,
+      "found_sources": [
+        "Alberta",
+        "speeding",
+        "fine"
+      ],
+      "missing_sources": [
+        "Traffic Safety Act"
+      ]
+    },
+    {
+      "test_number": 9,
+      "category": "Copyright Law",
+      "province": "USA",
+      "question": "What is fair use under copyright law?",
+      "passed": true,
+      "relevance_score": 50.0,
+      "citation_count": 5,
+      "found_sources": [
+        "copyright",
+        "fair use"
+      ],
+      "missing_sources": [
+        "DMCA",
+        "intellectual property"
+      ]
+    },
+    {
+      "test_number": 10,
+      "category": "Commercial Vehicle Law",
+      "province": "Federal USA",
+      "question": "What are the cargo securement requirements for trucks?",
+      "passed": true,
+      "relevance_score": 50.0,
+      "citation_count": 5,
+      "found_sources": [
+        "cargo",
+        "securement"
+      ],
+      "missing_sources": [
+        "FMCSR",
+        "commercial vehicle"
+      ]
+    },
+    {
+      "test_number": 11,
+      "category": "Constitutional Law - Canada",
+      "province": "Federal Canada",
+      "question": "What are my rights under the Canadian Charter during a police stop?",
+      "passed": true,
+      "relevance_score": 75.0,
+      "citation_count": 5,
+      "found_sources": [
+        "Charter",
+        "rights",
+        "police"
+      ],
+      "missing_sources": [
+        "section"
+      ]
+    },
+    {
+      "test_number": 12,
+      "category": "Traffic Law - Texas",
+      "province": "Texas",
+      "question": "What are the penalties for running a red light in Texas?",
+      "passed": true,
+      "relevance_score": 100.0,
+      "citation_count": 5,
+      "found_sources": [
+        "Texas",
+        "red light",
+        "traffic",
+        "violation"
+      ],
+      "missing_sources": []
+    },
+    {
+      "test_number": 13,
+      "category": "Criminal Law - Firearms",
+      "province": "Federal USA",
+      "question": "What are the federal laws on firearm possession?",
+      "passed": true,
+      "relevance_score": 50.0,
+      "citation_count": 5,
+      "found_sources": [
+        "firearm",
+        "possession"
+      ],
+      "missing_sources": [
+        "18 U.S.C.",
+        "922"
+      ]
+    },
+    {
+      "test_number": 14,
+      "category": "Traffic Law - Quebec",
+      "province": "Quebec",
+      "question": "What are the demerit points for speeding in Quebec?",
+      "passed": true,
+      "relevance_score": 100.0,
+      "citation_count": 5,
+      "found_sources": [
+        "Quebec",
+        "demerit",
+        "speeding",
+        "points"
+      ],
+      "missing_sources": []
+    },
+    {
+      "test_number": 15,
+      "category": "Case Law - DUI",
+      "province": "Canada",
+      "question": "What was the ruling in R v. St-Onge Lamoureux regarding DUI?",
+      "passed": true,
+      "relevance_score": 75.0,
+      "citation_count": 5,
+      "found_sources": [
+        "R v",
+        "St-Onge",
+        "DUI"
+      ],
+      "missing_sources": [
+        "SCC"
+      ]
+    }
+  ]
+}

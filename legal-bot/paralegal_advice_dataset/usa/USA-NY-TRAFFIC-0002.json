@@ -1,0 +1,108 @@
+{
+  "case_id": "USA-NY-TRAFFIC-0002",
+  "jurisdiction": {
+    "country": "USA",
+    "region_type": "state",
+    "region_code": "NY",
+    "court_level": "Traffic Violations Bureau"
+  },
+  "case_metadata": {
+    "year": 2022,
+    "area_of_law": "traffic",
+    "offence_code": "VTL 1180(d)",
+    "offence_label": "Speeding in work zone",
+    "real_case_reference": null
+  },
+  "facts": {
+    "short_summary": "Driver cited for speeding in active construction zone. Speed was 55 mph in posted 35 mph work zone. Double fine applies.",
+    "detailed_facts": "On August 5, 2022, at 11:30, the driver was travelling through an active construction zone on the New York State Thruway. The posted speed limit was 35 mph due to active construction, and the driver was clocked at 55 mph using radar. Workers were present in the zone. The driver has one previous speeding ticket from 2021. Weather was clear, good visibility. Driver holds a New York Class D licence.",
+    "aggravating_factors": [
+      "20 mph over limit in work zone",
+      "Active construction with workers present",
+      "Double fine penalty applies",
+      "Previous speeding violation"
+    ],
+    "mitigating_factors": [
+      "No collision or property damage",
+      "Good weather conditions",
+      "Cooperative with officer",
+      "Single prior violation (not recent)"
+    ],
+    "defence_issues_spotted": [
+      "Radar calibration records needed",
+      "Verification that work zone was properly marked",
+      "Confirmation that workers were actually present at time of violation"
+    ]
+  },
+  "law": {
+    "statutes_applied": [
+      {
+        "name": "Vehicle and Traffic Law",
+        "citation": "N.Y. Veh. & Traf. Law § 1180(d)",
+        "key_elements": [
+          "Vehicle operated in work zone",
+          "Exceeding posted work zone speed limit",
+          "Work zone was properly marked and active"
+        ]
+      }
+    ],
+    "guideline_docs": [
+      "New York State work zone penalty provisions",
+      "New York DMV point system",
+      "New York traffic violation fine schedule"
+    ]
+  },
+  "outcome_if_known": {
+    "is_real_outcome": false,
+    "summary": null,
+    "sentence": null
+  },
+  "paralegal_advice": {
+    "client_profile": {
+      "goal_priority": [
+        "reduce_double_fine",
+        "avoid_points",
+        "minimize_insurance_impact"
+      ],
+      "risk_tolerance": "low"
+    },
+    "advice_variants": [
+      {
+        "id": "A1",
+        "style": "conservative",
+        "short_label": "Seek reduction to avoid double fine",
+        "full_advice_text": "Work zone violations in New York carry double fines, which can be significant. Given your one prior violation and the circumstances, you may be able to negotiate a reduction. Request disclosure to verify that the work zone was properly marked and that workers were actually present at the time of your violation. If the work zone requirements weren't fully met, you may have grounds for a reduction. Even if the work zone was properly established, your clean record (aside from one prior) may help in negotiations. Consider requesting a plea to a non-work-zone speeding violation to avoid the double fine. This is general information only and not legal advice; you should speak with a licensed attorney about your exact circumstances.",
+        "risk_level": "low",
+        "likely_benefits": [
+          "Potential avoidance of double fine",
+          "Reduced points if charge reduced",
+          "Lower overall financial impact"
+        ],
+        "key_reasons": [
+          "Work zone requirements must be strictly met",
+          "One prior violation is not severe",
+          "Double fine is a significant penalty to avoid"
+        ]
+      },
+      {
+        "id": "A2",
+        "style": "moderate",
+        "short_label": "Review work zone compliance, then decide",
+        "full_advice_text": "Work zone violations require that the zone be properly marked and that workers be present. Request full disclosure including photos of the work zone signage, documentation of worker presence, and the officer's notes. If the work zone wasn't properly established according to New York requirements, you may have a defence. However, if the work zone was properly set up and workers were present, the evidence will be strong. Review the disclosure carefully with a legal professional to determine whether negotiation or trial is the better approach. This is general information only and not legal advice; you should speak with a licensed attorney about your exact circumstances.",
+        "risk_level": "medium",
+        "likely_benefits": [
+          "Informed decision based on evidence",
+          "Potential defence if work zone improperly marked",
+          "Better negotiation position with disclosure review"
+        ],
+        "key_reasons": [
+          "Work zone requirements are specific",
+          "Disclosure may reveal compliance issues",
+          "Better informed strategy"
+        ]
+      }
+    ],
+    "universal_disclaimer": "These are general informational examples based on typical approaches in this jurisdiction. They are not legal advice. For advice about your specific case, consult a licensed attorney."
+  }
+}
+

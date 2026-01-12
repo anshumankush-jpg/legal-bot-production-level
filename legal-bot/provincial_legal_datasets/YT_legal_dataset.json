@@ -1,0 +1,81 @@
+{
+  "code": "YT",
+  "name": "Yukon",
+  "legal_resources": {
+    "Traffic Law": {
+      "primary_act": "Motor Vehicles Act",
+      "act_url": "https://laws.yukon.ca/cms/images/LEGISLATION/PRINCIPAL/2002/2002-0153/2002-0153.pdf",
+      "topics": [
+        "Speeding violations",
+        "Careless/dangerous driving",
+        "Distracted driving",
+        "Impaired driving (DUI/DWI)",
+        "License suspensions",
+        "Demerit points",
+        "Traffic ticket disputes"
+      ]
+    },
+    "Criminal Law": {
+      "resources": [
+        "Criminal Code of Canada (Federal)",
+        "Yukon Territorial Court - Criminal",
+        "Yukon Legal Services Society"
+      ],
+      "topics": [
+        "Theft and property crimes",
+        "Assault and violent crimes",
+        "Fraud and financial crimes",
+        "Drug offenses",
+        "Criminal procedure and rights",
+        "Bail and sentencing",
+        "Criminal appeals"
+      ]
+    },
+    "Immigration Law": {
+      "programs": [
+        "Yukon Nominee Program",
+        "Yukon Settlement Services"
+      ],
+      "topics": [
+        "Provincial Nominee Programs",
+        "Work permits",
+        "Study permits",
+        "Permanent residence",
+        "Citizenship applications",
+        "Refugee claims",
+        "Immigration appeals"
+      ]
+    },
+    "Business Law": {
+      "resources": [
+        "Yukon Corporate Affairs",
+        "Yukon Business Services",
+        "Yukon Finance - Tax"
+      ],
+      "topics": [
+        "Business incorporation",
+        "Corporate governance",
+        "Business contracts",
+        "Intellectual property",
+        "Business tax compliance",
+        "Regulatory compliance",
+        "Business licensing"
+      ]
+    },
+    "Tax Law": {
+      "resources": [
+        "Canada Revenue Agency (Federal)",
+        "Provincial Tax Authority"
+      ],
+      "topics": [
+        "Income tax",
+        "Corporate tax",
+        "GST/HST/PST",
+        "Tax audits and appeals",
+        "Tax planning",
+        "CRA disputes",
+        "Provincial tax matters"
+      ]
+    }
+  }
+}

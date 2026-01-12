@@ -1,0 +1,126 @@
+@import '../../../styles/design-tokens-compat';
+
+.setup-container {
+  min-height: 100vh;
+  background: #0f0f0f;
+  padding: 2rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.setup-card {
+  max-width: 600px;
+  width: 100%;
+  background: #1a1a1a;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  padding: 2rem;
+  color: #ffffff;
+}
+
+.welcome-message {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  border-left: 3px solid #00BCD4;
+  
+  p {
+    margin: 0;
+    color: #e0e0e0;
+    line-height: 1.6;
+  }
+}
+
+.setup-form {
+  h2 {
+    color: #ffffff;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+  }
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+  
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #e0e0e0;
+    font-weight: 500;
+    font-size: 0.95rem;
+  }
+  
+  input,
+  textarea {
+    width: 100%;
+    padding: 0.875rem;
+    background: #2a2a2a;
+    border: 1px solid #3a3a3a;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #ffffff;
+    font-family: inherit;
+    transition: border-color 0.2s;
+    
+    &::placeholder {
+      color: #888;
+    }
+    
+    &:focus {
+      outline: none;
+      border-color: #00BCD4;
+    }
+    
+    &.error {
+      border-color: #F44336;
+    }
+  }
+  
+  textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+  
+  .error-text {
+    color: #F44336;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+    display: block;
+  }
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 1rem;
+  background: #00BCD4;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 1rem;
+  
+  &:hover:not(:disabled) {
+    background: #0097A7;
+  }
+  
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+@media (max-width: 768px) {
+  .setup-container {
+    padding: 1rem;
+  }
+  
+  .setup-card {
+    padding: 1.5rem;
+  }
+}

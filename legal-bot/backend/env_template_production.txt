@@ -1,0 +1,132 @@
+# ============================================================================
+# LEGAL BOT PRODUCTION-LEVEL - ENVIRONMENT CONFIGURATION
+# ============================================================================
+# Copy this file to .env and fill in your actual values
+# NEVER commit .env to version control!
+
+# ============================================================================
+# DATABASE
+# ============================================================================
+# SQLite (Development - default)
+DATABASE_URL=sqlite:///./data/legal_bot.db
+
+# PostgreSQL (Production)
+# DATABASE_URL=postgresql://user:password@localhost:5432/legal_bot
+
+# ============================================================================
+# JWT AUTHENTICATION
+# ============================================================================
+# IMPORTANT: Change this to a strong random secret in production!
+# Generate with: python -c "import secrets; print(secrets.token_urlsafe(32))"
+JWT_SECRET_KEY=CHANGE_THIS_SECRET_KEY_IN_PRODUCTION
+
+# Token expiration times
+JWT_ACCESS_TTL_MIN=30          # Access token TTL in minutes (default: 30)
+JWT_REFRESH_TTL_DAYS=30        # Refresh token TTL in days (default: 30)
+
+# ============================================================================
+# OPENAI API (for AI chat features)
+# ============================================================================
+OPENAI_API_KEY=your_openai_api_key_here
+OPENAI_CHAT_MODEL=gpt-4o-mini
+OPENAI_EMBEDDING_MODEL=text-embedding-ada-002
+
+# ============================================================================
+# OAUTH - GOOGLE
+# ============================================================================
+# How to set up:
+# 1. Go to https://console.cloud.google.com/
+# 2. Create a new project or select existing
+# 3. Enable Google+ API and Google People API
+# 4. Go to "Credentials" > "Create Credentials" > "OAuth 2.0 Client ID"
+# 5. Application type: "Web application"
+# 6. Authorized redirect URIs:
+#    - For local dev: http://localhost:5173/auth/callback/google
+#    - For production: https://yourdomain.com/auth/callback/google
+# 7. Copy the Client ID and Client Secret below
+
+GOOGLE_CLIENT_ID=your_google_client_id.apps.googleusercontent.com
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+GOOGLE_REDIRECT_URI=http://localhost:5173/auth/callback/google
+
+# ============================================================================
+# OAUTH - MICROSOFT (Azure AD)
+# ============================================================================
+# How to set up:
+# 1. Go to https://portal.azure.com/
+# 2. Navigate to "Azure Active Directory" > "App registrations" > "New registration"
+# 3. Name: Your app name
+# 4. Supported account types: "Accounts in any organizational directory and personal Microsoft accounts"
+# 5. Redirect URI: 
+#    - Platform: "Web"
+#    - For local dev: http://localhost:5173/auth/callback/microsoft
+#    - For production: https://yourdomain.com/auth/callback/microsoft
+# 6. After creation:
+#    - Copy "Application (client) ID" as MS_CLIENT_ID
+#    - Go to "Certificates & secrets" > "New client secret" > Copy as MS_CLIENT_SECRET
+# 7. Go to "API permissions" > "Add a permission" > "Microsoft Graph"
+#    - Add these permissions: User.Read, email, openid, profile
+
+MS_CLIENT_ID=your_microsoft_client_id
+MS_CLIENT_SECRET=your_microsoft_client_secret
+MS_TENANT=common                    # "common" for multi-tenant, or your tenant ID
+MS_REDIRECT_URI=http://localhost:5173/auth/callback/microsoft
+
+# ============================================================================
+# EMAIL INTEGRATION (Gmail OAuth for Employee Email Feature)
+# ============================================================================
+# Use the same Google Cloud project as Google OAuth above
+# Additional setup:
+# 1. In Google Cloud Console, enable "Gmail API"
+# 2. Add Gmail scopes to your OAuth consent screen:
+#    - https://www.googleapis.com/auth/gmail.send
+#    - https://www.googleapis.com/auth/gmail.compose
+# 3. Use the same GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET
+# 4. Add redirect URI: http://localhost:5173/employee/email/callback/google
+
+GMAIL_CLIENT_ID=your_google_client_id.apps.googleusercontent.com
+GMAIL_CLIENT_SECRET=your_google_client_secret
+GMAIL_REDIRECT_URI=http://localhost:5173/employee/email/callback/google
+
+# Token encryption key for storing email provider tokens
+# Generate with: python -c "import secrets; print(secrets.token_urlsafe(32))"
+TOKEN_ENCRYPTION_KEY=CHANGE_THIS_IN_PRODUCTION
+
+# ============================================================================
+# FRONTEND CONFIGURATION
+# ============================================================================
+FRONTEND_BASE_URL=http://localhost:5173
+
+# CORS allowed origins (comma-separated)
+CORS_ORIGINS=http://localhost:3000,http://localhost:4200,http://localhost:5173
+
+# ============================================================================
+# APPLICATION SETTINGS
+# ============================================================================
+# Environment (development, staging, production)
+ENVIRONMENT=development
+
+# Server configuration
+HOST=0.0.0.0
+PORT=8000
+DEBUG=True
+
+# Logging
+LOG_LEVEL=INFO
+
+# ============================================================================
+# SECURITY SETTINGS
+# ============================================================================
+# Rate limiting (optional - for production)
+RATE_LIMIT_ENABLED=False
+RATE_LIMIT_PER_MINUTE=60
+
+# Session settings
+SESSION_COOKIE_SECURE=False         # Set to True in production (HTTPS only)
+SESSION_COOKIE_HTTPONLY=True
+SESSION_COOKIE_SAMESITE=lax         # lax or strict
+
+# ============================================================================
+# SUPPORT CONTACT
+# ============================================================================
+SUPPORT_EMAIL=info@predictivetechlabs.com

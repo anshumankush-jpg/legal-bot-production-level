@@ -1,0 +1,81 @@
+{
+  "code": "BC",
+  "name": "British Columbia",
+  "legal_resources": {
+    "Traffic Law": {
+      "primary_act": "Motor Vehicle Act",
+      "act_url": "https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/96318_00",
+      "topics": [
+        "Speeding violations",
+        "Careless/dangerous driving",
+        "Distracted driving",
+        "Impaired driving (DUI/DWI)",
+        "License suspensions",
+        "Demerit points",
+        "Traffic ticket disputes"
+      ]
+    },
+    "Criminal Law": {
+      "resources": [
+        "Criminal Code of Canada (Federal)",
+        "Provincial Court of BC - Criminal",
+        "Legal Aid BC - Criminal Services"
+      ],
+      "topics": [
+        "Theft and property crimes",
+        "Assault and violent crimes",
+        "Fraud and financial crimes",
+        "Drug offenses",
+        "Criminal procedure and rights",
+        "Bail and sentencing",
+        "Criminal appeals"
+      ]
+    },
+    "Immigration Law": {
+      "programs": [
+        "BC Provincial Nominee Program",
+        "WelcomeBC Settlement Services"
+      ],
+      "topics": [
+        "Provincial Nominee Programs",
+        "Work permits",
+        "Study permits",
+        "Permanent residence",
+        "Citizenship applications",
+        "Refugee claims",
+        "Immigration appeals"
+      ]
+    },
+    "Business Law": {
+      "resources": [
+        "BC Registry Services",
+        "Small Business BC",
+        "BC Ministry of Finance - Tax"
+      ],
+      "topics": [
+        "Business incorporation",
+        "Corporate governance",
+        "Business contracts",
+        "Intellectual property",
+        "Business tax compliance",
+        "Regulatory compliance",
+        "Business licensing"
+      ]
+    },
+    "Tax Law": {
+      "resources": [
+        "Canada Revenue Agency (Federal)",
+        "Provincial Tax Authority"
+      ],
+      "topics": [
+        "Income tax",
+        "Corporate tax",
+        "GST/HST/PST",
+        "Tax audits and appeals",
+        "Tax planning",
+        "CRA disputes",
+        "Provincial tax matters"
+      ]
+    }
+  }
+}

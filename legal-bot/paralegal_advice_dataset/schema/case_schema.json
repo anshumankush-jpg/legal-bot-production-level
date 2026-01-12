@@ -1,0 +1,57 @@
+{
+  "case_id": "string (format: COUNTRY-REGION-TYPE-NUMBER)",
+  "jurisdiction": {
+    "country": "string (Canada or USA)",
+    "region_type": "string (province or state)",
+    "region_code": "string (ON, BC, QC, CA, NY, TX, etc.)",
+    "court_level": "string (Provincial Court, Superior Court, State Court, etc.)"
+  },
+  "case_metadata": {
+    "year": "integer",
+    "area_of_law": "string (traffic, criminal, etc.)",
+    "offence_code": "string (statute citation)",
+    "offence_label": "string (human-readable offence)",
+    "real_case_reference": "string or null (citation if real case)"
+  },
+  "facts": {
+    "short_summary": "string",
+    "detailed_facts": "string",
+    "aggravating_factors": ["array of strings"],
+    "mitigating_factors": ["array of strings"],
+    "defence_issues_spotted": ["array of strings"]
+  },
+  "law": {
+    "statutes_applied": [
+      {
+        "name": "string",
+        "citation": "string",
+        "key_elements": ["array of strings"]
+      }
+    ],
+    "guideline_docs": ["array of strings"]
+  },
+  "outcome_if_known": {
+    "is_real_outcome": "boolean",
+    "summary": "string or null",
+    "sentence": "string or null"
+  },
+  "paralegal_advice": {
+    "client_profile": {
+      "goal_priority": ["array of strings"],
+      "risk_tolerance": "string (low, medium, high)"
+    },
+    "advice_variants": [
+      {
+        "id": "string",
+        "style": "string (conservative, moderate, aggressive)",
+        "short_label": "string",
+        "full_advice_text": "string",
+        "risk_level": "string (low, medium, high)",
+        "likely_benefits": ["array of strings"],
+        "key_reasons": ["array of strings"]
+      }
+    ],
+    "universal_disclaimer": "string"
+  }
+}
+

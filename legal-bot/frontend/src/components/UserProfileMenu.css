@@ -1,0 +1,299 @@
+/* User Profile Menu - Trigger Button */
+.user-profile-menu {
+  position: relative;
+  margin-left: auto;
+}
+
+.profile-trigger {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(0, 212, 255, 0.15);
+  border: 2px solid rgba(0, 212, 255, 0.4);
+  border-radius: 12px;
+  padding: 8px 14px 8px 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 180px;
+}
+
+.profile-trigger:hover {
+  background: rgba(0, 212, 255, 0.25);
+  border-color: rgba(0, 212, 255, 0.6);
+}
+
+.profile-trigger-text {
+  flex: 1;
+  text-align: left;
+  min-width: 0;
+}
+
+.profile-trigger-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #00d4ff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.profile-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: linear-gradient(135deg, #00d4ff, #0099cc);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(0, 212, 255, 0.5);
+  flex-shrink: 0;
+}
+
+.profile-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-initials {
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.profile-chevron {
+  color: #00d4ff;
+  display: flex;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+
+.profile-trigger:hover .profile-chevron {
+  transform: rotate(180deg);
+}
+
+/* ============================================ */
+/* PORTAL-BASED OVERLAY AND DROPDOWN           */
+/* These render directly on document.body      */
+/* ============================================ */
+
+/* Dark overlay - covers entire screen */
+.profile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 999998;
+}
+
+/* Dropdown menu - ChatGPT style */
+.profile-menu-dropdown {
+  position: fixed;
+  width: 280px;
+  background: #171717;
+  border: 1px solid #2f2f2f;
+  border-radius: 16px;
+  box-shadow: 0 16px 70px rgba(0, 0, 0, 0.5);
+  z-index: 999999;
+  animation: pmdSlideIn 0.15s ease-out;
+  overflow: hidden;
+}
+
+@keyframes pmdSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* User Section */
+.pmd-user-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: #1a1a1a;
+}
+
+.pmd-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #10a37f, #0d8a6a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.pmd-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pmd-avatar span {
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.pmd-user-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.pmd-user-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #ececec;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pmd-user-email {
+  font-size: 12px;
+  color: #8e8e8e;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 2px;
+}
+
+/* Divider */
+.pmd-divider {
+  height: 1px;
+  background: #2f2f2f;
+  margin: 0;
+}
+
+/* Menu Items */
+.pmd-menu-items {
+  padding: 8px;
+}
+
+.pmd-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  color: #ececec;
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: background 0.15s ease;
+  text-align: left;
+}
+
+.pmd-menu-item:hover {
+  background: #2f2f2f;
+}
+
+.pmd-menu-item svg {
+  flex-shrink: 0;
+  color: #8e8e8e;
+}
+
+.pmd-menu-item:hover svg {
+  color: #ececec;
+}
+
+.pmd-menu-item span {
+  flex: 1;
+}
+
+.pmd-arrow {
+  margin-left: auto;
+  color: #8e8e8e !important;
+}
+
+.pmd-logout {
+  color: #ececec;
+}
+
+.pmd-logout:hover {
+  background: #2f2f2f;
+}
+
+/* Footer Section */
+.pmd-footer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: #1a1a1a;
+}
+
+.pmd-footer-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #10a37f, #0d8a6a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.pmd-footer-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pmd-footer-avatar span {
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.pmd-footer-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.pmd-footer-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: #ececec;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pmd-footer-role {
+  font-size: 11px;
+  color: #8e8e8e;
+  margin-top: 1px;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .profile-menu-dropdown {
+    width: 260px;
+    right: 10px !important;
+  }
+  
+  .profile-trigger {
+    min-width: 140px;
+    padding: 6px 10px 6px 6px;
+  }
+  
+  .profile-trigger-name {
+    font-size: 13px;
+  }
+}

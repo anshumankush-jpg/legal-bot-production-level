@@ -1,0 +1,20 @@
+# Requirements for Advanced Legal Testing & Daily Scraper
+
+# Core dependencies
+requests>=2.31.0
+beautifulsoup4>=4.12.0
+lxml>=4.9.0
+schedule>=1.2.0
+
+# Optional for enhanced scraping
+selenium>=4.15.0  # For JavaScript-heavy sites
+fake-useragent>=1.4.0  # For rotating user agents
+
+# Data processing
+python-dateutil>=2.8.2
+
+# Already included in main project
+# fastapi>=0.104.0
+# uvicorn>=0.24.0
+# sentence-transformers>=2.2.0
+# faiss-cpu>=1.7.4

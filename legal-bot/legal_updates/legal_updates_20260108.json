@@ -1,0 +1,78 @@
+{
+  "date": "2026-01-08T12:33:23.618480",
+  "total_updates": 6,
+  "updates": {
+    "canada_federal": [],
+    "canada_provincial": [],
+    "usa_federal": [],
+    "usa_state": [
+      {
+        "hash": "f00286c8f5fe2f05d3bd5cc48d1579a5",
+        "title": "Search Bills",
+        "link": "https://www.nysenate.gov/search/legislation",
+        "date": "Dec 31, 2025",
+        "summary": "Senator has new policy idea",
+        "source": "New York State Senate",
+        "jurisdiction": "New York",
+        "type": "legislation",
+        "scraped_at": "2026-01-08T12:33:14.489651"
+      },
+      {
+        "hash": "f00286c8f5fe2f05d3bd5cc48d1579a5",
+        "title": "Search Bills",
+        "link": "https://www.nysenate.gov/search/legislation",
+        "date": "Dec 31, 2025",
+        "summary": "Senator has new policy idea",
+        "source": "New York State Senate",
+        "jurisdiction": "New York",
+        "type": "legislation",
+        "scraped_at": "2026-01-08T12:33:14.491651"
+      },
+      {
+        "hash": "f00286c8f5fe2f05d3bd5cc48d1579a5",
+        "title": "Search Bills",
+        "link": "https://www.nysenate.gov/search/legislation",
+        "date": "2026-01-08",
+        "summary": "",
+        "source": "New York State Senate",
+        "jurisdiction": "New York",
+        "type": "legislation",
+        "scraped_at": "2026-01-08T12:33:14.493651"
+      },
+      {
+        "hash": "7c8459776bc53ca20b5c60bc42a57fb7",
+        "title": "How a Bill Becomes Law",
+        "link": "https://www.nysenate.gov/how-bill-becomes-law",
+        "date": "2026-01-08",
+        "summary": "Senator has new policy idea",
+        "source": "New York State Senate",
+        "jurisdiction": "New York",
+        "type": "legislation",
+        "scraped_at": "2026-01-08T12:33:14.494652"
+      },
+      {
+        "hash": "7c8459776bc53ca20b5c60bc42a57fb7",
+        "title": "How a Bill Becomes Law",
+        "link": "https://www.nysenate.gov/how-bill-becomes-law",
+        "date": "2026-01-08",
+        "summary": "Senator has new policy idea",
+        "source": "New York State Senate",
+        "jurisdiction": "New York",
+        "type": "legislation",
+        "scraped_at": "2026-01-08T12:33:14.494652"
+      },
+      {
+        "hash": "f311dda6ea9e189ecf692ed922e754d8",
+        "title": "2025-26 by the numbers",
+        "link": "https://www.nysenate.gov/search/legislation?type=bill&session_year=2025&status=SIGNED_BY_GOV&is_active_version=1",
+        "date": "2026-01-08",
+        "summary": "",
+        "source": "New York State Senate",
+        "jurisdiction": "New York",
+        "type": "legislation",
+        "scraped_at": "2026-01-08T12:33:14.497651"
+      }
+    ],
+    "rss_feeds": []
+  }
+}

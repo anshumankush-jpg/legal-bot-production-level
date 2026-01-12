@@ -1,0 +1,81 @@
+# Core Framework
+fastapi>=0.104.1
+uvicorn[standard]>=0.24.0
+pydantic>=2.5.0
+pydantic-settings>=2.1.0
+
+# Azure OpenAI
+openai>=1.3.0
+
+# Sentence Transformers (for local embeddings)
+sentence-transformers>=2.2.0
+torch>=2.0.0  # Required by sentence-transformers
+
+# Azure AI Search
+azure-search-documents>=11.5.2
+
+# Azure Storage (optional, for blob storage)
+azure-storage-blob>=12.19.0
+azure-identity>=1.15.0
+
+# Vector Operations
+numpy>=1.24.0
+faiss-cpu>=1.7.4  # FAISS vector database for RTLD
+
+# Document Processing
+pdfplumber>=0.10.0  # Best PDF reader - handles text and tables well
+PyPDF2>=3.0.0  # Fallback PDF reader
+pypdf>=3.0.0  # Alternative PDF reader (newer)
+python-docx>=1.0.0  # DOCX document processing for RTLD
+openpyxl>=3.1.0  # Excel file processing for RTLD
+pandas>=2.0.0  # Data processing for RTLD
+beautifulsoup4>=4.12.0  # For HTML parsing in bulk ingestion
+requests>=2.31.0  # For bulk ingestion script API calls
+
+# Multi-modal Support (RTLD)
+Pillow>=10.0.0  # Image processing
+# CLIP for image embeddings: pip install git+https://github.com/openai/CLIP.git
+
+# OCR
+pytesseract>=0.3.10
+opencv-python>=4.8.0
+
+# Utilities
+python-dotenv>=1.0.0
+python-multipart>=0.0.6
+httpx>=0.24.0  # For free LLM providers (Ollama, Gemini, Hugging Face)
+schedule>=1.2.0  # For daily data updates
+lxml>=4.9.3  # For web scraping and XML parsing
+
+# Authentication and Security
+PyJWT>=2.8.0  # For JWT token generation and verification
+passlib[bcrypt]>=1.7.4  # Password hashing
+python-jose[cryptography]>=3.3.0  # JWT with better crypto
+authlib>=1.3.0  # OAuth 2.0 client library
+httpx>=0.24.0  # Async HTTP client for OAuth
+
+# Database Support
+sqlalchemy>=2.0.0  # SQL ORM
+alembic>=1.13.0  # Database migrations
+psycopg2-binary>=2.9.9  # PostgreSQL adapter (can use SQLite for dev)
+pymongo>=4.6.0  # MongoDB support (optional)
+firebase-admin>=6.3.0  # Firebase support (optional)
+
+# LangChain (for text splitting - optional, can use custom)
+langchain>=0.3.25
+
+# GCP Support (optional, for GCP deployment)
+google-cloud-storage>=2.10.0
+google-cloud-firestore>=2.11.0
+google-cloud-secret-manager>=2.16.0
+
+# Additional PDF reader (optional but recommended)
+pypdf>=3.17.0  # Modern PDF library as additional fallback
+
+# RTLD Multi-modal dependencies
+faiss-cpu>=1.7.4  # FAISS vector database
+python-docx>=1.0.0  # DOCX document processing
+openpyxl>=3.1.0  # Excel file processing
+pandas>=2.0.0  # Data processing for tables
+Pillow>=10.0.0  # Image processing for CLIP
+PyMuPDF>=1.23.0  # Advanced PDF processing for OCR

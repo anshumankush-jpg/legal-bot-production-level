@@ -1,0 +1,1120 @@
+{
+  "created": "2026-01-08T11:14:57.043390",
+  "total_provinces": 13,
+  "provinces": {
+    "ON": {
+      "code": "ON",
+      "name": "Ontario",
+      "legal_resources": {
+        "Traffic Law": {
+          "primary_act": "Highway Traffic Act",
+          "act_url": "https://www.ontario.ca/laws/statute/90h08",
+          "topics": [
+            "Speeding violations",
+            "Careless/dangerous driving",
+            "Distracted driving",
+            "Impaired driving (DUI/DWI)",
+            "License suspensions",
+            "Demerit points",
+            "Traffic ticket disputes"
+          ]
+        },
+        "Criminal Law": {
+          "resources": [
+            "Criminal Code of Canada (Federal)",
+            "Ontario Court of Justice - Criminal Division",
+            "Legal Aid Ontario - Criminal Services"
+          ],
+          "topics": [
+            "Theft and property crimes",
+            "Assault and violent crimes",
+            "Fraud and financial crimes",
+            "Drug offenses",
+            "Criminal procedure and rights",
+            "Bail and sentencing",
+            "Criminal appeals"
+          ]
+        },
+        "Immigration Law": {
+          "programs": [
+            "Ontario Immigrant Nominee Program (OINP)",
+            "Ontario Settlement Services"
+          ],
+          "topics": [
+            "Provincial Nominee Programs",
+            "Work permits",
+            "Study permits",
+            "Permanent residence",
+            "Citizenship applications",
+            "Refugee claims",
+            "Immigration appeals"
+          ]
+        },
+        "Business Law": {
+          "resources": [
+            "Ontario Business Registry",
+            "BizPal Ontario",
+            "Ontario Ministry of Finance - Tax"
+          ],
+          "topics": [
+            "Business incorporation",
+            "Corporate governance",
+            "Business contracts",
+            "Intellectual property",
+            "Business tax compliance",
+            "Regulatory compliance",
+            "Business licensing"
+          ]
+        },
+        "Tax Law": {
+          "resources": [
+            "Canada Revenue Agency (Federal)",
+            "Provincial Tax Authority"
+          ],
+          "topics": [
+            "Income tax",
+            "Corporate tax",
+            "GST/HST/PST",
+            "Tax audits and appeals",
+            "Tax planning",
+            "CRA disputes",
+            "Provincial tax matters"
+          ]
+        }
+      }
+    },
+    "QC": {
+      "code": "QC",
+      "name": "Quebec",
+      "legal_resources": {
+        "Traffic Law": {
+          "primary_act": "Code de la sécurité routière",
+          "act_url": "https://www.legisquebec.gouv.qc.ca/en/document/cs/C-24.2",
+          "topics": [
+            "Speeding violations",
+            "Careless/dangerous driving",
+            "Distracted driving",
+            "Impaired driving (DUI/DWI)",
+            "License suspensions",
+            "Demerit points",
+            "Traffic ticket disputes"
+          ]
+        },
+        "Criminal Law": {
+          "resources": [
+            "Criminal Code of Canada (Federal)",
+            "Court of Quebec - Criminal Division",
+            "Commission des services juridiques (Legal Aid Quebec)"
+          ],
+          "topics": [
+            "Theft and property crimes",
+            "Assault and violent crimes",
+            "Fraud and financial crimes",
+            "Drug offenses",
+            "Criminal procedure and rights",
+            "Bail and sentencing",
+            "Criminal appeals"
+          ]
+        },
+        "Immigration Law": {
+          "programs": [
+            "Quebec Immigration Programs",
+            "Ministère de l'Immigration, de la Francisation et de l'Intégration (MIFI)"
+          ],
+          "topics": [
+            "Provincial Nominee Programs",
+            "Work permits",
+            "Study permits",
+            "Permanent residence",
+            "Citizenship applications",
+            "Refugee claims",
+            "Immigration appeals"
+          ]
+        },
+        "Business Law": {
+          "resources": [
+            "Registraire des entreprises du Québec",
+            "Revenu Québec - Entreprises"
+          ],
+          "topics": [
+            "Business incorporation",
+            "Corporate governance",
+            "Business contracts",
+            "Intellectual property",
+            "Business tax compliance",
+            "Regulatory compliance",
+            "Business licensing"
+          ]
+        },
+        "Tax Law": {
+          "resources": [
+            "Canada Revenue Agency (Federal)",
+            "Provincial Tax Authority"
+          ],
+          "topics": [
+            "Income tax",
+            "Corporate tax",
+            "GST/HST/PST",
+            "Tax audits and appeals",
+            "Tax planning",
+            "CRA disputes",
+            "Provincial tax matters"
+          ]
+        }
+      }
+    },
+    "BC": {
+      "code": "BC",
+      "name": "British Columbia",
+      "legal_resources": {
+        "Traffic Law": {
+          "primary_act": "Motor Vehicle Act",
+          "act_url": "https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/96318_00",
+          "topics": [
+            "Speeding violations",
+            "Careless/dangerous driving",
+            "Distracted driving",
+            "Impaired driving (DUI/DWI)",
+            "License suspensions",
+            "Demerit points",
+            "Traffic ticket disputes"
+          ]
+        },
+        "Criminal Law": {
+          "resources": [
+            "Criminal Code of Canada (Federal)",
+            "Provincial Court of BC - Criminal",
+            "Legal Aid BC - Criminal Services"
+          ],
+          "topics": [
+            "Theft and property crimes",
+            "Assault and violent crimes",
+            "Fraud and financial crimes",
+            "Drug offenses",
+            "Criminal procedure and rights",
+            "Bail and sentencing",
+            "Criminal appeals"
+          ]
+        },
+        "Immigration Law": {
+          "programs": [
+            "BC Provincial Nominee Program",
+            "WelcomeBC Settlement Services"
+          ],
+          "topics": [
+            "Provincial Nominee Programs",
+            "Work permits",
+            "Study permits",
+            "Permanent residence",
+            "Citizenship applications",
+            "Refugee claims",
+            "Immigration appeals"
+          ]
+        },
+        "Business Law": {
+          "resources": [
+            "BC Registry Services",
+            "Small Business BC",
+            "BC Ministry of Finance - Tax"
+          ],
+          "topics": [
+            "Business incorporation",
+            "Corporate governance",
+            "Business contracts",
+            "Intellectual property",
+            "Business tax compliance",
+            "Regulatory compliance",
+            "Business licensing"
+          ]
+        },
+        "Tax Law": {
+          "resources": [
+            "Canada Revenue Agency (Federal)",
+            "Provincial Tax Authority"
+          ],
+          "topics": [
+            "Income tax",
+            "Corporate tax",
+            "GST/HST/PST",
+            "Tax audits and appeals",
+            "Tax planning",
+            "CRA disputes",
+            "Provincial tax matters"
+          ]
+        }
+      }
+    },
+    "AB": {
+      "code": "AB",
+      "name": "Alberta",
+      "legal_resources": {
+        "Traffic Law": {
+          "primary_act": "Traffic Safety Act",
+          "act_url": "https://www.qp.alberta.ca/documents/Acts/t06.pdf",
+          "topics": [
+            "Speeding violations",
+            "Careless/dangerous driving",
+            "Distracted driving",
+            "Impaired driving (DUI/DWI)",
+            "License suspensions",
+            "Demerit points",
+            "Traffic ticket disputes"
+          ]
+        },
+        "Criminal Law": {
+          "resources": [
+            "Criminal Code of Canada (Federal)",
+            "Alberta Courts - Criminal Division",
+            "Legal Aid Alberta - Criminal Services"
+          ],
+          "topics": [
+            "Theft and property crimes",
+            "Assault and violent crimes",
+            "Fraud and financial crimes",
+            "Drug offenses",
+            "Criminal procedure and rights",
+            "Bail and sentencing",
+            "Criminal appeals"
+          ]
+        },
+        "Immigration Law": {
+          "programs": [
+            "Alberta Immigrant Nominee Program (AINP)",
+            "Alberta Settlement Services"
+          ],
+          "topics": [
+            "Provincial Nominee Programs",
+            "Work permits",
+            "Study permits",
+            "Permanent residence",
+            "Citizenship applications",
+            "Refugee claims",
+            "Immigration appeals"
+          ]
+        },
+        "Business Law": {
+          "resources": [
+            "Alberta Corporate Registry",
+            "Business Link Alberta",
+            "Alberta Tax and Revenue Administration"
+          ],
+          "topics": [
+            "Business incorporation",
+            "Corporate governance",
+            "Business contracts",
+            "Intellectual property",
+            "Business tax compliance",
+            "Regulatory compliance",
+            "Business licensing"
+          ]
+        },
+        "Tax Law": {
+          "resources": [
+            "Canada Revenue Agency (Federal)",
+            "Provincial Tax Authority"
+          ],
+          "topics": [
+            "Income tax",
+            "Corporate tax",
+            "GST/HST/PST",
+            "Tax audits and appeals",
+            "Tax planning",
+            "CRA disputes",
+            "Provincial tax matters"
+          ]
+        }
+      }
+    },
+    "MB": {
+      "code": "MB",
+      "name": "Manitoba",
+      "legal_resources": {
+        "Traffic Law": {
+          "primary_act": "Highway Traffic Act",
+          "act_url": "https://web2.gov.mb.ca/laws/statutes/ccsm/h060e.php",
+          "topics": [
+            "Speeding violations",
+            "Careless/dangerous driving",
+            "Distracted driving",
+            "Impaired driving (DUI/DWI)",
+            "License suspensions",
+            "Demerit points",
+            "Traffic ticket disputes"
+          ]
+        },
+        "Criminal Law": {
+          "resources": [
+            "Criminal Code of Canada (Federal)",
+            "Manitoba Provincial Court - Criminal",
+            "Legal Aid Manitoba - Criminal Services"
+          ],
+          "topics": [
+            "Theft and property crimes",
+            "Assault and violent crimes",
+            "Fraud and financial crimes",
+            "Drug offenses",
+            "Criminal procedure and rights",
+            "Bail and sentencing",
+            "Criminal appeals"
+          ]
+        },
+        "Immigration Law": {
+          "programs": [
+            "Manitoba Provincial Nominee Program",
+            "Manitoba Settlement Services"
+          ],
+          "topics": [
+            "Provincial Nominee Programs",
+            "Work permits",
+            "Study permits",
+            "Permanent residence",
+            "Citizenship applications",
+            "Refugee claims",
+            "Immigration appeals"
+          ]
+        },
+        "Business Law": {
+          "resources": [
+            "Manitoba Companies Office",
+            "Manitoba Finance - Tax",
+            "Manitoba Business Services"
+          ],
+          "topics": [
+            "Business incorporation",
+            "Corporate governance",
+            "Business contracts",
+            "Intellectual property",
+            "Business tax compliance",
+            "Regulatory compliance",
+            "Business licensing"
+          ]
+        },
+        "Tax Law": {
+          "resources": [
+            "Canada Revenue Agency (Federal)",
+            "Provincial Tax Authority"
+          ],
+          "topics": [
+            "Income tax",
+            "Corporate tax",
+            "GST/HST/PST",
+            "Tax audits and appeals",
+            "Tax planning",
+            "CRA disputes",
+            "Provincial tax matters"
+          ]
+        }
+      }
+    },
+    "SK": {
+      "code": "SK",
+      "name": "Saskatchewan",
+      "legal_resources": {
+        "Traffic Law": {
+          "primary_act": "Traffic Safety Act",
+          "act_url": "https://www.saskatchewan.ca/residents/driving-and-transportation/traffic-safety",
+          "topics": [
+            "Speeding violations",
+            "Careless/dangerous driving",
+            "Distracted driving",
+            "Impaired driving (DUI/DWI)",
+            "License suspensions",
+            "Demerit points",
+            "Traffic ticket disputes"
+          ]
+        },
+        "Criminal Law": {
+          "resources": [
+            "Criminal Code of Canada (Federal)",
+            "Saskatchewan Provincial Court - Criminal",
+            "Legal Aid Saskatchewan - Criminal Services"
+          ],
+          "topics": [
+            "Theft and property crimes",
+            "Assault and violent crimes",
+            "Fraud and financial crimes",
+            "Drug offenses",
+            "Criminal procedure and rights",
+            "Bail and sentencing",
+            "Criminal appeals"
+          ]
+        },
+        "Immigration Law": {
+          "programs": [
+            "Saskatchewan Immigrant Nominee Program (SINP)",
+            "Saskatchewan Settlement Services"
+          ],
+          "topics": [
+            "Provincial Nominee Programs",
+            "Work permits",
+            "Study permits",
+            "Permanent residence",
+            "Citizenship applications",
+            "Refugee claims",
+            "Immigration appeals"
+          ]
+        },
+        "Business Law": {
+          "resources": [
+            "Saskatchewan Corporate Registry",
+            "Saskatchewan Business Services",
+            "Saskatchewan Revenue - Tax"
+          ],
+          "topics": [
+            "Business incorporation",
+            "Corporate governance",
+            "Business contracts",
+            "Intellectual property",
+            "Business tax compliance",
+            "Regulatory compliance",
+            "Business licensing"
+          ]
+        },
+        "Tax Law": {
+          "resources": [
+            "Canada Revenue Agency (Federal)",
+            "Provincial Tax Authority"
+          ],
+          "topics": [
+            "Income tax",
+            "Corporate tax",
+            "GST/HST/PST",
+            "Tax audits and appeals",
+            "Tax planning",
+            "CRA disputes",
+            "Provincial tax matters"
+          ]
+        }
+      }
+    },
+    "NS": {
+      "code": "NS",
+      "name": "Nova Scotia",
+      "legal_resources": {
+        "Traffic Law": {
+          "primary_act": "Motor Vehicle Act",
+          "act_url": "https://nslegislature.ca/sites/default/files/legc/statutes/motor%20vehicle.pdf",
+          "topics": [
+            "Speeding violations",
+            "Careless/dangerous driving",
+            "Distracted driving",
+            "Impaired driving (DUI/DWI)",
+            "License suspensions",
+            "Demerit points",
+            "Traffic ticket disputes"
+          ]
+        },
+        "Criminal Law": {
+          "resources": [
+            "Criminal Code of Canada (Federal)",
+            "Nova Scotia Provincial Court - Criminal",
+            "Nova Scotia Legal Aid - Criminal Services"
+          ],
+          "topics": [
+            "Theft and property crimes",
+            "Assault and violent crimes",
+            "Fraud and financial crimes",
+            "Drug offenses",
+            "Criminal procedure and rights",
+            "Bail and sentencing",
+            "Criminal appeals"
+          ]
+        },
+        "Immigration Law": {
+          "programs": [
+            "Nova Scotia Nominee Program",
+            "Nova Scotia Settlement Services"
+          ],
+          "topics": [
+            "Provincial Nominee Programs",
+            "Work permits",
+            "Study permits",
+            "Permanent residence",
+            "Citizenship applications",
+            "Refugee claims",
+            "Immigration appeals"
+          ]
+        },
+        "Business Law": {
+          "resources": [
+            "Nova Scotia Registry of Joint Stock Companies",
+            "Service Nova Scotia - Business",
+            "Nova Scotia Finance - Tax"
+          ],
+          "topics": [
+            "Business incorporation",
+            "Corporate governance",
+            "Business contracts",
+            "Intellectual property",
+            "Business tax compliance",
+            "Regulatory compliance",
+            "Business licensing"
+          ]
+        },
+        "Tax Law": {
+          "resources": [
+            "Canada Revenue Agency (Federal)",
+            "Provincial Tax Authority"
+          ],
+          "topics": [
+            "Income tax",
+            "Corporate tax",
+            "GST/HST/PST",
+            "Tax audits and appeals",
+            "Tax planning",
+            "CRA disputes",
+            "Provincial tax matters"
+          ]
+        }
+      }
+    },
+    "NB": {
+      "code": "NB",
+      "name": "New Brunswick",
+      "legal_resources": {
+        "Traffic Law": {
+          "primary_act": "Motor Vehicle Act",
+          "act_url": "https://laws.gnb.ca/en/showdoc/cs/M-17",
+          "topics": [
+            "Speeding violations",
+            "Careless/dangerous driving",
+            "Distracted driving",
+            "Impaired driving (DUI/DWI)",
+            "License suspensions",
+            "Demerit points",
+            "Traffic ticket disputes"
+          ]
+        },
+        "Criminal Law": {
+          "resources": [
+            "Criminal Code of Canada (Federal)",
+            "New Brunswick Provincial Court - Criminal",
+            "New Brunswick Legal Aid - Criminal Services"
+          ],
+          "topics": [
+            "Theft and property crimes",
+            "Assault and violent crimes",
+            "Fraud and financial crimes",
+            "Drug offenses",
+            "Criminal procedure and rights",
+            "Bail and sentencing",
+            "Criminal appeals"
+          ]
+        },
+        "Immigration Law": {
+          "programs": [
+            "New Brunswick Provincial Nominee Program",
+            "New Brunswick Settlement Services"
+          ],
+          "topics": [
+            "Provincial Nominee Programs",
+            "Work permits",
+            "Study permits",
+            "Permanent residence",
+            "Citizenship applications",
+            "Refugee claims",
+            "Immigration appeals"
+          ]
+        },
+        "Business Law": {
+          "resources": [
+            "Service New Brunswick - Corporate Registry",
+            "New Brunswick Business Services",
+            "New Brunswick Finance - Tax"
+          ],
+          "topics": [
+            "Business incorporation",
+            "Corporate governance",
+            "Business contracts",
+            "Intellectual property",
+            "Business tax compliance",
+            "Regulatory compliance",
+            "Business licensing"
+          ]
+        },
+        "Tax Law": {
+          "resources": [
+            "Canada Revenue Agency (Federal)",
+            "Provincial Tax Authority"
+          ],
+          "topics": [
+            "Income tax",
+            "Corporate tax",
+            "GST/HST/PST",
+            "Tax audits and appeals",
+            "Tax planning",
+            "CRA disputes",
+            "Provincial tax matters"
+          ]
+        }
+      }
+    },
+    "PE": {
+      "code": "PE",
+      "name": "Prince Edward Island",
+      "legal_resources": {
+        "Traffic Law": {
+          "primary_act": "Highway Traffic Act",
+          "act_url": "https://www.princeedwardisland.ca/en/legislation/highway-traffic-act",
+          "topics": [
+            "Speeding violations",
+            "Careless/dangerous driving",
+            "Distracted driving",
+            "Impaired driving (DUI/DWI)",
+            "License suspensions",
+            "Demerit points",
+            "Traffic ticket disputes"
+          ]
+        },
+        "Criminal Law": {
+          "resources": [
+            "Criminal Code of Canada (Federal)",
+            "PEI Provincial Court - Criminal",
+            "PEI Legal Aid - Criminal Services"
+          ],
+          "topics": [
+            "Theft and property crimes",
+            "Assault and violent crimes",
+            "Fraud and financial crimes",
+            "Drug offenses",
+            "Criminal procedure and rights",
+            "Bail and sentencing",
+            "Criminal appeals"
+          ]
+        },
+        "Immigration Law": {
+          "programs": [
+            "PEI Provincial Nominee Program",
+            "PEI Settlement Services"
+          ],
+          "topics": [
+            "Provincial Nominee Programs",
+            "Work permits",
+            "Study permits",
+            "Permanent residence",
+            "Citizenship applications",
+            "Refugee claims",
+            "Immigration appeals"
+          ]
+        },
+        "Business Law": {
+          "resources": [
+            "PEI Corporate Registry",
+            "PEI Business Services",
+            "PEI Finance - Tax"
+          ],
+          "topics": [
+            "Business incorporation",
+            "Corporate governance",
+            "Business contracts",
+            "Intellectual property",
+            "Business tax compliance",
+            "Regulatory compliance",
+            "Business licensing"
+          ]
+        },
+        "Tax Law": {
+          "resources": [
+            "Canada Revenue Agency (Federal)",
+            "Provincial Tax Authority"
+          ],
+          "topics": [
+            "Income tax",
+            "Corporate tax",
+            "GST/HST/PST",
+            "Tax audits and appeals",
+            "Tax planning",
+            "CRA disputes",
+            "Provincial tax matters"
+          ]
+        }
+      }
+    },
+    "NL": {
+      "code": "NL",
+      "name": "Newfoundland and Labrador",
+      "legal_resources": {
+        "Traffic Law": {
+          "primary_act": "Highway Traffic Act",
+          "act_url": "https://www.assembly.nl.ca/Legislation/sr/statutes/h03.htm",
+          "topics": [
+            "Speeding violations",
+            "Careless/dangerous driving",
+            "Distracted driving",
+            "Impaired driving (DUI/DWI)",
+            "License suspensions",
+            "Demerit points",
+            "Traffic ticket disputes"
+          ]
+        },
+        "Criminal Law": {
+          "resources": [
+            "Criminal Code of Canada (Federal)",
+            "NL Provincial Court - Criminal",
+            "NL Legal Aid - Criminal Services"
+          ],
+          "topics": [
+            "Theft and property crimes",
+            "Assault and violent crimes",
+            "Fraud and financial crimes",
+            "Drug offenses",
+            "Criminal procedure and rights",
+            "Bail and sentencing",
+            "Criminal appeals"
+          ]
+        },
+        "Immigration Law": {
+          "programs": [
+            "Newfoundland and Labrador Provincial Nominee Program",
+            "NL Settlement Services"
+          ],
+          "topics": [
+            "Provincial Nominee Programs",
+            "Work permits",
+            "Study permits",
+            "Permanent residence",
+            "Citizenship applications",
+            "Refugee claims",
+            "Immigration appeals"
+          ]
+        },
+        "Business Law": {
+          "resources": [
+            "NL Registry of Companies",
+            "Service NL - Business",
+            "NL Finance - Tax"
+          ],
+          "topics": [
+            "Business incorporation",
+            "Corporate governance",
+            "Business contracts",
+            "Intellectual property",
+            "Business tax compliance",
+            "Regulatory compliance",
+            "Business licensing"
+          ]
+        },
+        "Tax Law": {
+          "resources": [
+            "Canada Revenue Agency (Federal)",
+            "Provincial Tax Authority"
+          ],
+          "topics": [
+            "Income tax",
+            "Corporate tax",
+            "GST/HST/PST",
+            "Tax audits and appeals",
+            "Tax planning",
+            "CRA disputes",
+            "Provincial tax matters"
+          ]
+        }
+      }
+    },
+    "YT": {
+      "code": "YT",
+      "name": "Yukon",
+      "legal_resources": {
+        "Traffic Law": {
+          "primary_act": "Motor Vehicles Act",
+          "act_url": "https://laws.yukon.ca/cms/images/LEGISLATION/PRINCIPAL/2002/2002-0153/2002-0153.pdf",
+          "topics": [
+            "Speeding violations",
+            "Careless/dangerous driving",
+            "Distracted driving",
+            "Impaired driving (DUI/DWI)",
+            "License suspensions",
+            "Demerit points",
+            "Traffic ticket disputes"
+          ]
+        },
+        "Criminal Law": {
+          "resources": [
+            "Criminal Code of Canada (Federal)",
+            "Yukon Territorial Court - Criminal",
+            "Yukon Legal Services Society"
+          ],
+          "topics": [
+            "Theft and property crimes",
+            "Assault and violent crimes",
+            "Fraud and financial crimes",
+            "Drug offenses",
+            "Criminal procedure and rights",
+            "Bail and sentencing",
+            "Criminal appeals"
+          ]
+        },
+        "Immigration Law": {
+          "programs": [
+            "Yukon Nominee Program",
+            "Yukon Settlement Services"
+          ],
+          "topics": [
+            "Provincial Nominee Programs",
+            "Work permits",
+            "Study permits",
+            "Permanent residence",
+            "Citizenship applications",
+            "Refugee claims",
+            "Immigration appeals"
+          ]
+        },
+        "Business Law": {
+          "resources": [
+            "Yukon Corporate Affairs",
+            "Yukon Business Services",
+            "Yukon Finance - Tax"
+          ],
+          "topics": [
+            "Business incorporation",
+            "Corporate governance",
+            "Business contracts",
+            "Intellectual property",
+            "Business tax compliance",
+            "Regulatory compliance",
+            "Business licensing"
+          ]
+        },
+        "Tax Law": {
+          "resources": [
+            "Canada Revenue Agency (Federal)",
+            "Provincial Tax Authority"
+          ],
+          "topics": [
+            "Income tax",
+            "Corporate tax",
+            "GST/HST/PST",
+            "Tax audits and appeals",
+            "Tax planning",
+            "CRA disputes",
+            "Provincial tax matters"
+          ]
+        }
+      }
+    },
+    "NT": {
+      "code": "NT",
+      "name": "Northwest Territories",
+      "legal_resources": {
+        "Traffic Law": {
+          "primary_act": "Motor Vehicles Act",
+          "act_url": "https://www.justice.gov.nt.ca/en/files/legislation/motor-vehicles/motor-vehicles.a.pdf",
+          "topics": [
+            "Speeding violations",
+            "Careless/dangerous driving",
+            "Distracted driving",
+            "Impaired driving (DUI/DWI)",
+            "License suspensions",
+            "Demerit points",
+            "Traffic ticket disputes"
+          ]
+        },
+        "Criminal Law": {
+          "resources": [
+            "Criminal Code of Canada (Federal)",
+            "NWT Territorial Court - Criminal",
+            "NWT Legal Aid"
+          ],
+          "topics": [
+            "Theft and property crimes",
+            "Assault and violent crimes",
+            "Fraud and financial crimes",
+            "Drug offenses",
+            "Criminal procedure and rights",
+            "Bail and sentencing",
+            "Criminal appeals"
+          ]
+        },
+        "Immigration Law": {
+          "programs": [
+            "NWT Nominee Program",
+            "NWT Settlement Services"
+          ],
+          "topics": [
+            "Provincial Nominee Programs",
+            "Work permits",
+            "Study permits",
+            "Permanent residence",
+            "Citizenship applications",
+            "Refugee claims",
+            "Immigration appeals"
+          ]
+        },
+        "Business Law": {
+          "resources": [
+            "NWT Corporate Registry",
+            "NWT Business Services",
+            "NWT Finance - Tax"
+          ],
+          "topics": [
+            "Business incorporation",
+            "Corporate governance",
+            "Business contracts",
+            "Intellectual property",
+            "Business tax compliance",
+            "Regulatory compliance",
+            "Business licensing"
+          ]
+        },
+        "Tax Law": {
+          "resources": [
+            "Canada Revenue Agency (Federal)",
+            "Provincial Tax Authority"
+          ],
+          "topics": [
+            "Income tax",
+            "Corporate tax",
+            "GST/HST/PST",
+            "Tax audits and appeals",
+            "Tax planning",
+            "CRA disputes",
+            "Provincial tax matters"
+          ]
+        }
+      }
+    },
+    "NU": {
+      "code": "NU",
+      "name": "Nunavut",
+      "legal_resources": {
+        "Traffic Law": {
+          "primary_act": "Motor Vehicles Act",
+          "act_url": "https://www.nunavutlegislation.ca/en/consolidated-law/motor-vehicles-act",
+          "topics": [
+            "Speeding violations",
+            "Careless/dangerous driving",
+            "Distracted driving",
+            "Impaired driving (DUI/DWI)",
+            "License suspensions",
+            "Demerit points",
+            "Traffic ticket disputes"
+          ]
+        },
+        "Criminal Law": {
+          "resources": [
+            "Criminal Code of Canada (Federal)",
+            "Nunavut Court of Justice - Criminal",
+            "Nunavut Legal Services Board"
+          ],
+          "topics": [
+            "Theft and property crimes",
+            "Assault and violent crimes",
+            "Fraud and financial crimes",
+            "Drug offenses",
+            "Criminal procedure and rights",
+            "Bail and sentencing",
+            "Criminal appeals"
+          ]
+        },
+        "Immigration Law": {
+          "programs": [
+            "Nunavut Nominee Program",
+            "Nunavut Settlement Services"
+          ],
+          "topics": [
+            "Provincial Nominee Programs",
+            "Work permits",
+            "Study permits",
+            "Permanent residence",
+            "Citizenship applications",
+            "Refugee claims",
+            "Immigration appeals"
+          ]
+        },
+        "Business Law": {
+          "resources": [
+            "Nunavut Corporate Registry",
+            "Nunavut Business Services",
+            "Nunavut Finance - Tax"
+          ],
+          "topics": [
+            "Business incorporation",
+            "Corporate governance",
+            "Business contracts",
+            "Intellectual property",
+            "Business tax compliance",
+            "Regulatory compliance",
+            "Business licensing"
+          ]
+        },
+        "Tax Law": {
+          "resources": [
+            "Canada Revenue Agency (Federal)",
+            "Provincial Tax Authority"
+          ],
+          "topics": [
+            "Income tax",
+            "Corporate tax",
+            "GST/HST/PST",
+            "Tax audits and appeals",
+            "Tax planning",
+            "CRA disputes",
+            "Provincial tax matters"
+          ]
+        }
+      }
+    }
+  },
+  "legal_categories": {
+    "Traffic Law": {
+      "description": "Provincial traffic violations, tickets, and road safety regulations",
+      "common_topics": [
+        "Speeding violations",
+        "Careless/dangerous driving",
+        "Distracted driving",
+        "Impaired driving (DUI/DWI)",
+        "License suspensions",
+        "Demerit points",
+        "Traffic ticket disputes"
+      ]
+    },
+    "Criminal Law": {
+      "description": "Federal criminal offenses under the Criminal Code of Canada",
+      "common_topics": [
+        "Theft and property crimes",
+        "Assault and violent crimes",
+        "Fraud and financial crimes",
+        "Drug offenses",
+        "Criminal procedure and rights",
+        "Bail and sentencing",
+        "Criminal appeals"
+      ]
+    },
+    "Immigration Law": {
+      "description": "Immigration programs, visas, and citizenship matters",
+      "common_topics": [
+        "Provincial Nominee Programs",
+        "Work permits",
+        "Study permits",
+        "Permanent residence",
+        "Citizenship applications",
+        "Refugee claims",
+        "Immigration appeals"
+      ]
+    },
+    "Business Law": {
+      "description": "Business formation, operations, and compliance",
+      "common_topics": [
+        "Business incorporation",
+        "Corporate governance",
+        "Business contracts",
+        "Intellectual property",
+        "Business tax compliance",
+        "Regulatory compliance",
+        "Business licensing"
+      ]
+    },
+    "Tax Law": {
+      "description": "Federal and provincial tax matters",
+      "common_topics": [
+        "Income tax",
+        "Corporate tax",
+        "GST/HST/PST",
+        "Tax audits and appeals",
+        "Tax planning",
+        "CRA disputes",
+        "Provincial tax matters"
+      ]
+    }
+  }
+}

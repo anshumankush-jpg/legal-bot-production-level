@@ -1,0 +1,81 @@
+{
+  "code": "NU",
+  "name": "Nunavut",
+  "legal_resources": {
+    "Traffic Law": {
+      "primary_act": "Motor Vehicles Act",
+      "act_url": "https://www.nunavutlegislation.ca/en/consolidated-law/motor-vehicles-act",
+      "topics": [
+        "Speeding violations",
+        "Careless/dangerous driving",
+        "Distracted driving",
+        "Impaired driving (DUI/DWI)",
+        "License suspensions",
+        "Demerit points",
+        "Traffic ticket disputes"
+      ]
+    },
+    "Criminal Law": {
+      "resources": [
+        "Criminal Code of Canada (Federal)",
+        "Nunavut Court of Justice - Criminal",
+        "Nunavut Legal Services Board"
+      ],
+      "topics": [
+        "Theft and property crimes",
+        "Assault and violent crimes",
+        "Fraud and financial crimes",
+        "Drug offenses",
+        "Criminal procedure and rights",
+        "Bail and sentencing",
+        "Criminal appeals"
+      ]
+    },
+    "Immigration Law": {
+      "programs": [
+        "Nunavut Nominee Program",
+        "Nunavut Settlement Services"
+      ],
+      "topics": [
+        "Provincial Nominee Programs",
+        "Work permits",
+        "Study permits",
+        "Permanent residence",
+        "Citizenship applications",
+        "Refugee claims",
+        "Immigration appeals"
+      ]
+    },
+    "Business Law": {
+      "resources": [
+        "Nunavut Corporate Registry",
+        "Nunavut Business Services",
+        "Nunavut Finance - Tax"
+      ],
+      "topics": [
+        "Business incorporation",
+        "Corporate governance",
+        "Business contracts",
+        "Intellectual property",
+        "Business tax compliance",
+        "Regulatory compliance",
+        "Business licensing"
+      ]
+    },
+    "Tax Law": {
+      "resources": [
+        "Canada Revenue Agency (Federal)",
+        "Provincial Tax Authority"
+      ],
+      "topics": [
+        "Income tax",
+        "Corporate tax",
+        "GST/HST/PST",
+        "Tax audits and appeals",
+        "Tax planning",
+        "CRA disputes",
+        "Provincial tax matters"
+      ]
+    }
+  }
+}

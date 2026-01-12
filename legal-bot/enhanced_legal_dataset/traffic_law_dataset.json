@@ -1,0 +1,62 @@
+{
+  "title": "Canadian Traffic Law - Complete Guide",
+  "jurisdictions": [
+    "Federal",
+    "Ontario",
+    "British Columbia",
+    "Alberta",
+    "Quebec"
+  ],
+  "categories": [
+    "speeding",
+    "DUI",
+    "licensing",
+    "commercial vehicles",
+    "penalties"
+  ],
+  "documents": [
+    {
+      "type": "statute",
+      "title": "Ontario Highway Traffic Act",
+      "url": "https://www.ontario.ca/laws/statute/90h08",
+      "sections": [
+        "speeding",
+        "penalties",
+        "licensing",
+        "defenses"
+      ],
+      "solutions": [
+        "pay fine",
+        "traffic school",
+        "contest ticket",
+        "court appearance"
+      ]
+    },
+    {
+      "type": "statute",
+      "title": "British Columbia Motor Vehicle Act",
+      "url": "https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/96318_01",
+      "sections": [
+        "traffic violations",
+        "commercial licensing",
+        "penalties"
+      ],
+      "solutions": [
+        "appeal process",
+        "license reinstatement",
+        "payment options"
+      ]
+    },
+    {
+      "type": "guide",
+      "title": "Ontario Traffic Ticket Procedures",
+      "content": "\n                    TRAFFIC TICKET PROCEDURES IN ONTARIO:\n\n                    1. PAYMENT OPTIONS:\n                    - Pay fine within 15 days: 50% reduction for most offences\n                    - Pay full fine within 30 days to avoid court\n                    - Set fine schedule available online\n\n                    2. CONTESTING A TICKET:\n                    - Request trial by mail, phone, or in person\n                    - Trial must be requested within 15 days\n                    - Can plead guilty with explanation for reduced fine\n                    - Not guilty plea leads to court appearance\n\n                    3. DEFENSES AVAILABLE:\n                    - Speed timing device malfunction\n                    - Emergency situation\n                    - Medical necessity\n                    - Improper signage\n\n                    4. LICENSE CONSEQUENCES:\n                    - Demerit points accumulation\n                    - License suspension thresholds\n                    - Ignition interlock requirements for alcohol-related\n                    ",
+      "solutions": [
+        "pay reduced fine",
+        "request trial",
+        "plead guilty with explanation",
+        "appeal decision"
+      ]
+    }
+  ]
+}

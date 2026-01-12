@@ -1,0 +1,1766 @@
+{
+  "timestamp": "2026-01-08T12:53:35.167101",
+  "total_tests": 25,
+  "passed": 24,
+  "failed": 1,
+  "success_rate": 96.0,
+  "avg_overall_score": 73.3,
+  "avg_source_match": 93.0,
+  "avg_article_match": 52.0,
+  "avg_website_match": 56.0,
+  "avg_citations": 4.8,
+  "test_groups": {
+    "Canada - Criminal Law": {
+      "passed": 4,
+      "total": 5
+    },
+    "Canada - Traffic Law": {
+      "passed": 5,
+      "total": 5
+    },
+    "USA - Criminal Law": {
+      "passed": 5,
+      "total": 5
+    },
+    "USA - Traffic Law": {
+      "passed": 3,
+      "total": 3
+    },
+    "Canada - Family Law": {
+      "passed": 1,
+      "total": 1
+    },
+    "USA - Family Law": {
+      "passed": 1,
+      "total": 1
+    },
+    "USA - Copyright Law": {
+      "passed": 1,
+      "total": 1
+    },
+    "Canada - Copyright Law": {
+      "passed": 1,
+      "total": 1
+    },
+    "Canada - Employment Law": {
+      "passed": 1,
+      "total": 1
+    },
+    "USA - Employment Law": {
+      "passed": 1,
+      "total": 1
+    },
+    "Canada - Constitutional Law": {
+      "passed": 1,
+      "total": 1
+    }
+  },
+  "results": [
+    {
+      "test_id": 1,
+      "country": "Canada",
+      "law_type": "Criminal Law",
+      "province": "Federal",
+      "question": "What is the penalty for theft under $5000 in Canada?",
+      "passed": true,
+      "has_answer": true,
+      "has_citations": true,
+      "citation_count": 5,
+      "expected_sources": [
+        "Criminal Code",
+        "section 334",
+        "theft",
+        "summary conviction"
+      ],
+      "expected_articles": [
+        "Section 334",
+        "Section 322"
+      ],
+      "expected_websites": [
+        "laws-lois.justice.gc.ca",
+        "Criminal Code"
+      ],
+      "found_sources": [
+        "Criminal Code",
+        "section 334",
+        "theft",
+        "summary conviction"
+      ],
+      "found_articles": [
+        "Section 334",
+        "Section 322"
+      ],
+      "found_websites": [
+        "laws-lois.justice.gc.ca",
+        "Criminal Code"
+      ],
+      "missing_sources": [],
+      "missing_articles": [],
+      "missing_websites": [],
+      "source_match_percentage": 100.0,
+      "article_match_percentage": 100.0,
+      "website_match_percentage": 100.0,
+      "overall_score": 100.0,
+      "answer_preview": "**Introduction**: The legal issue at hand pertains to the penalties associated with theft under $5,000 in Canada, which falls under the Criminal Code of Canada.\n\n**Direct Answer**: In Canada, theft un...",
+      "citation_details": [
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 54 TRAFFIC SAFETY ACT Chapter T-6\n(2) If the registration of a motor vehicle is suspended under this\nAct, the motor vehicle is still ..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 144 TRAFFIC SAFETY ACT Chapter T-6\nGovernment an administrative penalty in an amount set out in the\nnotice, not to exceed $10 000\n(a)..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 84 TRAFFIC SAFETY ACT Chapter T-6\n(b) under section 254 of the Criminal Code (Canada) as it read\nimmediately prior to the coming into..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 86 TRAFFIC SAFETY ACT Chapter T-6\nimmediately on and after the coming into force of Part 2 of\nthe Federal Bill.\n(7.4) In subsection (..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 85 TRAFFIC SAFETY ACT Chapter T-6\n(a) is found guilty under section 130 of the National Defence\nAct (Canada) by reason that the perso..."
+        }
+      ]
+    },
+    {
+      "test_id": 2,
+      "country": "Canada",
+      "law_type": "Criminal Law",
+      "province": "Federal",
+      "question": "What are the penalties for drug possession in Canada?",
+      "passed": false,
+      "has_answer": false,
+      "has_citations": false,
+      "citation_count": 0,
+      "expected_sources": [
+        "Controlled Drugs and Substances Act",
+        "CDSA",
+        "possession"
+      ],
+      "expected_articles": [
+        "Section 4",
+        "Schedule"
+      ],
+      "expected_websites": [
+        "laws-lois.justice.gc.ca",
+        "CDSA"
+      ],
+      "found_sources": [],
+      "found_articles": [],
+      "found_websites": [],
+      "missing_sources": [],
+      "missing_articles": [],
+      "missing_websites": [],
+      "source_match_percentage": 0,
+      "article_match_percentage": 0,
+      "website_match_percentage": 0,
+      "overall_score": 0,
+      "answer_preview": "",
+      "citation_details": [],
+      "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=60)"
+    },
+    {
+      "test_id": 3,
+      "country": "Canada",
+      "law_type": "Criminal Law",
+      "province": "Federal",
+      "question": "What constitutes sexual assault under Canadian law?",
+      "passed": true,
+      "has_answer": true,
+      "has_citations": true,
+      "citation_count": 5,
+      "expected_sources": [
+        "Criminal Code",
+        "section 271",
+        "sexual assault"
+      ],
+      "expected_articles": [
+        "Section 271",
+        "Section 273"
+      ],
+      "expected_websites": [
+        "Criminal Code",
+        "justice.gc.ca"
+      ],
+      "found_sources": [
+        "Criminal Code",
+        "section 271",
+        "sexual assault"
+      ],
+      "found_articles": [
+        "Section 271",
+        "Section 273"
+      ],
+      "found_websites": [
+        "Criminal Code"
+      ],
+      "missing_sources": [],
+      "missing_articles": [],
+      "missing_websites": [
+        "justice.gc.ca"
+      ],
+      "source_match_percentage": 100.0,
+      "article_match_percentage": 100.0,
+      "website_match_percentage": 50.0,
+      "overall_score": 90.0,
+      "answer_preview": "### Introduction\nSexual assault is a serious criminal offense under Canadian law, specifically governed by the Criminal Code of Canada. It encompasses a range of non-consensual sexual acts and is defi...",
+      "citation_details": [
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 86 TRAFFIC SAFETY ACT Chapter T-6\nimmediately on and after the coming into force of Part 2 of\nthe Federal Bill.\n(7.4) In subsection (..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 83 TRAFFIC SAFETY ACT Chapter T-6\n(b) has, in the preceding 10 years, been found guilty of an\noffence under section 320.14 or 320.15 ..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 84 TRAFFIC SAFETY ACT Chapter T-6\n(b) under section 254 of the Criminal Code (Canada) as it read\nimmediately prior to the coming into..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 83 TRAFFIC SAFETY ACT Chapter T-6\n(a) under section 237 of the Criminal Code (Canada) as it read\nimmediately prior to December 12, 19..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 85 TRAFFIC SAFETY ACT Chapter T-6\n(a) under section 130 of the National Defence Act (Canada) by\nreason that a person contravened sect..."
+        }
+      ]
+    },
+    {
+      "test_id": 4,
+      "country": "Canada",
+      "law_type": "Criminal Law",
+      "province": "Federal",
+      "question": "What is the punishment for robbery in Canada?",
+      "passed": true,
+      "has_answer": true,
+      "has_citations": true,
+      "citation_count": 5,
+      "expected_sources": [
+        "Criminal Code",
+        "section 344",
+        "robbery",
+        "indictable"
+      ],
+      "expected_articles": [
+        "Section 343",
+        "Section 344"
+      ],
+      "expected_websites": [
+        "Criminal Code",
+        "laws-lois.justice.gc.ca"
+      ],
+      "found_sources": [
+        "Criminal Code",
+        "section 344",
+        "robbery",
+        "indictable"
+      ],
+      "found_articles": [
+        "Section 343",
+        "Section 344"
+      ],
+      "found_websites": [
+        "Criminal Code"
+      ],
+      "missing_sources": [],
+      "missing_articles": [],
+      "missing_websites": [
+        "laws-lois.justice.gc.ca"
+      ],
+      "source_match_percentage": 100.0,
+      "article_match_percentage": 100.0,
+      "website_match_percentage": 50.0,
+      "overall_score": 90.0,
+      "answer_preview": "### Introduction\nRobbery is a serious criminal offense in Canada, governed by the **Criminal Code of Canada**. It involves taking property from a person using violence or the threat of violence. The l...",
+      "citation_details": [
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 83 TRAFFIC SAFETY ACT Chapter T-6\n(b) has, in the preceding 10 years, been found guilty of an\noffence under section 320.14 or 320.15 ..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 86 TRAFFIC SAFETY ACT Chapter T-6\nimmediately on and after the coming into force of Part 2 of\nthe Federal Bill.\n(7.4) In subsection (..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 83 TRAFFIC SAFETY ACT Chapter T-6\n(a) under section 237 of the Criminal Code (Canada) as it read\nimmediately prior to December 12, 19..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 84 TRAFFIC SAFETY ACT Chapter T-6\n(b) under section 254 of the Criminal Code (Canada) as it read\nimmediately prior to the coming into..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 85 TRAFFIC SAFETY ACT Chapter T-6\n(a) is found guilty under section 130 of the National Defence\nAct (Canada) by reason that the perso..."
+        }
+      ]
+    },
+    {
+      "test_id": 5,
+      "country": "Canada",
+      "law_type": "Criminal Law",
+      "province": "Federal",
+      "question": "What are the penalties for impaired driving causing death in Canada?",
+      "passed": true,
+      "has_answer": true,
+      "has_citations": true,
+      "citation_count": 5,
+      "expected_sources": [
+        "Criminal Code",
+        "section 320.14",
+        "impaired driving",
+        "death"
+      ],
+      "expected_articles": [
+        "Section 320.14",
+        "Section 320.19"
+      ],
+      "expected_websites": [
+        "Criminal Code",
+        "justice.gc.ca"
+      ],
+      "found_sources": [
+        "Criminal Code",
+        "impaired driving",
+        "death"
+      ],
+      "found_articles": [],
+      "found_websites": [
+        "Criminal Code"
+      ],
+      "missing_sources": [
+        "section 320.14"
+      ],
+      "missing_articles": [
+        "Section 320.14",
+        "Section 320.19"
+      ],
+      "missing_websites": [
+        "justice.gc.ca"
+      ],
+      "source_match_percentage": 75.0,
+      "article_match_percentage": 0.0,
+      "website_match_percentage": 50.0,
+      "overall_score": 47.5,
+      "answer_preview": "**Introduction**: The issue at hand pertains to the legal penalties associated with impaired driving causing death in Canada, which falls under the Criminal Code of Canada. This offense is treated wit...",
+      "citation_details": [
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 84 TRAFFIC SAFETY ACT Chapter T-6\n(b) under section 254 of the Criminal Code (Canada) as it read\nimmediately prior to the coming into..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 87.1 TRAFFIC SAFETY ACT Chapter T-6\nfound guilty becomes disqualified from driving a motor vehicle in\nAlberta for a period of 5 years..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 102 TRAFFIC SAFETY ACT Chapter T-6\n(c) disqualify the person from driving a motor vehicle in\nAlberta;\n(d) suspend the registration of..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 86 TRAFFIC SAFETY ACT Chapter T-6\nimmediately on and after the coming into force of Part 2 of\nthe Federal Bill.\n(7.4) In subsection (..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 95 TRAFFIC SAFETY ACT Chapter T-6\n(b) for a 2nd offence committed after the commission of the\noffence referred to in clause (a),\n(i) ..."
+        }
+      ]
+    },
+    {
+      "test_id": 6,
+      "country": "Canada",
+      "law_type": "Traffic Law",
+      "province": "Ontario",
+      "question": "What is the penalty for stunt driving in Ontario?",
+      "passed": true,
+      "has_answer": true,
+      "has_citations": true,
+      "citation_count": 5,
+      "expected_sources": [
+        "Highway Traffic Act",
+        "section 172",
+        "stunt driving",
+        "Ontario"
+      ],
+      "expected_articles": [
+        "Section 172",
+        "HTA"
+      ],
+      "expected_websites": [
+        "ontario.ca",
+        "Highway Traffic Act"
+      ],
+      "found_sources": [
+        "Highway Traffic Act",
+        "section 172",
+        "stunt driving",
+        "Ontario"
+      ],
+      "found_articles": [
+        "Section 172"
+      ],
+      "found_websites": [
+        "ontario.ca",
+        "Highway Traffic Act"
+      ],
+      "missing_sources": [],
+      "missing_articles": [
+        "HTA"
+      ],
+      "missing_websites": [],
+      "source_match_percentage": 100.0,
+      "article_match_percentage": 50.0,
+      "website_match_percentage": 100.0,
+      "overall_score": 85.0,
+      "answer_preview": "### Introduction\nThe issue at hand pertains to the penalties associated with **stunt driving** in Ontario, Canada. Stunt driving is defined under the **Highway Traffic Act** and includes various forms...",
+      "citation_details": [
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 161 TRAFFIC SAFETY ACT Chapter T-6\n(i) the owner did not park the vehicle, and\n(ii) no other person parked the vehicle with the owner..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 87.1 TRAFFIC SAFETY ACT Chapter T-6\nfound guilty becomes disqualified from driving a motor vehicle in\nAlberta for a period of 5 years..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 102 TRAFFIC SAFETY ACT Chapter T-6\n(c) disqualify the person from driving a motor vehicle in\nAlberta;\n(d) suspend the registration of..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 87 TRAFFIC SAFETY ACT Chapter T-6\nsubsections (2) and (3), suspend a person\u2019s operator\u2019s licence for a\nperiod not exceeding 3 months ..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 92 TRAFFIC SAFETY ACT Chapter T-6\n(d) for any other reason appearing to the Registrar to be\nsufficient.\n(2) If a person who is not a ..."
+        }
+      ]
+    },
+    {
+      "test_id": 7,
+      "country": "Canada",
+      "law_type": "Traffic Law",
+      "province": "British Columbia",
+      "question": "What are the penalties for excessive speeding in BC?",
+      "passed": true,
+      "has_answer": true,
+      "has_citations": true,
+      "citation_count": 5,
+      "expected_sources": [
+        "Motor Vehicle Act",
+        "excessive speeding",
+        "British Columbia"
+      ],
+      "expected_articles": [
+        "Section 146",
+        "MVA"
+      ],
+      "expected_websites": [
+        "bclaws.gov.bc.ca",
+        "Motor Vehicle Act"
+      ],
+      "found_sources": [
+        "Motor Vehicle Act",
+        "excessive speeding",
+        "British Columbia"
+      ],
+      "found_articles": [],
+      "found_websites": [
+        "Motor Vehicle Act"
+      ],
+      "missing_sources": [],
+      "missing_articles": [
+        "Section 146",
+        "MVA"
+      ],
+      "missing_websites": [
+        "bclaws.gov.bc.ca"
+      ],
+      "source_match_percentage": 100.0,
+      "article_match_percentage": 0.0,
+      "website_match_percentage": 50.0,
+      "overall_score": 60.0,
+      "answer_preview": "### Introduction\nThis response addresses the penalties associated with excessive speeding in British Columbia (BC), Canada, under the **Motor Vehicle Act** and related regulations.\n\n### Direct Answer\n...",
+      "citation_details": [
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 161 TRAFFIC SAFETY ACT Chapter T-6\n(i) the owner did not park the vehicle, and\n(ii) no other person parked the vehicle with the owner..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 144 TRAFFIC SAFETY ACT Chapter T-6\nGovernment an administrative penalty in an amount set out in the\nnotice, not to exceed $10 000\n(a)..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 188.1 TRAFFIC SAFETY ACT Chapter T-6\nlate payment charges and costs and expenses incurred by\nrecipients related to administrative pen..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 1.1 TRAFFIC SAFETY ACT Chapter T-6\nNature of contraventions\n1.1 Subject to section 157(1.1), (1.2) and (1.3) or an express\nprovision ..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 87 TRAFFIC SAFETY ACT Chapter T-6\nsubsections (2) and (3), suspend a person\u2019s operator\u2019s licence for a\nperiod not exceeding 3 months ..."
+        }
+      ]
+    },
+    {
+      "test_id": 8,
+      "country": "Canada",
+      "law_type": "Traffic Law",
+      "province": "Alberta",
+      "question": "What is the penalty for driving without insurance in Alberta?",
+      "passed": true,
+      "has_answer": true,
+      "has_citations": true,
+      "citation_count": 5,
+      "expected_sources": [
+        "Traffic Safety Act",
+        "insurance",
+        "Alberta"
+      ],
+      "expected_articles": [
+        "Section 54",
+        "TSA"
+      ],
+      "expected_websites": [
+        "alberta.ca",
+        "Traffic Safety Act"
+      ],
+      "found_sources": [
+        "Traffic Safety Act",
+        "insurance",
+        "Alberta"
+      ],
+      "found_articles": [
+        "Section 54"
+      ],
+      "found_websites": [
+        "alberta.ca",
+        "Traffic Safety Act"
+      ],
+      "missing_sources": [],
+      "missing_articles": [
+        "TSA"
+      ],
+      "missing_websites": [],
+      "source_match_percentage": 100.0,
+      "article_match_percentage": 50.0,
+      "website_match_percentage": 100.0,
+      "overall_score": 85.0,
+      "answer_preview": "### Introduction\nThe issue at hand pertains to the penalties associated with driving without insurance in Alberta, specifically under the **Traffic Safety Act**. This area of law governs motor vehicle...",
+      "citation_details": [
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 54 TRAFFIC SAFETY ACT Chapter T-6\n(2) If the registration of a motor vehicle is suspended under this\nAct, the motor vehicle is still ..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 102 TRAFFIC SAFETY ACT Chapter T-6\n(c) disqualify the person from driving a motor vehicle in\nAlberta;\n(d) suspend the registration of..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 92 TRAFFIC SAFETY ACT Chapter T-6\n(d) for any other reason appearing to the Registrar to be\nsufficient.\n(2) If a person who is not a ..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 87.1 TRAFFIC SAFETY ACT Chapter T-6\nfound guilty becomes disqualified from driving a motor vehicle in\nAlberta for a period of 5 years..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 161 TRAFFIC SAFETY ACT Chapter T-6\n(i) the owner did not park the vehicle, and\n(ii) no other person parked the vehicle with the owner..."
+        }
+      ]
+    },
+    {
+      "test_id": 9,
+      "country": "Canada",
+      "law_type": "Traffic Law",
+      "province": "Quebec",
+      "question": "What are the penalties for using a cell phone while driving in Quebec?",
+      "passed": true,
+      "has_answer": true,
+      "has_citations": true,
+      "citation_count": 5,
+      "expected_sources": [
+        "Highway Safety Code",
+        "cell phone",
+        "Quebec",
+        "distracted"
+      ],
+      "expected_articles": [
+        "Section 439.1",
+        "Code de la s\u00e9curit\u00e9 routi\u00e8re"
+      ],
+      "expected_websites": [
+        "saaq.gouv.qc.ca",
+        "Quebec"
+      ],
+      "found_sources": [
+        "Highway Safety Code",
+        "cell phone",
+        "Quebec",
+        "distracted"
+      ],
+      "found_articles": [
+        "Section 439.1"
+      ],
+      "found_websites": [
+        "saaq.gouv.qc.ca",
+        "Quebec"
+      ],
+      "missing_sources": [],
+      "missing_articles": [
+        "Code de la s\u00e9curit\u00e9 routi\u00e8re"
+      ],
+      "missing_websites": [],
+      "source_match_percentage": 100.0,
+      "article_match_percentage": 50.0,
+      "website_match_percentage": 100.0,
+      "overall_score": 85.0,
+      "answer_preview": "### Introduction\nThe issue at hand pertains to the penalties associated with the use of a cell phone while driving in Quebec, which falls under the domain of **Traffic Law**. The use of handheld elect...",
+      "citation_details": [
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 115.1 TRAFFIC SAFETY ACT Chapter T-6\ncommunication, electronic data, electronic mail or text\nmessages, or\n(b) holding, viewing or man..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 115.4 TRAFFIC SAFETY ACT Chapter T-6\n(a) is programmed before the individual begins to drive or\noperate the vehicle, or\n(b) is used i..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 88.2 TRAFFIC SAFETY ACT Chapter T-6\n(b) complies with any terms or conditions imposed by the\nRegistrar.\n(5) The term during which the..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 87.1 TRAFFIC SAFETY ACT Chapter T-6\nfound guilty becomes disqualified from driving a motor vehicle in\nAlberta for a period of 5 years..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 84 TRAFFIC SAFETY ACT Chapter T-6\n(b) under section 254 of the Criminal Code (Canada) as it read\nimmediately prior to the coming into..."
+        }
+      ]
+    },
+    {
+      "test_id": 10,
+      "country": "Canada",
+      "law_type": "Traffic Law",
+      "province": "Ontario",
+      "question": "What happens if you refuse a breathalyzer test in Ontario?",
+      "passed": true,
+      "has_answer": true,
+      "has_citations": true,
+      "citation_count": 5,
+      "expected_sources": [
+        "Criminal Code",
+        "section 320.15",
+        "refuse",
+        "breathalyzer"
+      ],
+      "expected_articles": [
+        "Section 320.15",
+        "refusal"
+      ],
+      "expected_websites": [
+        "Criminal Code",
+        "ontario.ca"
+      ],
+      "found_sources": [
+        "Criminal Code",
+        "refuse",
+        "breathalyzer"
+      ],
+      "found_articles": [
+        "refusal"
+      ],
+      "found_websites": [
+        "Criminal Code"
+      ],
+      "missing_sources": [
+        "section 320.15"
+      ],
+      "missing_articles": [
+        "Section 320.15"
+      ],
+      "missing_websites": [
+        "ontario.ca"
+      ],
+      "source_match_percentage": 75.0,
+      "article_match_percentage": 50.0,
+      "website_match_percentage": 50.0,
+      "overall_score": 62.5,
+      "answer_preview": "### Introduction\nIn Ontario, the refusal to submit to a breathalyzer test is a significant legal issue under the **Criminal Code of Canada** and the **Highway Traffic Act**. This response outlines the...",
+      "citation_details": [
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 88.03 TRAFFIC SAFETY ACT Chapter T-6\nregulations for contravention of this section for the 2nd\ntime,\nand\n(c) for a 3rd and subsequent..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 88.2 TRAFFIC SAFETY ACT Chapter T-6\n(8) No person may seek a roadside appeal under this section of a\nnotice of administrative penalty..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 88.2 TRAFFIC SAFETY ACT Chapter T-6\n(b) complies with any terms or conditions imposed by the\nRegistrar.\n(5) The term during which the..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 93 TRAFFIC SAFETY ACT Chapter T-6\n(2) For the purpose of satisfying the Registrar as to a person\u2019s\ncompetency to drive a motor vehicl..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 88.11 TRAFFIC SAFETY ACT Chapter T-6\n(17) A contravention of section 88.1 as it read immediately before\nthe coming into force of this..."
+        }
+      ]
+    },
+    {
+      "test_id": 11,
+      "country": "USA",
+      "law_type": "Criminal Law",
+      "province": "Federal",
+      "question": "What is the federal penalty for bank fraud?",
+      "passed": true,
+      "has_answer": true,
+      "has_citations": true,
+      "citation_count": 5,
+      "expected_sources": [
+        "18 U.S.C.",
+        "1344",
+        "bank fraud",
+        "federal"
+      ],
+      "expected_articles": [
+        "18 USC 1344",
+        "Title 18"
+      ],
+      "expected_websites": [
+        "uscode.house.gov",
+        "law.cornell.edu"
+      ],
+      "found_sources": [
+        "18 U.S.C.",
+        "1344",
+        "bank fraud",
+        "federal"
+      ],
+      "found_articles": [
+        "Title 18"
+      ],
+      "found_websites": [
+        "law.cornell.edu"
+      ],
+      "missing_sources": [],
+      "missing_articles": [
+        "18 USC 1344"
+      ],
+      "missing_websites": [
+        "uscode.house.gov"
+      ],
+      "source_match_percentage": 100.0,
+      "article_match_percentage": 50.0,
+      "website_match_percentage": 50.0,
+      "overall_score": 75.0,
+      "answer_preview": "**Introduction**: Bank fraud is a serious federal offense in the United States, governed by various statutes under federal law. This response will outline the penalties associated with bank fraud unde...",
+      "citation_details": [
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 54 TRAFFIC SAFETY ACT Chapter T-6\n(2) If the registration of a motor vehicle is suspended under this\nAct, the motor vehicle is still ..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 144 TRAFFIC SAFETY ACT Chapter T-6\nGovernment an administrative penalty in an amount set out in the\nnotice, not to exceed $10 000\n(a)..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 188.1 TRAFFIC SAFETY ACT Chapter T-6\nlate payment charges and costs and expenses incurred by\nrecipients related to administrative pen..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 158 TRAFFIC SAFETY ACT Chapter T-6\n(4) When a notice of administrative penalty is issued under the\nProvincial Administrative Penaltie..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 102 TRAFFIC SAFETY ACT Chapter T-6\n(c) disqualify the person from driving a motor vehicle in\nAlberta;\n(d) suspend the registration of..."
+        }
+      ]
+    },
+    {
+      "test_id": 12,
+      "country": "USA",
+      "law_type": "Criminal Law",
+      "province": "Federal",
+      "question": "What constitutes identity theft under federal law?",
+      "passed": true,
+      "has_answer": true,
+      "has_citations": true,
+      "citation_count": 5,
+      "expected_sources": [
+        "18 U.S.C.",
+        "1028",
+        "identity theft"
+      ],
+      "expected_articles": [
+        "18 USC 1028",
+        "identity fraud"
+      ],
+      "expected_websites": [
+        "uscode.house.gov",
+        "justice.gov"
+      ],
+      "found_sources": [
+        "18 U.S.C.",
+        "1028",
+        "identity theft"
+      ],
+      "found_articles": [],
+      "found_websites": [],
+      "missing_sources": [],
+      "missing_articles": [
+        "18 USC 1028",
+        "identity fraud"
+      ],
+      "missing_websites": [
+        "uscode.house.gov",
+        "justice.gov"
+      ],
+      "source_match_percentage": 100.0,
+      "article_match_percentage": 0.0,
+      "website_match_percentage": 0.0,
+      "overall_score": 50.0,
+      "answer_preview": "### Introduction\nIdentity theft is a serious crime defined under federal law, specifically within the context of the Identity Theft and Assumption Deterrence Act (ITADA) of 1998. This law addresses th...",
+      "citation_details": [
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 169 TRAFFIC SAFETY ACT Chapter T-6\n(i) will continue or repeat that contravention if not arrested,\nor\n(ii) has provided the peace off..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 7 TRAFFIC SAFETY ACT Chapter T-6\nCrown not liable\n7 No liability attaches to the Crown for any loss or damage that\narises from\n(a) in..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 174 TRAFFIC SAFETY ACT Chapter T-6\nof an offence referred to in that subsection, the vehicle is forfeited\nto the Government subject t..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 9 TRAFFIC SAFETY ACT Chapter T-6\n(b) the criteria that the Registrar must consider when deciding\nwhether a person may be given access..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 4 TRAFFIC SAFETY ACT Chapter T-6\n(4) Notwithstanding that a person has given an authorization under\nthis section, that person may do ..."
+        }
+      ]
+    },
+    {
+      "test_id": 13,
+      "country": "USA",
+      "law_type": "Criminal Law",
+      "province": "Federal",
+      "question": "What are the penalties for drug trafficking under federal law?",
+      "passed": true,
+      "has_answer": true,
+      "has_citations": true,
+      "citation_count": 5,
+      "expected_sources": [
+        "21 U.S.C.",
+        "841",
+        "drug trafficking",
+        "controlled substance"
+      ],
+      "expected_articles": [
+        "21 USC 841",
+        "Schedule I"
+      ],
+      "expected_websites": [
+        "uscode.house.gov",
+        "dea.gov"
+      ],
+      "found_sources": [
+        "21 U.S.C.",
+        "841",
+        "drug trafficking",
+        "controlled substance"
+      ],
+      "found_articles": [
+        "Schedule I"
+      ],
+      "found_websites": [],
+      "missing_sources": [],
+      "missing_articles": [
+        "21 USC 841"
+      ],
+      "missing_websites": [
+        "uscode.house.gov",
+        "dea.gov"
+      ],
+      "source_match_percentage": 100.0,
+      "article_match_percentage": 50.0,
+      "website_match_percentage": 0.0,
+      "overall_score": 65.0,
+      "answer_preview": "### Introduction\nThe issue at hand pertains to the penalties for drug trafficking under federal law in the United States. Drug trafficking is a serious offense governed by the Controlled Substances Ac...",
+      "citation_details": [
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 144 TRAFFIC SAFETY ACT Chapter T-6\nGovernment an administrative penalty in an amount set out in the\nnotice, not to exceed $10 000\n(a)..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 188.1 TRAFFIC SAFETY ACT Chapter T-6\nlate payment charges and costs and expenses incurred by\nrecipients related to administrative pen..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 155 TRAFFIC SAFETY ACT Chapter T-6\n(2) A person who commits a contravention referred to in section\n157 by reason of the contravention..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 87.2 TRAFFIC SAFETY ACT Chapter T-6\n(3) In sections 88, 88.01, 88.02, 88.1 and 88.11, \u201cdrug\u201d includes\nany drug for which a blood drug..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 129.3 TRAFFIC SAFETY ACT Chapter T-6\n(1), the Government may recover the amount owing in respect of\nthe penalty by an action in debt...."
+        }
+      ]
+    },
+    {
+      "test_id": 14,
+      "country": "USA",
+      "law_type": "Criminal Law",
+      "province": "Federal",
+      "question": "What is the penalty for tax evasion in the United States?",
+      "passed": true,
+      "has_answer": true,
+      "has_citations": true,
+      "citation_count": 5,
+      "expected_sources": [
+        "26 U.S.C.",
+        "7201",
+        "tax evasion",
+        "IRS"
+      ],
+      "expected_articles": [
+        "26 USC 7201",
+        "Internal Revenue Code"
+      ],
+      "expected_websites": [
+        "uscode.house.gov",
+        "irs.gov"
+      ],
+      "found_sources": [
+        "26 U.S.C.",
+        "7201",
+        "tax evasion",
+        "IRS"
+      ],
+      "found_articles": [
+        "Internal Revenue Code"
+      ],
+      "found_websites": [
+        "irs.gov"
+      ],
+      "missing_sources": [],
+      "missing_articles": [
+        "26 USC 7201"
+      ],
+      "missing_websites": [
+        "uscode.house.gov"
+      ],
+      "source_match_percentage": 100.0,
+      "article_match_percentage": 50.0,
+      "website_match_percentage": 50.0,
+      "overall_score": 75.0,
+      "answer_preview": "### Introduction\nTax evasion is a serious offense in the United States, governed primarily by federal law. It involves the illegal act of not paying taxes owed to the government by underreporting inco...",
+      "citation_details": [
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 188.1 TRAFFIC SAFETY ACT Chapter T-6\nlate payment charges and costs and expenses incurred by\nrecipients related to administrative pen..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 144 TRAFFIC SAFETY ACT Chapter T-6\nGovernment an administrative penalty in an amount set out in the\nnotice, not to exceed $10 000\n(a)..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 158 TRAFFIC SAFETY ACT Chapter T-6\n(4) When a notice of administrative penalty is issued under the\nProvincial Administrative Penaltie..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 54 TRAFFIC SAFETY ACT Chapter T-6\n(2) If the registration of a motor vehicle is suspended under this\nAct, the motor vehicle is still ..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 161 TRAFFIC SAFETY ACT Chapter T-6\n(i) the owner did not park the vehicle, and\n(ii) no other person parked the vehicle with the owner..."
+        }
+      ]
+    },
+    {
+      "test_id": 15,
+      "country": "USA",
+      "law_type": "Criminal Law",
+      "province": "Federal",
+      "question": "What constitutes racketeering under RICO?",
+      "passed": true,
+      "has_answer": true,
+      "has_citations": true,
+      "citation_count": 5,
+      "expected_sources": [
+        "18 U.S.C.",
+        "1961",
+        "RICO",
+        "racketeering"
+      ],
+      "expected_articles": [
+        "18 USC 1961",
+        "RICO Act"
+      ],
+      "expected_websites": [
+        "uscode.house.gov",
+        "fbi.gov"
+      ],
+      "found_sources": [
+        "18 U.S.C.",
+        "1961",
+        "RICO",
+        "racketeering"
+      ],
+      "found_articles": [],
+      "found_websites": [],
+      "missing_sources": [],
+      "missing_articles": [
+        "18 USC 1961",
+        "RICO Act"
+      ],
+      "missing_websites": [
+        "uscode.house.gov",
+        "fbi.gov"
+      ],
+      "source_match_percentage": 100.0,
+      "article_match_percentage": 0.0,
+      "website_match_percentage": 0.0,
+      "overall_score": 50.0,
+      "answer_preview": "### Introduction\nRacketeering under the Racketeer Influenced and Corrupt Organizations Act (RICO) is a federal law in the United States designed to combat organized crime. RICO provides for both crimi...",
+      "citation_details": [
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 184 TRAFFIC SAFETY ACT Chapter T-6\n(b) fail to deliver a suspended or cancelled motor vehicle\ndocument to a peace officer acting unde..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 156 TRAFFIC SAFETY ACT Chapter T-6\n(b) providing for and governing sanctions that may be imposed\nin respect of a program referred to ..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 187 TRAFFIC SAFETY ACT Chapter T-6\n(a) \u201clender\u201d means a person who holds a security interest in a\nmotor vehicle through a written sec..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 174 TRAFFIC SAFETY ACT Chapter T-6\nof an offence referred to in that subsection, the vehicle is forfeited\nto the Government subject t..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 65 TRAFFIC SAFETY ACT Chapter T-6\n(i) motor vehicle documents and other documents;\n(ii) the providing of motor vehicle documents and ..."
+        }
+      ]
+    },
+    {
+      "test_id": 16,
+      "country": "USA",
+      "law_type": "Traffic Law",
+      "province": "California",
+      "question": "What is the penalty for reckless driving in California?",
+      "passed": true,
+      "has_answer": true,
+      "has_citations": true,
+      "citation_count": 5,
+      "expected_sources": [
+        "Vehicle Code",
+        "23103",
+        "reckless driving",
+        "California"
+      ],
+      "expected_articles": [
+        "VC 23103",
+        "California Vehicle Code"
+      ],
+      "expected_websites": [
+        "leginfo.legislature.ca.gov",
+        "dmv.ca.gov"
+      ],
+      "found_sources": [
+        "Vehicle Code",
+        "23103",
+        "reckless driving",
+        "California"
+      ],
+      "found_articles": [
+        "California Vehicle Code"
+      ],
+      "found_websites": [
+        "leginfo.legislature.ca.gov"
+      ],
+      "missing_sources": [],
+      "missing_articles": [
+        "VC 23103"
+      ],
+      "missing_websites": [
+        "dmv.ca.gov"
+      ],
+      "source_match_percentage": 100.0,
+      "article_match_percentage": 50.0,
+      "website_match_percentage": 50.0,
+      "overall_score": 75.0,
+      "answer_preview": "### Introduction\nThe legal issue at hand pertains to the penalties associated with **reckless driving** in the state of **California**. Reckless driving is defined under California Vehicle Code Sectio...",
+      "citation_details": [
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 161 TRAFFIC SAFETY ACT Chapter T-6\n(i) the owner did not park the vehicle, and\n(ii) no other person parked the vehicle with the owner..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nTRAFFIC SAFETY ACT Chapter T-6\n88.01 Immediate roadside sanction zero: novice\n88.02 Immediate roadside sanction zero: commercial\n88.03 Immedi..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 88.03 TRAFFIC SAFETY ACT Chapter T-6\n(iii) the driver is liable to a fine as provided for under the\nProvincial Administrative Penalti..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 115 TRAFFIC SAFETY ACT Chapter T-6\nor in relation to matters arising under the regulations made under\nthis Division and the consequen..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 144 TRAFFIC SAFETY ACT Chapter T-6\nGovernment an administrative penalty in an amount set out in the\nnotice, not to exceed $10 000\n(a)..."
+        }
+      ]
+    },
+    {
+      "test_id": 17,
+      "country": "USA",
+      "law_type": "Traffic Law",
+      "province": "Texas",
+      "question": "What are the penalties for street racing in Texas?",
+      "passed": true,
+      "has_answer": true,
+      "has_citations": true,
+      "citation_count": 5,
+      "expected_sources": [
+        "Transportation Code",
+        "545.420",
+        "racing",
+        "Texas"
+      ],
+      "expected_articles": [
+        "Section 545.420",
+        "Texas Transportation Code"
+      ],
+      "expected_websites": [
+        "statutes.capitol.texas.gov",
+        "txdmv.gov"
+      ],
+      "found_sources": [
+        "Transportation Code",
+        "545.420",
+        "racing",
+        "Texas"
+      ],
+      "found_articles": [
+        "Texas Transportation Code"
+      ],
+      "found_websites": [
+        "statutes.capitol.texas.gov"
+      ],
+      "missing_sources": [],
+      "missing_articles": [
+        "Section 545.420"
+      ],
+      "missing_websites": [
+        "txdmv.gov"
+      ],
+      "source_match_percentage": 100.0,
+      "article_match_percentage": 50.0,
+      "website_match_percentage": 50.0,
+      "overall_score": 75.0,
+      "answer_preview": "### Introduction\nStreet racing is a significant concern in Texas, both for public safety and legal enforcement. The penalties for street racing can vary based on the circumstances of the offense, incl...",
+      "citation_details": [
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nTRAFFIC SAFETY ACT Chapter T-6\n88.01 Immediate roadside sanction zero: novice\n88.02 Immediate roadside sanction zero: commercial\n88.03 Immedi..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 115.1 TRAFFIC SAFETY ACT Chapter T-6\ntime, drive a vehicle on a highway during that period of time\nat a speed that is greater than th..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 105 TRAFFIC SAFETY ACT Chapter T-6\nsuspension of registration, or both, on such terms and\nconditions as the Court considers appropria..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 115 TRAFFIC SAFETY ACT Chapter T-6\nor in relation to matters arising under the regulations made under\nthis Division and the consequen..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 161 TRAFFIC SAFETY ACT Chapter T-6\n(i) the owner did not park the vehicle, and\n(ii) no other person parked the vehicle with the owner..."
+        }
+      ]
+    },
+    {
+      "test_id": 18,
+      "country": "USA",
+      "law_type": "Traffic Law",
+      "province": "New York",
+      "question": "What is the penalty for driving with a suspended license in New York?",
+      "passed": true,
+      "has_answer": true,
+      "has_citations": true,
+      "citation_count": 5,
+      "expected_sources": [
+        "Vehicle and Traffic Law",
+        "VTL 511",
+        "suspended license",
+        "New York"
+      ],
+      "expected_articles": [
+        "VTL 511",
+        "New York VTL"
+      ],
+      "expected_websites": [
+        "nysenate.gov",
+        "dmv.ny.gov"
+      ],
+      "found_sources": [
+        "Vehicle and Traffic Law",
+        "suspended license",
+        "New York"
+      ],
+      "found_articles": [],
+      "found_websites": [
+        "nysenate.gov",
+        "dmv.ny.gov"
+      ],
+      "missing_sources": [
+        "VTL 511"
+      ],
+      "missing_articles": [
+        "VTL 511",
+        "New York VTL"
+      ],
+      "missing_websites": [],
+      "source_match_percentage": 75.0,
+      "article_match_percentage": 0.0,
+      "website_match_percentage": 100.0,
+      "overall_score": 57.5,
+      "answer_preview": "### Introduction\nThe issue at hand pertains to the penalties associated with driving with a suspended license in New York. This falls under the domain of **Traffic Law** and is governed by the New Yor...",
+      "citation_details": [
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 88.03 TRAFFIC SAFETY ACT Chapter T-6\n(iii) the driver is liable to a fine as provided for under the\nProvincial Administrative Penalti..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 88.1 TRAFFIC SAFETY ACT Chapter T-6\n(ii) the peace officer or a person authorized by the peace\nofficer shall seize the driver\u2019s vehic..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 88.03 TRAFFIC SAFETY ACT Chapter T-6\nregulations for contravention of this section for the 2nd\ntime,\nand\n(c) for a 3rd and subsequent..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 88.1 TRAFFIC SAFETY ACT Chapter T-6\n(A) for an immediate period of 90 days, and\n(B) following the expiration of the period in paragra..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 95 TRAFFIC SAFETY ACT Chapter T-6\n(b) for a 2nd offence committed after the commission of the\noffence referred to in clause (a),\n(i) ..."
+        }
+      ]
+    },
+    {
+      "test_id": 19,
+      "country": "Canada",
+      "law_type": "Family Law",
+      "province": "Federal",
+      "question": "How is child support calculated in Canada?",
+      "passed": true,
+      "has_answer": true,
+      "has_citations": true,
+      "citation_count": 5,
+      "expected_sources": [
+        "Federal Child Support Guidelines",
+        "child support",
+        "calculation"
+      ],
+      "expected_articles": [
+        "Section 3",
+        "Guidelines"
+      ],
+      "expected_websites": [
+        "justice.gc.ca",
+        "Child Support Guidelines"
+      ],
+      "found_sources": [
+        "Federal Child Support Guidelines",
+        "child support",
+        "calculation"
+      ],
+      "found_articles": [
+        "Guidelines"
+      ],
+      "found_websites": [
+        "justice.gc.ca",
+        "Child Support Guidelines"
+      ],
+      "missing_sources": [],
+      "missing_articles": [
+        "Section 3"
+      ],
+      "missing_websites": [],
+      "source_match_percentage": 100.0,
+      "article_match_percentage": 50.0,
+      "website_match_percentage": 100.0,
+      "overall_score": 85.0,
+      "answer_preview": "### Introduction\nChild support in Canada is governed by both federal and provincial laws, primarily under the **Divorce Act** and provincial family law statutes. The calculation of child support is de...",
+      "citation_details": [
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 83 TRAFFIC SAFETY ACT Chapter T-6\n(a) under section 237 of the Criminal Code (Canada) as it read\nimmediately prior to December 12, 19..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 85 TRAFFIC SAFETY ACT Chapter T-6\nDecember 12, 1988 by reason that the person contravened\nsection 237 of the Criminal Code (Canada) a..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 102 TRAFFIC SAFETY ACT Chapter T-6\n(c) disqualify the person from driving a motor vehicle in\nAlberta;\n(d) suspend the registration of..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 188.1 TRAFFIC SAFETY ACT Chapter T-6\nlate payment charges and costs and expenses incurred by\nrecipients related to administrative pen..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "Province o f Alberta\nTRAFFIC SAFETY ACT\nRevised Statutes of Alberta 2000\nChapter T-6\nCurrent as of May 16, 2024\nOffice Consolidation\n\u00a9 Published by Al..."
+        }
+      ]
+    },
+    {
+      "test_id": 20,
+      "country": "USA",
+      "law_type": "Family Law",
+      "province": "Federal",
+      "question": "What are the requirements for adoption in the United States?",
+      "passed": true,
+      "has_answer": true,
+      "has_citations": true,
+      "citation_count": 5,
+      "expected_sources": [
+        "adoption",
+        "requirements",
+        "federal",
+        "state law"
+      ],
+      "expected_articles": [
+        "adoption law",
+        "requirements"
+      ],
+      "expected_websites": [
+        "childwelfare.gov",
+        "adoption.gov"
+      ],
+      "found_sources": [
+        "adoption",
+        "requirements",
+        "federal",
+        "state law"
+      ],
+      "found_articles": [
+        "adoption law",
+        "requirements"
+      ],
+      "found_websites": [
+        "childwelfare.gov"
+      ],
+      "missing_sources": [],
+      "missing_articles": [],
+      "missing_websites": [
+        "adoption.gov"
+      ],
+      "source_match_percentage": 100.0,
+      "article_match_percentage": 100.0,
+      "website_match_percentage": 50.0,
+      "overall_score": 90.0,
+      "answer_preview": "### Introduction\nAdoption in the United States is a legal process through which an individual or couple becomes the legal parent(s) of a child who is not biologically their own. The requirements for a...",
+      "citation_details": [
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 53 TRAFFIC SAFETY ACT Chapter T-6\n(e) apply for, acquire or attempt to acquire the registration of a\nmotor vehicle or trailer during ..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 64 TRAFFIC SAFETY ACT Chapter T-6\ncancellation or transfer of the motor vehicle document or\nthe sale or transfer of ownership of a mo..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 64 TRAFFIC SAFETY ACT Chapter T-6\n(p) for the purposes of section 58,\n(i) authorizing the Registrar to refuse to register a vehicle i..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 62 TRAFFIC SAFETY ACT Chapter T-6\n(b) have in that person\u2019s possession a document that is\nmutilated, defaced, altered or falsified, o..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 79 TRAFFIC SAFETY ACT Chapter T-6\nExclusion from liability\n79 Where a person sells, disposes of, deals with or otherwise\nhandles a ve..."
+        }
+      ]
+    },
+    {
+      "test_id": 21,
+      "country": "USA",
+      "law_type": "Copyright Law",
+      "province": "Federal",
+      "question": "What is the duration of copyright protection in the United States?",
+      "passed": true,
+      "has_answer": true,
+      "has_citations": true,
+      "citation_count": 5,
+      "expected_sources": [
+        "17 U.S.C.",
+        "302",
+        "copyright",
+        "duration"
+      ],
+      "expected_articles": [
+        "17 USC 302",
+        "Copyright Act"
+      ],
+      "expected_websites": [
+        "copyright.gov",
+        "uscode.house.gov"
+      ],
+      "found_sources": [
+        "17 U.S.C.",
+        "302",
+        "copyright",
+        "duration"
+      ],
+      "found_articles": [
+        "Copyright Act"
+      ],
+      "found_websites": [
+        "copyright.gov"
+      ],
+      "missing_sources": [],
+      "missing_articles": [
+        "17 USC 302"
+      ],
+      "missing_websites": [
+        "uscode.house.gov"
+      ],
+      "source_match_percentage": 100.0,
+      "article_match_percentage": 50.0,
+      "website_match_percentage": 50.0,
+      "overall_score": 75.0,
+      "answer_preview": "**Introduction**: This response addresses the duration of copyright protection in the United States, which is governed by federal law.\n\n**Direct Answer**: In the United States, the duration of copyrig...",
+      "citation_details": [
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "Copyright and Permission Statement\nThe Government of Alberta, through the Alberta King\u2019s Printer, holds copyright\nfor all Alberta legislation. Alberta..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 173.1 TRAFFIC SAFETY ACT Chapter T-6\n(f) 60 days from the day that the motor vehicle is seized or\nimmobilized, or\n(g) if a shorter pe..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 173 TRAFFIC SAFETY ACT Chapter T-6\nSeizure or immobilization of motor vehicle\n173(1) Where a person has been charged with an offence ..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 19 TRAFFIC SAFETY ACT Chapter T-6\n(3) A regulation made under subsection (1) is repealed 5 years\nafter the regulation comes into forc..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 191 TRAFFIC SAFETY ACT Chapter T-6\n190 Repealed 2016 c14 s11.\nRegulations\n191(1) The Lieutenant Governor in Council may make regulati..."
+        }
+      ]
+    },
+    {
+      "test_id": 22,
+      "country": "Canada",
+      "law_type": "Copyright Law",
+      "province": "Federal",
+      "question": "What constitutes fair dealing under Canadian copyright law?",
+      "passed": true,
+      "has_answer": true,
+      "has_citations": true,
+      "citation_count": 5,
+      "expected_sources": [
+        "Copyright Act",
+        "fair dealing",
+        "section 29"
+      ],
+      "expected_articles": [
+        "Section 29",
+        "Copyright Act"
+      ],
+      "expected_websites": [
+        "laws-lois.justice.gc.ca",
+        "cipo.gc.ca"
+      ],
+      "found_sources": [
+        "Copyright Act",
+        "fair dealing",
+        "section 29"
+      ],
+      "found_articles": [
+        "Section 29",
+        "Copyright Act"
+      ],
+      "found_websites": [
+        "laws-lois.justice.gc.ca"
+      ],
+      "missing_sources": [],
+      "missing_articles": [],
+      "missing_websites": [
+        "cipo.gc.ca"
+      ],
+      "source_match_percentage": 100.0,
+      "article_match_percentage": 100.0,
+      "website_match_percentage": 50.0,
+      "overall_score": 90.0,
+      "answer_preview": "### Introduction\nFair dealing is a provision under Canadian copyright law that allows for the use of copyrighted material without permission from the copyright owner under certain circumstances. It is...",
+      "citation_details": [
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "Copyright and Permission Statement\nThe Government of Alberta, through the Alberta King\u2019s Printer, holds copyright\nfor all Alberta legislation. Alberta..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 4 TRAFFIC SAFETY ACT Chapter T-6\n(4) Notwithstanding that a person has given an authorization under\nthis section, that person may do ..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 167 TRAFFIC SAFETY ACT Chapter T-6\n(3) Where a peace officer makes a request under subsection (1)(d),\nthe peace officer shall allow t..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 5 TRAFFIC SAFETY ACT Chapter T-6\n(f) a person who is authorized to perform a function of the\nRegistrar, if the document relates to a ..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 13 TRAFFIC SAFETY ACT Chapter T-6\n(c) persons that carry on business in that other jurisdiction who\nin Alberta are or would be carrie..."
+        }
+      ]
+    },
+    {
+      "test_id": 23,
+      "country": "Canada",
+      "law_type": "Employment Law",
+      "province": "Ontario",
+      "question": "What is the minimum wage in Ontario?",
+      "passed": true,
+      "has_answer": true,
+      "has_citations": true,
+      "citation_count": 5,
+      "expected_sources": [
+        "Employment Standards Act",
+        "minimum wage",
+        "Ontario"
+      ],
+      "expected_articles": [
+        "ESA",
+        "minimum wage"
+      ],
+      "expected_websites": [
+        "ontario.ca",
+        "Employment Standards"
+      ],
+      "found_sources": [
+        "Employment Standards Act",
+        "minimum wage",
+        "Ontario"
+      ],
+      "found_articles": [
+        "ESA",
+        "minimum wage"
+      ],
+      "found_websites": [
+        "ontario.ca",
+        "Employment Standards"
+      ],
+      "missing_sources": [],
+      "missing_articles": [],
+      "missing_websites": [],
+      "source_match_percentage": 100.0,
+      "article_match_percentage": 100.0,
+      "website_match_percentage": 100.0,
+      "overall_score": 100.0,
+      "answer_preview": "**Introduction**: The minimum wage is a critical aspect of employment law, establishing the lowest hourly wage that employers can legally pay their employees. In Ontario, this is governed by the Emplo...",
+      "citation_details": [
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 107 TRAFFIC SAFETY ACT Chapter T-6\n(B) the Minister responsible for the Special Areas Act, in\nthe case of a special area;\n(ii) a prov..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 144 TRAFFIC SAFETY ACT Chapter T-6\nGovernment an administrative penalty in an amount set out in the\nnotice, not to exceed $10 000\n(a)..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "Pilot Project (Golf Carts)................................ 114/2024 ......... 153/2024\nSafeRoads Alberta .......................................... 22..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "Province o f Alberta\nTRAFFIC SAFETY ACT\nRevised Statutes of Alberta 2000\nChapter T-6\nCurrent as of May 16, 2024\nOffice Consolidation\n\u00a9 Published by Al..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 102 TRAFFIC SAFETY ACT Chapter T-6\n(c) disqualify the person from driving a motor vehicle in\nAlberta;\n(d) suspend the registration of..."
+        }
+      ]
+    },
+    {
+      "test_id": 24,
+      "country": "USA",
+      "law_type": "Employment Law",
+      "province": "Federal",
+      "question": "What protections does the Fair Labor Standards Act provide?",
+      "passed": true,
+      "has_answer": true,
+      "has_citations": true,
+      "citation_count": 5,
+      "expected_sources": [
+        "FLSA",
+        "29 U.S.C.",
+        "Fair Labor Standards Act"
+      ],
+      "expected_articles": [
+        "29 USC 201",
+        "FLSA"
+      ],
+      "expected_websites": [
+        "dol.gov",
+        "uscode.house.gov"
+      ],
+      "found_sources": [
+        "FLSA",
+        "29 U.S.C.",
+        "Fair Labor Standards Act"
+      ],
+      "found_articles": [
+        "FLSA"
+      ],
+      "found_websites": [
+        "dol.gov"
+      ],
+      "missing_sources": [],
+      "missing_articles": [
+        "29 USC 201"
+      ],
+      "missing_websites": [
+        "uscode.house.gov"
+      ],
+      "source_match_percentage": 100.0,
+      "article_match_percentage": 50.0,
+      "website_match_percentage": 50.0,
+      "overall_score": 75.0,
+      "answer_preview": "**Introduction**: The Fair Labor Standards Act (FLSA) is a significant piece of legislation in the United States that establishes various labor protections for employees. It primarily addresses issues...",
+      "citation_details": [
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "TRAFFIC SAFETY ACT\nChapter T-6\nTable of Contents\n1 Interpretation\n1.1 Nature of contraventions\n1.2 No imprisonment\nPart 1\nGeneral Administration\nDivis..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 155 TRAFFIC SAFETY ACT Chapter T-6\n(2) A person who commits a contravention referred to in section\n157 by reason of the contravention..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nTRAFFIC SAFETY ACT Chapter T-6\nDivision 2\nCompliance\n134 Definition\n135 Purposes of inspections\n136 Inspections of commercial vehicles\n137 St..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 152 TRAFFIC SAFETY ACT Chapter T-6\nvehicle, to weight that is less than the weight that may be borne\nunder this Act.\n(2) Where there ..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 129.3 TRAFFIC SAFETY ACT Chapter T-6\n(1), the Government may recover the amount owing in respect of\nthe penalty by an action in debt...."
+        }
+      ]
+    },
+    {
+      "test_id": 25,
+      "country": "Canada",
+      "law_type": "Constitutional Law",
+      "province": "Federal",
+      "question": "What does Section 8 of the Charter protect against?",
+      "passed": true,
+      "has_answer": true,
+      "has_citations": true,
+      "citation_count": 5,
+      "expected_sources": [
+        "Charter",
+        "section 8",
+        "unreasonable search",
+        "seizure"
+      ],
+      "expected_articles": [
+        "Section 8",
+        "Charter of Rights"
+      ],
+      "expected_websites": [
+        "laws-lois.justice.gc.ca",
+        "Charter"
+      ],
+      "found_sources": [
+        "Charter",
+        "section 8",
+        "unreasonable search",
+        "seizure"
+      ],
+      "found_articles": [
+        "Section 8",
+        "Charter of Rights"
+      ],
+      "found_websites": [
+        "Charter"
+      ],
+      "missing_sources": [],
+      "missing_articles": [],
+      "missing_websites": [
+        "laws-lois.justice.gc.ca"
+      ],
+      "source_match_percentage": 100.0,
+      "article_match_percentage": 100.0,
+      "website_match_percentage": 50.0,
+      "overall_score": 90.0,
+      "answer_preview": "### Introduction\nSection 8 of the Canadian Charter of Rights and Freedoms addresses the protection against unreasonable search and seizure. This section is a fundamental aspect of Canadian constitutio...",
+      "citation_details": [
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 129.3 TRAFFIC SAFETY ACT Chapter T-6\n(1), the Government may recover the amount owing in respect of\nthe penalty by an action in debt...."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 19 TRAFFIC SAFETY ACT Chapter T-6\n(3) A regulation made under subsection (1) is repealed 5 years\nafter the regulation comes into forc..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 2.3 TRAFFIC SAFETY ACT Chapter T-6\nObstruction of investigators\n2.3 When an investigator is exercising powers or carrying out\nduties ..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 191 TRAFFIC SAFETY ACT Chapter T-6\n190 Repealed 2016 c14 s11.\nRegulations\n191(1) The Lieutenant Governor in Council may make regulati..."
+        },
+        {
+          "source": "ALEBRTA RUL BOOK.pdf",
+          "text": "RSA 2000\nSection 18.1 TRAFFIC SAFETY ACT Chapter T-6\n(2) The Minister may make regulations\n(a) exempting or providing for the granting of exemptions o..."
+        }
+      ]
+    }
+  ]
+}

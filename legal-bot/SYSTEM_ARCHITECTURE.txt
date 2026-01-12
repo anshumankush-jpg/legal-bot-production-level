@@ -1,0 +1,382 @@
+================================================================================
+ADVANCED LEGAL TESTING & DAILY UPDATE SYSTEM - ARCHITECTURE
+================================================================================
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                         TESTING & UPDATE SYSTEM                              │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                            COMPONENT 1: TEST SUITE                           │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+    advanced_legal_source_test.py
+            │
+            ├─→ 25 Test Cases
+            │   ├─→ Canada Criminal Law (5 tests)
+            │   ├─→ Canada Traffic Law (5 tests)
+            │   ├─→ USA Criminal Law (5 tests)
+            │   ├─→ USA Traffic Law (3 tests)
+            │   ├─→ Family Law (2 tests)
+            │   ├─→ Copyright Law (2 tests)
+            │   ├─→ Employment Law (2 tests)
+            │   └─→ Constitutional Law (1 test)
+            │
+            ├─→ For Each Test:
+            │   ├─→ Send question to backend
+            │   ├─→ Receive answer + citations
+            │   ├─→ Verify expected sources (50% weight)
+            │   ├─→ Verify expected articles (30% weight)
+            │   ├─→ Verify expected websites (20% weight)
+            │   └─→ Calculate overall score
+            │
+            └─→ Generate Report
+                ├─→ Console output (real-time)
+                ├─→ JSON file (detailed results)
+                └─→ Pass/Fail summary
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                      COMPONENT 2: DAILY NEWS SCRAPER                         │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+    legal_news_scraper.py
+            │
+            ├─→ Canadian Sources (6)
+            │   ├─→ Justice Canada - What's New
+            │   ├─→ Canada Gazette
+            │   ├─→ Ontario Laws Updates
+            │   ├─→ BC Laws Updates
+            │   ├─→ Alberta Laws
+            │   └─→ Supreme Court of Canada RSS
+            │
+            ├─→ US Sources (6)
+            │   ├─→ Congress.gov Recent Laws
+            │   ├─→ Federal Register
+            │   ├─→ DOJ Press Releases
+            │   ├─→ California Legislative Info
+            │   ├─→ Texas Legislature Online
+            │   └─→ US Supreme Court RSS
+            │
+            ├─→ Scraping Process:
+            │   ├─→ Fetch webpage/RSS feed
+            │   ├─→ Parse HTML/XML
+            │   ├─→ Extract: title, link, date, summary
+            │   ├─→ Generate hash for duplicate detection
+            │   ├─→ Compare with previous_updates.json
+            │   └─→ Save only NEW updates
+            │
+            └─→ Generate Reports
+                ├─→ legal_updates_YYYYMMDD.json
+                ├─→ to_ingest_YYYYMMDD.json
+                └─→ Update previous_updates.json
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                      COMPONENT 3: DAILY SCHEDULER                            │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+    daily_legal_updater.py
+            │
+            ├─→ Schedule: Daily at 2:00 AM
+            │
+            ├─→ Step 1: Run Scraper
+            │   └─→ Execute legal_news_scraper.py
+            │
+            ├─→ Step 2: Process Updates
+            │   ├─→ Load today's updates
+            │   ├─→ Prepare documents for ingestion
+            │   └─→ Save to to_ingest_YYYYMMDD.json
+            │
+            └─→ Step 3: Report
+                ├─→ Console output
+                └─→ Log file
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                          DATA FLOW DIAGRAM                                   │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+    ┌──────────────┐
+    │  User Runs   │
+    │  Test Suite  │
+    └──────┬───────┘
+           │
+           ▼
+    ┌──────────────────────┐
+    │  Test Questions (25) │
+    └──────┬───────────────┘
+           │
+           ▼
+    ┌──────────────────────┐       ┌─────────────────┐
+    │  Backend API         │◄──────┤ Vector Database │
+    │  (localhost:8000)    │       │ (394 chunks)    │
+    └──────┬───────────────┘       └─────────────────┘
+           │
+           ▼
+    ┌──────────────────────┐
+    │  Response + Citations│
+    └──────┬───────────────┘
+           │
+           ▼
+    ┌──────────────────────┐
+    │  Source Verification │
+    │  - Check sources     │
+    │  - Check articles    │
+    │  - Check websites    │
+    └──────┬───────────────┘
+           │
+           ▼
+    ┌──────────────────────┐
+    │  Test Results        │
+    │  - Pass/Fail         │
+    │  - Scores            │
+    │  - Report            │
+    └──────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                      DAILY UPDATE DATA FLOW                                  │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+    ┌──────────────┐
+    │  2:00 AM     │
+    │  Scheduler   │
+    └──────┬───────┘
+           │
+           ▼
+    ┌──────────────────────┐
+    │  Scrape Legal Sites  │
+    │  (12+ sources)       │
+    └──────┬───────────────┘
+           │
+           ▼
+    ┌──────────────────────┐       ┌─────────────────────┐
+    │  Extract Updates     │◄──────┤ previous_updates.json│
+    │  - Title             │       │ (hash database)     │
+    │  - Link              │       └─────────────────────┘
+    │  - Date              │
+    │  - Summary           │
+    └──────┬───────────────┘
+           │
+           ▼
+    ┌──────────────────────┐
+    │  Detect NEW Updates  │
+    │  (compare hashes)    │
+    └──────┬───────────────┘
+           │
+           ▼
+    ┌──────────────────────┐
+    │  Save Reports        │
+    │  - Daily JSON        │
+    │  - Ingestion file    │
+    │  - Update hash DB    │
+    └──────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                         FILE STRUCTURE                                       │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+project/
+│
+├── Testing System Files
+│   ├── advanced_legal_source_test.py      (24 KB - Test suite)
+│   ├── legal_news_scraper.py              (14 KB - Scraper)
+│   ├── daily_legal_updater.py             (5 KB - Scheduler)
+│   └── requirements_testing.txt           (0.5 KB - Dependencies)
+│
+├── Documentation
+│   ├── ADVANCED_TESTING_README.md         (23 KB - Full guide)
+│   ├── QUICK_START_TESTING.md             (6 KB - Quick start)
+│   ├── TESTING_SYSTEM_COMPLETE.md         (12 KB - Summary)
+│   └── SYSTEM_ARCHITECTURE.txt            (This file)
+│
+├── Test Results (Generated)
+│   └── advanced_legal_test_results_*.json
+│
+└── Legal Updates (Generated)
+    ├── legal_updates_YYYYMMDD.json        (Daily scrape results)
+    ├── to_ingest_YYYYMMDD.json            (Ready for ingestion)
+    └── previous_updates.json               (Duplicate tracker)
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                      TEST SCORING ALGORITHM                                  │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+    For each test case:
+
+    1. Send question to backend
+       └─→ Receive: answer + citations
+
+    2. Extract text from:
+       ├─→ Answer text
+       └─→ All citation texts + sources
+
+    3. Check expected sources (50% weight)
+       ├─→ For each expected source:
+       │   └─→ Search in combined text (case-insensitive)
+       └─→ Calculate: (found / expected) * 100
+
+    4. Check expected articles (30% weight)
+       ├─→ For each expected article:
+       │   └─→ Search in combined text (case-insensitive)
+       └─→ Calculate: (found / expected) * 100
+
+    5. Check expected websites (20% weight)
+       ├─→ For each expected website:
+       │   └─→ Search in combined text (case-insensitive)
+       └─→ Calculate: (found / expected) * 100
+
+    6. Calculate overall score:
+       └─→ (source_match * 0.5) + (article_match * 0.3) + (website_match * 0.2)
+
+    7. Determine pass/fail:
+       ├─→ PASS if: has_answer AND overall_score >= 40%
+       └─→ FAIL if: no_answer OR overall_score < 40%
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                      SCRAPER DUPLICATE DETECTION                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+    Day 1 (Saturday):
+    ┌────────────────────┐
+    │ Scrape websites    │
+    └────────┬───────────┘
+             │
+             ▼
+    ┌────────────────────┐
+    │ Find 10 updates    │
+    │ - Update A         │
+    │ - Update B         │
+    │ - Update C         │
+    │ - ...              │
+    └────────┬───────────┘
+             │
+             ▼
+    ┌────────────────────┐
+    │ Generate hashes    │
+    │ - hash(A) = abc123 │
+    │ - hash(B) = def456 │
+    │ - hash(C) = ghi789 │
+    └────────┬───────────┘
+             │
+             ▼
+    ┌────────────────────┐
+    │ Save to DB         │
+    │ previous_updates   │
+    │ {abc123, def456,   │
+    │  ghi789, ...}      │
+    └────────────────────┘
+
+    Day 2 (Sunday):
+    ┌────────────────────┐
+    │ Scrape websites    │
+    └────────┬───────────┘
+             │
+             ▼
+    ┌────────────────────┐
+    │ Find 12 items      │
+    │ - Update A (old)   │
+    │ - Update D (NEW)   │
+    │ - Update E (NEW)   │
+    │ - ...              │
+    └────────┬───────────┘
+             │
+             ▼
+    ┌────────────────────┐
+    │ Generate hashes    │
+    │ - hash(A) = abc123 │◄─── Already in DB (skip)
+    │ - hash(D) = jkl012 │◄─── NEW (include)
+    │ - hash(E) = mno345 │◄─── NEW (include)
+    └────────┬───────────┘
+             │
+             ▼
+    ┌────────────────────┐
+    │ Save only NEW      │
+    │ - Update D         │
+    │ - Update E         │
+    │ (8 new updates)    │
+    └────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                      INTEGRATION WITH MAIN SYSTEM                            │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+    ┌─────────────────────────────────────────────────────────────────────────┐
+    │                         EXISTING SYSTEM                                  │
+    │                                                                          │
+    │  ┌──────────┐      ┌──────────┐      ┌─────────────┐                  │
+    │  │ Frontend │◄────►│ Backend  │◄────►│   Vector    │                  │
+    │  │  (4200)  │      │  (8000)  │      │  Database   │                  │
+    │  └──────────┘      └──────────┘      └─────────────┘                  │
+    │                                                                          │
+    └─────────────────────────────────────────────────────────────────────────┘
+                                    ▲
+                                    │
+                                    │ Tests API
+                                    │
+    ┌───────────────────────────────┴─────────────────────────────────────────┐
+    │                         NEW TESTING SYSTEM                               │
+    │                                                                          │
+    │  ┌──────────────┐      ┌──────────────┐      ┌──────────────┐         │
+    │  │ Test Suite   │      │   Scraper    │      │  Scheduler   │         │
+    │  │ (25 tests)   │      │ (12 sources) │      │ (Daily 2 AM) │         │
+    │  └──────┬───────┘      └──────┬───────┘      └──────┬───────┘         │
+    │         │                     │                     │                   │
+    │         │                     │                     │                   │
+    │         ▼                     ▼                     ▼                   │
+    │  ┌──────────────┐      ┌──────────────┐      ┌──────────────┐         │
+    │  │ Test Results │      │Daily Updates │      │  Ingestion   │         │
+    │  │    (JSON)    │      │    (JSON)    │      │    Queue     │         │
+    │  └──────────────┘      └──────────────┘      └──────────────┘         │
+    │                                                                          │
+    └──────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                         USAGE WORKFLOW                                       │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+    DAILY OPERATIONS:
+    ─────────────────
+    02:00 AM → Scraper runs automatically
+              └─→ Finds new legal updates
+              └─→ Saves to legal_updates/
+
+    Weekly:   → Review scraped updates
+              └─→ Ingest new documents via web interface
+
+    TESTING WORKFLOW:
+    ─────────────────
+    After adding documents:
+    1. Run: python advanced_legal_source_test.py
+    2. Review results
+    3. Identify gaps (low scores)
+    4. Add missing documents
+    5. Re-run tests
+    6. Verify improvement
+
+    MONITORING:
+    ───────────
+    Daily:    → Check scraper logs
+              └─→ Verify new updates found
+
+    Weekly:   → Run test suite
+              └─→ Track score trends
+
+    Monthly:  → Full system audit
+              └─→ Update test cases if needed
+
+================================================================================
+                            SYSTEM SUMMARY
+================================================================================
+
+Components:       3 (Test Suite, Scraper, Scheduler)
+Test Cases:       25
+Law Types:        7
+Countries:        2 (Canada, USA)
+Jurisdictions:    8 (Federal + provinces/states)
+Scraper Sources:  12+
+Documentation:    100+ pages
+Total Files:      7 (3 Python scripts + 4 docs)
+
+Status:           ✅ READY FOR USE
+Version:          1.0
+Created:          January 8, 2026
+
+================================================================================

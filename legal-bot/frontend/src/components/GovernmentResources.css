@@ -1,0 +1,171 @@
+.government-resources {
+  background: #1a1a1a;
+  border: 1px solid #404040;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.resources-title {
+  color: #00bcd4;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0 0 1.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.province-badge {
+  background: rgba(0, 188, 212, 0.2);
+  border: 1px solid #00bcd4;
+  color: #00bcd4;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  margin-left: 0.5rem;
+}
+
+.resources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.resource-card {
+  background: #2d2d2d;
+  border: 2px solid #404040;
+  border-radius: 10px;
+  padding: 1.25rem;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.resource-card:hover {
+  border-color: #00bcd4;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 188, 212, 0.3);
+  background: #333333;
+}
+
+.resource-card:hover .resource-hover-text {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.resource-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.resource-icon {
+  font-size: 1.5rem;
+}
+
+.resource-number {
+  background: #00bcd4;
+  color: #1a1a1a;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+}
+
+.resource-title {
+  color: #ffffff;
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.resource-source {
+  color: #b0b0b0;
+  font-size: 0.9rem;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.source-label {
+  color: #00bcd4;
+  font-weight: 500;
+}
+
+.resource-url {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: #1a1a1a;
+  border-radius: 6px;
+  margin-top: auto;
+}
+
+.url-icon {
+  font-size: 1rem;
+}
+
+.url-text {
+  color: #00bcd4;
+  font-size: 0.85rem;
+  font-family: 'Courier New', monospace;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.resource-hover-text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 188, 212, 0.95), transparent);
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  font-weight: 600;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+
+.resources-note {
+  color: #b0b0b0;
+  font-size: 0.9rem;
+  font-style: italic;
+  margin: 1rem 0 0 0;
+  padding: 0.75rem;
+  background: rgba(0, 188, 212, 0.1);
+  border-left: 3px solid #00bcd4;
+  border-radius: 4px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .resources-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .government-resources {
+    padding: 1rem;
+  }
+  
+  .resources-title {
+    font-size: 1.1rem;
+  }
+}

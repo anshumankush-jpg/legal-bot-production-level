@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="shortcut icon" type="image/x-icon" href="common/images/manitoba.ico">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="google" content="notranslate">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="dcterms.title" content="Manitoba Laws"> 
+	<meta name="dcterms.publisher" content="King's Printer of Manitoba">
+	<meta name="dcterms.creator" content="Manitoba Justice">
+	<meta name="dcterms.language" title="ISO639-1" content="en">
+		<link rel="stylesheet" type="text/css" href="common/css/content2.css?v=3">	
+	<link rel="stylesheet" type="text/css" href="common/css/laws4.css?v=3">
+		<title>Manitoba Laws</title>
+	<script src="common/js/common.js?v=3"></script>
+	<script src="common/js/w3.js"></script>
+	<style>
+		a{color:black;}
+	</style>
+	<style media="print" id="print-size"></style>
+<!-- end of header.all -->
+</head>
+<body onload="show_map_link();">
+<!-- robots content="noindex, nofollow" -->
+<div class="access-links sr-only">
+	<a title="top" rel="header navigation" accesskey="0" href="#topmenu"></a>
+	<a title="main menu" rel="header navigation" accesskey="1" href="#topmenu">Top menu</a>
+		<a rel="list of Acts" accesskey="2" href="#myList">List of Acts</a>		<a rel="main body navigation" accesskey="3" href="#content">Main content</a>
+		<a rel="footer navigation" accesskey="4" href="#footer">Footer</a>
+		<a accesskey="6"  onclick="vPos('index.fr.php')"> </a>
+		<a href="index.fr.php" rel="switch language" accesskey="5">French</a>
+		<a rel="filter by chapter no" accesskey="t" href="#" onclick="indexFocus('myTitle')">Title filter</a>
+		<a rel="filter by chapter no" accesskey="c" href="#" onclick="indexFocus('myChptr')">Chapter filter</a>
+	</div>
+<!-- start of header -->
+<div class="hdr" id="topmenu">
+  <div class="hdr-left">
+	<a href="https://www.manitoba.ca/index.html" title="Manitoba government home page"><img class="bp-logo" src="common/images/mb-logo.png" alt="Manitoba Government home page"></a>
+  </div>
+	<div class="hdr-center">
+	<span class="s1_2em"></span>
+	</div>
+  <div class="hdr-right">
+	<span id="resizeBttns">
+		<button type="button" id="fontdown" title="decrease font size" onclick="fontdown()">A</button> 
+		<button type="button" id="fontreg" title="normal font size" onclick="fontreg()">A</button> 
+		<button type="button" id="fontup" title="increase font size" onclick="fontup()">A</button>
+	&nbsp;</span>
+	<a id="lang" href="index.fr.php">Français</a>
+  </div>
+</div>
+<!-- </header> -->
+<header class="sticky-hdr">
+	<nav class="top-nav">
+		<!-- collapsed menu button for small viewport -->
+		<ul class="nav-right">
+			<li>
+				<a title="Manitoba government home page" class="topnav-toplink" href="index.php">Manitoba Laws <img alt="home page icon" src="common/images/home(wh).png" height="16"></a>
+			</li>
+			<li class="menubar">
+				<a href="javascript:void(0);" class="menu-icon" onclick="toggleOn()" style="padding-top: 6px"><span style="color:white; font-size: 2rem;">&equiv;</span></a> 
+				<a href="javascript:void(0);" class="menu-close-icon" onclick="toggleOff()" style="padding-top: 5px"><span style="color:white; font-size: 1.6rem;">X</span></a> 
+			</li>
+			<li class="fullmenu">
+				<a class="topnav-toplink" title = "Search Manitoba Laws" href="search3.php">Search <img alt="magnifying glass icon" src="common/images/search(wh).png" height="16"></a>
+			</li>
+			<li class="dropdown fullmenu">
+				<button type="button" class="dropdown__title" aria-expanded="false" aria-controls="acts_menu" onclick="submenu('acts_menu')">
+				  Acts &#9660;
+				</button>
+				<ul class="dropdown__menu" id="acts_menu">
+					<li><p class="menu_title">Consolidated Acts</p>
+						<a href="statutes/index_ccsm.php" title="Continuing Consolidation of the Statutes of Manitoba">C.C.S.M. Acts</a>
+						<a href="statutes/index_muni.php">Municipal Acts</a>
+						<a href="statutes/index_priv.php">Private Acts</a>
+					</li>
+					<li class="divider"></li>
+					<li><p class="menu_title">Original Acts:</p>
+						<a href="statutes/index_chap.php">Annual chapters</a>
+						<a href="statutes/index_public.php">Public (non-CCSM) Acts</a></li>
+					<li class="divider"></li>
+					<li><p class="menu_title">Re-enacted Statutes:</p>
+						<a href="statutes/index_reccsm.php">R.S.M. 1987 and 1988 (CCSM Acts)</a>
+						<a href="statutes/index_re1987s.php">R.S.M. 1987 (Supplement)</a>
+						<a href="statutes/index_repriv.php">R.S.M. 1990 (Private Acts)</a></li>
+					<li class="divider"></li>
+					<li><a href="statutes/index_procs.php">Proclamations</a></li>
+					<li class="divider"></li>
+<!--					<li><a href="statutes/index_patent.php">Letters Patent</a></li>
+					<li class="divider"></li> -->
+					<li><a href="whats_new.php">What's new (site&nbsp;improvements)</a></li>
+					<li class="divider2"></li>
+				</ul>
+			</li>
+			<li class="dropdown fullmenu">
+				<button type="button" class="dropdown__title" aria-expanded="false" aria-controls="regs_menu" onclick="submenu('regs_menu')">
+				  Regulations &#9660;
+				</button>
+				<ul class="dropdown__menu" id="regs_menu">
+					<li>
+						<p class="menu_title">Consolidated regulations:</p>
+						<a title="current consolidated regulations under C.C.S.M. Acts" href="regs/index.php">under all Acts</a>
+						<a title="current regulations under non-CCSM Acts" href="regs/index_nonccsm.php">under non-CCSM Acts</a> 
+					</li>
+					<li class="divider"></li>
+					<li>
+						<p class="menu_title">Original regulations:</p>
+						<a title="new and amending regulations (unconsolidated)" href="regs/index_annual.php">from 2000 to 2025</a>
+					</li>
+					<li class="divider"></li>
+					<li>
+						<p class="menu_title">Prescribed Forms</p>
+						<a title="court forms" href="rules/forms_e.php">Court forms</a>
+						<a title="other prescribed forms" href="regs/index_forms.php">Other prescribed forms</a>
+					</li>
+					<li class="divider"></li>
+					<li><a href="whats_new.php">What's new (site&nbsp;improvements)</a></li>
+				</ul>
+			</li>
+			<li class="dropdown fullmenu">
+				<button type="button" class="dropdown__title" aria-expanded="false" aria-controls="rules_menu" onclick="submenu('rules_menu')">
+				  Court Rules &#9660;
+				</button>
+				<ul class="dropdown__menu" id="rules_menu">
+					<li class="divider"></li>
+					<li><p class="menu_title">Court of Appeal:</p>
+						<a title="civil court of appeal rules" href="regs/current/555-88r.php?lang=en">civil rules</a>
+<!--						<a title="criminal court of appeal rules" href="https://laws-lois.justice.gc.ca/eng/regulations/SI-92-106/page-1.html">criminal rules (SI-92-106)</a> -->
+						<a title="criminal court of appeal rules" href="https://www.manitobacourts.mb.ca/site/assets/files/1137/mbca_criminal_appeal_rules.pdf">criminal rules (SI-92-106)</a>
+					</li>
+					<li class="divider"></li>
+					<li><p class="menu_title">Court of King's Bench:</p>
+						<a title="civil court rules" href="regs/current/553-88.php?lang=en">civil rules</a>
+						<a title="criminal court rules" href="https://laws.justice.gc.ca/eng/regulations/SI-2016-34/page-1.html">criminal rules (SI-2016-34)</a>
+					</li>
+					<li class="divider"></li>
+					<li><p class="menu_title">Provincial Court:</p>
+						<a title="Provincial Court Family Rules" href="regs/current/087-88r.php?lang=en">family rules</a>
+					</li>
+					<li class="divider"></li>
+					<li>
+						<p class="menu_title">Related links:</p>
+						<a href="rules/forms_e.php">Court forms</a>
+					</li>
+					<li>
+						<a href="https://www.manitobacourts.mb.ca">Manitoba Courts website</a>
+					</li>
+				</ul>
+			<li class="fullmenu">
+				<a class="top-menu-link" href="statutes/index_orders.php">Orders</a>
+			</li>
+			<li class="dropdown fullmenu">
+				<button type="button" class="dropdown__title" aria-expanded="false" aria-controls="others_menu" onclick="submenu('others_menu')">
+				  Other &#9660;
+				</button>
+				<ul class="dropdown__menu" id="others_menu">			
+					<li><p class="menu_title">Proclamations:</p>
+						<a href="statutes/index_procs.php">Acts</a>
+						<a href="statutes/index_crown.php">Crown</a>
+					</li>
+					<li class="divider"></li>
+<!--					<li><a href="statutes/index_patent.php">Letters patent</a></li> -->
+					<li class="patent">
+						<p class="menu_title"><a href="statutes/index_patent.php">Letters patent</a></p>
+					</li>
+				</ul>
+			</li>
+			<li class="dropdown fullmenu last-item">
+				<button type="button" class="dropdown__title" aria-expanded="false" aria-controls="bills_menu" onclick="submenu('bills_menu')">
+				 Legislative Assembly &#9660;
+				</button>
+				<ul class="dropdown__menu" id="bills_menu">
+					<li><p class="menu_title">Current session:</p>
+						<a title="current session bills" href="/bills/sess/index.php">Bills</a>
+						<a title="current session bill status" href="https://www.gov.mb.ca/legislature/business/billstatus.pdf">Bill status</a>
+					</li>
+					<li class="divider"></li>
+					<li>
+						<a class="magnify" href="/bills/search/search.php">Search in bills</a>
+					</li>
+					<li class="divider"></li>
+					<li>
+						<a href="https://www.gov.mb.ca/legislature/index.html">Legislative Assembly website</a>
+					</li>
+				</ul>
+			</li>
+		</ul>
+<!--	</div> -->
+	</nav>
+	<div class="breadcrumb-container sticky-crumbs">
+		<ol class="left breadcrumb">
+<!--		<li><a title="Manitoba government home page" href="https://www.manitoba.ca"><img src="common/images/home(bk).png" width="14" height="14"></a></li>
+		<li><a title="Manitoba government home page" href="https://www.manitoba.ca"><img src="common/images/manitoba.ico" height="14"></a></li>  -->
+		<li><a title="Manitoba Laws home page" href="index.php"><img alt="home page icon" src="common/images/home(bk).png" height="14"></a> 
+		<a style="color:blue" title="what's new" href="whats_new.php">&#9733; New site layout &#9733;</a> </li>
+			<li></li>
+        </ol>
+	</div>
+</header>
+<main id="main">
+
+
+<!-- /robots -->
+<div class="content" id="content">
+
+<!-- <style onload="sessionFont()"> </style> -->
+
+<!-- CONTENT -->
+<h1 class="left">Welcome to Manitoba Laws, the online version of Manitoba legislation.</h1>
+<p>This site was updated on May 1, 2023, to make it more accessible and easier to use. See <a href="whats_new.php">What's new</a>.
+<p>This page provides an overview of the types of laws that can be accessed from the menus above. It also describes how they come into force.</p>
+<div class="lcol">
+	<h2>Acts</h2>
+	<p>An <b>Act</b> (also called a statute) is a law enacted by the Legislative Assembly.  A bill becomes an Act when it receives royal assent.  Before receiving royal assent, a bill must pass through various stages of review and approval in the Legislative Assembly. For a description of the legislative process, or to check the content or status of a bill, use the "Legislative Assembly" links above.</p>
+	<p>On this site, the Acts are grouped into two main categories: consolidated Acts and unconsolidated Acts.
+	<h4 class="single">Consolidated Acts</h4>
+	<p class="single">These are Acts of continuing application as amended from time to time.  They are grouped into three subcategories: C.C.S.M., municipal Acts and private Acts.</p>
+	<ol>
+		<li>
+			<b><a title="list of consolidated CCSM Acts" href="statutes/index_ccsm.php">Continuing Consolidation of the Statutes of Manitoba (C.C.S.M.)</a></b>  These are public Acts of general application.
+			<br>The list of Acts includes, for each Act, a link to an information table about amendments to the Act and, if there are any regulations under the Act, a link to its table of regulations.
+			<br>Information about amendments and the coming-into-force of a C.C.S.M. Act is found under the "Info" link for that Act in the list of C.C.S.M. Acts.
+		</li>
+		<li>
+			<b><a title="list of consolidated municipal Acts" href="statutes/index_muni.php">Municipal Acts</a></b>.  These are public Acts of application to specific municipalities.  The list of municipal Acts includes information about amendments to the Acts.
+		</li>
+		<li>
+			<b><a title="list of consolidated private Acts" href="statutes/index_priv.php">Private Acts</a></b>.  These Acts are not of general application.  They confer powers or special rights or exemptions on specific individuals or groups. The list of private Acts includes information about amendments to the Acts.
+		</li>
+	</ol>
+	<h4 class="single">Unconsolidated Acts</h4>
+	<p class="single">These are Acts as originally enacted by the Legislative Assembly.  They are grouped into two subcategories:
+	<ol>
+		<li>
+			<b><a title="list of unconsolidated annual chapters" href="statutes/index_chap.php">Annual Chapters</a></b>.  These are the Acts as enacted by the Legislature, beginning with the 1985-86 legislative session.They are not updated with any amendments.  If an Act has been amended and is still in force, the amended version can be found among the consolidated Acts.
+			
+		</li>
+		<li>
+			<b><a title="list of unconsolidated public general Acts" href="statutes/index_public.php">Public Acts</a> (unconsolidated)</b>.  These are a small subset of the annual chapters.  They typically do not amend other Acts, are seldom amended, and are usually effective for a limited time or purpose.  Here are two examples:
+			<ol>
+				<li>Each year the Legislative Assembly enacts an Appropriation Act giving the government expenditure authority for a fiscal year.</li>
+				<li>Some amending Acts contain transitional provisions that affect the application of the base Act (the Act being amended), but are not enacted as amendments to the base Act.</li>
+			</ol>
+		</li>
+	</ol>
+	<h4 class="single">Re-enacted Statutes</h4>
+	<p class="single">In 1987, 1988 and 1990, Manitoba Acts and regulations were re-enacted in English and French in response to a decision of the Supreme Court of Canada about the validity of laws that had been made in English only.
+	<p class="singlebttm">The re-enacted Acts were published by the Queen's Printer as follows:
+	<ul class="full single">
+		<li>A 5-volume set of re-enacted C.C.S.M Acts and a 1-volume supplement of amending Acts published under the authority of <i>The Re-enacted Statutes of Manitoba, 1987 Act</i>, S.M. 1987-88, c. 9.</li>
+		<li>A 1-volume set of re-enacted C.C.S.M Acts published under the authority of <i>The Re-enacted Statutes of Manitoba, 1988 Act</i>, S.M. 1988-89, c. 1.</li>
+		<li>A 2-volume set of private Acts published under the authority of <i>The Re-enacted Statutes of Manitoba (Private Acts) Act, 1990</i>, S.M. 1990-91, c.&nbsp;1.</li>
+		<li>A 1-volume set of re-enacted municipal Acts published under the authority of <i>The Statute Re-enactement and By-law Validation (Municipal) Act</i>, S.M. 1988-89, c. 68.</li>
+	</ul>
+	<p>The print version of these Acts (except the set of municipal Acts) has been scanned and reformatted for publication on this site.  The print version remains the official version.</p>
+	<p><b>Note: </b>This version of the re-enacted Acts has not been updated with any amendments. If any of them has been amended and is still in force, it will be included in the applicable list of current consolidated Acts (C.C.S.M Acts or Private Acts).
+		
+	<h4 class="single">Coming-into-force of an Act</h4>
+	<p class="single">The last section of an Act usually specifies when the Act (or any part of it) is to come into force. Typically it comes into force on one of the following dates:</p>
+	<ul class="full single">
+		<li>the day the Act receives royal assent, or a specified number of days after royal assent;</li>
+		<li>a specified date (e.g. "January 1, 2014")</li>
+		<li>a date to be fixed by proclamation; or</li>
+		<li>a date that something occurs (for example, the date that another Act comes into force).</li>
+	</ul>
+	<p>If an Act (or part of an Act) is to come into force on proclamation, the information table for that Act provides the proclamation status. A separate <a href="statutes/index_procs.php">table of proclamations</a> lists all the proclamations for Acts or provisions coming into force after 2006.  It includes a link to the text of each proclamation after 2009.  Earlier proclamations were published in Part 1 of the Manitoba Gazette.</p>
+</div>
+<div class="rcol">
+	<h2>Regulations and Orders</h2>
+	<p><b>Regulations</b> and <b>orders</b> are delegated legislation.  They are made by a person or body under the authority of an Act passed by the Legislature.  The person or body that makes it is specified by the Act.  Usually it is the Lieutenant Governor in Council, a member of the Executive Council, or a board, commission or tribunal.
+	<h4 class="single">Regulations</h4>
+	<p class="single">The regulations on this site are the regulations that have been registered under <a href="statutes/ccsm/s207.php"><i>The Statutes and Regulations Act</i></a> or the former <i>Regulations Act</i>.</p>
+	<p>These regulations are grouped into three categories: consolidated regulations, original unconsolidated regulations and court rules.
+	<ol>
+		<li>
+			<b><a title="list of consolidated regulations" href="regs/index.php">Consolidated regulations</a></b>.  The table of consolidated regulations lists the registered regulations, as amended from time to time, that are currently in force. 
+			<br>You can access the consolidated regulations under an Act in one of three ways:
+			<ul class="full single">
+				<li>by clicking on one of the "Consolidated regulations" links under the Regulations menu above</li>
+				<li>when viewing a list of Acts, by clicking on the <span class="light2">Regulations</span> link beside the title of the Act (to see the regulations under that Act)</li>
+				<li>when viewing an Act, by clicking on the "Regulations" link (to see the regulations under that Act)</li>
+			</ul>
+			<p class="left singlebttm">When viewing a list of consolidated regulations,</p>
+ 			<ul class="full single">
+				<li>you can list only the regulations currently in force or include repealed regulations</li>
+				<li>by clicking the title of a regulation, you can access information about the regulation, including
+					<ul>
+						<li>the date it was registered</li>
+						<li>the date it was published</li>
+						<li>a list of the amending regulations with links to those regulations if they were registered after 1999</li>
+						<li>a link to previous versions of the regulation if it was amended after April 1, 2014.</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<b><a title="list of original unconsolidated regulations" href="regs/index_annual.php">Original regulations</a></b>. This is a list of original regulations as registered by the Registrar of Regulations after 1999.
+			<br>They are not updated with any amendments.  If a regulation has been amended and is still in force, the amended version can be found in the list of consolidated regulations.
+			<br>Original regulations registered before 1999 are not available online, but may be found in <i>The Manitoba Gazette</i> or the annual bound volume of regulations published by the King's Printer (formerly the Queen's Printer).
+		</li>
+		<li>
+			<b>Court rules</b>.  These are regulations governing procedures for the Manitoba Court of King's Bench and the Manitoba Court of Appeal.
+		</li>
+	</ol>
+	<h4 class="single">Coming-into-force of a regulation</h4>
+	<p class="single">The coming-into-force of a regulation is governed by the regulation itself, by the Act under which it is made, and by <a href="statutes/ccsm/s207.php"><i>The Statutes and Regulations Act</i></a>.  
+	<p>Unless a regulation or the Act under which it is made provides otherwise, the regulation comes into force on the day it is registered by the Registrar of Regulations.  The date of registration is always shown on the first page of the regulation.</p>
+	
+	<h4 class="singlebttm"><a title="list of orders made in response to emergencies" href="statutes/index_orders.php">Orders</a></h4>
+	<p class="single">The orders published on this site are orders that have been made after 2019 in response to an emergency.  They include orders made under <i>The Emergency Measures Act</i>, <i>The Public Health Act</i> or <i>The Regulated Health Provisions Act</i>.</p>
+	<p>Like regulations, these orders are made under the authority of an enabling Act and have legislative effect, but they are not required to be registered as regulations under <i>The Statutes and Regulations Act</i>.  They are effective for the period of time specified in the order. Their effective dates are included in the list of orders.</p>
+	<p>Some orders override or affect the application of an Act or a regulation for a period of time specified in the order. When they do, a notice about the order appears under the title of the Act or regulation in the relevant list of consolidated Acts or regulations.</p>
+	
+</div>
+<div class="clear full"> </div>
+<!-- END OF CONTENT -->
+	</div><!-- END OF CONTENT -->
+<!--   </div> end of flex-container -->
+</main>
+<footer id="footer"> 
+    <ul class="s_9em" >
+		<li><a href="https://manitoba.ca/accessibility/index.html">Accessibility</a></li>
+		<li><a href="https://manitoba.ca/legal/disclaimer.html">Disclaimer</a></li>
+		<li><a href="https://manitoba.ca/legal/copyright.html">Copyright</a></li>
+		<li><a href="https://manitoba.ca/legal/privacy.html">Privacy</a></li>
+		<li><a href="https://manitoba.ca/contact/">Contact Us</a></li>
+		<li><a href="https://manitoba.ca/index.html" title="Manitoba Government home page"><img class="bp-logo" src="common/images/mb-bison-white.png" alt="Manitoba Government home page"></a>
+	</ul>
+</footer>&nbsp;
+
+<!--  onKeyPress="handleBttn(event)" -->
+<script>
+function handleBttnEn(e){
+	var key = e.keyCode || e.which;
+	if(key == 13){
+		showFr();
+	}
+}
+
+function handleBttnFr(e){
+	var key = e.keyCode || e.which;
+	if(key == 13){
+		showEn();
+	}
+}
+</script>
+  </body>
+</html>

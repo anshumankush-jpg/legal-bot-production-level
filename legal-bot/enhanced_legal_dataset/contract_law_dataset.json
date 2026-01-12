@@ -1,0 +1,38 @@
+{
+  "title": "Canadian Contract Law - Formation, Breach & Remedies",
+  "jurisdictions": [
+    "Canada",
+    "Ontario",
+    "British Columbia"
+  ],
+  "categories": [
+    "formation",
+    "breach",
+    "remedies",
+    "consumer contracts"
+  ],
+  "documents": [
+    {
+      "type": "common_law",
+      "title": "Canadian Contract Law Principles",
+      "content": "\n                    CANADIAN CONTRACT LAW PRINCIPLES:\n\n                    1. CONTRACT FORMATION REQUIREMENTS:\n                    - Offer: clear, certain, communicated\n                    - Acceptance: unqualified, communicated\n                    - Consideration: something of value exchanged\n                    - Intention to create legal relations\n                    - Capacity: parties must be legally capable\n\n                    2. CONTRACTUAL TERMS:\n                    - Express terms: clearly stated\n                    - Implied terms: necessary for contract operation\n                    - Conditions: essential terms (breach allows termination)\n                    - Warranties: non-essential terms (breach allows damages only)\n                    - Innominate terms: depends on breach consequences\n\n                    3. VITIATING FACTORS (VOID OR VOIDABLE):\n                    - Misrepresentation: false statement inducing contract\n                    - Duress: coercion or threats\n                    - Undue influence: abuse of power relationship\n                    - Illegality: contrary to public policy\n                    - Mistake: fundamental error about contract terms\n\n                    4. DISCHARGE OF CONTRACT:\n                    - Performance: complete execution\n                    - Agreement: mutual consent to end\n                    - Breach: failure to perform obligations\n                    - Frustration: impossible to perform due to unforeseen events\n                    - Operation of law: bankruptcy, death, etc.\n                    ",
+      "solutions": [
+        "negotiate settlement",
+        "seek specific performance",
+        "claim damages",
+        "terminate contract"
+      ]
+    },
+    {
+      "type": "guide",
+      "title": "Ontario Contract Breach Remedies and Small Claims Court",
+      "content": "\n                    ONTARIO CONTRACT BREACH REMEDIES:\n\n                    1. COMMON LAW REMEDIES:\n                    - Compensatory damages: restore to position had contract been performed\n                    - Consequential damages: foreseeable losses from breach\n                    - Punitive damages: exceptional cases for egregious conduct\n                    - Nominal damages: technical breach but no actual loss\n\n                    2. EQUITABLE REMEDIES:\n                    - Specific performance: court orders contract completion\n                    - Injunction: prevents certain actions or requires actions\n                    - Rectification: corrects written contract mistakes\n\n                    3. LIMITATIONS:\n                    - Mitigation: duty to minimize losses\n                    - Remoteness: damages must be foreseeable\n                    - Contributory negligence: reduces recoverable damages\n                    - Liquidated damages: pre-agreed damage amounts\n\n                    4. SMALL CLAIMS COURT PROCESS:\n                    - Claims up to $35,000 (as of 2023)\n                    - No lawyers required (but allowed)\n                    - Filing fee: $75-$279 depending on claim amount\n                    - Defendant has 20 days to respond\n                    - Settlement conferences available\n                    - Trial within 6 months of filing\n\n                    5. COLLECTION OF JUDGMENT:\n                    - Writ of seizure and sale for property\n                    - Garnishment of wages/bank accounts\n                    - Examination in aid of execution\n                    - Private sheriff services may be needed\n\n                    6. ALTERNATIVE DISPUTE RESOLUTION:\n                    - Mediation: neutral third party facilitates settlement\n                    - Arbitration: binding decision by private arbitrator\n                    - Court-annexed mediation programs\n                    - Early neutral evaluation\n\n                    7. LIMITATION PERIODS:\n                    - Contract claims: 2 years from breach discovery\n                    - Tort claims: 2 years from incident\n                    - Property claims: 10 years from purchase\n                    ",
+      "solutions": [
+        "file small claims court application",
+        "hire lawyer",
+        "attempt mediation",
+        "enforce judgment"
+      ]
+    }
+  ]
+}

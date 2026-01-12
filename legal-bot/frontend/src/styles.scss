@@ -1,0 +1,68 @@
+/* Import Design Tokens */
+@import 'styles/design-tokens';
+
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-family-primary;
+  background: $background-light;
+  color: $text-primary;
+  font-size: $font-size-base;
+  line-height: $line-height-normal;
+}
+
+a {
+  color: $accent-teal;
+  text-decoration: none;
+  transition: color $transition-fast;
+}
+
+a:hover {
+  color: $accent-teal-dark;
+  text-decoration: underline;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-family-primary;
+  font-weight: $font-weight-semibold;
+  color: $text-primary;
+  line-height: $line-height-tight;
+}
+
+h1 { font-size: $font-size-4xl; }
+h2 { font-size: $font-size-3xl; }
+h3 { font-size: $font-size-2xl; }
+h4 { font-size: $font-size-xl; }
+
+/* Material Design overrides with design tokens */
+.mat-mdc-raised-button {
+  border-radius: $radius-md;
+  font-weight: $font-weight-medium;
+  transition: all $transition-base;
+}
+
+.mat-mdc-raised-button.mat-primary {
+  background-color: $primary-navy !important;
+  color: $text-on-primary !important;
+}
+
+.mat-mdc-raised-button.mat-accent {
+  background-color: $accent-teal !important;
+  color: $text-on-primary !important;
+}
+
+.mat-mdc-form-field {
+  width: 100%;
+}
+
+.mat-toolbar {
+  background-color: $primary-navy !important;
+  color: $text-on-primary !important;
+}
+

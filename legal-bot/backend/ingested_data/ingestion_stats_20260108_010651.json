@@ -1,0 +1,18 @@
+{
+  "total_sources": 38,
+  "processed_sources": 38,
+  "failed_sources": 0,
+  "total_chunks": 101,
+  "by_country": {
+    "Canada": 93,
+    "USA": 8
+  },
+  "by_type": {
+    "case_law": 14,
+    "legislation": 30,
+    "immigration": 3,
+    "immigration_tribunal": 1,
+    "professional_resources": 1,
+    "immigration_provincial": 52
+  }
+}

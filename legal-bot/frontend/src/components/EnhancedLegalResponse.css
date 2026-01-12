@@ -1,0 +1,334 @@
+/* ============================================
+   ChatGPT-Style Response Animations
+   ============================================ */
+
+.enhanced-legal-response {
+  max-width: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  line-height: 1.75;
+  color: #ececec;
+  min-height: 24px;
+}
+
+/* ============================================
+   THINKING INDICATOR - Blinking Dot
+   ============================================ */
+.thinking-indicator {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.thinking-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #ececec;
+  border-radius: 50%;
+  animation: thinkingPulse 1.4s ease-in-out infinite;
+}
+
+@keyframes thinkingPulse {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ============================================
+   BLINKING CURSOR
+   ============================================ */
+.blinking-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.2em;
+  background-color: #ececec;
+  margin-left: 1px;
+  vertical-align: text-bottom;
+  animation: cursorBlink 0.8s step-end infinite;
+}
+
+@keyframes cursorBlink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* ============================================
+   STREAMING TEXT CONTAINER
+   ============================================ */
+.streaming-text-container {
+  animation: contentFadeIn 0.15s ease-out;
+}
+
+.streaming-text {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.streaming-content {
+  white-space: pre-wrap;
+}
+
+@keyframes contentFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   RESPONSE CONTENT
+   ============================================ */
+.response-content {
+  animation: contentFadeIn 0.2s ease-out;
+}
+
+/* Phase transitions */
+.enhanced-legal-response.phase-thinking {
+  min-height: 24px;
+}
+
+.enhanced-legal-response.phase-streaming .response-content,
+.enhanced-legal-response.phase-complete .response-content {
+  animation: slideUp 0.2s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   TYPOGRAPHY - ChatGPT Style
+   ============================================ */
+
+/* Headers */
+.response-h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ececec;
+  margin: 1.5rem 0 1rem 0;
+  line-height: 1.3;
+}
+
+.response-h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #ececec;
+  margin: 1.25rem 0 0.75rem 0;
+  line-height: 1.4;
+}
+
+.response-h4 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #ececec;
+  margin: 1rem 0 0.5rem 0;
+  line-height: 1.5;
+}
+
+.response-bold-header {
+  margin: 1.25rem 0 0.5rem 0;
+  font-size: 1rem;
+}
+
+.response-bold-header strong {
+  font-weight: 600;
+  color: #ececec;
+}
+
+/* First header - no top margin */
+.response-content > .response-h2:first-child,
+.response-content > .response-h3:first-child,
+.response-content > .response-h4:first-child,
+.response-content > .response-bold-header:first-child {
+  margin-top: 0;
+}
+
+/* Paragraphs */
+.response-paragraph {
+  margin: 0 0 1rem 0;
+  line-height: 1.75;
+  color: #d1d1d1;
+}
+
+.response-paragraph:last-child {
+  margin-bottom: 0;
+}
+
+/* Bold and italic */
+.response-content strong {
+  font-weight: 600;
+  color: #ececec;
+}
+
+.response-content em {
+  font-style: italic;
+  color: #d1d1d1;
+}
+
+/* Inline code */
+.inline-code {
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  font-size: 0.875em;
+  background: #2f2f2f;
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  color: #e06c75;
+}
+
+/* ============================================
+   LISTS - ChatGPT Style
+   ============================================ */
+.response-list {
+  margin: 0.5rem 0 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.response-list.ordered {
+  list-style-type: decimal;
+}
+
+.response-list.unordered {
+  list-style-type: disc;
+}
+
+.response-list-item {
+  margin: 0.5rem 0;
+  padding-left: 0.25rem;
+  line-height: 1.7;
+  color: #d1d1d1;
+}
+
+.response-list-item strong {
+  color: #ececec;
+}
+
+/* Nested lists */
+.response-list .response-list {
+  margin: 0.25rem 0 0.5rem 0;
+}
+
+/* ============================================
+   OTHER ELEMENTS
+   ============================================ */
+
+/* Horizontal rule */
+.response-hr {
+  border: none;
+  border-top: 1px solid #424242;
+  margin: 1.5rem 0;
+}
+
+/* Links */
+.response-link {
+  color: #7ab8f5;
+  text-decoration: underline;
+  text-decoration-color: rgba(122, 184, 245, 0.4);
+  text-underline-offset: 2px;
+  transition: all 0.15s ease;
+}
+
+.response-link:hover {
+  color: #a8d1ff;
+  text-decoration-color: rgba(168, 209, 255, 0.6);
+}
+
+/* No response */
+.no-response {
+  color: #9b9b9b;
+  font-style: italic;
+  padding: 1rem 0;
+}
+
+/* ============================================
+   CODE BLOCKS
+   ============================================ */
+.response-code-block {
+  background: #1e1e1e;
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem 0;
+  overflow-x: auto;
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: #d4d4d4;
+}
+
+/* ============================================
+   MOBILE RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  .enhanced-legal-response {
+    font-size: 0.95rem;
+  }
+
+  .response-h2 {
+    font-size: 1.35rem;
+  }
+
+  .response-h3 {
+    font-size: 1.15rem;
+  }
+
+  .response-h4 {
+    font-size: 1rem;
+  }
+
+  .response-list {
+    padding-left: 1.25rem;
+  }
+
+  .thinking-dot {
+    width: 6px;
+    height: 6px;
+  }
+}
+
+/* ============================================
+   SMOOTH TRANSITIONS
+   ============================================ */
+.response-paragraph,
+.response-list-item,
+.response-h2,
+.response-h3,
+.response-h4 {
+  animation: elementFadeIn 0.15s ease-out;
+}
+
+@keyframes elementFadeIn {
+  from {
+    opacity: 0.7;
+  }
+  to {
+    opacity: 1;
+  }
+}

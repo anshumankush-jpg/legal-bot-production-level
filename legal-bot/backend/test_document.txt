@@ -1,0 +1,12 @@
+
+        Ontario Highway Traffic Act
+        Offence No: 123456789
+
+        Section 128: Speeding
+        (1) Every person who operates a motor vehicle on a highway at a speed greater than the speed limit is guilty of an offence.
+
+        Penalties:
+        - For exceeding the speed limit by 1-19 km/h: $5.00 + 2 demerit points
+        - For exceeding the speed limit by 20-29 km/h: $12.00 + 3 demerit points
+        - For exceeding the speed limit by 30 km/h or more: $25.00 + 4 demerit points
+        

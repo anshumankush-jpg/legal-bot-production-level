@@ -1,0 +1,44 @@
+{
+  "title": "PLA-ZA AI Complete Canadian Legal Dataset",
+  "version": "2.0",
+  "created": "2026-01-03 00:36:54",
+  "categories": [
+    "traffic_law",
+    "property_law",
+    "employment_law",
+    "contract_law",
+    "criminal_law",
+    "family_law",
+    "immigration_law",
+    "business_law",
+    "tax_law",
+    "administrative_law"
+  ],
+  "total_documents": 17,
+  "jurisdictions": [
+    "Federal",
+    "Ontario",
+    "British Columbia",
+    "Alberta",
+    "Quebec"
+  ],
+  "focus_areas": [
+    "traffic law (complete solutions)",
+    "property law (tenant remedies)",
+    "employment law (termination rights)",
+    "contract law (breach remedies)",
+    "criminal law (defenses)",
+    "family law (divorce process)",
+    "immigration law (appeals)",
+    "business law (incorporation)",
+    "tax law (compliance)",
+    "administrative law (tribunals)"
+  ],
+  "solution_coverage": "100% for all categories",
+  "sources": [
+    "Official statutes",
+    "Government websites",
+    "Legal guides",
+    "Court procedures"
+  ]
+}
