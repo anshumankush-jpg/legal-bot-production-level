@@ -142,10 +142,57 @@
 
 .wizard-content {
   min-height: 400px;
+  max-height: 60vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 10px;
+  position: relative;
+}
+
+/* Custom Scrollbar for wizard content */
+.wizard-content::-webkit-scrollbar {
+  width: 12px;
+}
+
+.wizard-content::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  margin: 10px 0;
+}
+
+.wizard-content::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+  border-radius: 10px;
+  border: 2px solid rgba(26, 26, 46, 0.95);
+}
+
+.wizard-content::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #00e5ff 0%, #00aaff 100%);
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+}
+
+/* Firefox scrollbar */
+.wizard-content {
+  scrollbar-width: thin;
+  scrollbar-color: #00d4ff rgba(255, 255, 255, 0.05);
+}
+
+/* Scroll indicator shadow at bottom */
+.wizard-content::after {
+  content: '';
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30px;
+  background: linear-gradient(to top, rgba(26, 26, 46, 0.95), transparent);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .wizard-step {
   animation: fadeIn 0.3s ease-in;
+  padding-bottom: 1rem;
 }
 
 @keyframes fadeIn {
@@ -246,12 +293,22 @@
 .plus-icon {
   font-size: 1.5rem;
   font-weight: bold;
+  animation: pulse-rotate 2s ease-in-out infinite;
+}
+
+@keyframes pulse-rotate {
+  0%, 100% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(90deg) scale(1.2);
+  }
 }
 
 .additional-languages {
   margin-top: 2rem;
   padding-top: 2rem;
-  border-top: 2px solid #e9ecef;
+  border-top: 2px solid rgba(0, 212, 255, 0.3);
   animation: slideDown 0.3s ease-out;
 }
 

@@ -764,18 +764,18 @@ const ChatInterface = ({ preferences, lawTypeSelection, onResetPreferences, onCh
       console.error('TTS error:', event);
       setIsSpeaking(false);
       
-      // Provide helpful error message based on error type
-      let errorMsg = '❌ Speech error: ';
+      // Provide clean error message based on error type
+      let errorMsg = '';
       if (event.error === 'not-allowed') {
-        errorMsg += 'Microphone permission denied. Please allow microphone access in browser settings.';
+        errorMsg = '🎤 Microphone access denied';
       } else if (event.error === 'network') {
-        errorMsg += 'Network error. Please check your internet connection.';
+        errorMsg = 'Network error';
       } else if (event.error === 'synthesis-failed') {
-        errorMsg += 'Voice synthesis failed. Try clicking the speaker icon again.';
+        errorMsg = 'Voice synthesis failed';
       } else if (event.error === 'audio-busy') {
-        errorMsg += 'Audio is busy. Please wait and try again.';
+        errorMsg = 'Audio busy';
       } else {
-        errorMsg += 'Unable to speak. Try refreshing the page or use a different browser.';
+        errorMsg = 'Speech ended';
       }
       
       addSystemMessage(errorMsg, true);

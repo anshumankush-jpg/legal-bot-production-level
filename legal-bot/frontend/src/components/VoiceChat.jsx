@@ -9,10 +9,13 @@ const VoiceChat = ({ preferences, lawTypeSelection, onTranscript, onAutoReadTogg
   const [audioLevel, setAudioLevel] = useState(0);
   const [error, setError] = useState('');
   const [autoReadEnabled, setAutoReadEnabled] = useState(false);
+  const [recordingTime, setRecordingTime] = useState(0);
   
   const recognitionRef = useRef(null);
   const audioContextRef = useRef(null);
   const analyserRef = useRef(null);
+  const recordingTimerRef = useRef(null);
+  const autoStopTimeoutRef = useRef(null);
 
   // Cleanup on unmount
   useEffect(() => {
@@ -26,6 +29,12 @@ const VoiceChat = ({ preferences, lawTypeSelection, onTranscript, onAutoReadTogg
       }
       if (audioContextRef.current) {
         audioContextRef.current.close();
+      }
+      if (recordingTimerRef.current) {
+        clearInterval(recordingTimerRef.current);
+      }
+      if (autoStopTimeoutRef.current) {
+        clearTimeout(autoStopTimeoutRef.current);
       }
     };
   }, []);
@@ -57,8 +66,9 @@ const VoiceChat = ({ preferences, lawTypeSelection, onTranscript, onAutoReadTogg
       
       // Create a FRESH recognition instance each time
       const recognition = new SpeechRecognition();
-      recognition.continuous = false;
-      recognition.interimResults = false;
+      recognition.continuous = true;  // Keep listening for longer
+      recognition.interimResults = true;  // Show interim results
+      recognition.maxAlternatives = 1;
       
       // Set language based on preferences
       const langMap = {
@@ -71,17 +81,50 @@ const VoiceChat = ({ preferences, lawTypeSelection, onTranscript, onAutoReadTogg
       };
       recognition.lang = langMap[preferences?.language?.code || 'en'] || 'en-US';
       
-      // Handle results
-      recognition.onresult = (event) => {
-        const transcriptText = event.results[0][0].transcript;
-        setTranscript(transcriptText);
-        setIsRecording(false);
-        setIsProcessing(false);
-        
-        // Send to parent
-        if (onTranscript) {
-          onTranscript(transcriptText);
+      // Start recording timer
+      setRecordingTime(0);
+      recordingTimerRef.current = setInterval(() => {
+        setRecordingTime(prev => prev + 1);
+      }, 1000);
+      
+      // Auto-stop after 30 seconds
+      autoStopTimeoutRef.current = setTimeout(() => {
+        if (recognitionRef.current) {
+          stopRecording();
         }
+      }, 30000);
+      
+      // Handle results
+      let finalTranscript = '';
+      recognition.onresult = (event) => {
+        let interimTranscript = '';
+        
+        for (let i = event.resultIndex; i < event.results.length; i++) {
+          const transcript = event.results[i][0].transcript;
+          if (event.results[i].isFinal) {
+            finalTranscript += transcript + ' ';
+          } else {
+            interimTranscript += transcript;
+          }
+        }
+        
+        // Update display with interim or final transcript
+        setTranscript(finalTranscript + interimTranscript);
+      };
+      
+      // Handle speech end
+      recognition.onspeechend = () => {
+        // Wait a bit for final results
+        setTimeout(() => {
+          if (recognitionRef.current && finalTranscript.trim()) {
+            stopRecording();
+            
+            // Send final transcript to parent
+            if (onTranscript) {
+              onTranscript(finalTranscript.trim());
+            }
+          }
+        }, 500);
       };
       
       // Handle errors
@@ -90,32 +133,46 @@ const VoiceChat = ({ preferences, lawTypeSelection, onTranscript, onAutoReadTogg
         setIsRecording(false);
         setIsProcessing(false);
         
+        // Clear timers
+        if (recordingTimerRef.current) {
+          clearInterval(recordingTimerRef.current);
+        }
+        if (autoStopTimeoutRef.current) {
+          clearTimeout(autoStopTimeoutRef.current);
+        }
+        
         if (event.error === 'not-allowed') {
-          const helpMessage = `🎤 Microphone Access Required
-
-To use FREE voice chat:
-
-1. Click the 🔒 lock icon in your browser's address bar
-2. Find "Microphone" in the permissions list
-3. Change it to "Allow"
-4. Reload the page (F5 or Ctrl+R)
-5. Try again!
-
-This uses your browser's FREE speech recognition - no API costs!`;
-          alert(helpMessage);
+          setError('🎤 Microphone access denied. Please allow microphone in browser settings.');
         } else if (event.error === 'no-speech') {
-          setError('No speech detected. Please try again.');
+          setError(`Call ended in ${recordingTime} sec`);
         } else if (event.error === 'aborted') {
           console.log('Recognition aborted, resetting...');
-          setError('');
+          setError(`Call ended in ${recordingTime} sec`);
+        } else if (event.error === 'audio-capture') {
+          setError('🎤 No microphone found. Please connect a microphone.');
+        } else if (event.error === 'network') {
+          setError('Network error. Please check your connection.');
         } else {
-          setError(`Error: ${event.error}`);
+          setError(`Call ended in ${recordingTime} sec`);
         }
       };
       
       recognition.onend = () => {
         setIsRecording(false);
         setIsProcessing(false);
+        
+        // Clear timers
+        if (recordingTimerRef.current) {
+          clearInterval(recordingTimerRef.current);
+        }
+        if (autoStopTimeoutRef.current) {
+          clearTimeout(autoStopTimeoutRef.current);
+        }
+        
+        // Show call ended message if no transcript
+        if (!finalTranscript.trim() && recordingTime > 0) {
+          setError(`Call ended in ${recordingTime} sec`);
+        }
       };
       
       // Store the new instance
@@ -163,6 +220,14 @@ This uses your browser's FREE speech recognition - no API costs!`;
       if (audioContextRef.current) {
         audioContextRef.current.close();
         audioContextRef.current = null;
+      }
+      
+      // Clear timers
+      if (recordingTimerRef.current) {
+        clearInterval(recordingTimerRef.current);
+      }
+      if (autoStopTimeoutRef.current) {
+        clearTimeout(autoStopTimeoutRef.current);
       }
     }
   };
@@ -297,12 +362,12 @@ This uses your browser's FREE speech recognition - no API costs!`;
     <div className="voice-chat-container">
       {error && (
         <div className="voice-error">
-          ⚠️ {error}
+          {error}
         </div>
       )}
       
       <div className="voice-info">
-        🎤 <strong>FREE Voice Chat</strong> - Uses your browser's built-in speech recognition. No API costs!
+        🎤 <strong>FREE Voice Chat</strong> - Listens for up to 30 seconds. No API costs!
         {autoReadEnabled && (
           <div className="auto-read-badge">
             🔊 Auto-read is ON - Bot will read all responses aloud
@@ -373,7 +438,7 @@ This uses your browser's FREE speech recognition - no API costs!`;
                 <div className="sound-wave-bar" style={{ height: `${Math.max(20, audioLevel * 0.5)}%` }}></div>
               </div>
             </div>
-            <span>Recording... (Tap to stop)</span>
+            <span>Recording... {recordingTime}s (Tap to stop)</span>
           </button>
         )}
         
@@ -408,6 +473,12 @@ This uses your browser's FREE speech recognition - no API costs!`;
           </button>
         )}
       </div>
+      
+      {isRecording && (
+        <div className="voice-timer">
+          ⏱️ Recording: {recordingTime}s / 30s
+        </div>
+      )}
       
       {transcript && (
         <div className="voice-transcript">
