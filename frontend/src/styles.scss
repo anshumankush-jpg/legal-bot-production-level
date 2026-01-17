@@ -1,68 +1,108 @@
-/* Import Design Tokens */
-@import 'styles/design-tokens';
+/* ChatGPT-Style Design Tokens */
+:root {
+  /* Core palette - ChatGPT exact colors */
+  --bg: #0f0f10;
+  --panel: #121214;
+  --panel-2: #1a1a1e;
+  --panel-3: #232329;
+  --border: rgba(255,255,255,0.06);
+  --border-2: rgba(255,255,255,0.12);
 
-/* Global Styles */
-* {
+  --text: #eaeaea;
+  --text-2: #a1a1aa;
+  --text-3: #71717a;
+
+  --accent: #10a37f;
+  --accent-2: #0e9270;
+  --danger: #ef4444;
+  --warn: #f59e0b;
+
+  --shadow: 0 8px 32px rgba(0,0,0,0.5);
+  --shadow-soft: 0 4px 16px rgba(0,0,0,0.3);
+
+  /* Sizing */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+
+  --sidebar-w: 280px;
+  --topbar-h: 60px;
+  --composer-h: 64px;
+
+  --gap-1: 8px;
+  --gap-2: 12px;
+  --gap-3: 16px;
+  --gap-4: 24px;
+
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+/* Global Styles - ChatGPT */
+* { 
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+}
+
+html, body { 
+  height: 100%;
 }
 
 body {
-  font-family: $font-family-primary;
-  background: $background-light;
-  color: $text-primary;
-  font-size: $font-size-base;
-  line-height: $line-height-normal;
+  margin: 0;
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  overflow: hidden;
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  color: $accent-teal;
+a { 
+  color: var(--accent);
   text-decoration: none;
-  transition: color $transition-fast;
+  transition: opacity 150ms ease;
 }
 
 a:hover {
-  color: $accent-teal-dark;
-  text-decoration: underline;
+  opacity: 0.8;
 }
 
-/* Typography */
-h1, h2, h3, h4, h5, h6 {
-  font-family: $font-family-primary;
-  font-weight: $font-weight-semibold;
-  color: $text-primary;
-  line-height: $line-height-tight;
+button, input, textarea { 
+  font-family: inherit;
 }
 
-h1 { font-size: $font-size-4xl; }
-h2 { font-size: $font-size-3xl; }
-h3 { font-size: $font-size-2xl; }
-h4 { font-size: $font-size-xl; }
-
-/* Material Design overrides with design tokens */
-.mat-mdc-raised-button {
-  border-radius: $radius-md;
-  font-weight: $font-weight-medium;
-  transition: all $transition-base;
+/* Scrollbar (webkit) - ChatGPT Style */
+*::-webkit-scrollbar { 
+  width: 8px;
+  height: 8px;
 }
 
-.mat-mdc-raised-button.mat-primary {
-  background-color: $primary-navy !important;
-  color: $text-on-primary !important;
+*::-webkit-scrollbar-thumb { 
+  background: #3f3f46;
+  border-radius: 4px;
 }
 
-.mat-mdc-raised-button.mat-accent {
-  background-color: $accent-teal !important;
-  color: $text-on-primary !important;
+*::-webkit-scrollbar-thumb:hover {
+  background: #52525b;
 }
 
-.mat-mdc-form-field {
-  width: 100%;
+*::-webkit-scrollbar-track { 
+  background: transparent;
 }
 
-.mat-toolbar {
-  background-color: $primary-navy !important;
-  color: $text-on-primary !important;
+/* Scrollbar (Firefox) */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #3f3f46 transparent;
+}
+
+/* Text selection - ChatGPT Style */
+::selection { 
+  background: rgba(16, 163, 127, 0.3);
+  color: var(--text);
 }
 

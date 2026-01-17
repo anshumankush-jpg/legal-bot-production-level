@@ -1,0 +1,133 @@
+/* Not Provisioned Screen */
+.not-provisioned-container {
+  min-height: 100vh;
+  background: #0e0f12;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  color: #e5e7eb;
+}
+
+.not-provisioned-card {
+  width: 100%;
+  max-width: 720px;
+  background: #151821;
+  border: 1px solid #2a2f45;
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35);
+}
+
+.not-provisioned-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+}
+
+.not-provisioned-message {
+  color: #9ca3af;
+  margin: 0 0 16px 0;
+  line-height: 1.6;
+}
+
+.not-provisioned-contact {
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
+.not-provisioned-contact a {
+  color: #22d3ee;
+  text-decoration: none;
+}
+
+.request-access-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 13px;
+  color: #9ca3af;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background: #1c2030;
+  border: 1px solid #2a2f45;
+  border-radius: 10px;
+  padding: 10px 12px;
+  color: #e5e7eb;
+  font-size: 14px;
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #22d3ee;
+  box-shadow: 0 0 0 2px rgba(34, 211, 238, 0.2);
+}
+
+.request-status {
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.request-status.success {
+  background: rgba(34, 211, 238, 0.1);
+  border: 1px solid rgba(34, 211, 238, 0.4);
+  color: #c7f9ff;
+}
+
+.request-status.error {
+  background: rgba(248, 113, 113, 0.1);
+  border: 1px solid rgba(248, 113, 113, 0.4);
+  color: #fecaca;
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.request-access-btn {
+  background: #22d3ee;
+  color: #0b0f12;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.back-to-login-btn {
+  background: transparent;
+  color: #e5e7eb;
+  border: 1px solid #2a2f45;
+  padding: 10px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+@media (max-width: 640px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}

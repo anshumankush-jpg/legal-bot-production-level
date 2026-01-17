@@ -9,15 +9,15 @@ import AmendmentGenerator from './AmendmentGenerator';
 import DocumentGenerator from './DocumentGenerator';
 import ChatHistorySearch from './ChatHistorySearch';
 import AISummaryModal from './AISummaryModal';
-import UserProfileMenu from './UserProfileMenu';
-import Sidebar from './Sidebar';
+import ChatSidebar from './ChatSidebar';
 
 const API_URL = 'http://localhost:8000';
 
-const ChatInterface = ({ preferences, lawTypeSelection, onResetPreferences, onChangeLawType, user, onLogout, onNavigate }) => {
+const ChatInterface = ({ preferences, lawTypeSelection, onResetPreferences, onChangeLawType, onLogout, user, onNavigate }) => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
+  const [showProfileMenu, setShowProfileMenu] = useState(false);
   const [loadingStage, setLoadingStage] = useState('');
   const [uploadProgress, setUploadProgress] = useState(0);
   const [offenceNumber, setOffenceNumber] = useState('');
@@ -39,9 +39,11 @@ const ChatInterface = ({ preferences, lawTypeSelection, onResetPreferences, onCh
   const [showChatHistory, setShowChatHistory] = useState(false);
   const [showAISummary, setShowAISummary] = useState(false);
   const [sessionId] = useState('session_' + Date.now());
-  const [activeResource, setActiveResource] = useState(null);
-  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
-  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
+  const [activeResource, setActiveResource] = useState(() => {
+    const saved = localStorage.getItem('legubot_activeResource');
+    return saved || null;
+  });
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const messagesEndRef = useRef(null);
   const fileInputRef = useRef(null);
   const imageInputRef = useRef(null);
@@ -58,12 +60,158 @@ const ChatInterface = ({ preferences, lawTypeSelection, onResetPreferences, onCh
     scrollToBottom();
   }, [messages]);
 
+  const getAuthHeaders = () => {
+    const token = localStorage.getItem('access_token');
+    return {
+      'Content-Type': 'application/json',
+      ...(token ? { 'Authorization': `Bearer ${token}` } : {})
+    };
+  };
+
+  const loadConversations = async () => {
+    try {
+      const response = await fetch(`${API_URL}/api/profile/conversations`, {
+        headers: getAuthHeaders()
+      });
+      if (!response.ok) return;
+      const data = await response.json();
+      const conversations = (data.conversations || []).map(c => ({
+        id: c.id,
+        title: c.title || 'Untitled Chat',
+        updated_at: c.updated_at || c.created_at,
+        last_message_at: c.last_message_at
+      }));
+      setSavedChats(conversations);
+    } catch (error) {
+      console.error('Failed to load conversations:', error);
+    }
+  };
+
+  const loadConversationMessages = async (conversationId) => {
+    try {
+      const response = await fetch(
+        `${API_URL}/api/profile/conversations/${conversationId}/messages`,
+        { headers: getAuthHeaders() }
+      );
+      if (!response.ok) return;
+      const data = await response.json();
+      const loadedMessages = (data.messages || []).map(m => ({
+        id: m.id,
+        role: m.role,
+        content: m.content,
+        timestamp: m.created_at ? new Date(m.created_at) : new Date()
+      }));
+      setMessages(loadedMessages);
+      setCurrentChatId(conversationId);
+    } catch (error) {
+      console.error('Failed to load conversation messages:', error);
+    }
+  };
+
+  const createConversation = async () => {
+    const payload = {
+      title: 'New Chat',
+      law_type: lawTypeSelection?.lawType,
+      jurisdiction_country: preferences?.country,
+      jurisdiction_region: preferences?.province
+    };
+    const response = await fetch(`${API_URL}/api/profile/conversations`, {
+      method: 'POST',
+      headers: getAuthHeaders(),
+      body: JSON.stringify(payload)
+    });
+    if (!response.ok) {
+      throw new Error('Failed to create conversation');
+    }
+    const data = await response.json();
+    const newChat = {
+      id: data.id,
+      title: data.title || 'New Chat',
+      updated_at: data.created_at
+    };
+    setSavedChats(prev => [newChat, ...prev]);
+    setCurrentChatId(data.id);
+    return data.id;
+  };
+
+  const persistMessage = async (conversationId, message) => {
+    try {
+      await fetch(`${API_URL}/api/profile/conversations/${conversationId}/messages`, {
+        method: 'POST',
+        headers: getAuthHeaders(),
+        body: JSON.stringify({
+          role: message.role,
+          content: message.content
+        })
+      });
+    } catch (error) {
+      console.error('Failed to persist message:', error);
+    }
+  };
+
+  useEffect(() => {
+    if (user) {
+      loadConversations();
+    }
+  }, [user]);
+
   // Show welcome message when law type is selected
   useEffect(() => {
     if (lawTypeSelection && messages.length === 0) {
       showWelcomeMessage();
     }
   }, [lawTypeSelection]);
+
+  // Save activeResource to localStorage
+  useEffect(() => {
+    if (activeResource) {
+      localStorage.setItem('legubot_activeResource', activeResource);
+    }
+  }, [activeResource]);
+
+  // Handle resource clicks from sidebar
+  const handleResourceClick = (resourceId) => {
+    const isLawyerApproved = user?.role === 'lawyer' && user?.lawyer_status === 'approved';
+    const lawyerOnly = ['amendments', 'documents'];
+    if (lawyerOnly.includes(resourceId) && !isLawyerApproved) {
+      addSystemMessage('Access restricted: lawyer verification required for this tool.', true);
+      return;
+    }
+    setActiveResource(resourceId);
+    switch(resourceId) {
+      case 'recent-updates':
+        setShowRecentUpdates(true);
+        break;
+      case 'case-lookup':
+        setShowCaseLookup(true);
+        break;
+      case 'amendments':
+        setShowAmendmentGenerator(true);
+        break;
+      case 'documents':
+        setShowDocumentGenerator(true);
+        break;
+      case 'history':
+        setShowChatHistory(true);
+        break;
+      case 'change-law-type':
+        onChangeLawType && onChangeLawType();
+        break;
+      case 'settings':
+        onResetPreferences && onResetPreferences();
+        break;
+      case 'ai-summary':
+        setShowAISummary(true);
+        break;
+      case 'quick-summary':
+        if (messages.length > 0) {
+          setShowAISummary(true);
+        }
+        break;
+      default:
+        break;
+    }
+  };
 
   const getLawTypeGuidedQuestions = (lawType) => {
     const guidedQuestions = {
@@ -764,18 +912,18 @@ const ChatInterface = ({ preferences, lawTypeSelection, onResetPreferences, onCh
       console.error('TTS error:', event);
       setIsSpeaking(false);
       
-      // Provide clean error message based on error type
-      let errorMsg = '';
+      // Provide helpful error message based on error type
+      let errorMsg = '❌ Speech error: ';
       if (event.error === 'not-allowed') {
-        errorMsg = '🎤 Microphone access denied';
+        errorMsg += 'Microphone permission denied. Please allow microphone access in browser settings.';
       } else if (event.error === 'network') {
-        errorMsg = 'Network error';
+        errorMsg += 'Network error. Please check your internet connection.';
       } else if (event.error === 'synthesis-failed') {
-        errorMsg = 'Voice synthesis failed';
+        errorMsg += 'Voice synthesis failed. Try clicking the speaker icon again.';
       } else if (event.error === 'audio-busy') {
-        errorMsg = 'Audio busy';
+        errorMsg += 'Audio is busy. Please wait and try again.';
       } else {
-        errorMsg = 'Speech ended';
+        errorMsg += 'Unable to speak. Try refreshing the page or use a different browser.';
       }
       
       addSystemMessage(errorMsg, true);
@@ -825,6 +973,9 @@ const ChatInterface = ({ preferences, lawTypeSelection, onResetPreferences, onCh
     setMessages([]);
     setCurrentChatId(null);
     setOffenceNumber('');
+    if (user) {
+      createConversation().catch((error) => console.error(error));
+    }
   };
 
   const generateCaseSummary = () => {
@@ -1095,16 +1246,16 @@ const ChatInterface = ({ preferences, lawTypeSelection, onResetPreferences, onCh
       const fileExt = file.name.toLowerCase().substring(file.name.lastIndexOf('.'));
       const isImage = imageExtensions.includes(fileExt);
 
-      // 🖼️ Create image preview for images - silent upload, no info messages
+      // 🖼️ Create image preview for images
       if (isImage) {
         // Create a URL for the image preview
         const imageUrl = URL.createObjectURL(file);
         
-        // Add message with image preview only
+        // Add message with image preview
         const imageMessage = {
           id: Date.now(),
           role: 'user',
-          content: ``,
+          content: `Uploaded image: ${file.name}`,
           timestamp: new Date(),
           imageUrl: imageUrl,
           fileName: file.name,
@@ -1112,21 +1263,26 @@ const ChatInterface = ({ preferences, lawTypeSelection, onResetPreferences, onCh
           isUpload: true
         };
         setMessages(prev => [...prev, imageMessage]);
-        // No system message - keep it clean like ChatGPT
+        
+        // Add success message with OCR status
+        if (result.chunks_indexed && result.chunks_indexed > 0) {
+          addSystemMessage(`✅ Image uploaded! OCR extracted ${result.chunks_indexed} text chunks. You can now ask questions about this document.`);
         } else {
-        // For non-image files, just add the file to the conversation
+          addSystemMessage(`✅ Image uploaded and saved!\n\n⚠️ OCR not available - Install Tesseract to extract text:\n1. Download: https://github.com/UB-Mannheim/tesseract/wiki\n2. Install to: C:\\Program Files\\Tesseract-OCR\n3. Restart servers\n\nYou can still view the image in chat!`);
+        }
+      } else {
+        // For non-image files, just show success message
         const docMessage = {
           id: Date.now(),
           role: 'user',
-          content: ``,
+          content: `📄 Uploaded document: ${file.name} (${(file.size / 1024).toFixed(2)} KB)`,
           timestamp: new Date(),
           fileName: file.name,
-          fileSize: (file.size / 1024).toFixed(2) + ' KB',
-          isUpload: true,
-          isDocument: true
+          isUpload: true
         };
         setMessages(prev => [...prev, docMessage]);
-        // No system message - keep it clean
+        
+        addSystemMessage(`✅ Document uploaded and indexed. ${result.chunks_indexed || 0} chunks processed.`);
       }
 
       // Auto-fill offence number if detected and not already set
@@ -1217,6 +1373,15 @@ const ChatInterface = ({ preferences, lawTypeSelection, onResetPreferences, onCh
     e.preventDefault();
     if (!input.trim() || loading) return;
 
+    let conversationId = currentChatId;
+    if (!conversationId && user) {
+      try {
+        conversationId = await createConversation();
+      } catch (error) {
+        console.error('Failed to create conversation:', error);
+      }
+    }
+
     const userMessage = {
       id: Date.now(),
       role: 'user',
@@ -1225,6 +1390,9 @@ const ChatInterface = ({ preferences, lawTypeSelection, onResetPreferences, onCh
     };
 
     setMessages(prev => [...prev, userMessage]);
+    if (conversationId) {
+      persistMessage(conversationId, userMessage);
+    }
     const question = input.trim();
     setInput('');
     setLoading(true);
@@ -1288,37 +1456,25 @@ const ChatInterface = ({ preferences, lawTypeSelection, onResetPreferences, onCh
         citations: data.citations || [],
         chunks_used: data.chunks_used || 0,
         confidence: data.confidence || 0,
-        timestamp: new Date(),
-        isNew: true // Flag for animation
+        timestamp: new Date()
       };
 
       setMessages(prev => [...prev, assistantMessage]);
-
-      // Save to chat history
-      try {
-        await fetch(`${API_URL}/api/chat-history/save`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            user_id: userId,
-            session_id: sessionId,
-            message: question,
-            response: data.answer,
-            metadata: {
-              law_category: lawTypeSelection?.lawType,
-              jurisdiction: lawTypeSelection?.jurisdiction,
-              language: preferences?.language?.code,
-              country: preferences?.country,
-              province: preferences?.province
-            }
-          })
-        });
-      } catch (historyError) {
-        console.error('Failed to save chat history:', historyError);
-        // Don't throw - chat history saving is not critical
+      if (conversationId) {
+        persistMessage(conversationId, assistantMessage);
       }
+
+      if (conversationId) {
+        setSavedChats(prev =>
+          prev.map(chat =>
+            chat.id === conversationId
+              ? { ...chat, last_message_at: new Date().toISOString() }
+              : chat
+          )
+        );
+      }
+
+      // Chat history is now persisted via /api/profile/conversations
 
       // Auto-speak using FREE browser TTS if voice chat or auto-read is enabled
       if ((showVoiceChat || autoRead) && data.answer) {
@@ -1394,227 +1550,21 @@ const ChatInterface = ({ preferences, lawTypeSelection, onResetPreferences, onCh
     }
   }, []);
 
-  // Handle resource tile clicks from sidebar
-  const handleResourceChange = (resourceId) => {
-    setActiveResource(resourceId);
-    
-    // Trigger the appropriate modal/action based on resource
-    switch (resourceId) {
-      case 'recent-updates':
-        setShowRecentUpdates(true);
-        break;
-      case 'case-lookup':
-        setShowCaseLookup(true);
-        break;
-      case 'amendments':
-        setShowAmendmentGenerator(true);
-        break;
-      case 'documents':
-        setShowDocumentGenerator(true);
-        break;
-      case 'history':
-        setShowChatHistory(true);
-        break;
-      case 'change-law-type':
-        if (onChangeLawType) onChangeLawType();
-        break;
-      case 'settings':
-        if (onResetPreferences) onResetPreferences();
-        break;
-      case 'ai-summary':
-        setShowAISummary(true);
-        break;
-      case 'quick-summary':
-        handleGenerateSummary();
-        break;
-      default:
-        break;
-    }
-  };
-
-  // Handle chat selection from sidebar
-  const handleSelectChat = (chatId) => {
-    const chat = savedChats.find(c => c.id === chatId);
-    if (chat) {
-      setMessages(chat.messages || []);
-      setCurrentChatId(chatId);
-    }
-  };
-
   return (
-    <div className="chat-layout">
-      {/* Sidebar */}
-      <Sidebar
-        activeResource={activeResource}
-        onResourceChange={handleResourceChange}
-        onNewChat={handleNewChat}
-        onSearchChats={() => setShowChatHistory(true)}
-        chatHistory={savedChats}
-        currentChatId={currentChatId}
-        onSelectChat={handleSelectChat}
-        isCollapsed={sidebarCollapsed}
-        onToggleCollapse={() => setSidebarCollapsed(!sidebarCollapsed)}
-        lawTypeSelection={lawTypeSelection}
-        user={user}
-        onLogout={onLogout}
-        onNavigate={onNavigate}
-      />
-
-      {/* Main Chat Area */}
     <div className="chat-interface">
-        {/* Mobile sidebar toggle */}
-        <button 
-          className="mobile-menu-btn"
-          onClick={() => setMobileSidebarOpen(!mobileSidebarOpen)}
-        >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <line x1="3" y1="12" x2="21" y2="12"/>
-            <line x1="3" y1="6" x2="21" y2="6"/>
-            <line x1="3" y1="18" x2="21" y2="18"/>
-          </svg>
-        </button>
-
-      {/* Header */}
+      {/* Header - Simplified */}
       <div className="chat-header">
         <div className="header-left">
-          {/* Top Row: Logo and New Chat */}
-          <div className="header-top-row">
-             <h1 className="legid-header-logo">LEGID</h1>
-             <button className="new-chat-btn" onClick={handleNewChat} title="Start new chat">
-               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                 <line x1="12" y1="5" x2="12" y2="19"></line>
-                 <line x1="5" y1="12" x2="19" y2="12"></line>
-               </svg>
-               New Chat
-             </button>
-          </div>
-          
-          {/* Info Row: Language, Country, Province as plain text */}
-           {preferences && (
-            <div className="header-info-row">
-              <span 
-                className="info-label" 
-                 onClick={() => onResetPreferences && onResetPreferences()}
-                 title="Click to change language"
-               >
-                 Language: {getLanguageName(preferences.language?.code || 'en')}
-              </span>
-              <span 
-                className="info-label"
-                 onClick={() => onResetPreferences && onResetPreferences()}
-                 title="Click to change country"
-               >
-                 {preferences.country === 'CA' ? 'Canada' : 'United States'}
-              </span>
-               {preferences.province && (
-                <span 
-                  className="info-label"
-                   onClick={() => onResetPreferences && onResetPreferences()}
-                  title="Click to change province/state"
-                 >
-                   {preferences.province}
-                </span>
-               )}
-              {lawTypeSelection && (
-                <span 
-                  className="info-label law-type-highlight" 
-                    title={`${lawTypeSelection.description || lawTypeSelection.lawType} - Click to change`}
-                    onClick={() => onChangeLawType && onChangeLawType()}
-                  >
-                    {lawTypeSelection.lawType}
-                </span>
-              )}
-            </div>
-          )}
-          
-          {/* Actions Row: Buttons for tools */}
-          {lawTypeSelection && (
-            <div className="header-actions-row">
-                  <button 
-                className="action-pill" 
-                    onClick={() => setShowRecentUpdates(true)} 
-                    title="View recent legal updates"
-                  >
-                    📰 Recent Updates
-                  </button>
-                  <button 
-                className="action-pill" 
-                    onClick={() => setShowCaseLookup(true)} 
-                    title="Search legal cases"
-                  >
-                    🔍 Case Lookup
-                  </button>
-                  <button 
-                className="action-pill" 
-                    onClick={() => setShowAmendmentGenerator(true)} 
-                    title="Generate legal amendments"
-                  >
-                    📝 Amendments
-                  </button>
-            </div>
-          )}
-          
-          {/* Secondary Actions Row */}
-          {lawTypeSelection && (
-            <div className="header-actions-row secondary">
-                  <button 
-                className="action-pill secondary-pill" 
-                    onClick={() => setShowDocumentGenerator(true)} 
-                    title="Generate legal documents"
-                  >
-                    📄 Documents
-                  </button>
-                  <button 
-                className="action-pill secondary-pill" 
-                    onClick={() => setShowChatHistory(true)} 
-                    title="Search chat history"
-                  >
-                    💬 History
-                  </button>
-               {onChangeLawType && (
-                <button className="action-pill secondary-pill" onClick={onChangeLawType} title="Change law type">
-                   🔄 Change Law Type
-                 </button>
-               )}
-               {onResetPreferences && (
-                <button className="action-pill secondary-pill" onClick={onResetPreferences} title="Change all settings">
-                   ⚙️ Settings
-                 </button>
-               )}
-             </div>
-           )}
-          
-          {/* Summary buttons - only show when there's conversation */}
-          {messages.length > 2 && (
-            <div className="header-actions-row">
-              <button className="action-pill summary-pill" onClick={() => setShowAISummary(true)} title="Generate AI case summary">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                  <polyline points="14 2 14 8 20 8"></polyline>
-                  <line x1="16" y1="13" x2="8" y2="13"></line>
-                  <line x1="16" y1="17" x2="8" y2="17"></line>
-                </svg>
-                AI Summary
-              </button>
-              <button className="action-pill summary-pill" onClick={handleGenerateSummary} title="Generate quick summary">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                  <polyline points="14 2 14 8 20 8"></polyline>
-                </svg>
-                Quick Summary
-              </button>
-            </div>
-          )}
+          <h1 className="legid-header-logo">LEGID</h1>
+          <button className="new-chat-btn" onClick={handleNewChat} title="Start new chat">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            New Chat
+          </button>
         </div>
-        <div className="header-controls">
-          {/* User Profile Menu */}
-          {user && (
-            <UserProfileMenu 
-              user={user} 
-              onLogout={onLogout}
-            />
-          )}
-          
+        <div className="header-right">
           {/* Andy TTS Controls */}
           <div className="tts-controls">
             <button 
@@ -1629,23 +1579,6 @@ const ChatInterface = ({ preferences, lawTypeSelection, onResetPreferences, onCh
                 </span>
               )}
             </button>
-            
-            {isSpeaking && (
-              <button 
-                className="tts-btn stop-btn"
-                onClick={handleStopSpeech}
-                title="Stop Andy"
-              >
-                 Stop
-              </button>
-            )}
-
-            {isSpeaking && (
-              <span className="speaking-indicator">
-                <span className="pulse"></span>
-                Andy speaking {preferences && preferences.language ? getLanguageName(preferences.language.code) : 'English'}...
-              </span>
-            )}
           </div>
 
           <div className="offence-input">
@@ -1658,8 +1591,182 @@ const ChatInterface = ({ preferences, lawTypeSelection, onResetPreferences, onCh
               className="offence-field"
             />
           </div>
+
+          {/* Profile & Logout */}
+          {user && (
+            <div className="profile-dropdown-container">
+              <button 
+                className="profile-btn"
+                onClick={() => setShowProfileMenu(!showProfileMenu)}
+                title="Account settings"
+              >
+                <div className="profile-avatar">
+                  {user.avatar_url ? (
+                    <img src={user.avatar_url} alt="Profile" />
+                  ) : (
+                    <span>{(user.name || user.email || 'U').charAt(0).toUpperCase()}</span>
+                  )}
+                </div>
+                <span className="profile-name">{user.name || user.email?.split('@')[0] || 'User'}</span>
+                <svg className={`profile-chevron ${showProfileMenu ? 'open' : ''}`} width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              {showProfileMenu && (
+                <div className="profile-dropdown">
+                  <div className="profile-dropdown-header">
+                    <div className="profile-dropdown-avatar">
+                      {user.avatar_url ? (
+                        <img src={user.avatar_url} alt="Profile" />
+                      ) : (
+                        <span>{(user.name || user.email || 'U').charAt(0).toUpperCase()}</span>
+                      )}
+                    </div>
+                    <div className="profile-dropdown-info">
+                      <span className="profile-dropdown-name">{user.name || 'User'}</span>
+                      <span className="profile-dropdown-email">{user.email}</span>
+                      <span className="profile-dropdown-role">{user.role || 'Client'}</span>
+                    </div>
+                  </div>
+                  <div className="profile-dropdown-divider"></div>
+                  <button className="profile-dropdown-item" onClick={() => { setShowProfileMenu(false); }}>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                      <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                    My Profile
+                  </button>
+                  <button className="profile-dropdown-item" onClick={() => { setShowProfileMenu(false); onResetPreferences && onResetPreferences(); }}>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <circle cx="12" cy="12" r="3"></circle>
+                      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                    </svg>
+                    Settings
+                  </button>
+                  <div className="profile-dropdown-divider"></div>
+                  <button className="profile-dropdown-item logout-item" onClick={() => { setShowProfileMenu(false); onLogout && onLogout(); }}>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                      <polyline points="16 17 21 12 16 7"></polyline>
+                      <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                    Logout
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </div>
+
+      {/* Main Content Area with Sidebar */}
+      <div className="chat-main-layout">
+        {/* Left Sidebar - Using ChatSidebar Component */}
+        <ChatSidebar
+          savedChats={savedChats}
+          currentChatId={currentChatId}
+          onLoadChat={(chatId) => {
+            loadConversationMessages(chatId);
+          }}
+          onNewChat={handleNewChat}
+          onDeleteChat={(chatId) => {
+            fetch(`${API_URL}/api/profile/conversations/${chatId}`, {
+              method: 'DELETE',
+              headers: getAuthHeaders()
+            }).then(() => {
+              const updated = savedChats.filter(c => c.id !== chatId);
+              setSavedChats(updated);
+              if (currentChatId === chatId) {
+                setCurrentChatId(null);
+                setMessages([]);
+              }
+            });
+          }}
+          onSearchChats={() => setShowChatHistory(true)}
+          isCollapsed={isSidebarCollapsed}
+          onToggleCollapse={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
+          user={user}
+          onLogout={onLogout}
+          activeResource={activeResource}
+          onResourceClick={handleResourceClick}
+          onNavigate={onNavigate}
+        />
+        
+        {/* Old Left Sidebar - Keeping for reference but will be replaced */}
+        <div className="chat-sidebar-left" style={{ display: 'none' }}>
+          {/* Current Context Display */}
+          {preferences && lawTypeSelection && (
+            <div className="context-display">
+              <div className="context-text">
+                Language: {getLanguageName(preferences.language?.code || 'en')} {preferences.country === 'CA' ? 'Canada' : 'United States'} {preferences.province || ''} <span className="law-type-highlight">{lawTypeSelection.lawType}</span>
+              </div>
+            </div>
+          )}
+
+          {/* Navigation Buttons */}
+          {lawTypeSelection && (
+            <div className="sidebar-navigation">
+              <button 
+                className="nav-btn" 
+                onClick={() => setShowRecentUpdates(true)} 
+                title="View recent legal updates"
+              >
+                📰 Recent Updates
+              </button>
+              <button 
+                className="nav-btn" 
+                onClick={() => setShowCaseLookup(true)} 
+                title="Search legal cases"
+              >
+                🔍 Case Lookup
+              </button>
+              <button 
+                className="nav-btn" 
+                onClick={() => setShowAmendmentGenerator(true)} 
+                title="Generate legal amendments"
+              >
+                📝 Amendments
+              </button>
+              <button 
+                className="nav-btn" 
+                onClick={() => setShowDocumentGenerator(true)} 
+                title="Generate legal documents"
+              >
+                📄 Documents
+              </button>
+              <button 
+                className="nav-btn" 
+                onClick={() => setShowChatHistory(true)} 
+                title="Search chat history"
+              >
+                💬 History
+              </button>
+              {onChangeLawType && (
+                <button className="nav-btn" onClick={onChangeLawType} title="Change law type">
+                  🔄 Change Law Type
+                </button>
+              )}
+              {onResetPreferences && (
+                <button className="nav-btn" onClick={onResetPreferences} title="Change all settings">
+                  ⚙️ Settings
+                </button>
+              )}
+            </div>
+          )}
+
+          {/* Summary Buttons */}
+          {messages.length > 2 && (
+            <div className="summary-buttons">
+              <button className="summary-btn ai-summary" onClick={() => setShowAISummary(true)} title="Generate AI case summary">
+                AI Summary
+              </button>
+              <button className="summary-btn quick-summary" onClick={handleGenerateSummary} title="Generate quick summary">
+                Quick Summary
+              </button>
+            </div>
+          )}
+        </div>
 
       {/* Progress Bar */}
       {uploadProgress > 0 && uploadProgress < 100 && (
@@ -1760,8 +1867,10 @@ const ChatInterface = ({ preferences, lawTypeSelection, onResetPreferences, onCh
         />
       )}
 
-      {/* Messages Area */}
-      <div className="messages-container" ref={chatContainerRef}>
+        {/* Main Chat Content */}
+        <div className="chat-content">
+          {/* Messages Area */}
+          <div className="messages-container" ref={chatContainerRef}>
         {/* 🎯 Drag & Drop Overlay */}
         {isDragging && (
           <div className="drag-drop-overlay">
@@ -1823,16 +1932,13 @@ const ChatInterface = ({ preferences, lawTypeSelection, onResetPreferences, onCh
             </div>
           </div>
         ) : (
-          messages.map((message, index) => (
+          messages.map((message) => (
             <div key={message.id} className={`message ${message.role}`}>
               <div className="message-bubble">
                 {/* Enhanced Legal Response for structured answers */}
                 {message.role === 'assistant' ? (
                   <>
-                    <EnhancedLegalResponse 
-                      response={message} 
-                      isNewMessage={message.isNew === true}
-                    />
+                    <EnhancedLegalResponse response={message} />
                     {/* Show government resources if available */}
                     {message.governmentResources && message.governmentResources.length > 0 && (
                       <GovernmentResources 
@@ -1957,22 +2063,29 @@ const ChatInterface = ({ preferences, lawTypeSelection, onResetPreferences, onCh
           ))
         )}
 
-        {/* Thinking indicator - Single blinking dot like ChatGPT */}
+        {/* Typing indicator */}
         {loading && (
           <div className="message assistant">
-            <div className="message-bubble">
-              <div className="thinking-indicator-chat">
-                <div className="thinking-dot-chat"></div>
+            <div className="message-content">
+              <div className="typing-indicator">
+                <span></span>
+                <span></span>
+                <span></span>
               </div>
+              {loadingStage && (
+                <div className="loading-stage" style={{ marginTop: '0.5rem', fontSize: '0.85rem', color: '#888' }}>
+                  {loadingStage}
+                </div>
+              )}
             </div>
           </div>
         )}
 
         <div ref={messagesEndRef} />
-      </div>
+          </div>
 
-      {/* Input Area */}
-      <form className="input-area" onSubmit={handleSend}>
+          {/* Input Area */}
+          <form className="input-area" onSubmit={handleSend}>
         <div className="input-container">
           <input
             type="text"
@@ -2091,10 +2204,12 @@ const ChatInterface = ({ preferences, lawTypeSelection, onResetPreferences, onCh
           </button>
         </div>
 
-        <div className="input-footer">
-          This is general information only, not legal advice. Consult a licensed lawyer for advice about your specific case.
+          <div className="input-footer">
+            This is general information only, not legal advice. Consult a licensed lawyer for advice about your specific case.
+          </div>
+          </form>
         </div>
-      </form>
+      </div>
 
       {/* Context Menu */}
       {contextMenu && (
@@ -2149,7 +2264,6 @@ const ChatInterface = ({ preferences, lawTypeSelection, onResetPreferences, onCh
            onClose={() => setShowRecentUpdates(false)}
          />
        )}
-      </div>
      </div>
    );
 };

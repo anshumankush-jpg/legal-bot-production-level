@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './ChatSidebar.css';
+import SidebarResourcesGrid from './SidebarResourcesGrid';
+import AccountSwitcherModal from './AccountSwitcherModal';
 
 const ChatSidebar = ({ 
   savedChats = [], 
@@ -11,12 +13,17 @@ const ChatSidebar = ({
   isCollapsed = false,
   onToggleCollapse,
   user,
-  onLogout
+  onLogout,
+  activeResource,
+  onResourceClick,
+  onNavigate
 }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredChats, setFilteredChats] = useState(savedChats);
   const [hoveredChatId, setHoveredChatId] = useState(null);
-  const [expandedSection, setExpandedSection] = useState('chats');
+  const [showProfileMenu, setShowProfileMenu] = useState(false);
+  const [showHelpMenu, setShowHelpMenu] = useState(false);
+  const [showAccountSwitcher, setShowAccountSwitcher] = useState(false);
 
   useEffect(() => {
     if (searchQuery.trim()) {
@@ -55,6 +62,32 @@ const ChatSidebar = ({
     }
   };
 
+  const groupChatsByTime = (chats) => {
+    const groups = {
+      Today: [],
+      Yesterday: [],
+      'Previous 7 days': [],
+      Older: []
+    };
+    const now = new Date();
+    chats.forEach(chat => {
+      const dateValue = chat.last_message_at || chat.updated_at || chat.created_at;
+      const chatDate = dateValue ? new Date(dateValue) : new Date();
+      const diffMs = now - chatDate;
+      const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+      if (diffDays === 0) {
+        groups.Today.push(chat);
+      } else if (diffDays === 1) {
+        groups.Yesterday.push(chat);
+      } else if (diffDays <= 7) {
+        groups['Previous 7 days'].push(chat);
+      } else {
+        groups.Older.push(chat);
+      }
+    });
+    return groups;
+  };
+
   const getInitials = (name) => {
     if (!name) return '?';
     return name
@@ -77,158 +110,85 @@ const ChatSidebar = ({
     );
   }
 
+  const handleResourceClick = (resourceId) => {
+    if (onResourceClick) {
+      onResourceClick(resourceId);
+    }
+  };
+
   return (
     <div className="chat-sidebar">
-      {/* Logo Section */}
+      {/* LEGID Logo/Title Section - Matching Screenshot */}
       <div className="sidebar-logo">
-        <div className="logo-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
+        <div className="logo-container">
+          <div className="logo-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M12 2L2 7L12 12L22 7L12 2Z" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M2 17L12 22L22 17" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M2 12L12 17L22 12" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </div>
+          <span className="logo-text">LEGID</span>
         </div>
         <button className="collapse-toggle" onClick={onToggleCollapse} title="Collapse sidebar">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-            <line x1="9" y1="3" x2="9" y2="21"></line>
+            <polyline points="15 18 9 12 15 6"></polyline>
           </svg>
         </button>
       </div>
 
-      {/* Main Navigation */}
-      <div className="sidebar-nav">
-        {/* New Chat */}
-        <button className="nav-item new-chat" onClick={onNewChat}>
+      {/* New Chat Button */}
+      <div className="sidebar-new-chat">
+        <button className="new-chat-button" onClick={onNewChat}>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M12 20h9"></path>
-            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
           </svg>
-          <span>New chat</span>
-        </button>
-
-        {/* Search Chats */}
-        <button className="nav-item" onClick={() => setExpandedSection(expandedSection === 'search' ? '' : 'search')}>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <circle cx="11" cy="11" r="8"></circle>
-            <path d="m21 21-4.35-4.35"></path>
-          </svg>
-          <span>Search chats</span>
-        </button>
-
-        {/* Search Input (expandable) */}
-        {expandedSection === 'search' && (
-          <div className="search-input-wrapper">
-            <input
-              type="text"
-              placeholder="Search your chats..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              autoFocus
-            />
-            {searchQuery && (
-              <button className="clear-search" onClick={() => setSearchQuery('')}>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <line x1="18" y1="6" x2="6" y2="18"></line>
-                  <line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
-              </button>
-            )}
-          </div>
-        )}
-
-        <div className="nav-divider"></div>
-
-        {/* Feature Items */}
-        <button className="nav-item">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-            <circle cx="8.5" cy="8.5" r="1.5"></circle>
-            <polyline points="21 15 16 10 5 21"></polyline>
-          </svg>
-          <span>Images</span>
-        </button>
-
-        <button className="nav-item">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <rect x="3" y="3" width="7" height="7"></rect>
-            <rect x="14" y="3" width="7" height="7"></rect>
-            <rect x="14" y="14" width="7" height="7"></rect>
-            <rect x="3" y="14" width="7" height="7"></rect>
-          </svg>
-          <span>Apps</span>
-        </button>
-
-        <button className="nav-item">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <polyline points="16 18 22 12 16 6"></polyline>
-            <polyline points="8 6 2 12 8 18"></polyline>
-          </svg>
-          <span>Codex</span>
-        </button>
-
-        <button className="nav-item">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
-          </svg>
-          <span>Projects</span>
+          <span>New Chat</span>
         </button>
       </div>
 
-      {/* Legal Bots Section */}
-      <div className="sidebar-section">
-        <div className="section-header">
-          <span>Legal Bots</span>
-        </div>
-        <div className="section-items">
-          <button className="nav-item bot-item">
-            <div className="bot-avatar green">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
-                <path d="M2 17l10 5 10-5"></path>
-                <path d="M2 12l10 5 10-5"></path>
-              </svg>
-            </div>
-            <span>Case Analyzer</span>
-          </button>
-
-          <button className="nav-item bot-item">
-            <div className="bot-avatar blue">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                <polyline points="14 2 14 8 20 8"></polyline>
-                <line x1="16" y1="13" x2="8" y2="13"></line>
-                <line x1="16" y1="17" x2="8" y2="17"></line>
-              </svg>
-            </div>
-            <span>Document Drafter</span>
-          </button>
-
-          <button className="nav-item bot-item">
-            <div className="bot-avatar purple">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <circle cx="12" cy="12" r="10"></circle>
-                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
-                <line x1="12" y1="17" x2="12.01" y2="17"></line>
-              </svg>
-            </div>
-            <span>Legal Q&A</span>
-          </button>
-
-          <button className="nav-item explore-item">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <circle cx="12" cy="12" r="10"></circle>
-              <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+      {/* Search Chats Input - Always Visible */}
+      <div className="sidebar-search">
+        <svg className="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <path d="m21 21-4.35-4.35"></path>
+        </svg>
+        <input
+          type="text"
+          placeholder="Search chats..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+        {searchQuery && (
+          <button className="clear-search" onClick={() => setSearchQuery('')}>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
             </svg>
-            <span>Explore Bots</span>
           </button>
-        </div>
+        )}
       </div>
 
-      {/* Recent Chats */}
+      {/* Divider */}
+      <div className="sidebar-divider"></div>
+
+      {/* RESOURCES Section */}
+      <div className="sidebar-resources-section">
+        <div className="resources-header">
+          <span>RESOURCES</span>
+        </div>
+        <SidebarResourcesGrid 
+          activeResource={activeResource}
+          onResourceClick={handleResourceClick}
+          isCollapsed={false}
+        />
+      </div>
+
+      {/* Your Chats Section */}
       <div className="sidebar-section chats-section">
         <div className="section-header">
-          <span>Recent Chats</span>
+          <span>Your Chats</span>
           <span className="chat-count">{filteredChats.length}</span>
         </div>
         <div className="chats-list">
@@ -237,57 +197,118 @@ const ChatSidebar = ({
               <p>{searchQuery ? 'No chats found' : 'No chats yet'}</p>
             </div>
           ) : (
-            filteredChats.slice(0, 10).map((chat) => (
-              <div
-                key={chat.id}
-                className={`chat-item ${currentChatId === chat.id ? 'active' : ''}`}
-                onClick={() => onLoadChat && onLoadChat(chat.id)}
-                onMouseEnter={() => setHoveredChatId(chat.id)}
-                onMouseLeave={() => setHoveredChatId(null)}
-              >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                </svg>
-                <span className="chat-title">{chat.title || 'Untitled Chat'}</span>
-                
-                {hoveredChatId === chat.id && (
-                  <button 
-                    className="delete-chat-btn"
-                    onClick={(e) => handleDeleteClick(e, chat.id)}
-                    title="Delete chat"
-                  >
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <polyline points="3 6 5 6 21 6"></polyline>
-                      <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                    </svg>
-                  </button>
-                )}
-              </div>
+            Object.entries(groupChatsByTime(filteredChats)).map(([groupName, chats]) => (
+              chats.length > 0 && (
+                <div key={groupName} className="chat-group">
+                  <div className="chat-group-title">{groupName}</div>
+                  {chats.map((chat) => (
+                    <div
+                      key={chat.id}
+                      className={`chat-item ${currentChatId === chat.id ? 'active' : ''}`}
+                      onClick={() => onLoadChat && onLoadChat(chat.id)}
+                      onMouseEnter={() => setHoveredChatId(chat.id)}
+                      onMouseLeave={() => setHoveredChatId(null)}
+                    >
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                      </svg>
+                      <span className="chat-title">{chat.title || 'Untitled Chat'}</span>
+                      
+                      {hoveredChatId === chat.id && (
+                        <button 
+                          className="delete-chat-btn"
+                          onClick={(e) => handleDeleteClick(e, chat.id)}
+                          title="Delete chat"
+                        >
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <polyline points="3 6 5 6 21 6"></polyline>
+                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                          </svg>
+                        </button>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )
             ))
           )}
         </div>
       </div>
 
-      {/* User Profile Footer */}
+      {/* User Profile Footer - Matching Screenshot */}
       <div className="sidebar-footer">
-        <div className="user-profile-item">
+        <div className="user-profile-item" onClick={() => setShowProfileMenu(!showProfileMenu)}>
           <div className="user-avatar">
             {user?.profile_photo_url ? (
               <img src={user.profile_photo_url} alt={user.name} />
             ) : (
-              <span>{getInitials(user?.name)}</span>
+              <span>{getInitials(user?.name || 'User')}</span>
             )}
           </div>
           <div className="user-info">
             <div className="user-name">{user?.name || 'User'}</div>
-            <div className="user-plan">
-              {user?.subscription === 'premium' ? 'Plus' : 
-               user?.subscription === 'pro' ? 'Pro' : 
-               user?.role === 'lawyer' ? 'Lawyer' : 'Free'}
-            </div>
+            <div className="user-role">{user?.role || 'client'}</div>
           </div>
+          <button className="profile-menu-btn" onClick={(e) => { e.stopPropagation(); setShowProfileMenu(!showProfileMenu); }}>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <circle cx="12" cy="12" r="1"></circle>
+              <circle cx="12" cy="5" r="1"></circle>
+              <circle cx="12" cy="19" r="1"></circle>
+            </svg>
+          </button>
         </div>
+        
+        {showProfileMenu && (
+          <div className="profile-menu-dropdown">
+            <div className="profile-menu-header">
+              <div className="profile-menu-name">{user?.name || 'User'}</div>
+              <div className="profile-menu-email">{user?.email || ''}</div>
+            </div>
+            <div className="profile-menu-divider"></div>
+            <button className="profile-menu-item" onClick={() => { setShowProfileMenu(false); setShowAccountSwitcher(true); }}>
+              Add account
+            </button>
+            <button className="profile-menu-item" onClick={() => { setShowProfileMenu(false); onNavigate && onNavigate('settings'); }}>
+              Settings
+            </button>
+            <button className="profile-menu-item" onClick={() => { setShowProfileMenu(false); onNavigate && onNavigate('personalization'); }}>
+              Personalization
+            </button>
+            <button className="profile-menu-item" onClick={() => { setShowHelpMenu(!showHelpMenu); }}>
+              Help
+            </button>
+            {showHelpMenu && (
+              <div className="profile-menu-submenu">
+                <button className="profile-menu-item" onClick={() => { setShowProfileMenu(false); onNavigate && onNavigate('help-center'); }}>
+                  Help Center
+                </button>
+                <button className="profile-menu-item" onClick={() => { setShowProfileMenu(false); onNavigate && onNavigate('release-notes'); }}>
+                  Release Notes
+                </button>
+                <button className="profile-menu-item" onClick={() => { setShowProfileMenu(false); onNavigate && onNavigate('terms'); }}>
+                  Terms & Policies
+                </button>
+                <button className="profile-menu-item" onClick={() => window.open('mailto:info@predictivetechlabs.com?subject=Report%20a%20bug')}>
+                  Report Bug
+                </button>
+                <button className="profile-menu-item" onClick={() => { setShowProfileMenu(false); onNavigate && onNavigate('keyboard-shortcuts'); }}>
+                  Keyboard Shortcuts
+                </button>
+              </div>
+            )}
+            <button className="profile-menu-item logout" onClick={() => { setShowProfileMenu(false); onLogout && onLogout(); }}>
+              Log out
+            </button>
+          </div>
+        )}
       </div>
+
+      <AccountSwitcherModal
+        isOpen={showAccountSwitcher}
+        onClose={() => setShowAccountSwitcher(false)}
+        onAddAccount={() => window.location.href = '/'}
+        onSwitched={() => window.location.reload()}
+      />
     </div>
   );
 };

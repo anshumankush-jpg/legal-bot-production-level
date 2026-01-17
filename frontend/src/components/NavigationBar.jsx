@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './NavigationBar.css';
+import ProfileMenu from './ProfileMenu';
 
 const NavigationBar = ({ 
   onNewChat, 
@@ -8,7 +9,10 @@ const NavigationBar = ({
   onShowApps,
   onShowCodex,
   onShowProjects,
-  currentView = 'chat'
+  onViewChange,
+  onLogout,
+  currentView = 'chat',
+  user
 }) => {
   const [activeView, setActiveView] = useState(currentView);
 
@@ -21,7 +25,15 @@ const NavigationBar = ({
     <div className="navigation-bar">
       <div className="nav-left">
         <div className="nav-logo">
-          <span className="logo-icon">⚖️</span>
+          <div className="logo-image">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ width: '100%', height: '100%' }}>
+              <path d="M12 3v18" />
+              <path d="M5 7l7-4 7 4" />
+              <circle cx="5" cy="11" r="3" />
+              <circle cx="19" cy="11" r="3" />
+              <path d="M5 14v4a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4" />
+            </svg>
+          </div>
           <span className="logo-text">LEGID</span>
         </div>
       </div>
@@ -116,14 +128,11 @@ const NavigationBar = ({
           </svg>
         </button>
 
-        <div className="nav-profile">
-          <div className="profile-avatar">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-              <circle cx="12" cy="7" r="4"></circle>
-            </svg>
-          </div>
-        </div>
+        <ProfileMenu 
+          user={user}
+          onLogout={onLogout}
+          onViewChange={onViewChange}
+        />
       </div>
     </div>
   );

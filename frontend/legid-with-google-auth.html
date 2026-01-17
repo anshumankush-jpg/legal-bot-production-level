@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LEGID - Legal Assistant Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <style>
+    /* Custom scrollbar styles */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #1f2937;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #4b5563;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #6b7280;
+    }
+    
+    /* Animation for messages */
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .message-animate {
+      animation: slideIn 0.3s ease-out;
+    }
+
+    /* Login page styles */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    .fade-in {
+      animation: fadeIn 0.5s ease-out;
+    }
+  </style>
+</head>
+<body class="bg-gray-900 text-white antialiased">
+  
+  <!-- ========================================
+       LOGIN PAGE
+  ========================================= -->
+  <div id="loginPage" class="hidden min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+    <div class="fade-in max-w-md w-full mx-4">
+      <div class="bg-gray-800 rounded-2xl shadow-2xl border border-gray-700 p-8">
+        <!-- Logo and Title -->
+        <div class="text-center mb-8">
+          <div class="inline-block bg-gradient-to-r from-cyan-500 to-blue-500 p-4 rounded-full mb-4">
+            <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"></path>
+            </svg>
+          </div>
+          <h1 class="text-3xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent mb-2">
+            LEGID
+          </h1>
+          <p class="text-gray-400 text-sm">Your AI-Powered Legal Assistant</p>
+        </div>
+
+        <!-- Welcome Message -->
+        <div class="text-center mb-6">
+          <h2 class="text-xl font-semibold mb-2">Welcome Back</h2>
+          <p class="text-gray-400 text-sm">Sign in to access your legal assistant</p>
+        </div>
+
+        <!-- Google Sign-In Button -->
+        <div class="space-y-4">
+          <button 
+            onclick="handleGoogleLogin()"
+            class="w-full bg-white text-gray-800 font-medium py-3 px-4 rounded-lg hover:bg-gray-100 transition-all duration-200 flex items-center justify-center gap-3 shadow-lg">
+            <svg class="w-5 h-5" viewBox="0 0 24 24">
+              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+              <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+            </svg>
+            Sign in with Google
+          </button>
+
+          <!-- OR divider -->
+          <div class="relative">
+            <div class="absolute inset-0 flex items-center">
+              <div class="w-full border-t border-gray-700"></div>
+            </div>
+            <div class="relative flex justify-center text-xs uppercase">
+              <span class="bg-gray-800 px-2 text-gray-500">Or continue with</span>
+            </div>
+          </div>
+
+          <!-- Alternative login methods (placeholder) -->
+          <button class="w-full bg-gray-700 text-white font-medium py-3 px-4 rounded-lg hover:bg-gray-600 transition-all duration-200">
+            Sign in with Email
+          </button>
+        </div>
+
+        <!-- Footer -->
+        <div class="mt-6 text-center text-xs text-gray-500">
+          By signing in, you agree to our
+          <a href="#" class="text-cyan-400 hover:text-cyan-300">Terms of Service</a>
+          and
+          <a href="#" class="text-cyan-400 hover:text-cyan-300">Privacy Policy</a>
+        </div>
+      </div>
+
+      <!-- Additional Info -->
+      <div class="mt-6 text-center text-sm text-gray-500">
+        <p>Specialized in Wills, Estates, and Trusts Law</p>
+        <p class="mt-2">🇨🇦 Serving Canadian Legal Professionals</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================
+       MAIN APPLICATION (Hidden until logged in)
+  ========================================= -->
+  <div id="mainApp" class="hidden">
+    <!-- Main Container -->
+    <div class="flex flex-col h-screen overflow-hidden">
+      
+      <!-- HEADER / TOP NAVBAR -->
+      <header class="flex items-center justify-between bg-gray-900 text-white px-6 py-3 border-b border-gray-700 shadow-lg">
+        <!-- Left Section -->
+        <div class="flex items-center gap-6">
+          <h1 class="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+            LEGID
+          </h1>
+          <button 
+            onclick="createNewChat()"
+            class="bg-blue-600 px-4 py-2 rounded-lg hover:bg-blue-500 text-sm font-medium transition-all duration-200 hover:shadow-lg hover:scale-105 flex items-center gap-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+            </svg>
+            New Chat
+          </button>
+          <div class="text-xs text-gray-400 hidden md:flex items-center gap-2">
+            <span class="px-2 py-1 bg-gray-800 rounded">English</span>
+            <span class="text-gray-600">|</span>
+            <span class="px-2 py-1 bg-gray-800 rounded">Canada</span>
+            <span class="text-gray-600">|</span>
+            <span class="px-2 py-1 bg-gray-800 rounded">ON</span>
+            <span class="text-gray-600">|</span>
+            <span class="px-2 py-1 bg-cyan-600 rounded font-semibold">Wills, Estates, and Trusts</span>
+          </div>
+        </div>
+        
+        <!-- Right Section -->
+        <div class="flex items-center gap-3">
+          <input 
+            class="bg-gray-800 text-white px-3 py-2 rounded-lg text-sm border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all w-40" 
+            type="text" 
+            placeholder="Offence # (optional)"
+            id="offenceNumber">
+          <div class="relative">
+            <button 
+              onclick="toggleProfileDropdown()"
+              class="bg-gradient-to-r from-cyan-600 to-cyan-700 px-4 py-2 rounded-full text-sm font-medium hover:from-cyan-500 hover:to-cyan-600 transition-all duration-200 flex items-center gap-2">
+              <img id="userAvatar" src="" alt="User" class="w-6 h-6 rounded-full" onerror="this.style.display='none'; document.getElementById('userInitialsSpan').style.display='flex'">
+              <span id="userInitialsSpan" class="w-6 h-6 bg-white text-cyan-600 rounded-full flex items-center justify-center text-xs font-bold" style="display: none;">U</span>
+              <span id="userName">User</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            
+            <!-- Profile Dropdown -->
+            <div id="profileDropdown" class="hidden absolute right-0 mt-2 w-56 bg-gray-800 rounded-lg shadow-xl border border-gray-700 z-50">
+              <div class="p-4 border-b border-gray-700">
+                <div class="font-semibold" id="dropdownName">User</div>
+                <div class="text-xs text-gray-400" id="dropdownEmail">user@example.com</div>
+              </div>
+              <button class="w-full text-left px-4 py-2 hover:bg-gray-700 flex items-center gap-3 transition-colors">
+                <span>⚙️</span> Personalization
+              </button>
+              <button class="w-full text-left px-4 py-2 hover:bg-gray-700 flex items-center gap-3 transition-colors">
+                <span>🔧</span> Settings
+              </button>
+              <button class="w-full text-left px-4 py-2 hover:bg-gray-700 flex items-center gap-3 transition-colors">
+                <span>❓</span> Help
+              </button>
+              <div class="border-t border-gray-700"></div>
+              <button onclick="handleLogout()" class="w-full text-left px-4 py-2 hover:bg-red-900/50 text-red-400 flex items-center gap-3 transition-colors rounded-b-lg">
+                <span>🚪</span> Log out
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+      
+      <!-- BODY SECTION (Sidebar + Main Content) -->
+      <div class="flex flex-1 overflow-hidden">
+        
+        <!-- SIDEBAR (Left Panel) -->
+        <aside class="bg-gray-800 w-72 h-full text-white flex flex-col border-r border-gray-700 overflow-y-auto">
+          <!-- Sidebar content from original file -->
+          <div class="p-4 border-b border-gray-700">
+            <button 
+              onclick="createNewChat()"
+              class="w-full bg-gradient-to-r from-blue-600 to-blue-700 py-3 px-4 rounded-lg text-left hover:from-blue-500 hover:to-blue-600 font-medium transition-all duration-200 flex items-center gap-3 shadow-lg">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+              </svg>
+              New Chat
+            </button>
+          </div>
+          
+          <!-- Search Bar -->
+          <div class="p-4">
+            <div class="relative">
+              <input 
+                type="text" 
+                placeholder="Search chats..." 
+                class="w-full bg-gray-700 text-white px-4 py-2 pl-10 rounded-lg text-sm border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all">
+              <svg class="w-4 h-4 absolute left-3 top-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+              </svg>
+            </div>
+          </div>
+          
+          <!-- Quick Actions -->
+          <div class="flex flex-col gap-2 px-4 pb-4">
+            <div class="text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wider">Quick Actions</div>
+            
+            <button class="bg-gray-700 py-2.5 px-4 rounded-lg text-left hover:bg-gray-600 transition-all duration-200 flex items-center gap-3 group">
+              <span class="text-lg">📰</span>
+              <span class="text-sm font-medium">Recent Updates</span>
+            </button>
+            
+            <button class="bg-gray-700 py-2.5 px-4 rounded-lg text-left hover:bg-gray-600 transition-all duration-200 flex items-center gap-3 group">
+              <span class="text-lg">🔍</span>
+              <span class="text-sm font-medium">Case Lookup</span>
+            </button>
+            
+            <button class="bg-gradient-to-r from-purple-600 to-purple-700 py-2.5 px-4 rounded-lg text-left hover:from-purple-500 hover:to-purple-600 transition-all duration-200 flex items-center gap-3 group shadow-lg">
+              <span class="text-lg">🤖</span>
+              <span class="text-sm font-medium">AI Summary</span>
+            </button>
+          </div>
+        </aside>
+        
+        <!-- MAIN CONTENT AREA (Chat + Input) -->
+        <div class="flex flex-col flex-1 bg-gray-900">
+          
+          <!-- CHAT MESSAGES AREA -->
+          <main id="chatArea" class="flex-1 overflow-y-auto p-6 space-y-6">
+            
+            <!-- Welcome Message -->
+            <div class="text-center py-12">
+              <div class="inline-block bg-gradient-to-r from-cyan-500 to-blue-500 p-4 rounded-full mb-4">
+                <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path>
+                </svg>
+              </div>
+              <h2 class="text-2xl font-bold mb-2">Welcome to LEGID</h2>
+              <p class="text-gray-400 max-w-md mx-auto">Your AI-powered legal assistant for Wills, Estates, and Trusts. Ask me anything!</p>
+            </div>
+            
+            <!-- Typing Indicator (hidden by default) -->
+            <div id="typingIndicator" class="flex justify-start hidden">
+              <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-xs font-bold">AI</div>
+                <div class="bg-gray-800 px-5 py-3 rounded-2xl rounded-tl-sm border border-gray-700">
+                  <div class="flex gap-1">
+                    <div class="w-2 h-2 bg-gray-500 rounded-full animate-bounce" style="animation-delay: 0s"></div>
+                    <div class="w-2 h-2 bg-gray-500 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+                    <div class="w-2 h-2 bg-gray-500 rounded-full animate-bounce" style="animation-delay: 0.4s"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          </main>
+          
+          <!-- CHAT INPUT (Bottom Bar) -->
+          <footer class="bg-gray-800 border-t border-gray-700 p-4">
+            <div class="max-w-4xl mx-auto">
+              <!-- Toolbar -->
+              <div class="flex items-center gap-2 mb-3">
+                <button class="p-2 hover:bg-gray-700 rounded-lg transition-all" title="Attach Document">
+                  <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"></path>
+                  </svg>
+                </button>
+                <button class="p-2 hover:bg-gray-700 rounded-lg transition-all" title="Voice Input">
+                  <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>
+                  </svg>
+                </button>
+                <div class="flex-1"></div>
+                <span class="text-xs text-gray-500">Press Enter to send, Shift+Enter for new line</span>
+              </div>
+              
+              <!-- Input Area -->
+              <div class="flex items-end gap-3">
+                <textarea 
+                  id="messageInput"
+                  rows="1"
+                  onkeydown="handleKeyPress(event)"
+                  oninput="autoResize(this)"
+                  class="flex-1 bg-gray-700 px-4 py-3 rounded-lg text-white text-sm border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none max-h-32 overflow-y-auto" 
+                  placeholder="Ask about legal documents, case law, or Wills, Estates, and Trusts..."></textarea>
+                
+                <button 
+                  onclick="sendMessage()"
+                  class="bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-3 rounded-lg text-white hover:from-blue-500 hover:to-blue-600 transition-all duration-200 font-medium flex items-center gap-2 shadow-lg hover:shadow-xl hover:scale-105">
+                  <span>Send</span>
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                  </svg>
+                </button>
+              </div>
+              
+              <!-- Footer Info -->
+              <div class="mt-3 text-center">
+                <p class="text-xs text-gray-500">
+                  LEGID uses AI to provide legal information. Always consult with a qualified lawyer for legal advice.
+                </p>
+              </div>
+            </div>
+          </footer>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- ========================================
+       JAVASCRIPT
+  ========================================= -->
+  <script>
+    // Configuration
+    const BACKEND_URL = 'http://localhost:8000';
+    
+    // State management
+    let currentUser = null;
+    let authToken = null;
+
+    // ========================================
+    // AUTHENTICATION FUNCTIONS
+    // ========================================
+    
+    // Check authentication status on page load
+    window.addEventListener('load', () => {
+      checkAuthStatus();
+    });
+
+    function checkAuthStatus() {
+      // Check URL parameters for token (from OAuth callback)
+      const urlParams = new URLSearchParams(window.location.search);
+      const token = urlParams.get('token');
+      const email = urlParams.get('email');
+      const name = urlParams.get('name');
+      const picture = urlParams.get('picture');
+      const error = urlParams.get('error');
+
+      if (error) {
+        console.error('OAuth error:', error);
+        showLoginPage();
+        alert('Authentication failed. Please try again.');
+        return;
+      }
+
+      if (token) {
+        // Save token to localStorage
+        localStorage.setItem('authToken', token);
+        localStorage.setItem('userEmail', email);
+        localStorage.setItem('userName', name);
+        localStorage.setItem('userPicture', picture);
+        
+        // Clean URL
+        window.history.replaceState({}, document.title, window.location.pathname);
+        
+        // Set current user
+        currentUser = { email, name, picture };
+        authToken = token;
+        
+        // Show main app
+        showMainApp();
+        return;
+      }
+
+      // Check localStorage for existing token
+      const storedToken = localStorage.getItem('authToken');
+      if (storedToken) {
+        // Verify token with backend
+        verifyToken(storedToken);
+      } else {
+        showLoginPage();
+      }
+    }
+
+    async function verifyToken(token) {
+      try {
+        const response = await fetch(`${BACKEND_URL}/auth/verify?token=${encodeURIComponent(token)}`);
+        
+        if (response.ok) {
+          const userData = await response.json();
+          currentUser = userData;
+          authToken = token;
+          showMainApp();
+        } else {
+          // Token invalid, show login
+          localStorage.clear();
+          showLoginPage();
+        }
+      } catch (error) {
+        console.error('Error verifying token:', error);
+        showLoginPage();
+      }
+    }
+
+    function handleGoogleLogin() {
+      // Redirect to backend OAuth login endpoint
+      window.location.href = `${BACKEND_URL}/auth/google/login`;
+    }
+
+    function handleLogout() {
+      // Clear local storage
+      localStorage.clear();
+      currentUser = null;
+      authToken = null;
+      
+      // Redirect to login page
+      showLoginPage();
+    }
+
+    function showLoginPage() {
+      document.getElementById('loginPage').classList.remove('hidden');
+      document.getElementById('mainApp').classList.add('hidden');
+    }
+
+    function showMainApp() {
+      document.getElementById('loginPage').classList.add('hidden');
+      document.getElementById('mainApp').classList.remove('hidden');
+      
+      // Update user info in UI
+      updateUserInfo();
+      
+      // Focus on message input
+      document.getElementById('messageInput').focus();
+    }
+
+    function updateUserInfo() {
+      const name = localStorage.getItem('userName') || 'User';
+      const email = localStorage.getItem('userEmail') || 'user@example.com';
+      const picture = localStorage.getItem('userPicture');
+      
+      // Update header
+      document.getElementById('userName').textContent = name;
+      
+      if (picture) {
+        document.getElementById('userAvatar').src = picture;
+        document.getElementById('userAvatar').style.display = 'block';
+        document.getElementById('userInitialsSpan').style.display = 'none';
+      } else {
+        const initials = name.split(' ').map(n => n[0]).join('').toUpperCase().substring(0, 2);
+        document.getElementById('userInitialsSpan').textContent = initials;
+        document.getElementById('userAvatar').style.display = 'none';
+        document.getElementById('userInitialsSpan').style.display = 'flex';
+      }
+      
+      // Update dropdown
+      document.getElementById('dropdownName').textContent = name;
+      document.getElementById('dropdownEmail').textContent = email;
+    }
+
+    // ========================================
+    // CHAT FUNCTIONS
+    // ========================================
+    
+    // Auto-resize textarea
+    function autoResize(textarea) {
+      textarea.style.height = 'auto';
+      textarea.style.height = textarea.scrollHeight + 'px';
+    }
+    
+    // Handle Enter key press
+    function handleKeyPress(event) {
+      if (event.key === 'Enter' && !event.shiftKey) {
+        event.preventDefault();
+        sendMessage();
+      }
+    }
+    
+    // Send message function
+    async function sendMessage() {
+      const input = document.getElementById('messageInput');
+      const message = input.value.trim();
+      
+      if (!message) return;
+      
+      const chatArea = document.getElementById('chatArea');
+      const now = new Date();
+      const timeString = now.toLocaleTimeString('en-US', { hour12: true });
+      
+      // Add user message
+      const userMessage = `
+        <div class="flex justify-end message-animate">
+          <div class="max-w-2xl">
+            <div class="text-xs text-gray-400 text-right mb-1">${timeString}</div>
+            <div class="bg-blue-600 inline-block px-5 py-3 rounded-2xl rounded-tr-sm shadow-lg">
+              <p class="text-sm">${escapeHtml(message)}</p>
+            </div>
+          </div>
+        </div>
+      `;
+      
+      chatArea.insertAdjacentHTML('beforeend', userMessage);
+      
+      // Clear input
+      input.value = '';
+      input.style.height = 'auto';
+      
+      // Scroll to bottom
+      chatArea.scrollTop = chatArea.scrollHeight;
+      
+      // Show typing indicator
+      const typingIndicator = document.getElementById('typingIndicator');
+      typingIndicator.classList.remove('hidden');
+      chatArea.scrollTop = chatArea.scrollHeight;
+      
+      // Call backend API (if available)
+      try {
+        // TODO: Replace with actual backend call
+        // const response = await fetch(`${BACKEND_URL}/api/chat`, {
+        //   method: 'POST',
+        //   headers: {
+        //     'Content-Type': 'application/json',
+        //     'Authorization': `Bearer ${authToken}`
+        //   },
+        //   body: JSON.stringify({ message })
+        // });
+        
+        // Simulate AI response for now
+        setTimeout(() => {
+          typingIndicator.classList.add('hidden');
+          
+          const aiResponse = `
+            <div class="flex justify-start message-animate">
+              <div class="max-w-3xl">
+                <div class="flex items-center gap-2 mb-2">
+                  <div class="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-xs font-bold">AI</div>
+                  <span class="text-xs text-gray-400">${timeString}</span>
+                </div>
+                <div class="bg-gray-800 px-5 py-4 rounded-2xl rounded-tl-sm border border-gray-700 shadow-lg">
+                  <p class="text-sm">Thank you for your question! I'm processing your request about: "${escapeHtml(message)}". In a production environment, this would connect to the backend API to provide detailed legal information.</p>
+                </div>
+              </div>
+            </div>
+          `;
+          
+          chatArea.insertAdjacentHTML('beforeend', aiResponse);
+          chatArea.scrollTop = chatArea.scrollHeight;
+        }, 2000);
+      } catch (error) {
+        typingIndicator.classList.add('hidden');
+        console.error('Error sending message:', error);
+      }
+    }
+    
+    // Toggle profile dropdown
+    function toggleProfileDropdown() {
+      const dropdown = document.getElementById('profileDropdown');
+      dropdown.classList.toggle('hidden');
+    }
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(event) {
+      const dropdown = document.getElementById('profileDropdown');
+      const profileButton = event.target.closest('button');
+      
+      if (!profileButton && !dropdown.contains(event.target)) {
+        dropdown.classList.add('hidden');
+      }
+    });
+    
+    // Create new chat
+    function createNewChat() {
+      const chatArea = document.getElementById('chatArea');
+      chatArea.innerHTML = `
+        <div class="text-center py-12">
+          <div class="inline-block bg-gradient-to-r from-cyan-500 to-blue-500 p-4 rounded-full mb-4">
+            <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path>
+            </svg>
+          </div>
+          <h2 class="text-2xl font-bold mb-2">New Chat Started</h2>
+          <p class="text-gray-400 max-w-md mx-auto">Ready to assist with your legal questions!</p>
+        </div>
+      `;
+      
+      // Clear input
+      document.getElementById('messageInput').value = '';
+    }
+    
+    // Escape HTML to prevent XSS
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+  </script>
+  
+</body>
+</html>

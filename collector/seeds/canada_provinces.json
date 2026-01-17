@@ -1,0 +1,187 @@
+[
+  {
+    "region_name": "Ontario",
+    "region_code": "ON",
+    "country": "Canada",
+    "official_directory_urls": [
+      "https://www.ontariocourts.ca/ocj/",
+      "https://www.attorneygeneral.jus.gov.on.ca/english/courts/"
+    ],
+    "search_patterns": [
+      "{city} Ontario provincial offences court",
+      "{city} ON traffic ticket lookup",
+      "{city} municipal court Ontario"
+    ],
+    "top_cities": [
+      "Toronto", "Ottawa", "Mississauga", "Brampton", "Hamilton",
+      "London", "Markham", "Vaughan", "Kitchener", "Windsor",
+      "Richmond Hill", "Oakville", "Burlington", "Oshawa", "Barrie",
+      "St. Catharines", "Cambridge", "Waterloo", "Guelph", "Sudbury",
+      "Kingston", "Thunder Bay", "Peterborough", "Niagara Falls", "Sarnia"
+    ]
+  },
+  {
+    "region_name": "Quebec",
+    "region_code": "QC",
+    "country": "Canada",
+    "official_directory_urls": [
+      "https://www.justice.gouv.qc.ca/en/",
+      "https://www.tribunaux.qc.ca/"
+    ],
+    "search_patterns": [
+      "{city} Quebec municipal court",
+      "{city} QC traffic ticket",
+      "{city} cour municipale"
+    ],
+    "top_cities": [
+      "Montreal", "Quebec City", "Laval", "Gatineau", "Longueuil",
+      "Sherbrooke", "Saguenay", "Levis", "Trois-Rivieres", "Terrebonne",
+      "Saint-Jean-sur-Richelieu", "Repentigny", "Brossard", "Drummondville", "Saint-Jerome",
+      "Granby", "Blainville", "Saint-Hyacinthe", "Dollard-des-Ormeaux", "Chateauguay"
+    ]
+  },
+  {
+    "region_name": "British Columbia",
+    "region_code": "BC",
+    "country": "Canada",
+    "official_directory_urls": [
+      "https://www.provincialcourt.bc.ca/",
+      "https://www2.gov.bc.ca/gov/content/justice/courthouse-services"
+    ],
+    "search_patterns": [
+      "{city} BC provincial court",
+      "{city} British Columbia traffic ticket",
+      "{city} BC court services"
+    ],
+    "top_cities": [
+      "Vancouver", "Surrey", "Burnaby", "Richmond", "Abbotsford",
+      "Coquitlam", "Kelowna", "Saanich", "Delta", "Langley",
+      "Kamloops", "Nanaimo", "Victoria", "Chilliwack", "Prince George",
+      "Vernon", "Penticton", "Campbell River", "Courtenay", "Maple Ridge"
+    ]
+  },
+  {
+    "region_name": "Alberta",
+    "region_code": "AB",
+    "country": "Canada",
+    "official_directory_urls": [
+      "https://albertacourts.ca/",
+      "https://www.alberta.ca/provincial-court.aspx"
+    ],
+    "search_patterns": [
+      "{city} Alberta provincial court",
+      "{city} AB traffic ticket",
+      "{city} Alberta court services"
+    ],
+    "top_cities": [
+      "Calgary", "Edmonton", "Red Deer", "Lethbridge", "St. Albert",
+      "Medicine Hat", "Grande Prairie", "Airdrie", "Spruce Grove", "Okotoks",
+      "Leduc", "Fort McMurray", "Lloydminster", "Camrose", "Brooks",
+      "Cold Lake", "Wetaskiwin", "Lacombe", "Stony Plain", "Cochrane"
+    ]
+  },
+  {
+    "region_name": "Manitoba",
+    "region_code": "MB",
+    "country": "Canada",
+    "official_directory_urls": [
+      "https://www.manitobacourts.mb.ca/",
+      "https://www.gov.mb.ca/justice/crown/prosecutions/pubs/ticketinfo.html"
+    ],
+    "search_patterns": [
+      "{city} Manitoba provincial court",
+      "{city} MB traffic ticket",
+      "{city} Manitoba court"
+    ],
+    "top_cities": [
+      "Winnipeg", "Brandon", "Steinbach", "Thompson", "Portage la Prairie",
+      "Winkler", "Selkirk", "Morden", "Dauphin", "The Pas"
+    ]
+  },
+  {
+    "region_name": "Saskatchewan",
+    "region_code": "SK",
+    "country": "Canada",
+    "official_directory_urls": [
+      "https://sasklawcourts.ca/",
+      "https://www.saskatoon.ca/services-residents/police-public-safety/bylaws-enforcement"
+    ],
+    "search_patterns": [
+      "{city} Saskatchewan provincial court",
+      "{city} SK traffic ticket",
+      "{city} Saskatchewan court"
+    ],
+    "top_cities": [
+      "Saskatoon", "Regina", "Prince Albert", "Moose Jaw", "Swift Current",
+      "Yorkton", "North Battleford", "Estevan", "Weyburn", "Lloydminster"
+    ]
+  },
+  {
+    "region_name": "Nova Scotia",
+    "region_code": "NS",
+    "country": "Canada",
+    "official_directory_urls": [
+      "https://courts.ns.ca/",
+      "https://novascotia.ca/just/courts.asp"
+    ],
+    "search_patterns": [
+      "{city} Nova Scotia provincial court",
+      "{city} NS traffic ticket",
+      "{city} Nova Scotia court"
+    ],
+    "top_cities": [
+      "Halifax", "Cape Breton", "Truro", "New Glasgow", "Glace Bay",
+      "Sydney", "Dartmouth", "Amherst", "Kentville", "Antigonish"
+    ]
+  },
+  {
+    "region_name": "New Brunswick",
+    "region_code": "NB",
+    "country": "Canada",
+    "official_directory_urls": [
+      "https://www2.gnb.ca/content/gnb/en/departments/public-safety/court-services.html"
+    ],
+    "search_patterns": [
+      "{city} New Brunswick provincial court",
+      "{city} NB traffic ticket",
+      "{city} New Brunswick court"
+    ],
+    "top_cities": [
+      "Moncton", "Saint John", "Fredericton", "Dieppe", "Miramichi",
+      "Bathurst", "Edmundston", "Campbellton", "Oromocto", "Quispamsis"
+    ]
+  },
+  {
+    "region_name": "Newfoundland and Labrador",
+    "region_code": "NL",
+    "country": "Canada",
+    "official_directory_urls": [
+      "https://court.nl.ca/"
+    ],
+    "search_patterns": [
+      "{city} Newfoundland provincial court",
+      "{city} NL traffic ticket",
+      "{city} Newfoundland court"
+    ],
+    "top_cities": [
+      "St. John's", "Mount Pearl", "Corner Brook", "Conception Bay South", "Grand Falls-Windsor",
+      "Paradise", "Gander", "Happy Valley-Goose Bay", "Torbay", "Labrador City"
+    ]
+  },
+  {
+    "region_name": "Prince Edward Island",
+    "region_code": "PE",
+    "country": "Canada",
+    "official_directory_urls": [
+      "https://www.princeedwardisland.ca/en/information/justice-and-public-safety/provincial-court"
+    ],
+    "search_patterns": [
+      "{city} PEI provincial court",
+      "{city} PE traffic ticket",
+      "{city} Prince Edward Island court"
+    ],
+    "top_cities": [
+      "Charlottetown", "Summerside", "Stratford", "Cornwall", "Montague"
+    ]
+  }
+]

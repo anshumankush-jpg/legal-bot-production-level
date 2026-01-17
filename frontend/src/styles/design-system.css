@@ -1,0 +1,206 @@
+/* LEGID Design System - Professional Portal Theme */
+
+:root {
+  /* ========================================
+     COLOR SYSTEM - Dark Layered Theme
+     ======================================== */
+  
+  /* Background Layers (Darkest to Lightest) */
+  --color-bg-app: #0A0A0A;           /* Almost black - full page background */
+  --color-bg-panel: #1A1A1A;         /* Slightly lighter - sidebar, panels */
+  --color-bg-card: #2D2D2D;          /* Dark grey - cards, tiles */
+  --color-bg-input: #2A2A2A;         /* Input fields */
+  --color-bg-hover: #353535;         /* Hover state for cards */
+  
+  /* Border Colors */
+  --color-border-subtle: #404040;    /* Default borders */
+  --color-border-medium: #505050;    /* Medium borders */
+  --color-border-strong: #606060;    /* Strong borders */
+  
+  /* Text Layers */
+  --color-text-primary: #F5F5F5;     /* Near-white primary text */
+  --color-text-secondary: #B0B0B0;   /* Grey secondary text */
+  --color-text-muted: #808080;       /* Lighter grey muted text */
+  --color-text-disabled: #606060;    /* Disabled text */
+  
+  /* Accent Color - Teal (Used Sparingly) */
+  --color-accent-primary: #00BCD4;   /* Main teal accent */
+  --color-accent-hover: #00D4E6;     /* Lighter teal on hover */
+  --color-accent-dark: #0097A7;      /* Darker teal */
+  --color-accent-glow: rgba(0, 188, 212, 0.15);  /* Glow effect */
+  --color-accent-border: rgba(0, 188, 212, 0.3); /* Border glow */
+  
+  /* Semantic Colors */
+  --color-success: #4CAF50;
+  --color-warning: #FF9800;
+  --color-error: #F44336;
+  --color-info: #2196F3;
+  
+  /* ========================================
+     SPACING SYSTEM (8px base)
+     ======================================== */
+  
+  --space-xs: 0.25rem;    /* 4px */
+  --space-sm: 0.5rem;     /* 8px */
+  --space-md: 1rem;       /* 16px */
+  --space-lg: 1.5rem;     /* 24px */
+  --space-xl: 2rem;       /* 32px */
+  --space-2xl: 3rem;      /* 48px */
+  
+  /* ========================================
+     TYPOGRAPHY SYSTEM
+     ======================================== */
+  
+  --font-family-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  --font-family-mono: 'Courier New', monospace;
+  
+  /* Font Sizes */
+  --font-size-xs: 0.75rem;    /* 12px */
+  --font-size-sm: 0.875rem;   /* 14px */
+  --font-size-md: 1rem;       /* 16px */
+  --font-size-lg: 1.125rem;   /* 18px */
+  --font-size-xl: 1.25rem;    /* 20px */
+  --font-size-2xl: 1.5rem;    /* 24px */
+  --font-size-3xl: 2rem;      /* 32px */
+  
+  /* Font Weights */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  /* Line Heights */
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.8;
+  
+  /* ========================================
+     BORDER RADIUS SYSTEM
+     ======================================== */
+  
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+  
+  /* ========================================
+     SHADOW SYSTEM
+     ======================================== */
+  
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 12px rgba(0, 188, 212, 0.4);
+  
+  /* ========================================
+     COMPONENT SIZES
+     ======================================== */
+  
+  /* Sidebar */
+  --sidebar-width: 280px;
+  --sidebar-collapsed-width: 60px;
+  
+  /* Top Bar */
+  --topbar-height: 70px;
+  
+  /* Chat Area */
+  --chat-max-width: 950px;
+  
+  /* Avatar Sizes */
+  --avatar-sm: 32px;
+  --avatar-md: 40px;
+  --avatar-lg: 48px;
+  
+  /* Button Heights */
+  --button-height-sm: 32px;
+  --button-height-md: 40px;
+  --button-height-lg: 48px;
+  
+  /* ========================================
+     TRANSITIONS
+     ======================================== */
+  
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.2s ease;
+  --transition-slow: 0.3s ease;
+  
+  /* ========================================
+     Z-INDEX LAYERS
+     ======================================== */
+  
+  --z-dropdown: 1000;
+  --z-modal: 2000;
+  --z-toast: 3000;
+  --z-tooltip: 4000;
+}
+
+/* ========================================
+   GLOBAL RESETS & BASE STYLES
+   ======================================== */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-primary);
+  background: var(--color-bg-app);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ========================================
+   UTILITY CLASSES
+   ======================================== */
+
+/* Text Colors */
+.text-primary { color: var(--color-text-primary); }
+.text-secondary { color: var(--color-text-secondary); }
+.text-muted { color: var(--color-text-muted); }
+.text-accent { color: var(--color-accent-primary); }
+
+/* Background Colors */
+.bg-app { background: var(--color-bg-app); }
+.bg-panel { background: var(--color-bg-panel); }
+.bg-card { background: var(--color-bg-card); }
+
+/* Borders */
+.border-subtle { border: 1px solid var(--color-border-subtle); }
+.border-accent { border: 1px solid var(--color-accent-primary); }
+
+/* Border Radius */
+.rounded-sm { border-radius: var(--radius-sm); }
+.rounded-md { border-radius: var(--radius-md); }
+.rounded-lg { border-radius: var(--radius-lg); }
+.rounded-full { border-radius: var(--radius-full); }
+
+/* Shadows */
+.shadow-sm { box-shadow: var(--shadow-sm); }
+.shadow-md { box-shadow: var(--shadow-md); }
+.shadow-lg { box-shadow: var(--shadow-lg); }
+.shadow-glow { box-shadow: var(--shadow-glow); }
+
+/* Spacing */
+.p-sm { padding: var(--space-sm); }
+.p-md { padding: var(--space-md); }
+.p-lg { padding: var(--space-lg); }
+.m-sm { margin: var(--space-sm); }
+.m-md { margin: var(--space-md); }
+.m-lg { margin: var(--space-lg); }
+
+/* Flexbox Utilities */
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.gap-sm { gap: var(--space-sm); }
+.gap-md { gap: var(--space-md); }
+.gap-lg { gap: var(--space-lg); }

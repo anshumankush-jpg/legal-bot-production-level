@@ -1,0 +1,578 @@
+/* Login Page - BLACKBOX Style */
+.login-page {
+  min-height: 100vh;
+  width: 100%;
+  background: #0a0a0a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* Blurred Background - Chat Interface Preview */
+.login-background {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bg-chat-interface {
+  display: flex;
+  width: 90%;
+  max-width: 1200px;
+  height: 70vh;
+  background: #111;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #222;
+}
+
+.bg-sidebar {
+  width: 60px;
+  background: #0d0d0d;
+  padding: 16px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-right: 1px solid #1a1a1a;
+}
+
+.bg-sidebar-item {
+  width: 36px;
+  height: 36px;
+  background: #1a1a1a;
+  border-radius: 8px;
+}
+
+.bg-sidebar-item.active {
+  background: #2a2a2a;
+}
+
+.bg-chat-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.bg-chat-header {
+  padding: 16px 24px;
+  border-bottom: 1px solid #1a1a1a;
+}
+
+.bg-header-text {
+  width: 120px;
+  height: 20px;
+  background: #1a1a1a;
+  border-radius: 4px;
+}
+
+.bg-chat-messages {
+  flex: 1;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.bg-message {
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.bg-message.user {
+  width: 60%;
+  height: 40px;
+  background: #1a2a1a;
+  margin-left: auto;
+}
+
+.bg-message.user.short {
+  width: 40%;
+}
+
+.bg-message.assistant {
+  width: 70%;
+  height: 80px;
+  background: #1a1a2a;
+}
+
+.bg-message.assistant.long {
+  height: 120px;
+}
+
+.bg-chat-input {
+  padding: 16px 24px;
+  border-top: 1px solid #1a1a1a;
+}
+
+.bg-input-box {
+  height: 50px;
+  background: #1a1a1a;
+  border-radius: 25px;
+}
+
+/* Blur Overlay */
+.blur-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Login Modal */
+.login-modal {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 420px;
+  background: #111111;
+  border: 1px solid #2a2a2a;
+  border-radius: 16px;
+  padding: 40px 36px;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5);
+  animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Close Button */
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.modal-close:hover {
+  background: #222;
+  color: #fff;
+}
+
+/* Logo */
+.modal-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.modal-logo svg {
+  width: 48px;
+  height: 48px;
+}
+
+.modal-logo-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.05em;
+}
+
+/* Title & Subtitle */
+.modal-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.modal-subtitle {
+  font-size: 0.875rem;
+  color: #888;
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+/* Error & Success Messages */
+.modal-error {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #ef4444;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.modal-success {
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  color: #22c55e;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Buttons Container */
+.modal-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+/* Modal Buttons */
+.modal-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  padding: 14px 20px;
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.modal-btn:hover:not(:disabled) {
+  background: #222;
+  border-color: #3a3a3a;
+}
+
+.modal-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.modal-btn .btn-icon {
+  flex-shrink: 0;
+}
+
+/* Specific Button Styles */
+.google-btn:hover:not(:disabled) {
+  background: #1a2020;
+  border-color: #34A853;
+}
+
+.microsoft-btn:hover:not(:disabled) {
+  background: #1a1a25;
+  border-color: #00a4ef;
+}
+
+.email-btn:hover:not(:disabled) {
+  background: #201a1a;
+  border-color: #666;
+}
+
+/* Divider */
+.modal-divider {
+  display: flex;
+  align-items: center;
+  margin: 24px 0;
+}
+
+.modal-divider::before,
+.modal-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #2a2a2a;
+}
+
+.modal-divider span {
+  padding: 0 16px;
+  color: #666;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+/* Quick Email Form */
+.quick-email-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Modal Input */
+.modal-input {
+  width: 100%;
+  padding: 14px 16px;
+  background: #0a0a0a;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+}
+
+.modal-input::placeholder {
+  color: #555;
+}
+
+.modal-input:focus {
+  outline: none;
+  border-color: #444;
+  background: #111;
+}
+
+.modal-input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Continue Button */
+.modal-continue-btn {
+  width: 100%;
+  padding: 14px 24px;
+  background: #ffffff;
+  border: none;
+  border-radius: 8px;
+  color: #000000;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+}
+
+.modal-continue-btn:hover:not(:disabled) {
+  background: #e5e5e5;
+}
+
+.modal-continue-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Spinner */
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  border-top-color: #000;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Sign Up Link */
+.modal-signup-link {
+  text-align: center;
+  color: #888;
+  font-size: 0.875rem;
+  margin-top: 24px;
+}
+
+.modal-signup-link button {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: 0.875rem;
+}
+
+.modal-signup-link button:hover {
+  color: #ccc;
+}
+
+/* Modal Form */
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 0.85rem;
+  color: #888;
+  font-weight: 500;
+}
+
+/* Forgot Password Link */
+.forgot-password-link {
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 0.85rem;
+  cursor: pointer;
+  text-align: left;
+  padding: 0;
+  margin-top: -8px;
+  transition: color 0.2s;
+}
+
+.forgot-password-link:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* Back Link */
+.back-link {
+  background: none;
+  border: none;
+  color: #666;
+  font-size: 0.85rem;
+  cursor: pointer;
+  margin-top: 16px;
+  display: block;
+  text-align: center;
+  transition: color 0.2s;
+}
+
+.back-link:hover {
+  color: #fff;
+}
+
+/* Modal Footer */
+.modal-footer {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid #1a1a1a;
+  text-align: center;
+}
+
+.modal-footer p {
+  font-size: 0.75rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+.modal-footer a {
+  color: #888;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+.modal-footer a:hover {
+  color: #fff;
+}
+
+/* Bottom Banner */
+.bottom-banner {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  background: rgba(20, 20, 20, 0.9);
+  border: 1px solid #2a2a2a;
+  border-radius: 50px;
+  backdrop-filter: blur(10px);
+  z-index: 20;
+}
+
+.banner-badge {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.banner-text {
+  color: #ccc;
+  font-size: 0.85rem;
+}
+
+.banner-btn {
+  background: #222;
+  border: 1px solid #333;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.banner-btn:hover {
+  background: #333;
+  border-color: #444;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .login-modal {
+    margin: 16px;
+    padding: 32px 24px;
+    max-width: calc(100% - 32px);
+  }
+
+  .modal-title {
+    font-size: 1.25rem;
+  }
+
+  .bg-chat-interface {
+    width: 95%;
+    height: 60vh;
+  }
+
+  .bottom-banner {
+    bottom: 16px;
+    padding: 10px 16px;
+    gap: 8px;
+    max-width: calc(100% - 32px);
+  }
+
+  .banner-text {
+    font-size: 0.75rem;
+    display: none;
+  }
+}
+
+@media (max-width: 400px) {
+  .login-modal {
+    padding: 24px 20px;
+  }
+
+  .modal-btn {
+    padding: 12px 16px;
+    font-size: 0.9rem;
+  }
+}

@@ -1,0 +1,105 @@
+[
+  {
+    "region_name": "California",
+    "region_code": "CA",
+    "country": "USA",
+    "official_directory_urls": [
+      "https://www.courts.ca.gov/",
+      "https://www.courts.ca.gov/find-my-court.htm"
+    ],
+    "search_patterns": [
+      "{city} California superior court",
+      "{city} CA traffic ticket",
+      "{city} county court California"
+    ],
+    "top_cities": [
+      "Los Angeles", "San Diego", "San Jose", "San Francisco", "Fresno",
+      "Sacramento", "Long Beach", "Oakland", "Bakersfield", "Anaheim",
+      "Santa Ana", "Riverside", "Stockton", "Irvine", "Chula Vista",
+      "Fremont", "San Bernardino", "Modesto", "Fontana", "Oxnard",
+      "Moreno Valley", "Huntington Beach", "Glendale", "Santa Clarita", "Garden Grove"
+    ]
+  },
+  {
+    "region_name": "Texas",
+    "region_code": "TX",
+    "country": "USA",
+    "official_directory_urls": [
+      "https://www.txcourts.gov/",
+      "https://www.txcourts.gov/all-texas-courts/court-directories/"
+    ],
+    "search_patterns": [
+      "{city} Texas municipal court",
+      "{city} TX traffic ticket",
+      "{city} county court Texas"
+    ],
+    "top_cities": [
+      "Houston", "San Antonio", "Dallas", "Austin", "Fort Worth",
+      "El Paso", "Arlington", "Corpus Christi", "Plano", "Laredo",
+      "Lubbock", "Garland", "Irving", "Amarillo", "Grand Prairie",
+      "Brownsville", "McKinney", "Frisco", "Pasadena", "Mesquite",
+      "Killeen", "McAllen", "Waco", "Carrollton", "Denton"
+    ]
+  },
+  {
+    "region_name": "New York",
+    "region_code": "NY",
+    "country": "USA",
+    "official_directory_urls": [
+      "https://ww2.nycourts.gov/",
+      "https://iapps.courts.state.ny.us/webcivil/FCASMain"
+    ],
+    "search_patterns": [
+      "{city} New York court",
+      "{city} NY traffic ticket",
+      "{city} municipal court New York"
+    ],
+    "top_cities": [
+      "New York City", "Buffalo", "Rochester", "Yonkers", "Syracuse",
+      "Albany", "New Rochelle", "Mount Vernon", "Schenectady", "Utica",
+      "White Plains", "Hempstead", "Troy", "Niagara Falls", "Binghamton",
+      "Freeport", "Valley Stream", "Long Beach", "Spring Valley", "Jamestown"
+    ]
+  },
+  {
+    "region_name": "Florida",
+    "region_code": "FL",
+    "country": "USA",
+    "official_directory_urls": [
+      "https://www.flcourts.gov/",
+      "https://www.flcourts.gov/Florida-Courts/Trial-Courts"
+    ],
+    "search_patterns": [
+      "{city} Florida county court",
+      "{city} FL traffic ticket",
+      "{city} Florida court"
+    ],
+    "top_cities": [
+      "Jacksonville", "Miami", "Tampa", "Orlando", "St. Petersburg",
+      "Hialeah", "Tallahassee", "Fort Lauderdale", "Port St. Lucie", "Cape Coral",
+      "Pembroke Pines", "Hollywood", "Miramar", "Gainesville", "Coral Springs",
+      "Miami Gardens", "Clearwater", "Palm Bay", "Pompano Beach", "West Palm Beach",
+      "Lakeland", "Davie", "Miami Beach", "Sunrise", "Plantation"
+    ]
+  },
+  {
+    "region_name": "Illinois",
+    "region_code": "IL",
+    "country": "USA",
+    "official_directory_urls": [
+      "https://www.illinoiscourts.gov/",
+      "https://www.cookcountycourt.org/"
+    ],
+    "search_patterns": [
+      "{city} Illinois circuit court",
+      "{city} IL traffic ticket",
+      "{city} county court Illinois"
+    ],
+    "top_cities": [
+      "Chicago", "Aurora", "Joliet", "Naperville", "Rockford",
+      "Springfield", "Elgin", "Peoria", "Champaign", "Waukegan",
+      "Cicero", "Bloomington", "Arlington Heights", "Evanston", "Decatur",
+      "Schaumburg", "Bolingbrook", "Palatine", "Skokie", "Des Plaines"
+    ]
+  }
+]

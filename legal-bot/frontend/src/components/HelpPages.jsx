@@ -390,6 +390,37 @@ export const KeyboardShortcutsPage = ({ onBack }) => (
   </div>
 );
 
+// Cookie Policy Page
+export const CookiePolicyPage = ({ onBack }) => (
+  <div className="help-page">
+    <PageHeader title="Cookie Policy" onBack={onBack} />
+    <div className="help-content">
+      <section className="help-section">
+        <h2>Overview</h2>
+        <p>
+          We use cookies to keep LEGID secure, improve performance, and remember your preferences.
+          You can manage your choices in Settings at any time.
+        </p>
+      </section>
+      <section className="help-section">
+        <h2>Categories</h2>
+        <ul className="help-list">
+          <li>Necessary: required for authentication and core app functionality.</li>
+          <li>Functional: stores user preferences like theme and language.</li>
+          <li>Analytics: helps us understand usage patterns to improve the product.</li>
+          <li>Marketing: optional and disabled by default.</li>
+        </ul>
+      </section>
+      <section className="help-section">
+        <h2>Manage Preferences</h2>
+        <p>
+          You can update cookie preferences from your profile menu or Settings page under Cookie Preferences.
+        </p>
+      </section>
+    </div>
+  </div>
+);
+
 export default {
   HelpCenterPage,
   ReleaseNotesPage,

@@ -22,8 +22,8 @@ const MicrosoftIcon = () => (
   </svg>
 );
 
-const AuthPage = ({ role, onAuthSuccess }) => {
-  const [mode, setMode] = useState('login'); // 'login', 'register', 'forgot'
+const AuthPage = ({ role, onAuthSuccess, onNotProvisioned }) => {
+  const [mode, setMode] = useState('login'); // 'login', 'forgot'
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -53,37 +53,7 @@ const AuthPage = ({ role, onAuthSuccess }) => {
     setLoading(true);
 
     try {
-      if (mode === 'register') {
-        if (formData.password !== formData.confirmPassword) {
-          setError('Passwords do not match');
-          setLoading(false);
-          return;
-        }
-
-        const response = await fetch(`${API_BASE_URL}/api/auth/register`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            email: formData.email,
-            password: formData.password,
-            name: formData.name,
-            role: role
-          })
-        });
-
-        const data = await response.json();
-
-        if (!response.ok) {
-          throw new Error(data.detail || 'Registration failed');
-        }
-
-        // Store tokens
-        localStorage.setItem('access_token', data.access_token);
-        localStorage.setItem('refresh_token', data.refresh_token);
-        localStorage.setItem('user', JSON.stringify(data.user));
-
-        onAuthSuccess(data.user);
-      } else if (mode === 'login') {
+      if (mode === 'login') {
         const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -95,8 +65,15 @@ const AuthPage = ({ role, onAuthSuccess }) => {
 
         const data = await response.json();
 
+        if (response.status === 403 && data?.detail?.code === 'NOT_PROVISIONED') {
+          if (onNotProvisioned) {
+            onNotProvisioned(formData.email);
+          }
+          return;
+        }
+
         if (!response.ok) {
-          throw new Error(data.detail || 'Login failed');
+          throw new Error(data.detail?.message || data.detail || 'Login failed');
         }
 
         // Check if user role matches selected role
@@ -120,7 +97,7 @@ const AuthPage = ({ role, onAuthSuccess }) => {
         const data = await response.json();
 
         if (!response.ok) {
-          throw new Error(data.detail || 'Request failed');
+          throw new Error(data.detail?.message || data.detail || 'Request failed');
         }
 
         setMessage('If the email exists, a password reset link has been sent. Check your console (dev mode).');
@@ -145,7 +122,7 @@ const AuthPage = ({ role, onAuthSuccess }) => {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.detail || 'OAuth start failed');
+        throw new Error(data.detail?.message || data.detail || 'OAuth start failed');
       }
 
       // Store state and code_verifier in sessionStorage
@@ -179,32 +156,17 @@ const AuthPage = ({ role, onAuthSuccess }) => {
 
           {error && (
             <div className="auth-error">
-              <span>⚠️</span> {error}
+              {error}
             </div>
           )}
 
           {message && (
             <div className="auth-message">
-              <span>✓</span> {message}
+              {message}
             </div>
           )}
 
           <form onSubmit={handleSubmit} className="auth-form">
-            {mode === 'register' && (
-              <div className="form-group">
-                <label htmlFor="name">Full Name</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  placeholder="John Doe"
-                />
-              </div>
-            )}
-
             <div className="form-group">
               <label htmlFor="email">Email Address</label>
               <input
@@ -233,21 +195,6 @@ const AuthPage = ({ role, onAuthSuccess }) => {
               </div>
             )}
 
-            {mode === 'register' && (
-              <div className="form-group">
-                <label htmlFor="confirmPassword">Confirm Password</label>
-                <input
-                  type="password"
-                  id="confirmPassword"
-                  name="confirmPassword"
-                  value={formData.confirmPassword}
-                  onChange={handleChange}
-                  required
-                  placeholder="••••••••"
-                />
-              </div>
-            )}
-
             <button
               type="submit"
               className="auth-submit-button"
@@ -255,7 +202,6 @@ const AuthPage = ({ role, onAuthSuccess }) => {
             >
               {loading ? 'Please wait...' : (
                 mode === 'login' ? 'Sign In →' :
-                mode === 'register' ? 'Create Account →' :
                 'Send Reset Link →'
               )}
             </button>
@@ -297,25 +243,6 @@ const AuthPage = ({ role, onAuthSuccess }) => {
                   onClick={() => setMode('forgot')}
                 >
                   Forgot password?
-                </button>
-                <span className="auth-separator">•</span>
-                <button
-                  className="auth-link-button"
-                  onClick={() => setMode('register')}
-                >
-                  Create account
-                </button>
-              </>
-            )}
-
-            {mode === 'register' && (
-              <>
-                <span>Already have an account?</span>
-                <button
-                  className="auth-link-button"
-                  onClick={() => setMode('login')}
-                >
-                  Sign in
                 </button>
               </>
             )}

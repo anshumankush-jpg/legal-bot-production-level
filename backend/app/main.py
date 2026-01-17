@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 
 # Find .env file in backend directory (parent of app directory)
 _env_path = _Path(__file__).parent.parent / ".env"
-load_dotenv(_env_path)  # Explicitly load from backend/.env
+load_dotenv(_env_path, override=True)  # Explicitly load from backend/.env with override
 
 import logging
 import os
@@ -13,6 +13,7 @@ import uuid
 import sys
 import json
 from pathlib import Path
+from datetime import datetime
 from fastapi import FastAPI, UploadFile, File, HTTPException, Query, Form
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, StreamingResponse
@@ -69,12 +70,15 @@ try:
     from app.vector_store import get_vector_store
     from app.core.openai_client_unified import chat_completion
     from app.core.config import settings
+    from app.paralegal_master_prompt import get_paralegal_prompt, PARALEGAL_MASTER_PROMPT
     LEGACY_SYSTEMS_AVAILABLE = True
 except ImportError as e:
     logger.warning(f"Legacy systems import failed: {e}")
     LEGACY_SYSTEMS_AVAILABLE = False
     chat_completion = None
     settings = None
+    get_paralegal_prompt = None
+    PARALEGAL_MASTER_PROMPT = None
 
 # Configure detailed logging for debugging
 LOG_LEVEL = os.getenv("LOG_LEVEL", "DEBUG").upper()
@@ -109,11 +113,33 @@ if os.name == 'nt':  # Windows
 else:
     logger.info("[INFO] Non-Windows system - Tesseract should be in PATH")
 
-# Create FastAPI app
+# Create FastAPI app with lifespan
+from contextlib import asynccontextmanager
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Startup and shutdown events for the application."""
+    # Startup
+    logger.info("=" * 60)
+    logger.info("INITIALIZING LEGAL UPDATES SERVICE...")
+    logger.info("=" * 60)
+    try:
+        from app.services.legal_updates_service import initialize_legal_updates
+        await initialize_legal_updates()
+        logger.info("✅ Legal updates service initialized!")
+    except Exception as e:
+        logger.error(f"❌ Failed to initialize legal updates: {e}")
+    
+    yield  # Application runs here
+    
+    # Shutdown
+    logger.info("Shutting down application...")
+
 app = FastAPI(
     title="PLAZA-AI Legal RAG Backend",
     description="Embedding and RAG backend for legal document analysis",
-    version="1.0.0"
+    version="1.0.0",
+    lifespan=lifespan
 )
 
 # CORS Configuration - Allow React dev server and production
@@ -126,6 +152,39 @@ app.add_middleware(
 )
 
 # Include API routers
+try:
+    # Import Google OAuth router
+    from app.auth import routes as google_auth_routes
+    app.include_router(google_auth_routes.router)
+    logger.info("Google OAuth routes registered successfully")
+    
+    # Also add a non-prefixed callback route for backwards compatibility
+    # (Google OAuth console may have /auth/google/callback without /api prefix)
+    from fastapi import Query
+    from fastapi.responses import RedirectResponse
+    
+    @app.get("/auth/google/callback")
+    async def legacy_google_callback(
+        code: Optional[str] = Query(None),
+        error: Optional[str] = Query(None),
+        state: Optional[str] = Query(None)
+    ):
+        """Redirect legacy callback to API route."""
+        # Just redirect to the API-prefixed route with all query params
+        params = []
+        if code:
+            params.append(f"code={code}")
+        if error:
+            params.append(f"error={error}")
+        if state:
+            params.append(f"state={state}")
+        query_string = "&".join(params)
+        return RedirectResponse(url=f"/api/auth/google/callback?{query_string}")
+    
+    logger.info("Legacy OAuth callback route added at /auth/google/callback")
+except ImportError as e:
+    logger.warning(f"Could not import Google OAuth routes: {e}")
+
 try:
     # Import auth router
     from app.api.routes import auth
@@ -157,6 +216,38 @@ try:
     logger.info("[OK] Voice router included")
 except Exception as e:
     logger.warning(f"Voice router not available: {e}")
+
+try:
+    # Import auth v2 router (JWT-based authentication)
+    from app.api.routes import auth_v2
+    app.include_router(auth_v2.router)
+    logger.info("[OK] Auth V2 router included")
+except Exception as e:
+    logger.warning(f"Auth V2 router not available: {e}")
+
+try:
+    # Import conversations router
+    from app.api.routes import conversations
+    app.include_router(conversations.router)
+    logger.info("[OK] Conversations router included")
+except Exception as e:
+    logger.warning(f"Conversations router not available: {e}")
+
+try:
+    # Import messages router
+    from app.api.routes import messages
+    app.include_router(messages.router)
+    logger.info("[OK] Messages router included")
+except Exception as e:
+    logger.warning(f"Messages router not available: {e}")
+
+try:
+    # Import preferences router
+    from app.api.routes import preferences
+    app.include_router(preferences.router)
+    logger.info("[OK] Preferences router included")
+except Exception as e:
+    logger.warning(f"Preferences router not available: {e}")
 
 # Include legacy routers (if available) - DISABLED to avoid conflicts with artillery endpoints
 # The artillery endpoints are defined directly in this file and should be used instead
@@ -257,6 +348,7 @@ class ChatRequest(BaseModel):
     law_scope: Optional[str] = None
     jurisdiction: Optional[str] = None
     top_k: int = 5
+    conversation_history: Optional[List[Dict[str, str]]] = None
 
 class ChatResponse(BaseModel):
     answer: str
@@ -546,17 +638,65 @@ async def artillery_chat(request: ChatRequest):
             logger.warning(f"[ARTILLERY_CHAT] Vector search failed: {ve}")
             # Continue without document context
         
+        # 🔍 STEP 1.5: Check if this is a ticket-related query and add court lookup info
+        court_lookup_info = ""
+        ticket_keywords = ["ticket", "citation", "offence", "violation", "court", "case lookup", "pay ticket"]
+        if any(keyword in message.lower() for keyword in ticket_keywords):
+            try:
+                from app.services.court_lookup_service import get_court_lookup_service
+                
+                court_service = get_court_lookup_service()
+                if court_service.is_available():
+                    # Try to extract jurisdiction from the message
+                    ticket_info = court_service.extract_ticket_info(message)
+                    jur = ticket_info.get("jurisdiction", {})
+                    
+                    # Also try to extract from uploaded document chunks
+                    if relevant_chunks:
+                        combined_text = " ".join([chunk['content'] for chunk in relevant_chunks[:3]])
+                        extracted_jur = court_service.extract_jurisdiction_from_text(combined_text)
+                        # Merge jurisdictions, preferring non-None values
+                        jur = {k: jur.get(k) or extracted_jur.get(k) for k in ['country', 'province_state', 'city']}
+                    
+                    # Lookup jurisdictions
+                    if jur.get('city') or jur.get('province_state'):
+                        jurisdictions = court_service.lookup(
+                            city=jur.get('city'),
+                            province_state=jur.get('province_state'),
+                            country=jur.get('country')
+                        )
+                        
+                        if jurisdictions:
+                            court_lookup_info = "\n\n" + court_service.format_lookup_response(ticket_info, jurisdictions)
+                            logger.info(f"[ARTILLERY_CHAT] Added court lookup info for {jur}")
+            except Exception as e:
+                logger.warning(f"[ARTILLERY_CHAT] Court lookup integration failed: {e}")
+        
         # 🤖 STEP 2: Build professional legal prompt using new system
         from app.legal_prompts import LegalPromptSystem
         
-        messages = LegalPromptSystem.build_artillery_prompt(
-            question=message,
-            document_chunks=relevant_chunks if relevant_chunks else None,
-            jurisdiction=request.jurisdiction if hasattr(request, 'jurisdiction') else None,
-            law_category=request.law_category if hasattr(request, 'law_category') else None,
-            law_scope=request.law_scope if hasattr(request, 'law_scope') else None,
-            language=request.language if hasattr(request, 'language') else 'en'
-        )
+        # Use new Paralegal Master Prompt for better responses
+        if get_paralegal_prompt:
+            messages = get_paralegal_prompt(
+                question=message,
+                document_chunks=relevant_chunks if relevant_chunks else None,
+                jurisdiction=request.jurisdiction if hasattr(request, 'jurisdiction') else None,
+                law_category=request.law_category if hasattr(request, 'law_category') else None,
+                language=request.language if hasattr(request, 'language') else 'en',
+                conversation_history=request.conversation_history if hasattr(request, 'conversation_history') else None,
+                response_style='concise'  # Default to concise, fast responses
+            )
+        else:
+            # Fallback to old system
+            messages = LegalPromptSystem.build_artillery_prompt(
+                question=message,
+                document_chunks=relevant_chunks if relevant_chunks else None,
+                jurisdiction=request.jurisdiction if hasattr(request, 'jurisdiction') else None,
+                law_category=request.law_category if hasattr(request, 'law_category') else None,
+                law_scope=request.law_scope if hasattr(request, 'law_scope') else None,
+                language=request.language if hasattr(request, 'language') else 'en',
+                conversation_history=request.conversation_history if hasattr(request, 'conversation_history') else None
+            )
         
         # Use OpenAI
         answer = None
@@ -584,6 +724,10 @@ async def artillery_chat(request: ChatRequest):
         
         if not answer:
             answer = "Unable to generate response"
+        
+        # Append court lookup info if available
+        if court_lookup_info:
+            answer = answer + court_lookup_info
         
         logger.info(f"[ARTILLERY_CHAT] Returning response with answer length: {len(answer)}, citations: {len(citations)}")
         return ChatResponse(
@@ -713,29 +857,101 @@ async def test_openai():
 
 @app.post("/api/artillery/recent-updates")
 async def get_recent_updates(request: Dict[str, Any]):
-    """Get recent legal updates for a specific law type and jurisdiction."""
+    """Get recent legal updates for a specific law type and jurisdiction.
+    
+    IMPORTANT: Jurisdiction filtering is STRICT:
+    - If jurisdiction is 'Canada' or a Canadian province, ONLY Canadian updates are returned
+    - If jurisdiction is 'USA' or 'US', ONLY USA updates are returned
+    """
     try:
         law_type = request.get("law_type", "")
         jurisdiction = request.get("jurisdiction", "")
         
-        # Load recent updates from cache
-        updates_file = Path(project_root) / "legal_data_cache" / "recent_updates.json"
+        logger.info(f"=" * 60)
+        logger.info(f"RECENT UPDATES REQUEST")
+        logger.info(f"  law_type: {law_type}")
+        logger.info(f"  jurisdiction: {jurisdiction}")
+        logger.info(f"=" * 60)
         
-        if not updates_file.exists():
-            return {"updates": []}
-        
-        with open(updates_file, 'r', encoding='utf-8') as f:
-            all_updates = json.load(f)
-        
-        # Get updates for this law type and jurisdiction
-        key = f"{law_type}|{jurisdiction}"
-        updates = all_updates.get(key, [])
-        
-        return {"updates": updates}
+        # Use the legal updates service
+        try:
+            from app.services.legal_updates_service import get_legal_updates_service
+            service = get_legal_updates_service()
+            
+            # Refresh updates if stale (older than 6 hours)
+            await service.refresh_if_needed(max_age_hours=6)
+            
+            # Get updates for this law type WITH STRICT jurisdiction filtering
+            updates = service.get_updates_for_law_type(law_type, jurisdiction)
+            
+            # Log what we're returning
+            if updates:
+                logger.info(f"Returning {len(updates)} updates for {law_type}|{jurisdiction}")
+                for u in updates[:3]:
+                    logger.info(f"  - [{u.get('jurisdiction')}] {u.get('title', '')[:50]}")
+            else:
+                logger.warning(f"No updates found for {law_type}|{jurisdiction}")
+            
+            return {"updates": updates}
+            
+        except ImportError as ie:
+            logger.warning(f"Legal updates service not available: {ie}")
+            # Fallback to file-based loading
+            updates_file = Path(project_root) / "legal_data_cache" / "recent_updates.json"
+            
+            if not updates_file.exists():
+                logger.warning(f"Updates file not found: {updates_file}")
+                return {"updates": [], "message": "No updates available. Updates are refreshed daily at 2:00 AM."}
+            
+            with open(updates_file, 'r', encoding='utf-8') as f:
+                all_updates = json.load(f)
+            
+            # Try exact match first
+            key = f"{law_type}|{jurisdiction}"
+            updates = all_updates.get(key, [])
+            
+            # Try partial match if no exact match
+            if not updates:
+                for k, v in all_updates.items():
+                    if law_type.lower() in k.lower():
+                        updates.extend(v)
+                        break
+            
+            return {"updates": updates}
         
     except Exception as e:
-        logger.error(f"Error fetching recent updates: {e}")
-        return {"updates": []}
+        logger.error(f"Error fetching recent updates: {e}", exc_info=True)
+        return {"updates": [], "error": str(e)}
+
+
+@app.post("/api/artillery/refresh-legal-updates")
+async def refresh_legal_updates():
+    """Manually trigger a refresh of legal updates from all sources."""
+    try:
+        from app.services.legal_updates_service import get_legal_updates_service
+        service = get_legal_updates_service()
+        
+        logger.info("Manual legal updates refresh triggered...")
+        updates = await service.fetch_all_updates()
+        service.save_updates(updates)
+        
+        total = sum(len(v) for v in updates.values())
+        categories = len(updates)
+        
+        return {
+            "success": True,
+            "message": f"Successfully fetched {total} updates across {categories} categories",
+            "total_updates": total,
+            "categories": categories,
+            "refreshed_at": datetime.now().isoformat() if 'datetime' in dir() else "now"
+        }
+        
+    except Exception as e:
+        logger.error(f"Error refreshing legal updates: {e}", exc_info=True)
+        return {
+            "success": False,
+            "error": str(e)
+        }
 
 
 @app.get("/api/artillery/government-resources")
@@ -762,6 +978,192 @@ async def get_government_resources(
             "law_type": law_type,
             "province": province,
             "resources": []
+        }
+
+
+@app.get("/api/court-lookup/jurisdictions")
+async def lookup_court_jurisdictions(
+    city: Optional[str] = Query(None, description="City name"),
+    province_state: Optional[str] = Query(None, description="Province or state name"),
+    country: Optional[str] = Query(None, description="Country (Canada or USA)"),
+    ticket_type: Optional[str] = Query(None, description="Type of ticket (traffic, parking, etc.)")
+):
+    """Lookup court and ticket portals by jurisdiction."""
+    try:
+        from app.services.court_lookup_service import get_court_lookup_service
+        
+        service = get_court_lookup_service()
+        
+        if not service.is_available():
+            return {
+                "success": False,
+                "error": "Court lookup service not available. Run: python -m collector.cli collect all",
+                "results": []
+            }
+        
+        results = service.lookup(
+            city=city,
+            province_state=province_state,
+            country=country,
+            ticket_type=ticket_type
+        )
+        
+        return {
+            "success": True,
+            "results": results,
+            "total": len(results)
+        }
+    
+    except Exception as e:
+        logger.error(f"Error in court lookup: {e}", exc_info=True)
+        return {
+            "success": False,
+            "error": str(e),
+            "results": []
+        }
+
+
+@app.get("/api/court-lookup/search")
+async def search_court_portals(
+    query: str = Query(..., description="Search query (e.g., 'Toronto traffic ticket')")
+):
+    """Free-text search for court portals."""
+    try:
+        from app.services.court_lookup_service import get_court_lookup_service
+        
+        service = get_court_lookup_service()
+        
+        if not service.is_available():
+            return {
+                "success": False,
+                "error": "Court lookup service not available",
+                "results": []
+            }
+        
+        results = service.search(query)
+        
+        return {
+            "success": True,
+            "results": results,
+            "total": len(results),
+            "query": query
+        }
+    
+    except Exception as e:
+        logger.error(f"Error in court search: {e}", exc_info=True)
+        return {
+            "success": False,
+            "error": str(e),
+            "results": []
+        }
+
+
+@app.post("/api/court-lookup/extract-ticket")
+async def extract_ticket_info(
+    text: str = Form(..., description="OCR text from ticket image")
+):
+    """Extract ticket information from OCR text and find relevant court portals."""
+    try:
+        from app.services.court_lookup_service import get_court_lookup_service
+        
+        service = get_court_lookup_service()
+        
+        if not service.is_available():
+            return {
+                "success": False,
+                "error": "Court lookup service not available",
+                "ticket_info": {},
+                "jurisdictions": []
+            }
+        
+        # Extract ticket information
+        ticket_info = service.extract_ticket_info(text)
+        
+        # Lookup jurisdictions based on extracted info
+        jur = ticket_info.get("jurisdiction", {})
+        jurisdictions = service.lookup(
+            city=jur.get("city"),
+            province_state=jur.get("province_state"),
+            country=jur.get("country")
+        )
+        
+        # Format response
+        response_text = service.format_lookup_response(ticket_info, jurisdictions)
+        
+        return {
+            "success": True,
+            "ticket_info": ticket_info,
+            "jurisdictions": jurisdictions,
+            "formatted_response": response_text
+        }
+    
+    except Exception as e:
+        logger.error(f"Error extracting ticket info: {e}", exc_info=True)
+        return {
+            "success": False,
+            "error": str(e),
+            "ticket_info": {},
+            "jurisdictions": []
+        }
+
+
+@app.get("/api/court-lookup/stats")
+async def get_court_lookup_stats():
+    """Get statistics about the court lookup dataset."""
+    try:
+        from app.services.court_lookup_service import get_court_lookup_service
+        
+        service = get_court_lookup_service()
+        
+        if not service.is_available():
+            return {
+                "success": False,
+                "error": "Court lookup service not available"
+            }
+        
+        stats = service.get_stats()
+        
+        return {
+            "success": True,
+            "stats": stats
+        }
+    
+    except Exception as e:
+        logger.error(f"Error getting stats: {e}", exc_info=True)
+        return {
+            "success": False,
+            "error": str(e)
+        }
+
+
+@app.get("/api/legal-search/locations")
+async def get_available_locations():
+    """Get all available locations in the dataset."""
+    try:
+        from app.services.legal_search_engine import get_legal_search_engine
+        
+        engine = get_legal_search_engine()
+        
+        if not engine.is_available():
+            return {
+                "success": False,
+                "error": "Search engine not available",
+                "locations": {}
+            }
+        
+        locations = engine.get_all_locations()
+        
+        return {
+            "success": True,
+            "locations": locations
+        }
+    
+    except Exception as e:
+        logger.error(f"Error getting locations: {e}", exc_info=True)
+        return {
+            "success": False,
+            "error": str(e),
+            "locations": {}
         }
 
 

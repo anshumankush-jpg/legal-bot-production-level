@@ -13,6 +13,7 @@ const SettingsPage = ({ user, onBack, onProfileUpdate }) => {
   const [profile, setProfile] = useState({
     display_name: '',
     username: '',
+    avatar_url: '',
     phone: '',
     address_line_1: '',
     address_line_2: '',
@@ -21,6 +22,8 @@ const SettingsPage = ({ user, onBack, onProfileUpdate }) => {
     postal_zip: '',
     country: ''
   });
+  const [avatarPreview, setAvatarPreview] = useState('');
+  const [avatarFile, setAvatarFile] = useState(null);
 
   // Consent state
   const [consent, setConsent] = useState({
@@ -49,6 +52,7 @@ const SettingsPage = ({ user, onBack, onProfileUpdate }) => {
         setProfile({
           display_name: data.profile?.display_name || data.name || '',
           username: data.profile?.username || '',
+          avatar_url: data.profile?.avatar_url || '',
           phone: data.profile?.phone || '',
           address_line_1: data.profile?.address?.line_1 || '',
           address_line_2: data.profile?.address?.line_2 || '',
@@ -57,6 +61,7 @@ const SettingsPage = ({ user, onBack, onProfileUpdate }) => {
           postal_zip: data.profile?.address?.postal_zip || '',
           country: data.profile?.address?.country || ''
         });
+        setAvatarPreview(data.profile?.avatar_url || '');
       }
     } catch (error) {
       console.error('Error loading profile:', error);
@@ -89,6 +94,94 @@ const SettingsPage = ({ user, onBack, onProfileUpdate }) => {
 
   const handleProfileChange = (field, value) => {
     setProfile(prev => ({ ...prev, [field]: value }));
+  };
+
+  const handleAvatarChange = (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const allowed = ['image/png', 'image/jpeg', 'image/webp', 'image/jpg'];
+    if (!allowed.includes(file.type)) {
+      setMessage({ type: 'error', text: 'Unsupported file type. Use PNG, JPG, or WEBP.' });
+      return;
+    }
+    if (file.size > 5 * 1024 * 1024) {
+      setMessage({ type: 'error', text: 'File too large. Max 5MB.' });
+      return;
+    }
+    setAvatarFile(file);
+    setAvatarPreview(URL.createObjectURL(file));
+  };
+
+  const uploadAvatar = async () => {
+    if (!avatarFile) return;
+    try {
+      setSaving(true);
+      setMessage(null);
+      const token = localStorage.getItem('access_token');
+      const filename = encodeURIComponent(avatarFile.name);
+      const contentType = encodeURIComponent(avatarFile.type);
+      const urlResponse = await fetch(
+        `${API_URL}/api/profile/avatar/upload-url?filename=${filename}&content_type=${contentType}`,
+        { method: 'POST', headers: { 'Authorization': `Bearer ${token}` } }
+      );
+      const urlData = await urlResponse.json();
+      if (!urlResponse.ok) {
+        throw new Error(urlData.detail || 'Failed to get upload URL');
+      }
+
+      await fetch(urlData.signed_url, {
+        method: 'PUT',
+        headers: { 'Content-Type': avatarFile.type },
+        body: avatarFile
+      });
+
+      const updateResponse = await fetch(`${API_URL}/api/profile`, {
+        method: 'PUT',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ avatar_url: urlData.public_url })
+      });
+      if (!updateResponse.ok) {
+        const err = await updateResponse.json();
+        throw new Error(err.detail || 'Failed to save avatar');
+      }
+      setProfile(prev => ({ ...prev, avatar_url: urlData.public_url }));
+      setMessage({ type: 'success', text: 'Avatar updated' });
+    } catch (error) {
+      setMessage({ type: 'error', text: error.message });
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const removeAvatar = async () => {
+    try {
+      setSaving(true);
+      setMessage(null);
+      const token = localStorage.getItem('access_token');
+      const response = await fetch(`${API_URL}/api/profile`, {
+        method: 'PUT',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ avatar_url: null })
+      });
+      if (!response.ok) {
+        const err = await response.json();
+        throw new Error(err.detail || 'Failed to remove avatar');
+      }
+      setProfile(prev => ({ ...prev, avatar_url: '' }));
+      setAvatarPreview('');
+      setAvatarFile(null);
+      setMessage({ type: 'success', text: 'Avatar removed' });
+    } catch (error) {
+      setMessage({ type: 'error', text: error.message });
+    } finally {
+      setSaving(false);
+    }
   };
 
   const handleConsentChange = (field, value) => {
@@ -207,6 +300,36 @@ const SettingsPage = ({ user, onBack, onProfileUpdate }) => {
                   <p className="section-description">
                     Update your personal information and how others see you on LEGID.
                   </p>
+
+                  <div className="avatar-section">
+                    <div className="avatar-preview">
+                      {avatarPreview ? (
+                        <img src={avatarPreview} alt="Avatar preview" />
+                      ) : (
+                        <div className="avatar-placeholder">
+                          {(profile.display_name || user?.email || 'U').charAt(0).toUpperCase()}
+                        </div>
+                      )}
+                    </div>
+                    <div className="avatar-actions">
+                      <input
+                        type="file"
+                        id="avatar-upload"
+                        accept="image/png,image/jpeg,image/webp,image/jpg"
+                        onChange={handleAvatarChange}
+                        hidden
+                      />
+                      <label htmlFor="avatar-upload" className="secondary-btn">
+                        Upload
+                      </label>
+                      <button className="secondary-btn" onClick={uploadAvatar} disabled={!avatarFile || saving}>
+                        Save
+                      </button>
+                      <button className="secondary-btn" onClick={removeAvatar} disabled={saving}>
+                        Remove
+                      </button>
+                    </div>
+                  </div>
 
                   <div className="form-group">
                     <label>Display Name</label>

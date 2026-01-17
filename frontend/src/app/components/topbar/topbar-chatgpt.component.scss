@@ -1,0 +1,254 @@
+/* Topbar - ChatGPT Style */
+.topbar {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background: #0f0f10;
+  min-width: 0;
+}
+
+.topbar__left, .topbar__right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.topbar__left { 
+  min-width: 0;
+}
+
+.topbar__title {
+  font-weight: 600;
+  font-size: 16px;
+  color: #eaeaea;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Brand/Logo - ChatGPT Style */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand__icon {
+  font-size: 24px;
+  line-height: 1;
+}
+
+.brand__name {
+  font-size: 18px;
+  font-weight: 600;
+  color: #eaeaea;
+  letter-spacing: -0.01em;
+}
+
+/* New Chat Button - ChatGPT Style */
+.btn-new-chat {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: #eaeaea;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 150ms ease, border-color 150ms ease;
+}
+
+.btn-new-chat:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.icon-plus {
+  width: 16px;
+  height: 16px;
+}
+
+/* Language Information - ChatGPT Style */
+.language-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 13px;
+}
+
+.language-info__text {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #eaeaea;
+}
+
+.language-info__label {
+  color: #a1a1aa;
+  font-weight: 400;
+}
+
+.language-info__value {
+  color: #eaeaea;
+  font-weight: 500;
+}
+
+.language-info__text--accent .language-info__value {
+  color: #10a37f;
+  font-weight: 600;
+}
+
+.language-info__separator {
+  color: #52525b;
+  font-weight: 300;
+}
+
+.spacer { flex: 1; }
+
+/* Voice Assistant Button - ChatGPT Style */
+.btn-voice {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 6px;
+  color: #eaeaea;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 150ms ease, border-color 150ms ease;
+}
+
+.btn-voice:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.voice-status {
+  font-size: 14px;
+  line-height: 1;
+}
+
+.voice-status--on {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.btn-voice__text {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* Offence Number Input - ChatGPT Style */
+.input-offence {
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 6px;
+  color: #eaeaea;
+  font-size: 14px;
+  width: 200px;
+  transition: background 150ms ease, border-color 150ms ease;
+}
+
+.input-offence::placeholder {
+  color: #71717a;
+}
+
+.input-offence:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* User Profile - ChatGPT Style */
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 10px;
+  background: transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 150ms ease;
+}
+
+.user-profile:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #10a37f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.user-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: #eaeaea;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .language-info {
+    font-size: 12px;
+    gap: 6px;
+  }
+  
+  .user-name {
+    display: none;
+  }
+}
+
+@media (max-width: 860px) {
+  .topbar {
+    padding: 0 16px;
+    height: 56px;
+    gap: 12px;
+  }
+  
+  .brand__name {
+    font-size: 16px;
+  }
+  
+  .btn-new-chat span {
+    display: none;
+  }
+  
+  .language-info {
+    display: none;
+  }
+  
+  .input-offence {
+    width: 140px;
+  }
+}

@@ -1,15 +1,26 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewChecked } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterLinkActive, Router } from '@angular/router';
 import { ChatService, ChatMessage } from '../../services/chat.service';
 import { UploadService } from '../../services/upload.service';
 import { UserContextService } from '../../services/user-context.service';
+import { AuthService } from '../../services/auth.service';
+import { ProfileService } from '../../services/profile.service';
+import { SidebarProfileMenuComponent } from '../../components/sidebar-profile-menu/sidebar-profile-menu.component';
+import { EditProfileModalComponent } from '../../components/edit-profile-modal/edit-profile-modal.component';
 
 @Component({
   selector: 'app-chat',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink],
+  imports: [
+    CommonModule, 
+    FormsModule, 
+    RouterLink, 
+    RouterLinkActive,
+    SidebarProfileMenuComponent,
+    EditProfileModalComponent
+  ],
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.scss']
 })
@@ -25,20 +36,79 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   showUploadMenu: boolean = false;
   uploadProgress: number = 0;
   isUploading: boolean = false;
+  
+  // User profile data
+  currentUser: any = null;
+  currentProfile: any = null;
+  showEditProfileModal = false;
 
   constructor(
     private chatService: ChatService,
     private uploadService: UploadService,
-    private userContext: UserContextService
+    private userContext: UserContextService,
+    private authService: AuthService,
+    private profileService: ProfileService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
+    // Load user data
+    this.loadUserData();
+    
     // Add greeting message
     this.messages.push({
       role: 'assistant',
       content: "Hi, I'm your Legal AI. Upload your ticket/summons or ask a question.",
       timestamp: new Date()
     });
+  }
+
+  loadUserData(): void {
+    // Subscribe to user data from auth service
+    this.authService.user$.subscribe(user => {
+      this.currentUser = user;
+    });
+
+    this.authService.profile$.subscribe(profile => {
+      this.currentProfile = profile;
+    });
+
+    // If not already loaded, fetch from backend
+    if (!this.currentUser) {
+      this.authService.getMe().subscribe({
+        next: (data) => {
+          this.currentUser = data.user;
+          this.currentProfile = data.profile;
+        },
+        error: (err) => console.error('Failed to load user data:', err)
+      });
+    }
+  }
+
+  startNewChat(): void {
+    this.messages = [{
+      role: 'assistant',
+      content: "Hi, I'm your Legal AI. Upload your ticket/summons or ask a question.",
+      timestamp: new Date()
+    }];
+    this.currentMessage = '';
+  }
+
+  handleLogout(): void {
+    this.authService.logout();
+  }
+
+  handleEditProfile(): void {
+    this.showEditProfileModal = true;
+  }
+
+  closeEditProfileModal(): void {
+    this.showEditProfileModal = false;
+  }
+
+  onProfileUpdated(updatedProfile: any): void {
+    this.currentProfile = updatedProfile;
+    this.showEditProfileModal = false;
   }
 
   ngAfterViewChecked(): void {

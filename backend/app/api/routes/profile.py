@@ -203,6 +203,57 @@ def update_consent(
     updated_consent = profile_service.update_user_consent(db, current_user.id, consent_update.dict(exclude_unset=True))
     return updated_consent
 
+@router.get("/profile/check-username/{username}")
+def check_username_availability(
+    username: str,
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+    """Check if a username is available."""
+    # Check format
+    import re
+    if not re.match(r'^[a-zA-Z0-9_]{3,20}$', username):
+        return {"available": False, "reason": "Invalid format"}
+    
+    # Check if username is taken by another user
+    existing_profile = db.query(UserProfile).filter(
+        UserProfile.username == username,
+        UserProfile.user_id != current_user.id
+    ).first()
+    
+    if existing_profile:
+        return {"available": False, "reason": "Already taken"}
+    
+    return {"available": True}
+
+
+@router.put("/profile/preferences")
+def update_preferences(
+    preferences: dict,
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+    profile_service: ProfileService = Depends(get_profile_service)
+):
+    """Update user preferences (stores in preferences_json field)."""
+    user_profile = profile_service.get_user_profile(db, current_user.id)
+    
+    if not user_profile:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User profile not found")
+    
+    # Merge new preferences with existing ones
+    current_prefs = user_profile.preferences_json or {}
+    updated_prefs = {**current_prefs, **preferences}
+    
+    # Update profile with new preferences
+    updated_profile = profile_service.update_user_profile(
+        db, 
+        current_user.id, 
+        {"preferences_json": updated_prefs}
+    )
+    
+    return {"preferences": updated_profile.preferences_json, "profile": updated_profile}
+
+
 @router.post("/request-access", response_model=AccessRequestResponse)
 def request_access(
     request_data: AccessRequestCreate,

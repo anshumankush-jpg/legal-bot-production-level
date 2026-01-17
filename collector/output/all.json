@@ -1,0 +1,2995 @@
+[
+  {
+    "id": "manual_toronto_traffic",
+    "country": "Canada",
+    "province_state": "Ontario",
+    "city_or_county": "Toronto",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "provincial_offences"
+    ],
+    "portals": [
+      {
+        "name": "City of Toronto Court Case Lookup",
+        "url": "https://secure.toronto.ca/CourtCaseLookUp/welcome.jsf",
+        "authority": "City of Toronto",
+        "portal_type": "case_lookup",
+        "requires": [
+          "ticket_number",
+          "offence_number"
+        ],
+        "notes": "Official City of Toronto case lookup portal for Provincial Offences tickets"
+      },
+      {
+        "name": "Toronto Provincial Offences Court",
+        "url": "https://www.toronto.ca/city-government/accountability-operations-customer-service/complaints-claims-compliments/provincial-offences-act/",
+        "authority": "City of Toronto",
+        "portal_type": "court_directory",
+        "requires": [],
+        "notes": "Information about Provincial Offences Court in Toronto"
+      },
+      {
+        "name": "Toronto Parking Ticket Payment",
+        "url": "https://secure.toronto.ca/wes/eTPOWeb/htm/paymentOption.htm",
+        "authority": "City of Toronto",
+        "portal_type": "pay_ticket",
+        "requires": [
+          "ticket_number"
+        ],
+        "notes": "Pay parking tickets online"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T00:00:00",
+    "verification_status": "verified",
+    "confidence": 1.0
+  },
+  {
+    "id": "manual_ontario_courts",
+    "country": "Canada",
+    "province_state": "Ontario",
+    "city_or_county": "Province-wide",
+    "jurisdiction_level": "province_state",
+    "ticket_types": [
+      "traffic",
+      "criminal",
+      "provincial_offences"
+    ],
+    "portals": [
+      {
+        "name": "Ontario Court of Justice",
+        "url": "https://www.ontariocourts.ca/ocj/",
+        "authority": "Ontario Court of Justice",
+        "portal_type": "court_directory",
+        "requires": [],
+        "notes": "Main portal for Ontario Court of Justice locations and information"
+      },
+      {
+        "name": "Pay Ontario Provincial Offences Tickets",
+        "url": "https://www.paytickets.ca/",
+        "authority": "Province of Ontario",
+        "portal_type": "pay_ticket",
+        "requires": [
+          "ticket_number",
+          "offence_number"
+        ],
+        "notes": "Official provincial portal for paying tickets online (not all municipalities)"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T00:00:00",
+    "verification_status": "verified",
+    "confidence": 1.0
+  },
+  {
+    "id": "manual_vancouver_traffic",
+    "country": "Canada",
+    "province_state": "British Columbia",
+    "city_or_county": "Vancouver",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "bylaw"
+    ],
+    "portals": [
+      {
+        "name": "Vancouver Parking Ticket Payment",
+        "url": "https://parking.vancouver.ca/",
+        "authority": "City of Vancouver",
+        "portal_type": "pay_ticket",
+        "requires": [
+          "ticket_number"
+        ],
+        "notes": "Pay parking tickets for City of Vancouver"
+      },
+      {
+        "name": "BC Provincial Court - Vancouver",
+        "url": "https://www.provincialcourt.bc.ca/locations/vancouver",
+        "authority": "Provincial Court of British Columbia",
+        "portal_type": "court_directory",
+        "requires": [],
+        "notes": "Vancouver Provincial Court location and information"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T00:00:00",
+    "verification_status": "verified",
+    "confidence": 0.9
+  },
+  {
+    "id": "d394fcd4992c69aa",
+    "country": "Canada",
+    "province_state": "Ontario",
+    "city_or_county": "Province-Wide",
+    "jurisdiction_level": "province_state",
+    "ticket_types": [
+      "traffic",
+      "criminal",
+      "provincial_offences"
+    ],
+    "portals": [
+      {
+        "name": "Ontario Courts Directory",
+        "url": "https://www.ontariocourts.ca/ocj/",
+        "authority": "Government of Ontario",
+        "portal_type": "court_directory",
+        "requires": [],
+        "notes": "Official provincial court directory"
+      },
+      {
+        "name": "Ontario Courts Directory",
+        "url": "https://www.attorneygeneral.jus.gov.on.ca/english/courts/",
+        "authority": "Government of Ontario",
+        "portal_type": "court_directory",
+        "requires": [],
+        "notes": "Official provincial court directory"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.972000",
+    "verification_status": "unverified",
+    "confidence": 0.5
+  },
+  {
+    "id": "a7fc9c04025fd302",
+    "country": "Canada",
+    "province_state": "Ontario",
+    "city_or_county": "Toronto",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "bylaw"
+    ],
+    "portals": [
+      {
+        "name": "Toronto Municipal Court",
+        "url": "https://placeholder.example.com/toronto",
+        "authority": "City of Toronto",
+        "portal_type": "case_lookup",
+        "requires": [
+          "ticket_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.972000",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "25849c1e3957dfb4",
+    "country": "Canada",
+    "province_state": "Ontario",
+    "city_or_county": "Ottawa",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "bylaw"
+    ],
+    "portals": [
+      {
+        "name": "Ottawa Municipal Court",
+        "url": "https://placeholder.example.com/ottawa",
+        "authority": "City of Ottawa",
+        "portal_type": "case_lookup",
+        "requires": [
+          "ticket_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.972000",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "646d766dff55d22b",
+    "country": "Canada",
+    "province_state": "Ontario",
+    "city_or_county": "Mississauga",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "bylaw"
+    ],
+    "portals": [
+      {
+        "name": "Mississauga Municipal Court",
+        "url": "https://placeholder.example.com/mississauga",
+        "authority": "City of Mississauga",
+        "portal_type": "case_lookup",
+        "requires": [
+          "ticket_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.972000",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "b15d55d49154e748",
+    "country": "Canada",
+    "province_state": "Ontario",
+    "city_or_county": "Brampton",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "bylaw"
+    ],
+    "portals": [
+      {
+        "name": "Brampton Municipal Court",
+        "url": "https://placeholder.example.com/brampton",
+        "authority": "City of Brampton",
+        "portal_type": "case_lookup",
+        "requires": [
+          "ticket_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.972000",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "d38ea4af1164ad94",
+    "country": "Canada",
+    "province_state": "Ontario",
+    "city_or_county": "Hamilton",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "bylaw"
+    ],
+    "portals": [
+      {
+        "name": "Hamilton Municipal Court",
+        "url": "https://placeholder.example.com/hamilton",
+        "authority": "City of Hamilton",
+        "portal_type": "case_lookup",
+        "requires": [
+          "ticket_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.973007",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "c1c1e4501fa62ccd",
+    "country": "Canada",
+    "province_state": "Quebec",
+    "city_or_county": "Province-Wide",
+    "jurisdiction_level": "province_state",
+    "ticket_types": [
+      "traffic",
+      "criminal",
+      "provincial_offences"
+    ],
+    "portals": [
+      {
+        "name": "Quebec Courts Directory",
+        "url": "https://www.justice.gouv.qc.ca/en/",
+        "authority": "Government of Quebec",
+        "portal_type": "court_directory",
+        "requires": [],
+        "notes": "Official provincial court directory"
+      },
+      {
+        "name": "Quebec Courts Directory",
+        "url": "https://www.tribunaux.qc.ca/",
+        "authority": "Government of Quebec",
+        "portal_type": "court_directory",
+        "requires": [],
+        "notes": "Official provincial court directory"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.973007",
+    "verification_status": "unverified",
+    "confidence": 0.5
+  },
+  {
+    "id": "aa1ddb7f7ed70fc8",
+    "country": "Canada",
+    "province_state": "Quebec",
+    "city_or_county": "Montreal",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "bylaw"
+    ],
+    "portals": [
+      {
+        "name": "Montreal Municipal Court",
+        "url": "https://placeholder.example.com/montreal",
+        "authority": "City of Montreal",
+        "portal_type": "case_lookup",
+        "requires": [
+          "ticket_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.973007",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "5dddfb17de900cf9",
+    "country": "Canada",
+    "province_state": "Quebec",
+    "city_or_county": "Quebec City",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "bylaw"
+    ],
+    "portals": [
+      {
+        "name": "Quebec City Municipal Court",
+        "url": "https://placeholder.example.com/quebec-city",
+        "authority": "City of Quebec City",
+        "portal_type": "case_lookup",
+        "requires": [
+          "ticket_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.973007",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "1b9148a25b7a8acc",
+    "country": "Canada",
+    "province_state": "Quebec",
+    "city_or_county": "Laval",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "bylaw"
+    ],
+    "portals": [
+      {
+        "name": "Laval Municipal Court",
+        "url": "https://placeholder.example.com/laval",
+        "authority": "City of Laval",
+        "portal_type": "case_lookup",
+        "requires": [
+          "ticket_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.973007",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "999934b11ddf6fa5",
+    "country": "Canada",
+    "province_state": "Quebec",
+    "city_or_county": "Gatineau",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "bylaw"
+    ],
+    "portals": [
+      {
+        "name": "Gatineau Municipal Court",
+        "url": "https://placeholder.example.com/gatineau",
+        "authority": "City of Gatineau",
+        "portal_type": "case_lookup",
+        "requires": [
+          "ticket_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.973007",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "72bef93ace279f60",
+    "country": "Canada",
+    "province_state": "Quebec",
+    "city_or_county": "Longueuil",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "bylaw"
+    ],
+    "portals": [
+      {
+        "name": "Longueuil Municipal Court",
+        "url": "https://placeholder.example.com/longueuil",
+        "authority": "City of Longueuil",
+        "portal_type": "case_lookup",
+        "requires": [
+          "ticket_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.973007",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "821830ec5ace03b2",
+    "country": "Canada",
+    "province_state": "British Columbia",
+    "city_or_county": "Province-Wide",
+    "jurisdiction_level": "province_state",
+    "ticket_types": [
+      "traffic",
+      "criminal",
+      "provincial_offences"
+    ],
+    "portals": [
+      {
+        "name": "British Columbia Courts Directory",
+        "url": "https://www.provincialcourt.bc.ca/",
+        "authority": "Government of British Columbia",
+        "portal_type": "court_directory",
+        "requires": [],
+        "notes": "Official provincial court directory"
+      },
+      {
+        "name": "British Columbia Courts Directory",
+        "url": "https://www2.gov.bc.ca/gov/content/justice/courthouse-services",
+        "authority": "Government of British Columbia",
+        "portal_type": "court_directory",
+        "requires": [],
+        "notes": "Official provincial court directory"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.973007",
+    "verification_status": "unverified",
+    "confidence": 0.5
+  },
+  {
+    "id": "0eb0dcf6c940720a",
+    "country": "Canada",
+    "province_state": "British Columbia",
+    "city_or_county": "Vancouver",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "bylaw"
+    ],
+    "portals": [
+      {
+        "name": "Vancouver Municipal Court",
+        "url": "https://placeholder.example.com/vancouver",
+        "authority": "City of Vancouver",
+        "portal_type": "case_lookup",
+        "requires": [
+          "ticket_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.973007",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "c6a41c677967340b",
+    "country": "Canada",
+    "province_state": "British Columbia",
+    "city_or_county": "Surrey",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "bylaw"
+    ],
+    "portals": [
+      {
+        "name": "Surrey Municipal Court",
+        "url": "https://placeholder.example.com/surrey",
+        "authority": "City of Surrey",
+        "portal_type": "case_lookup",
+        "requires": [
+          "ticket_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.973007",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "a833202260d07e90",
+    "country": "Canada",
+    "province_state": "British Columbia",
+    "city_or_county": "Burnaby",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "bylaw"
+    ],
+    "portals": [
+      {
+        "name": "Burnaby Municipal Court",
+        "url": "https://placeholder.example.com/burnaby",
+        "authority": "City of Burnaby",
+        "portal_type": "case_lookup",
+        "requires": [
+          "ticket_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.973007",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "e87638bffa4dcc95",
+    "country": "Canada",
+    "province_state": "British Columbia",
+    "city_or_county": "Richmond",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "bylaw"
+    ],
+    "portals": [
+      {
+        "name": "Richmond Municipal Court",
+        "url": "https://placeholder.example.com/richmond",
+        "authority": "City of Richmond",
+        "portal_type": "case_lookup",
+        "requires": [
+          "ticket_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.973007",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "3181aac58e8cc606",
+    "country": "Canada",
+    "province_state": "British Columbia",
+    "city_or_county": "Abbotsford",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "bylaw"
+    ],
+    "portals": [
+      {
+        "name": "Abbotsford Municipal Court",
+        "url": "https://placeholder.example.com/abbotsford",
+        "authority": "City of Abbotsford",
+        "portal_type": "case_lookup",
+        "requires": [
+          "ticket_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.973007",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "90c9f312215b3c10",
+    "country": "Canada",
+    "province_state": "Alberta",
+    "city_or_county": "Province-Wide",
+    "jurisdiction_level": "province_state",
+    "ticket_types": [
+      "traffic",
+      "criminal",
+      "provincial_offences"
+    ],
+    "portals": [
+      {
+        "name": "Alberta Courts Directory",
+        "url": "https://albertacourts.ca/",
+        "authority": "Government of Alberta",
+        "portal_type": "court_directory",
+        "requires": [],
+        "notes": "Official provincial court directory"
+      },
+      {
+        "name": "Alberta Courts Directory",
+        "url": "https://www.alberta.ca/provincial-court.aspx",
+        "authority": "Government of Alberta",
+        "portal_type": "court_directory",
+        "requires": [],
+        "notes": "Official provincial court directory"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.973007",
+    "verification_status": "unverified",
+    "confidence": 0.5
+  },
+  {
+    "id": "e25fe9804f9d6de6",
+    "country": "Canada",
+    "province_state": "Alberta",
+    "city_or_county": "Calgary",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "bylaw"
+    ],
+    "portals": [
+      {
+        "name": "Calgary Municipal Court",
+        "url": "https://placeholder.example.com/calgary",
+        "authority": "City of Calgary",
+        "portal_type": "case_lookup",
+        "requires": [
+          "ticket_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.973999",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "1c0c727e01988ac3",
+    "country": "Canada",
+    "province_state": "Alberta",
+    "city_or_county": "Edmonton",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "bylaw"
+    ],
+    "portals": [
+      {
+        "name": "Edmonton Municipal Court",
+        "url": "https://placeholder.example.com/edmonton",
+        "authority": "City of Edmonton",
+        "portal_type": "case_lookup",
+        "requires": [
+          "ticket_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.973999",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "e5e7f3db8dde4589",
+    "country": "Canada",
+    "province_state": "Alberta",
+    "city_or_county": "Red Deer",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "bylaw"
+    ],
+    "portals": [
+      {
+        "name": "Red Deer Municipal Court",
+        "url": "https://placeholder.example.com/red-deer",
+        "authority": "City of Red Deer",
+        "portal_type": "case_lookup",
+        "requires": [
+          "ticket_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.973999",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "bd0aa59ec791b744",
+    "country": "Canada",
+    "province_state": "Alberta",
+    "city_or_county": "Lethbridge",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "bylaw"
+    ],
+    "portals": [
+      {
+        "name": "Lethbridge Municipal Court",
+        "url": "https://placeholder.example.com/lethbridge",
+        "authority": "City of Lethbridge",
+        "portal_type": "case_lookup",
+        "requires": [
+          "ticket_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.973999",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "69564a4baeeff4e0",
+    "country": "Canada",
+    "province_state": "Alberta",
+    "city_or_county": "Saint Albert",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "bylaw"
+    ],
+    "portals": [
+      {
+        "name": "St. Albert Municipal Court",
+        "url": "https://placeholder.example.com/st.-albert",
+        "authority": "City of St. Albert",
+        "portal_type": "case_lookup",
+        "requires": [
+          "ticket_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.973999",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "862ad9cdc426c078",
+    "country": "Canada",
+    "province_state": "Manitoba",
+    "city_or_county": "Province-Wide",
+    "jurisdiction_level": "province_state",
+    "ticket_types": [
+      "traffic",
+      "criminal",
+      "provincial_offences"
+    ],
+    "portals": [
+      {
+        "name": "Manitoba Courts Directory",
+        "url": "https://www.manitobacourts.mb.ca/",
+        "authority": "Government of Manitoba",
+        "portal_type": "court_directory",
+        "requires": [],
+        "notes": "Official provincial court directory"
+      },
+      {
+        "name": "Manitoba Courts Directory",
+        "url": "https://www.gov.mb.ca/justice/crown/prosecutions/pubs/ticketinfo.html",
+        "authority": "Government of Manitoba",
+        "portal_type": "court_directory",
+        "requires": [],
+        "notes": "Official provincial court directory"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.973999",
+    "verification_status": "unverified",
+    "confidence": 0.5
+  },
+  {
+    "id": "66ad7414618331f3",
+    "country": "Canada",
+    "province_state": "Manitoba",
+    "city_or_county": "Winnipeg",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "bylaw"
+    ],
+    "portals": [
+      {
+        "name": "Winnipeg Municipal Court",
+        "url": "https://placeholder.example.com/winnipeg",
+        "authority": "City of Winnipeg",
+        "portal_type": "case_lookup",
+        "requires": [
+          "ticket_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.973999",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "df80531dc57b8498",
+    "country": "Canada",
+    "province_state": "Manitoba",
+    "city_or_county": "Brandon",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "bylaw"
+    ],
+    "portals": [
+      {
+        "name": "Brandon Municipal Court",
+        "url": "https://placeholder.example.com/brandon",
+        "authority": "City of Brandon",
+        "portal_type": "case_lookup",
+        "requires": [
+          "ticket_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.973999",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "ba8d3f3da6bb7fc6",
+    "country": "Canada",
+    "province_state": "Manitoba",
+    "city_or_county": "Steinbach",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "bylaw"
+    ],
+    "portals": [
+      {
+        "name": "Steinbach Municipal Court",
+        "url": "https://placeholder.example.com/steinbach",
+        "authority": "City of Steinbach",
+        "portal_type": "case_lookup",
+        "requires": [
+          "ticket_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.973999",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "64d0c6fb0102e2db",
+    "country": "Canada",
+    "province_state": "Manitoba",
+    "city_or_county": "Thompson",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "bylaw"
+    ],
+    "portals": [
+      {
+        "name": "Thompson Municipal Court",
+        "url": "https://placeholder.example.com/thompson",
+        "authority": "City of Thompson",
+        "portal_type": "case_lookup",
+        "requires": [
+          "ticket_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.973999",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "69c691fb8c59b554",
+    "country": "Canada",
+    "province_state": "Manitoba",
+    "city_or_county": "Portage La Prairie",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "bylaw"
+    ],
+    "portals": [
+      {
+        "name": "Portage la Prairie Municipal Court",
+        "url": "https://placeholder.example.com/portage-la-prairie",
+        "authority": "City of Portage la Prairie",
+        "portal_type": "case_lookup",
+        "requires": [
+          "ticket_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.973999",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "144d99615fd80112",
+    "country": "Canada",
+    "province_state": "Saskatchewan",
+    "city_or_county": "Province-Wide",
+    "jurisdiction_level": "province_state",
+    "ticket_types": [
+      "traffic",
+      "criminal",
+      "provincial_offences"
+    ],
+    "portals": [
+      {
+        "name": "Saskatchewan Courts Directory",
+        "url": "https://sasklawcourts.ca/",
+        "authority": "Government of Saskatchewan",
+        "portal_type": "court_directory",
+        "requires": [],
+        "notes": "Official provincial court directory"
+      },
+      {
+        "name": "Saskatchewan Courts Directory",
+        "url": "https://www.saskatoon.ca/services-residents/police-public-safety/bylaws-enforcement",
+        "authority": "Government of Saskatchewan",
+        "portal_type": "court_directory",
+        "requires": [],
+        "notes": "Official provincial court directory"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.973999",
+    "verification_status": "unverified",
+    "confidence": 0.5
+  },
+  {
+    "id": "65f1b5d09756b519",
+    "country": "Canada",
+    "province_state": "Saskatchewan",
+    "city_or_county": "Saskatoon",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "bylaw"
+    ],
+    "portals": [
+      {
+        "name": "Saskatoon Municipal Court",
+        "url": "https://placeholder.example.com/saskatoon",
+        "authority": "City of Saskatoon",
+        "portal_type": "case_lookup",
+        "requires": [
+          "ticket_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.973999",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "8203aabcc85b9080",
+    "country": "Canada",
+    "province_state": "Saskatchewan",
+    "city_or_county": "Regina",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "bylaw"
+    ],
+    "portals": [
+      {
+        "name": "Regina Municipal Court",
+        "url": "https://placeholder.example.com/regina",
+        "authority": "City of Regina",
+        "portal_type": "case_lookup",
+        "requires": [
+          "ticket_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.973999",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "f8583771187a6ce0",
+    "country": "Canada",
+    "province_state": "Saskatchewan",
+    "city_or_county": "Prince Albert",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "bylaw"
+    ],
+    "portals": [
+      {
+        "name": "Prince Albert Municipal Court",
+        "url": "https://placeholder.example.com/prince-albert",
+        "authority": "City of Prince Albert",
+        "portal_type": "case_lookup",
+        "requires": [
+          "ticket_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.973999",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "8baa446bd1efadee",
+    "country": "Canada",
+    "province_state": "Saskatchewan",
+    "city_or_county": "Moose Jaw",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "bylaw"
+    ],
+    "portals": [
+      {
+        "name": "Moose Jaw Municipal Court",
+        "url": "https://placeholder.example.com/moose-jaw",
+        "authority": "City of Moose Jaw",
+        "portal_type": "case_lookup",
+        "requires": [
+          "ticket_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.973999",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "8f39b02dd95d735e",
+    "country": "Canada",
+    "province_state": "Saskatchewan",
+    "city_or_county": "Swift Current",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "bylaw"
+    ],
+    "portals": [
+      {
+        "name": "Swift Current Municipal Court",
+        "url": "https://placeholder.example.com/swift-current",
+        "authority": "City of Swift Current",
+        "portal_type": "case_lookup",
+        "requires": [
+          "ticket_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.973999",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "014be8262878bd61",
+    "country": "Canada",
+    "province_state": "Nova Scotia",
+    "city_or_county": "Province-Wide",
+    "jurisdiction_level": "province_state",
+    "ticket_types": [
+      "traffic",
+      "criminal",
+      "provincial_offences"
+    ],
+    "portals": [
+      {
+        "name": "Nova Scotia Courts Directory",
+        "url": "https://courts.ns.ca/",
+        "authority": "Government of Nova Scotia",
+        "portal_type": "court_directory",
+        "requires": [],
+        "notes": "Official provincial court directory"
+      },
+      {
+        "name": "Nova Scotia Courts Directory",
+        "url": "https://novascotia.ca/just/courts.asp",
+        "authority": "Government of Nova Scotia",
+        "portal_type": "court_directory",
+        "requires": [],
+        "notes": "Official provincial court directory"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.973999",
+    "verification_status": "unverified",
+    "confidence": 0.5
+  },
+  {
+    "id": "8bcf04ff0d2cd591",
+    "country": "Canada",
+    "province_state": "Nova Scotia",
+    "city_or_county": "Halifax",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "bylaw"
+    ],
+    "portals": [
+      {
+        "name": "Halifax Municipal Court",
+        "url": "https://placeholder.example.com/halifax",
+        "authority": "City of Halifax",
+        "portal_type": "case_lookup",
+        "requires": [
+          "ticket_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.973999",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "2b92722c480b4617",
+    "country": "Canada",
+    "province_state": "Nova Scotia",
+    "city_or_county": "Cape Breton",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "bylaw"
+    ],
+    "portals": [
+      {
+        "name": "Cape Breton Municipal Court",
+        "url": "https://placeholder.example.com/cape-breton",
+        "authority": "City of Cape Breton",
+        "portal_type": "case_lookup",
+        "requires": [
+          "ticket_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.973999",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "dc049258bc0157aa",
+    "country": "Canada",
+    "province_state": "Nova Scotia",
+    "city_or_county": "Truro",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "bylaw"
+    ],
+    "portals": [
+      {
+        "name": "Truro Municipal Court",
+        "url": "https://placeholder.example.com/truro",
+        "authority": "City of Truro",
+        "portal_type": "case_lookup",
+        "requires": [
+          "ticket_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.973999",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "a20dcb661e94907f",
+    "country": "Canada",
+    "province_state": "Nova Scotia",
+    "city_or_county": "New Glasgow",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "bylaw"
+    ],
+    "portals": [
+      {
+        "name": "New Glasgow Municipal Court",
+        "url": "https://placeholder.example.com/new-glasgow",
+        "authority": "City of New Glasgow",
+        "portal_type": "case_lookup",
+        "requires": [
+          "ticket_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.973999",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "4ddb8c1b36d6d11c",
+    "country": "Canada",
+    "province_state": "Nova Scotia",
+    "city_or_county": "Glace Bay",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "bylaw"
+    ],
+    "portals": [
+      {
+        "name": "Glace Bay Municipal Court",
+        "url": "https://placeholder.example.com/glace-bay",
+        "authority": "City of Glace Bay",
+        "portal_type": "case_lookup",
+        "requires": [
+          "ticket_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.973999",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "8efe1ffb9588dbf0",
+    "country": "Canada",
+    "province_state": "New Brunswick",
+    "city_or_county": "Province-Wide",
+    "jurisdiction_level": "province_state",
+    "ticket_types": [
+      "traffic",
+      "criminal",
+      "provincial_offences"
+    ],
+    "portals": [
+      {
+        "name": "New Brunswick Courts Directory",
+        "url": "https://www2.gnb.ca/content/gnb/en/departments/public-safety/court-services.html",
+        "authority": "Government of New Brunswick",
+        "portal_type": "court_directory",
+        "requires": [],
+        "notes": "Official provincial court directory"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.973999",
+    "verification_status": "unverified",
+    "confidence": 0.5
+  },
+  {
+    "id": "7ea9532f1f1be7eb",
+    "country": "Canada",
+    "province_state": "New Brunswick",
+    "city_or_county": "Moncton",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "bylaw"
+    ],
+    "portals": [
+      {
+        "name": "Moncton Municipal Court",
+        "url": "https://placeholder.example.com/moncton",
+        "authority": "City of Moncton",
+        "portal_type": "case_lookup",
+        "requires": [
+          "ticket_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.973999",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "ab5192a86fdca46e",
+    "country": "Canada",
+    "province_state": "New Brunswick",
+    "city_or_county": "Saint John",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "bylaw"
+    ],
+    "portals": [
+      {
+        "name": "Saint John Municipal Court",
+        "url": "https://placeholder.example.com/saint-john",
+        "authority": "City of Saint John",
+        "portal_type": "case_lookup",
+        "requires": [
+          "ticket_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.973999",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "734e7541cfbbdc7a",
+    "country": "Canada",
+    "province_state": "New Brunswick",
+    "city_or_county": "Fredericton",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "bylaw"
+    ],
+    "portals": [
+      {
+        "name": "Fredericton Municipal Court",
+        "url": "https://placeholder.example.com/fredericton",
+        "authority": "City of Fredericton",
+        "portal_type": "case_lookup",
+        "requires": [
+          "ticket_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.973999",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "ea0be78ec7a7dd95",
+    "country": "Canada",
+    "province_state": "New Brunswick",
+    "city_or_county": "Dieppe",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "bylaw"
+    ],
+    "portals": [
+      {
+        "name": "Dieppe Municipal Court",
+        "url": "https://placeholder.example.com/dieppe",
+        "authority": "City of Dieppe",
+        "portal_type": "case_lookup",
+        "requires": [
+          "ticket_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.974999",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "48b0d22c81a6dccf",
+    "country": "Canada",
+    "province_state": "New Brunswick",
+    "city_or_county": "Miramichi",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "bylaw"
+    ],
+    "portals": [
+      {
+        "name": "Miramichi Municipal Court",
+        "url": "https://placeholder.example.com/miramichi",
+        "authority": "City of Miramichi",
+        "portal_type": "case_lookup",
+        "requires": [
+          "ticket_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.974999",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "59120fba1a07b7df",
+    "country": "Canada",
+    "province_state": "Newfoundland And Labrador",
+    "city_or_county": "Province-Wide",
+    "jurisdiction_level": "province_state",
+    "ticket_types": [
+      "traffic",
+      "criminal",
+      "provincial_offences"
+    ],
+    "portals": [
+      {
+        "name": "Newfoundland and Labrador Courts Directory",
+        "url": "https://court.nl.ca/",
+        "authority": "Government of Newfoundland and Labrador",
+        "portal_type": "court_directory",
+        "requires": [],
+        "notes": "Official provincial court directory"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.974999",
+    "verification_status": "unverified",
+    "confidence": 0.5
+  },
+  {
+    "id": "a201d6ebd33c155b",
+    "country": "Canada",
+    "province_state": "Newfoundland And Labrador",
+    "city_or_county": "Saint John'S",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "bylaw"
+    ],
+    "portals": [
+      {
+        "name": "St. John's Municipal Court",
+        "url": "https://placeholder.example.com/st.-john's",
+        "authority": "City of St. John's",
+        "portal_type": "case_lookup",
+        "requires": [
+          "ticket_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.974999",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "b9cacca0ba01a380",
+    "country": "Canada",
+    "province_state": "Newfoundland And Labrador",
+    "city_or_county": "Mount Pearl",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "bylaw"
+    ],
+    "portals": [
+      {
+        "name": "Mount Pearl Municipal Court",
+        "url": "https://placeholder.example.com/mount-pearl",
+        "authority": "City of Mount Pearl",
+        "portal_type": "case_lookup",
+        "requires": [
+          "ticket_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.974999",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "26b865b6ecc2891d",
+    "country": "Canada",
+    "province_state": "Newfoundland And Labrador",
+    "city_or_county": "Corner Brook",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "bylaw"
+    ],
+    "portals": [
+      {
+        "name": "Corner Brook Municipal Court",
+        "url": "https://placeholder.example.com/corner-brook",
+        "authority": "City of Corner Brook",
+        "portal_type": "case_lookup",
+        "requires": [
+          "ticket_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.974999",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "2fa78458ac409434",
+    "country": "Canada",
+    "province_state": "Newfoundland And Labrador",
+    "city_or_county": "Conception Bay South",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "bylaw"
+    ],
+    "portals": [
+      {
+        "name": "Conception Bay South Municipal Court",
+        "url": "https://placeholder.example.com/conception-bay-south",
+        "authority": "City of Conception Bay South",
+        "portal_type": "case_lookup",
+        "requires": [
+          "ticket_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.974999",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "2edf933af178e8a0",
+    "country": "Canada",
+    "province_state": "Newfoundland And Labrador",
+    "city_or_county": "Grand Falls-Windsor",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "bylaw"
+    ],
+    "portals": [
+      {
+        "name": "Grand Falls-Windsor Municipal Court",
+        "url": "https://placeholder.example.com/grand-falls-windsor",
+        "authority": "City of Grand Falls-Windsor",
+        "portal_type": "case_lookup",
+        "requires": [
+          "ticket_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.974999",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "7cc7901262aa7d37",
+    "country": "Canada",
+    "province_state": "Prince Edward Island",
+    "city_or_county": "Province-Wide",
+    "jurisdiction_level": "province_state",
+    "ticket_types": [
+      "traffic",
+      "criminal",
+      "provincial_offences"
+    ],
+    "portals": [
+      {
+        "name": "Prince Edward Island Courts Directory",
+        "url": "https://www.princeedwardisland.ca/en/information/justice-and-public-safety/provincial-court",
+        "authority": "Government of Prince Edward Island",
+        "portal_type": "court_directory",
+        "requires": [],
+        "notes": "Official provincial court directory"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.974999",
+    "verification_status": "unverified",
+    "confidence": 0.5
+  },
+  {
+    "id": "0ded8da2345fa39d",
+    "country": "Canada",
+    "province_state": "Prince Edward Island",
+    "city_or_county": "Charlottetown",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "bylaw"
+    ],
+    "portals": [
+      {
+        "name": "Charlottetown Municipal Court",
+        "url": "https://placeholder.example.com/charlottetown",
+        "authority": "City of Charlottetown",
+        "portal_type": "case_lookup",
+        "requires": [
+          "ticket_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.974999",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "2a7c073b915900b3",
+    "country": "Canada",
+    "province_state": "Prince Edward Island",
+    "city_or_county": "Summerside",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "bylaw"
+    ],
+    "portals": [
+      {
+        "name": "Summerside Municipal Court",
+        "url": "https://placeholder.example.com/summerside",
+        "authority": "City of Summerside",
+        "portal_type": "case_lookup",
+        "requires": [
+          "ticket_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.974999",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "5aed3a3c6e06ed7e",
+    "country": "Canada",
+    "province_state": "Prince Edward Island",
+    "city_or_county": "Stratford",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "bylaw"
+    ],
+    "portals": [
+      {
+        "name": "Stratford Municipal Court",
+        "url": "https://placeholder.example.com/stratford",
+        "authority": "City of Stratford",
+        "portal_type": "case_lookup",
+        "requires": [
+          "ticket_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.974999",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "856c30b683ee8143",
+    "country": "Canada",
+    "province_state": "Prince Edward Island",
+    "city_or_county": "Cornwall",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "bylaw"
+    ],
+    "portals": [
+      {
+        "name": "Cornwall Municipal Court",
+        "url": "https://placeholder.example.com/cornwall",
+        "authority": "City of Cornwall",
+        "portal_type": "case_lookup",
+        "requires": [
+          "ticket_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.974999",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "53609b2b98b880c1",
+    "country": "Canada",
+    "province_state": "Prince Edward Island",
+    "city_or_county": "Montague",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "bylaw"
+    ],
+    "portals": [
+      {
+        "name": "Montague Municipal Court",
+        "url": "https://placeholder.example.com/montague",
+        "authority": "City of Montague",
+        "portal_type": "case_lookup",
+        "requires": [
+          "ticket_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en",
+      "fr"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.974999",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "manual_los_angeles_traffic",
+    "country": "USA",
+    "province_state": "California",
+    "city_or_county": "Los Angeles",
+    "jurisdiction_level": "county",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "criminal"
+    ],
+    "portals": [
+      {
+        "name": "LA Superior Court - Traffic",
+        "url": "https://www.lacourt.org/division/traffic/traffic.aspx",
+        "authority": "Los Angeles Superior Court",
+        "portal_type": "court_directory",
+        "requires": [],
+        "notes": "Traffic court information for Los Angeles County"
+      },
+      {
+        "name": "LA Court Online Services",
+        "url": "https://www.lacourt.org/online/trafficportal",
+        "authority": "Los Angeles Superior Court",
+        "portal_type": "case_lookup",
+        "requires": [
+          "citation_number",
+          "name"
+        ],
+        "notes": "Online traffic case lookup and payment"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T00:00:00",
+    "verification_status": "verified",
+    "confidence": 0.9
+  },
+  {
+    "id": "16e587cd1c8bd362",
+    "country": "USA",
+    "province_state": "California",
+    "city_or_county": "Statewide",
+    "jurisdiction_level": "state",
+    "ticket_types": [
+      "traffic",
+      "criminal",
+      "civil"
+    ],
+    "portals": [
+      {
+        "name": "California Courts Directory",
+        "url": "https://www.courts.ca.gov/",
+        "authority": "State of California",
+        "portal_type": "court_directory",
+        "requires": [],
+        "notes": "Official state court directory"
+      },
+      {
+        "name": "California Courts Directory",
+        "url": "https://www.courts.ca.gov/find-my-court.htm",
+        "authority": "State of California",
+        "portal_type": "court_directory",
+        "requires": [],
+        "notes": "Official state court directory"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.988922",
+    "verification_status": "unverified",
+    "confidence": 0.5
+  },
+  {
+    "id": "c542fe36662b7874",
+    "country": "USA",
+    "province_state": "California",
+    "city_or_county": "Los Angeles",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "municipal"
+    ],
+    "portals": [
+      {
+        "name": "Los Angeles Municipal Court",
+        "url": "https://placeholder.example.com/los-angeles",
+        "authority": "City of Los Angeles",
+        "portal_type": "case_lookup",
+        "requires": [
+          "citation_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.988922",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "c6c83a8840134e3f",
+    "country": "USA",
+    "province_state": "California",
+    "city_or_county": "San Diego",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "municipal"
+    ],
+    "portals": [
+      {
+        "name": "San Diego Municipal Court",
+        "url": "https://placeholder.example.com/san-diego",
+        "authority": "City of San Diego",
+        "portal_type": "case_lookup",
+        "requires": [
+          "citation_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.988922",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "639a02bfee3b05a1",
+    "country": "USA",
+    "province_state": "California",
+    "city_or_county": "San Jose",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "municipal"
+    ],
+    "portals": [
+      {
+        "name": "San Jose Municipal Court",
+        "url": "https://placeholder.example.com/san-jose",
+        "authority": "City of San Jose",
+        "portal_type": "case_lookup",
+        "requires": [
+          "citation_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.988922",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "cd1476e2c1cc9737",
+    "country": "USA",
+    "province_state": "California",
+    "city_or_county": "San Francisco",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "municipal"
+    ],
+    "portals": [
+      {
+        "name": "San Francisco Municipal Court",
+        "url": "https://placeholder.example.com/san-francisco",
+        "authority": "City of San Francisco",
+        "portal_type": "case_lookup",
+        "requires": [
+          "citation_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.988922",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "32c10cd5e4d4c9bc",
+    "country": "USA",
+    "province_state": "California",
+    "city_or_county": "Fresno",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "municipal"
+    ],
+    "portals": [
+      {
+        "name": "Fresno Municipal Court",
+        "url": "https://placeholder.example.com/fresno",
+        "authority": "City of Fresno",
+        "portal_type": "case_lookup",
+        "requires": [
+          "citation_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.988922",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "6d6cf992ec5fda9c",
+    "country": "USA",
+    "province_state": "Texas",
+    "city_or_county": "Statewide",
+    "jurisdiction_level": "state",
+    "ticket_types": [
+      "traffic",
+      "criminal",
+      "civil"
+    ],
+    "portals": [
+      {
+        "name": "Texas Courts Directory",
+        "url": "https://www.txcourts.gov/",
+        "authority": "State of Texas",
+        "portal_type": "court_directory",
+        "requires": [],
+        "notes": "Official state court directory"
+      },
+      {
+        "name": "Texas Courts Directory",
+        "url": "https://www.txcourts.gov/all-texas-courts/court-directories/",
+        "authority": "State of Texas",
+        "portal_type": "court_directory",
+        "requires": [],
+        "notes": "Official state court directory"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.988922",
+    "verification_status": "unverified",
+    "confidence": 0.5
+  },
+  {
+    "id": "217e1367f8be1a25",
+    "country": "USA",
+    "province_state": "Texas",
+    "city_or_county": "Houston",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "municipal"
+    ],
+    "portals": [
+      {
+        "name": "Houston Municipal Court",
+        "url": "https://placeholder.example.com/houston",
+        "authority": "City of Houston",
+        "portal_type": "case_lookup",
+        "requires": [
+          "citation_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.988922",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "4ca252e344be2fc8",
+    "country": "USA",
+    "province_state": "Texas",
+    "city_or_county": "San Antonio",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "municipal"
+    ],
+    "portals": [
+      {
+        "name": "San Antonio Municipal Court",
+        "url": "https://placeholder.example.com/san-antonio",
+        "authority": "City of San Antonio",
+        "portal_type": "case_lookup",
+        "requires": [
+          "citation_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.988922",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "0a869d56bc1bbe2d",
+    "country": "USA",
+    "province_state": "Texas",
+    "city_or_county": "Dallas",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "municipal"
+    ],
+    "portals": [
+      {
+        "name": "Dallas Municipal Court",
+        "url": "https://placeholder.example.com/dallas",
+        "authority": "City of Dallas",
+        "portal_type": "case_lookup",
+        "requires": [
+          "citation_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.988922",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "2774d26e9622d150",
+    "country": "USA",
+    "province_state": "Texas",
+    "city_or_county": "Austin",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "municipal"
+    ],
+    "portals": [
+      {
+        "name": "Austin Municipal Court",
+        "url": "https://placeholder.example.com/austin",
+        "authority": "City of Austin",
+        "portal_type": "case_lookup",
+        "requires": [
+          "citation_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.988922",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "7fe8b95eee1ea6b2",
+    "country": "USA",
+    "province_state": "Texas",
+    "city_or_county": "Fort Worth",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "municipal"
+    ],
+    "portals": [
+      {
+        "name": "Fort Worth Municipal Court",
+        "url": "https://placeholder.example.com/fort-worth",
+        "authority": "City of Fort Worth",
+        "portal_type": "case_lookup",
+        "requires": [
+          "citation_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.988922",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "d72a1787b8a560cb",
+    "country": "USA",
+    "province_state": "New York",
+    "city_or_county": "Statewide",
+    "jurisdiction_level": "state",
+    "ticket_types": [
+      "traffic",
+      "criminal",
+      "civil"
+    ],
+    "portals": [
+      {
+        "name": "New York Courts Directory",
+        "url": "https://ww2.nycourts.gov/",
+        "authority": "State of New York",
+        "portal_type": "court_directory",
+        "requires": [],
+        "notes": "Official state court directory"
+      },
+      {
+        "name": "New York Courts Directory",
+        "url": "https://iapps.courts.state.ny.us/webcivil/FCASMain",
+        "authority": "State of New York",
+        "portal_type": "court_directory",
+        "requires": [],
+        "notes": "Official state court directory"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.988922",
+    "verification_status": "unverified",
+    "confidence": 0.5
+  },
+  {
+    "id": "e040efc0234304e5",
+    "country": "USA",
+    "province_state": "New York",
+    "city_or_county": "New York City",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "municipal"
+    ],
+    "portals": [
+      {
+        "name": "New York City Municipal Court",
+        "url": "https://placeholder.example.com/new-york-city",
+        "authority": "City of New York City",
+        "portal_type": "case_lookup",
+        "requires": [
+          "citation_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.988922",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "ed340efc52dbd46f",
+    "country": "USA",
+    "province_state": "New York",
+    "city_or_county": "Buffalo",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "municipal"
+    ],
+    "portals": [
+      {
+        "name": "Buffalo Municipal Court",
+        "url": "https://placeholder.example.com/buffalo",
+        "authority": "City of Buffalo",
+        "portal_type": "case_lookup",
+        "requires": [
+          "citation_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.988922",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "ac5d7c0acbc98b60",
+    "country": "USA",
+    "province_state": "New York",
+    "city_or_county": "Rochester",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "municipal"
+    ],
+    "portals": [
+      {
+        "name": "Rochester Municipal Court",
+        "url": "https://placeholder.example.com/rochester",
+        "authority": "City of Rochester",
+        "portal_type": "case_lookup",
+        "requires": [
+          "citation_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.988922",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "be16dfc08b8daba2",
+    "country": "USA",
+    "province_state": "New York",
+    "city_or_county": "Yonkers",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "municipal"
+    ],
+    "portals": [
+      {
+        "name": "Yonkers Municipal Court",
+        "url": "https://placeholder.example.com/yonkers",
+        "authority": "City of Yonkers",
+        "portal_type": "case_lookup",
+        "requires": [
+          "citation_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.988922",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "78fbda231ce79648",
+    "country": "USA",
+    "province_state": "New York",
+    "city_or_county": "Syracuse",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "municipal"
+    ],
+    "portals": [
+      {
+        "name": "Syracuse Municipal Court",
+        "url": "https://placeholder.example.com/syracuse",
+        "authority": "City of Syracuse",
+        "portal_type": "case_lookup",
+        "requires": [
+          "citation_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.988922",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "165c282026a65d5b",
+    "country": "USA",
+    "province_state": "Florida",
+    "city_or_county": "Statewide",
+    "jurisdiction_level": "state",
+    "ticket_types": [
+      "traffic",
+      "criminal",
+      "civil"
+    ],
+    "portals": [
+      {
+        "name": "Florida Courts Directory",
+        "url": "https://www.flcourts.gov/",
+        "authority": "State of Florida",
+        "portal_type": "court_directory",
+        "requires": [],
+        "notes": "Official state court directory"
+      },
+      {
+        "name": "Florida Courts Directory",
+        "url": "https://www.flcourts.gov/Florida-Courts/Trial-Courts",
+        "authority": "State of Florida",
+        "portal_type": "court_directory",
+        "requires": [],
+        "notes": "Official state court directory"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.988922",
+    "verification_status": "unverified",
+    "confidence": 0.5
+  },
+  {
+    "id": "987ffb98c0721caf",
+    "country": "USA",
+    "province_state": "Florida",
+    "city_or_county": "Jacksonville",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "municipal"
+    ],
+    "portals": [
+      {
+        "name": "Jacksonville Municipal Court",
+        "url": "https://placeholder.example.com/jacksonville",
+        "authority": "City of Jacksonville",
+        "portal_type": "case_lookup",
+        "requires": [
+          "citation_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.988922",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "6fac9e170e48e2ce",
+    "country": "USA",
+    "province_state": "Florida",
+    "city_or_county": "Miami",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "municipal"
+    ],
+    "portals": [
+      {
+        "name": "Miami Municipal Court",
+        "url": "https://placeholder.example.com/miami",
+        "authority": "City of Miami",
+        "portal_type": "case_lookup",
+        "requires": [
+          "citation_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.988922",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "9babff660c17db74",
+    "country": "USA",
+    "province_state": "Florida",
+    "city_or_county": "Tampa",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "municipal"
+    ],
+    "portals": [
+      {
+        "name": "Tampa Municipal Court",
+        "url": "https://placeholder.example.com/tampa",
+        "authority": "City of Tampa",
+        "portal_type": "case_lookup",
+        "requires": [
+          "citation_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.988922",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "4c6552bf2d835986",
+    "country": "USA",
+    "province_state": "Florida",
+    "city_or_county": "Orlando",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "municipal"
+    ],
+    "portals": [
+      {
+        "name": "Orlando Municipal Court",
+        "url": "https://placeholder.example.com/orlando",
+        "authority": "City of Orlando",
+        "portal_type": "case_lookup",
+        "requires": [
+          "citation_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.989947",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "8e130e4273dfccd4",
+    "country": "USA",
+    "province_state": "Florida",
+    "city_or_county": "Saint Petersburg",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "municipal"
+    ],
+    "portals": [
+      {
+        "name": "St. Petersburg Municipal Court",
+        "url": "https://placeholder.example.com/st.-petersburg",
+        "authority": "City of St. Petersburg",
+        "portal_type": "case_lookup",
+        "requires": [
+          "citation_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.989947",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "fd429e7761c40b15",
+    "country": "USA",
+    "province_state": "Illinois",
+    "city_or_county": "Statewide",
+    "jurisdiction_level": "state",
+    "ticket_types": [
+      "traffic",
+      "criminal",
+      "civil"
+    ],
+    "portals": [
+      {
+        "name": "Illinois Courts Directory",
+        "url": "https://www.illinoiscourts.gov/",
+        "authority": "State of Illinois",
+        "portal_type": "court_directory",
+        "requires": [],
+        "notes": "Official state court directory"
+      },
+      {
+        "name": "Illinois Courts Directory",
+        "url": "https://www.cookcountycourt.org/",
+        "authority": "State of Illinois",
+        "portal_type": "court_directory",
+        "requires": [],
+        "notes": "Official state court directory"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.989947",
+    "verification_status": "unverified",
+    "confidence": 0.5
+  },
+  {
+    "id": "223d64a15d2411d6",
+    "country": "USA",
+    "province_state": "Illinois",
+    "city_or_county": "Chicago",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "municipal"
+    ],
+    "portals": [
+      {
+        "name": "Chicago Municipal Court",
+        "url": "https://placeholder.example.com/chicago",
+        "authority": "City of Chicago",
+        "portal_type": "case_lookup",
+        "requires": [
+          "citation_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.989947",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "c55fc0a619c2ff29",
+    "country": "USA",
+    "province_state": "Illinois",
+    "city_or_county": "Aurora",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "municipal"
+    ],
+    "portals": [
+      {
+        "name": "Aurora Municipal Court",
+        "url": "https://placeholder.example.com/aurora",
+        "authority": "City of Aurora",
+        "portal_type": "case_lookup",
+        "requires": [
+          "citation_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.989947",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "db70e2d37846a734",
+    "country": "USA",
+    "province_state": "Illinois",
+    "city_or_county": "Joliet",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "municipal"
+    ],
+    "portals": [
+      {
+        "name": "Joliet Municipal Court",
+        "url": "https://placeholder.example.com/joliet",
+        "authority": "City of Joliet",
+        "portal_type": "case_lookup",
+        "requires": [
+          "citation_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.989947",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "9256c3558d480bad",
+    "country": "USA",
+    "province_state": "Illinois",
+    "city_or_county": "Naperville",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "municipal"
+    ],
+    "portals": [
+      {
+        "name": "Naperville Municipal Court",
+        "url": "https://placeholder.example.com/naperville",
+        "authority": "City of Naperville",
+        "portal_type": "case_lookup",
+        "requires": [
+          "citation_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.989947",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "c5fd1c3f449ad0fd",
+    "country": "USA",
+    "province_state": "Illinois",
+    "city_or_county": "Rockford",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "municipal"
+    ],
+    "portals": [
+      {
+        "name": "Rockford Municipal Court",
+        "url": "https://placeholder.example.com/rockford",
+        "authority": "City of Rockford",
+        "portal_type": "case_lookup",
+        "requires": [
+          "citation_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.989947",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  }
+]

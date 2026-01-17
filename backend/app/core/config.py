@@ -2,7 +2,12 @@
 import os
 from pathlib import Path
 from typing import Optional
+from dotenv import load_dotenv
 from pydantic_settings import BaseSettings
+
+# Load .env file BEFORE creating Settings instance
+_env_path = Path(__file__).parent.parent.parent / ".env"
+load_dotenv(_env_path, override=True)
 
 
 class Settings(BaseSettings):
@@ -270,13 +275,13 @@ Extract the most important 4 words that capture the essence of the text."""
     JWT_REFRESH_TTL_DAYS: int = 30
     
     # Frontend Configuration
-    FRONTEND_BASE_URL: str = "http://localhost:5173"
-    CORS_ORIGINS: str = "http://localhost:3000,http://localhost:4200,http://localhost:5173"
+    FRONTEND_BASE_URL: str = "http://localhost:4200"
+    CORS_ORIGINS: str = "http://localhost:3000,http://localhost:4200,http://localhost:4201,http://localhost:5173"
     
     # Google OAuth
     GOOGLE_CLIENT_ID: Optional[str] = None
     GOOGLE_CLIENT_SECRET: Optional[str] = None
-    GOOGLE_REDIRECT_URI: str = "http://localhost:5173/auth/callback/google"
+    GOOGLE_REDIRECT_URI: str = "http://localhost:8000/api/auth/google/callback"
     
     # Microsoft OAuth
     MS_CLIENT_ID: Optional[str] = None
@@ -293,7 +298,7 @@ Extract the most important 4 words that capture the essence of the text."""
     DATABASE_URL: str = "sqlite:///./data/legal_bot.db"
     
     class Config:
-        env_file = ".env"
+        env_file = Path(__file__).parent.parent.parent / ".env"  # Absolute path to backend/.env
         env_file_encoding = "utf-8"
         case_sensitive = True
         extra = "allow"  # Allow extra fields from .env

@@ -1,0 +1,65 @@
+/* LEGID Layout & Theme Variables - ChatGPT Style */
+
+:root {
+  /* ========================================
+     COLOR SYSTEM - Dark Professional Theme
+     ======================================== */
+  
+  --bg: #0f1115;              /* Main background */
+  --panel: #14161a;           /* Sidebar/toolbar background */
+  --panel2: #1a1d22;          /* Hover panels */
+  --card: #2a2d34;            /* Selected/card background */
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.12);
+  
+  --text: #e9e9ea;            /* Primary text */
+  --text-muted: #a0a0a8;      /* Secondary text */
+  --text-dimmed: #6b6d75;     /* Tertiary text */
+  
+  --accent: #00bcd4;          /* Teal accent */
+  --accent-hover: #00d4e6;
+  --accent-glow: rgba(0, 188, 212, 0.15);
+  
+  /* ========================================
+     LAYOUT DIMENSIONS
+     ======================================== */
+  
+  --sidebar-width: 280px;
+  --sidebar-collapsed-width: 72px;
+  --topbar-height: 56px;
+  --composer-height: 72px;
+  
+  --chat-max-width: 760px;
+  --chat-padding-x: 16px;
+  --chat-padding-bottom: 110px;
+  
+  --message-bubble-max-width: 80%;
+  
+  /* ========================================
+     SPACING TOKENS
+     ======================================== */
+  
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 20px;
+  --space-2xl: 24px;
+  
+  /* ========================================
+     BORDER RADIUS
+     ======================================== */
+  
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-pill: 24px;
+  
+  /* ========================================
+     TRANSITIONS
+     ======================================== */
+  
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.2s ease;
+  --transition-slow: 0.3s ease;
+}

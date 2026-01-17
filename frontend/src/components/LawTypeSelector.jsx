@@ -1,9 +1,20 @@
 import React, { useState } from 'react';
+import { useAuth } from '../context/AuthContext';
 import './LawTypeSelector.css';
 
 const LawTypeSelector = ({ preferences, onComplete, onBack }) => {
+  const { user, logout } = useAuth();
+  const [showProfileMenu, setShowProfileMenu] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedLawType, setSelectedLawType] = useState(null);
+
+  // Get user initials
+  const getUserInitials = () => {
+    if (!user?.name) return '?';
+    const parts = user.name.trim().split(/\s+/);
+    if (parts.length === 1) return parts[0].substring(0, 2).toUpperCase();
+    return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+  };
 
   // Comprehensive law categories - Canada & USA with Scopes
   const lawCategories = {
@@ -143,6 +154,50 @@ const LawTypeSelector = ({ preferences, onComplete, onBack }) => {
 
   return (
     <div className="law-type-selector">
+      {/* Profile Badge - Always visible at top right */}
+      <div className="selector-profile-section">
+        <button 
+          className="profile-badge" 
+          onClick={() => setShowProfileMenu(!showProfileMenu)}
+          title="Profile & Settings"
+        >
+          {user?.picture ? (
+            <img src={user.picture} alt="Profile" className="profile-badge-img" />
+          ) : (
+            <div className="profile-badge-initials">{getUserInitials()}</div>
+          )}
+          <span className="profile-badge-name">{user?.name || user?.email?.split('@')[0] || 'User'}</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+
+        {showProfileMenu && (
+          <div className="profile-dropdown-menu">
+            <div className="profile-dropdown-header">
+              {user?.picture ? (
+                <img src={user.picture} alt="Profile" className="profile-dropdown-img" />
+              ) : (
+                <div className="profile-dropdown-initials">{getUserInitials()}</div>
+              )}
+              <div className="profile-dropdown-info">
+                <div className="profile-dropdown-name">{user?.name || 'User'}</div>
+                <div className="profile-dropdown-email">{user?.email || ''}</div>
+              </div>
+            </div>
+            <div className="profile-dropdown-divider"></div>
+            <button className="profile-dropdown-item" onClick={logout}>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                <polyline points="16 17 21 12 16 7"></polyline>
+                <line x1="21" y1="12" x2="9" y2="12"></line>
+              </svg>
+              <span>Log out</span>
+            </button>
+          </div>
+        )}
+      </div>
+
       <div className="selector-container">
         <div className="selector-header">
           {onBack && (
@@ -190,13 +245,6 @@ const LawTypeSelector = ({ preferences, onComplete, onBack }) => {
           </div>
         </div>
 
-        <div className="selector-footer">
-          <p className="disclaimer">
-            This system provides jurisdiction-specific legal information. 
-            All information is sourced from official legal databases and verified case law.
-            Not legal advice. Consult a licensed legal professional for your specific situation.
-          </p>
-        </div>
       </div>
     </div>
   );

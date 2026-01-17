@@ -1,414 +1,443 @@
-/* Law Type Selector Styles */
+/* Law Type Selector - BLACKBOX Style (matching login) */
 .law-type-selector {
   min-height: 100vh;
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+  background: #0a0a0a;
   color: #e0e0e0;
   padding: 2rem;
   overflow-y: auto;
+  position: relative;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
+/* Background Pattern */
+.law-type-selector::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse at 20% 20%, rgba(20, 184, 166, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(59, 130, 246, 0.04) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Profile Badge - Top Right */
+.selector-profile-section {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 100;
+}
+
+.selector-profile-section .profile-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #fff;
+  font-size: 14px;
+}
+
+.selector-profile-section .profile-badge:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.selector-profile-section .profile-badge-img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.selector-profile-section .profile-badge-initials {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #14b8a6, #0d9488);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 13px;
+  color: #fff;
+}
+
+.selector-profile-section .profile-badge-name {
+  font-weight: 500;
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.selector-profile-section .profile-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  background: #111111;
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  min-width: 260px;
+  overflow: hidden;
+  animation: dropdownFade 0.2s ease;
+}
+
+@keyframes dropdownFade {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.selector-profile-section .profile-dropdown-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.selector-profile-section .profile-dropdown-img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.selector-profile-section .profile-dropdown-initials {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #14b8a6, #0d9488);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 18px;
+  color: #fff;
+}
+
+.selector-profile-section .profile-dropdown-info {
+  flex: 1;
+  overflow: hidden;
+}
+
+.selector-profile-section .profile-dropdown-name {
+  font-weight: 600;
+  color: #fff;
+  font-size: 15px;
+  margin-bottom: 2px;
+}
+
+.selector-profile-section .profile-dropdown-email {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.5);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.selector-profile-section .profile-dropdown-divider {
+  height: 1px;
+  background: #2a2a2a;
+}
+
+.selector-profile-section .profile-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 16px;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.selector-profile-section .profile-dropdown-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.selector-profile-section .profile-dropdown-item svg {
+  opacity: 0.6;
+}
+
+/* Selector Container */
 .selector-container {
-  max-width: 1400px;
+  position: relative;
+  z-index: 10;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
+/* Selector Header */
 .selector-header {
   text-align: center;
-  margin-bottom: 3rem;
-  padding: 2rem;
-  background: rgba(26, 26, 46, 0.8);
+  margin-bottom: 32px;
+  padding: 28px;
+  background: #111111;
   border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid #2a2a2a;
   position: relative;
-  backdrop-filter: blur(10px);
-}
-
-.legid-logo {
-  font-size: 3.5rem;
-  font-weight: 900;
-  letter-spacing: 0.15em;
-  color: #ffffff;
-  text-shadow: 
-    0 0 10px rgba(255, 255, 255, 0.5),
-    0 0 20px rgba(255, 255, 255, 0.3),
-    0 0 30px rgba(255, 255, 255, 0.2);
-  margin: 0 0 1.5rem 0;
-  font-family: 'Arial Black', 'Arial Bold', sans-serif;
-  background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 50%, #ffffff 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: shimmer 3s ease-in-out infinite;
-}
-
-@keyframes shimmer {
-  0%, 100% {
-    filter: brightness(1);
-  }
-  50% {
-    filter: brightness(1.2);
-  }
-}
-
-.selector-title {
-  font-size: 2rem;
-  margin: 0 0 1rem 0;
-  color: #00d4ff;
-  font-weight: 700;
 }
 
 .back-btn-header {
   position: absolute;
-  top: 1.5rem;
-  left: 1.5rem;
-  padding: 0.75rem 1.5rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 2px solid rgba(255, 255, 255, 0.2);
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: 1px solid #333;
   border-radius: 8px;
-  color: #ffffff;
+  color: #888;
+  padding: 10px 18px;
+  font-size: 0.85rem;
   cursor: pointer;
-  font-size: 1rem;
-  font-weight: 600;
-  transition: all 0.2s;
+  transition: all 0.2s ease;
 }
 
 .back-btn-header:hover {
-  border-color: #00d4ff;
-  color: #00d4ff;
-  background: rgba(0, 212, 255, 0.1);
-  box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+  background: #1a1a1a;
+  border-color: #444;
+  color: #fff;
+}
+
+.legid-logo {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: #ffffff;
+  margin-bottom: 12px;
+  text-shadow: 0 0 30px rgba(20, 184, 166, 0.3);
+}
+
+.selector-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #14b8a6;
+  margin-bottom: 8px;
 }
 
 .selector-subtitle {
-  font-size: 1.1rem;
-  color: #b0b0b0;
-  margin: 0 0 1.5rem 0;
-  line-height: 1.6;
+  font-size: 0.875rem;
+  color: #666;
+  margin-bottom: 16px;
 }
 
+/* Jurisdiction Badge */
 .jurisdiction-badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  background: rgba(0, 212, 255, 0.1);
-  border: 1px solid rgba(0, 212, 255, 0.3);
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #00d4ff;
+  gap: 8px;
+  padding: 10px 20px;
+  background: rgba(20, 184, 166, 0.1);
+  border: 1px solid rgba(20, 184, 166, 0.3);
+  border-radius: 50px;
+  color: #14b8a6;
+  font-size: 0.9rem;
+  font-weight: 500;
 }
 
 .jurisdiction-icon {
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
-/* Selection Steps */
+/* Selection Step */
 .selection-step {
-  margin-bottom: 3rem;
-  padding: 2rem;
-  background: rgba(26, 26, 46, 0.8);
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  animation: fadeIn 0.4s ease-out;
-  backdrop-filter: blur(10px);
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  margin-top: 24px;
 }
 
 .step-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 20px;
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin: 0 0 2rem 0;
-  font-size: 1.5rem;
-  color: #00d4ff;
-  font-weight: 600;
+  gap: 12px;
 }
 
 .step-number {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
-  border-radius: 50%;
-  color: white;
+  background: linear-gradient(135deg, #14b8a6, #0d9488);
+  color: #fff;
+  font-size: 0.7rem;
   font-weight: 700;
-  font-size: 1.2rem;
-  box-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+  padding: 6px 12px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
-/* Categories Grid */
-.categories-grid {
+/* Category Grid */
+.category-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
 }
 
 .category-card {
-  padding: 2rem 1.5rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 2px solid rgba(255, 255, 255, 0.1);
+  background: #111111;
+  border: 1px solid #2a2a2a;
   border-radius: 12px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-align: left;
-  position: relative;
-  overflow: hidden;
-}
-
-.category-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, #00d4ff 0%, #0099ff 100%);
-  transform: scaleX(0);
-  transition: transform 0.3s ease;
-}
-
-.category-card:hover {
-  border-color: #00d4ff;
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 212, 255, 0.4);
-  background: rgba(0, 212, 255, 0.1);
-}
-
-.category-card:hover::before {
-  transform: scaleX(1);
-}
-
-.category-card.selected {
-  border-color: #00d4ff;
-  background: rgba(0, 212, 255, 0.15);
-  box-shadow: 0 8px 24px rgba(0, 212, 255, 0.5);
-}
-
-.category-card.selected::before {
-  transform: scaleX(1);
-}
-
-.category-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 1rem;
-}
-
-.category-name {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #e0e0e0;
-}
-
-.category-types-preview {
-  font-size: 0.9rem;
-  color: #b0b0b0;
-  margin-top: 0.5rem;
-}
-
-.category-description-text {
-  font-size: 0.9rem;
-  color: #00d4ff;
-  margin-top: 0.75rem;
-  font-weight: 500;
-}
-
-/* Law Types Grid */
-.law-types-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 1rem;
-}
-
-.law-type-card {
-  padding: 1.25rem 1.5rem;
-  background: #1a1a1a;
-  border: 2px solid #404040;
-  border-radius: 10px;
+  padding: 24px 20px;
   cursor: pointer;
   transition: all 0.2s ease;
   text-align: left;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
+  min-height: 100px;
 }
 
-.law-type-card:hover {
-  border-color: #00bcd4;
-  background: rgba(0, 188, 212, 0.05);
-  transform: translateX(4px);
-}
-
-.law-type-card.selected {
-  border-color: #00bcd4;
-  background: rgba(0, 188, 212, 0.15);
-}
-
-.law-type-name {
-  font-size: 1rem;
-  font-weight: 500;
-  color: #e0e0e0;
-  flex: 1;
-}
-
-.check-icon {
-  font-size: 1.5rem;
-  color: #00bcd4;
-  opacity: 0;
-  transition: opacity 0.2s ease;
-}
-
-.law-type-card.selected .check-icon {
-  opacity: 1;
-}
-
-/* Jurisdiction Info */
-.jurisdiction-info {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-bottom: 2rem;
-}
-
-.info-card {
-  padding: 2rem;
-  background: #1a1a1a;
-  border: 1px solid #404040;
-  border-radius: 12px;
-}
-
-.info-card h3 {
-  margin: 0 0 1rem 0;
-  font-size: 1.1rem;
-  color: #00bcd4;
-  font-weight: 600;
-}
-
-.selected-category {
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: #00bcd4;
-  margin: 0 0 0.5rem 0;
-}
-
-.selected-law-type {
-  font-size: 1.1rem;
-  color: #e0e0e0;
-  margin: 0;
-}
-
-.jurisdiction-levels {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.jurisdiction-item {
-  padding: 0.75rem 1rem;
-  background: #2d2d2d;
-  border: 1px solid #404040;
-  border-radius: 8px;
-  border-left: 4px solid #00bcd4;
-}
-
-.jurisdiction-name {
-  font-size: 1rem;
-  font-weight: 500;
-  color: #e0e0e0;
-}
-
-/* Complete Button */
-.complete-btn {
-  width: 100%;
-  padding: 1.25rem 2rem;
-  background: linear-gradient(135deg, #00bcd4 0%, #0097a7 100%);
-  border: none;
-  border-radius: 12px;
-  color: white;
-  font-size: 1.2rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-}
-
-.complete-btn:hover {
+.category-card:hover {
+  background: #161616;
+  border-color: #3a3a3a;
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 188, 212, 0.4);
 }
 
-.complete-btn .arrow {
-  font-size: 1.5rem;
-  transition: transform 0.3s ease;
+.category-card.selected {
+  background: rgba(20, 184, 166, 0.08);
+  border-color: #14b8a6;
+  box-shadow: 0 0 20px rgba(20, 184, 166, 0.15);
 }
 
-.complete-btn:hover .arrow {
-  transform: translateX(8px);
-}
-
-/* Footer */
-.selector-footer {
-  margin-top: 3rem;
-  padding: 2rem;
-  background: rgba(255, 193, 7, 0.1);
-  border: 1px solid rgba(255, 193, 7, 0.3);
-  border-radius: 12px;
-}
-
-.disclaimer {
-  margin: 0;
+.category-name {
   font-size: 0.95rem;
-  color: #ffc107;
-  line-height: 1.6;
-  text-align: center;
-  font-weight: 500;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 6px;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+.category-description {
+  font-size: 0.75rem;
+  color: #14b8a6;
+  line-height: 1.4;
+}
+
+/* Responsive Grid */
+@media (max-width: 1200px) {
+  .category-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+}
+
+@media (max-width: 900px) {
+  .category-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .selector-header {
+    padding: 20px;
+  }
+
+  .back-btn-header {
+    position: static;
+    transform: none;
+    margin-bottom: 16px;
+  }
+}
+
+@media (max-width: 480px) {
   .law-type-selector {
     padding: 1rem;
   }
 
-  .selector-header h1 {
-    font-size: 1.8rem;
-  }
-
-  .selector-subtitle {
-    font-size: 1rem;
-  }
-
-  .categories-grid {
+  .category-grid {
     grid-template-columns: 1fr;
+    gap: 14px;
   }
 
-  .law-types-grid {
-    grid-template-columns: 1fr;
+  .category-card {
+    padding: 20px 16px;
+    min-height: auto;
   }
 
-  .jurisdiction-info {
-    grid-template-columns: 1fr;
+  .legid-logo {
+    font-size: 1.5rem;
   }
+}
 
-  .step-title {
-    font-size: 1.2rem;
-  }
+/* Law Type Cards */
+.law-type-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.law-type-card {
+  background: #111111;
+  border: 1px solid #2a2a2a;
+  border-radius: 10px;
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.law-type-card:hover {
+  background: #161616;
+  border-color: #3a3a3a;
+}
+
+.law-type-card.selected {
+  background: rgba(20, 184, 166, 0.08);
+  border-color: #14b8a6;
+}
+
+.law-type-name {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #fff;
+}
+
+/* Continue Button */
+.continue-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 32px;
+  background: linear-gradient(135deg, #14b8a6, #0d9488);
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 24px;
+}
+
+.continue-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(20, 184, 166, 0.3);
+}
+
+.continue-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Scrollbar */
+.law-type-selector::-webkit-scrollbar {
+  width: 8px;
+}
+
+.law-type-selector::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+.law-type-selector::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+.law-type-selector::-webkit-scrollbar-thumb:hover {
+  background: #444;
 }

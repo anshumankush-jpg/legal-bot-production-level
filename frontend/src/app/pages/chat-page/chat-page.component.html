@@ -1,0 +1,18 @@
+<div class="chat">
+  <div class="chat__inner">
+    <app-message-list 
+      [messages]="conversation?.messages || []"
+      [isTyping]="isTyping"
+      (promptClick)="handleSendMessage($event)"
+    ></app-message-list>
+  </div>
+</div>
+
+<div class="composer">
+  <div class="composer__inner">
+    <app-composer 
+      (sendMessage)="handleSendMessage($event)"
+      [disabled]="isTyping"
+    ></app-composer>
+  </div>
+</div>

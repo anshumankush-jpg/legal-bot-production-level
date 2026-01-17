@@ -7,6 +7,7 @@ import RoleSelection from './components/RoleSelection'
 import AuthPage from './components/AuthPage'
 import OAuthCallback from './components/OAuthCallback'
 import AccessDenied from './components/AccessDenied'
+import NotProvisioned from './components/NotProvisioned'
 import SettingsPage from './components/SettingsPage'
 import PersonalizationPage from './components/PersonalizationPage'
 import CookieConsentBanner from './components/CookieConsentBanner'
@@ -15,7 +16,8 @@ import {
   ReleaseNotesPage, 
   TermsPage, 
   PrivacyPage, 
-  KeyboardShortcutsPage 
+  KeyboardShortcutsPage,
+  CookiePolicyPage
 } from './components/HelpPages'
 
 function App() {
@@ -29,6 +31,15 @@ function App() {
   const [isOAuthCallback, setIsOAuthCallback] = useState(false);
   const [currentPage, setCurrentPage] = useState('chat'); // chat, settings, personalization, help-center, etc.
   const [showCookieBanner, setShowCookieBanner] = useState(false);
+  const [notProvisionedEmail, setNotProvisionedEmail] = useState('');
+  const ensureDeviceId = () => {
+    let deviceId = localStorage.getItem('device_id');
+    if (!deviceId) {
+      deviceId = (crypto && crypto.randomUUID) ? crypto.randomUUID() : `device_${Date.now()}`;
+      localStorage.setItem('device_id', deviceId);
+    }
+    return deviceId;
+  };
 
   useEffect(() => {
     // Check if this is an OAuth callback
@@ -51,6 +62,8 @@ function App() {
     else if (path === '/privacy') setCurrentPage('privacy');
     else if (path === '/keyboard-shortcuts') setCurrentPage('keyboard-shortcuts');
     else if (path === '/release-notes') setCurrentPage('release-notes');
+    else if (path === '/cookies') setCurrentPage('cookies');
+    else if (path === '/not-provisioned') setCurrentPage('not-provisioned');
 
     // Check if user is already authenticated
     const savedUser = localStorage.getItem('user');
@@ -59,6 +72,11 @@ function App() {
     if (savedUser && savedToken) {
       try {
         const userData = JSON.parse(savedUser);
+        if (userData.is_provisioned === false) {
+          setNotProvisionedEmail(userData.email || '');
+          setCurrentPage('not-provisioned');
+          return;
+        }
         setUser(userData);
         setIsAuthenticated(true);
         setSelectedRole(userData.role || 'client');
@@ -121,6 +139,17 @@ function App() {
     setUser(userData);
     setIsAuthenticated(true);
     loadPreferences();
+    // Add this account to device list for account switching
+    const token = localStorage.getItem('access_token');
+    if (token) {
+      fetch('http://localhost:8000/api/profile/accounts/add', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'X-Device-ID': ensureDeviceId()
+        }
+      }).catch(() => {});
+    }
   };
 
   const handleBackToRoles = () => {
@@ -174,6 +203,12 @@ function App() {
     setShowLawSelector(false);
   };
 
+  const handleNotProvisioned = (email) => {
+    setNotProvisionedEmail(email || '');
+    setCurrentPage('not-provisioned');
+    window.history.pushState({}, '', '/not-provisioned');
+  };
+
   // Navigation handler for account menu
   const handleNavigate = (page) => {
     setCurrentPage(page);
@@ -186,7 +221,8 @@ function App() {
       'release-notes': '/release-notes',
       'terms': '/terms',
       'privacy': '/privacy',
-      'keyboard-shortcuts': '/keyboard-shortcuts'
+      'keyboard-shortcuts': '/keyboard-shortcuts',
+      'cookies': '/cookies'
     };
     window.history.pushState({}, '', pathMap[page] || '/');
   };
@@ -275,7 +311,7 @@ function App() {
         >
           ← Back to Role Selection
         </button>
-        <AuthPage role={selectedRole} onAuthSuccess={handleAuthSuccess} />
+        <AuthPage role={selectedRole} onAuthSuccess={handleAuthSuccess} onNotProvisioned={handleNotProvisioned} />
         {showCookieBanner && (
           <CookieConsentBanner user={null} onAccept={handleCookieConsent} />
         )}
@@ -315,6 +351,8 @@ function App() {
   // Step 5: Render current page
   const renderCurrentPage = () => {
     switch (currentPage) {
+      case 'not-provisioned':
+        return <NotProvisioned email={notProvisionedEmail} />;
       case 'settings':
         return (
           <SettingsPage 
@@ -334,6 +372,8 @@ function App() {
         return <HelpCenterPage onBack={handleBackToChat} />;
       case 'release-notes':
         return <ReleaseNotesPage onBack={handleBackToChat} />;
+      case 'cookies':
+        return <CookiePolicyPage onBack={handleBackToChat} />;
       case 'terms':
         return <TermsPage onBack={handleBackToChat} />;
       case 'privacy':

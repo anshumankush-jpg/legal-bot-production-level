@@ -1,0 +1,127 @@
+/* 
+ * ChatGPT-Style Theme for LEGID AI
+ * Pixel-perfect recreation of ChatGPT's visual design
+ */
+
+:root {
+  /* ChatGPT Color Palette */
+  --chatgpt-bg-primary: #0f0f10;
+  --chatgpt-bg-secondary: #121214;
+  --chatgpt-bg-tertiary: #1a1a1e;
+  --chatgpt-border: rgba(255, 255, 255, 0.06);
+  --chatgpt-border-hover: rgba(255, 255, 255, 0.12);
+  
+  /* Text Colors */
+  --chatgpt-text-primary: #eaeaea;
+  --chatgpt-text-secondary: #a1a1aa;
+  --chatgpt-text-tertiary: #71717a;
+  
+  /* Accent Colors */
+  --chatgpt-accent: #10a37f;
+  --chatgpt-accent-hover: #0e9270;
+  
+  /* Message Bubbles */
+  --chatgpt-user-bg: #2f2f32;
+  --chatgpt-user-border: rgba(255, 255, 255, 0.1);
+  --chatgpt-assistant-bg: transparent;
+  
+  /* Hover States */
+  --chatgpt-hover-bg: rgba(255, 255, 255, 0.06);
+  --chatgpt-active-bg: rgba(255, 255, 255, 0.08);
+  
+  /* Sidebar */
+  --chatgpt-sidebar-width: 280px;
+  --chatgpt-sidebar-collapsed: 0px;
+  
+  /* Layout */
+  --chatgpt-max-content: 820px;
+  --chatgpt-compose-height: 64px;
+  
+  /* Typography */
+  --chatgpt-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --chatgpt-font-mono: "Söhne Mono", Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+}
+
+/* Global Overrides */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #3f3f46 transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #3f3f46;
+  border-radius: 4px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: #52525b;
+}
+
+/* Body */
+body {
+  background: var(--chatgpt-bg-primary);
+  color: var(--chatgpt-text-primary);
+  font-family: var(--chatgpt-font-family);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Selection */
+::selection {
+  background: rgba(16, 163, 127, 0.3);
+  color: var(--chatgpt-text-primary);
+}
+
+/* Links */
+a {
+  color: var(--chatgpt-accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Buttons */
+button {
+  font-family: var(--chatgpt-font-family);
+}
+
+/* Input Fields */
+input, textarea {
+  font-family: var(--chatgpt-font-family);
+  color: var(--chatgpt-text-primary);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--chatgpt-text-tertiary);
+}
+
+/* Focus Styles */
+*:focus-visible {
+  outline: 2px solid var(--chatgpt-accent);
+  outline-offset: 2px;
+}
+
+/* Smooth Transitions */
+* {
+  transition-duration: 150ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* No transition for color schemes */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}

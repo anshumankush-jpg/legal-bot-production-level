@@ -87,8 +87,19 @@ def user_to_dict(user: User) -> dict:
         "role": user.role.value if isinstance(user.role, UserRole) else user.role,
         "is_active": user.is_active,
         "is_verified": user.is_verified,
+        "is_provisioned": user.is_provisioned,
         "created_at": user.created_at.isoformat()
     }
+
+
+def raise_not_provisioned(email: str):
+    raise HTTPException(
+        status_code=status.HTTP_403_FORBIDDEN,
+        detail={
+            "code": "NOT_PROVISIONED",
+            "message": "Account not found or not provisioned. Please request access."
+        }
+    )
 
 
 def log_audit(db: Session, user_id: Optional[str], action_type: str, details: dict, request: Request):
@@ -152,36 +163,14 @@ async def register(
     request: Request,
     db: Session = Depends(get_db)
 ):
-    """Register a new user account."""
-    auth_service = get_auth_service()
-    
-    # Register user
-    user = auth_service.register_user(
-        db=db,
-        email=request_data.email,
-        password=request_data.password,
-        name=request_data.name,
-        role=request_data.role
+    """Self-signup disabled. Only provisioned accounts can access."""
+    raise HTTPException(
+        status_code=status.HTTP_403_FORBIDDEN,
+        detail={
+            "code": "SELF_SIGNUP_DISABLED",
+            "message": "Self-signup is disabled. Please request access."
+        }
     )
-    
-    # Generate tokens
-    access_token = auth_service.generate_access_token(user)
-    refresh_token_str, _ = auth_service.create_refresh_token(
-        db=db,
-        user=user,
-        user_agent=request.headers.get("user-agent"),
-        ip_address=request.client.host if request.client else None
-    )
-    
-    # Log audit
-    log_audit(db, user.id, "AUTH_REGISTER", {"email": user.email, "role": user.role.value}, request)
-    
-    return {
-        "access_token": access_token,
-        "refresh_token": refresh_token_str,
-        "token_type": "bearer",
-        "user": user_to_dict(user)
-    }
 
 
 @router.post("/login", response_model=AuthResponse)
@@ -192,6 +181,10 @@ async def login(
 ):
     """Login with email and password."""
     auth_service = get_auth_service()
+    user_record = auth_service.get_user_by_email(db, request_data.email)
+    if not user_record or not user_record.is_provisioned:
+        log_audit(db, None, "AUTH_LOGIN_DENIED", {"email": request_data.email, "reason": "not_provisioned"}, request)
+        raise_not_provisioned(request_data.email)
     
     # Authenticate
     user = auth_service.authenticate_user(
@@ -207,6 +200,10 @@ async def login(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Incorrect email or password"
         )
+
+    if not user.is_provisioned:
+        log_audit(db, user.id, "AUTH_LOGIN_DENIED", {"email": user.email, "reason": "not_provisioned"}, request)
+        raise_not_provisioned(user.email)
     
     # Generate tokens
     access_token = auth_service.generate_access_token(user)
@@ -470,7 +467,23 @@ async def oauth_exchange(
         
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
-            detail="Access not found. Your account is not authorized to access this application. Please contact support."
+            detail={
+                "code": "NOT_PROVISIONED",
+                "message": "Account not found or not provisioned. Please request access."
+            }
+        )
+
+    if not user.is_provisioned:
+        log_audit(db, user.id, "AUTH_LOGIN_DENIED", {
+            "provider": provider,
+            "reason": "not_provisioned"
+        }, request)
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail={
+                "code": "NOT_PROVISIONED",
+                "message": "Account not found or not provisioned. Please request access."
+            }
         )
     
     # Generate tokens

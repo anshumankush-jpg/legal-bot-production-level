@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useAuth } from '../context/AuthContext';
 import './ChatInterface.css';
 import EnhancedLegalResponse from './EnhancedLegalResponse';
 import RecentUpdates from './RecentUpdates';
@@ -9,6 +10,7 @@ import AmendmentGenerator from './AmendmentGenerator';
 import DocumentGenerator from './DocumentGenerator';
 import ChatHistorySearch from './ChatHistorySearch';
 import AISummaryModal from './AISummaryModal';
+import ChatSidebar from './ChatSidebar';
 
 const API_URL = 'http://localhost:8000';
 
@@ -19,7 +21,34 @@ const ChatInterface = ({ preferences, lawTypeSelection, onResetPreferences, onCh
   const [loadingStage, setLoadingStage] = useState('');
   const [uploadProgress, setUploadProgress] = useState(0);
   const [offenceNumber, setOffenceNumber] = useState('');
-  const [userId] = useState('test_user_' + Date.now()); // For demo purposes
+  const { user, logout } = useAuth();
+  const userId = user?.user_id || user?.email?.replace(/[^a-zA-Z0-9]/g, '_') || 'anonymous_user';
+
+  // Get user initials from name
+  const getUserInitials = () => {
+    if (!user?.name) return '?';
+    const parts = user.name.trim().split(/\s+/);
+    if (parts.length === 1) {
+      return parts[0].substring(0, 2).toUpperCase();
+    }
+    return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+  };
+
+  // Get display name
+  const getUserDisplayName = () => {
+    return user?.name || user?.email?.split('@')[0] || 'User';
+  };
+
+  // Get email or username
+  const getUserEmail = () => {
+    return user?.email || '';
+  };
+
+  // Handle logout
+  const handleLogout = () => {
+    setShowProfileMenu(false);
+    logout();
+  };
   const [showUploadMenu, setShowUploadMenu] = useState(false);
   const [contextMenu, setContextMenu] = useState(null);
   const [savedChats, setSavedChats] = useState([]);
@@ -37,6 +66,8 @@ const ChatInterface = ({ preferences, lawTypeSelection, onResetPreferences, onCh
   const [showChatHistory, setShowChatHistory] = useState(false);
   const [showAISummary, setShowAISummary] = useState(false);
   const [sessionId] = useState('session_' + Date.now());
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const [showProfileMenu, setShowProfileMenu] = useState(false);
   const messagesEndRef = useRef(null);
   const fileInputRef = useRef(null);
   const imageInputRef = useRef(null);
@@ -434,13 +465,16 @@ const ChatInterface = ({ preferences, lawTypeSelection, onResetPreferences, onCh
       if (contextMenu && !event.target.closest('.context-menu')) {
         setContextMenu(null);
       }
+      if (showProfileMenu && !event.target.closest('.profile-section')) {
+        setShowProfileMenu(false);
+      }
     };
 
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [showUploadMenu, contextMenu]);
+  }, [showUploadMenu, contextMenu, showProfileMenu]);
 
   // 🎯 Drag and Drop + Ctrl+V Paste Support
   useEffect(() => {
@@ -725,11 +759,11 @@ const ChatInterface = ({ preferences, lawTypeSelection, onResetPreferences, onCh
     if (selectedVoice) {
       utterance.voice = selectedVoice;
       utterance.lang = selectedVoice.lang;
-      console.log('🎙️ Andy speaking in:', selectedVoice.name, '(' + selectedVoice.lang + ')');
+      console.log('🎙️ Voice Assistant speaking in:', selectedVoice.name, '(' + selectedVoice.lang + ')');
       
       // Show notification about which voice is being used
       if (selectedLang !== 'en') {
-        addSystemMessage(`🎙️ Andy speaking in ${langConfig.langName} (${selectedVoice.name})`, true);
+        addSystemMessage(`🎙️ Voice Assistant speaking in ${langConfig.langName} (${selectedVoice.name})`, true);
       }
     } else {
       console.warn('⚠️ No suitable voice found, using default');
@@ -740,7 +774,7 @@ const ChatInterface = ({ preferences, lawTypeSelection, onResetPreferences, onCh
       }
     }
 
-    // Andy's voice characteristics - optimized for legal assistant
+    // Voice Assistant's voice characteristics - optimized for legal assistant
     utterance.rate = 0.95;     // Slightly slower for clarity
     utterance.pitch = 1.0;     // Natural pitch
     utterance.volume = 1.0;    // Full volume
@@ -748,7 +782,7 @@ const ChatInterface = ({ preferences, lawTypeSelection, onResetPreferences, onCh
     // Event handlers
     utterance.onstart = () => {
       setIsSpeaking(true);
-      addSystemMessage(`🔊 Andy is speaking in ${langConfig.langName}...`, true);
+      addSystemMessage(`🔊 Voice Assistant is speaking in ${langConfig.langName}...`, true);
     };
 
     utterance.onend = () => {
@@ -792,7 +826,7 @@ const ChatInterface = ({ preferences, lawTypeSelection, onResetPreferences, onCh
       window.speechSynthesis.cancel();
       setIsSpeaking(false);
       const lang = preferences && preferences.language ? getLanguageName(preferences.language.code) : 'English';
-      addSystemMessage(`🔇 Andy stopped speaking ${lang}`, true);
+      addSystemMessage(`🔇 Voice Assistant stopped speaking ${lang}`, true);
     }
   };
 
@@ -802,7 +836,7 @@ const ChatInterface = ({ preferences, lawTypeSelection, onResetPreferences, onCh
     setAutoRead(!autoRead);
     addSystemMessage(
       !autoRead 
-        ? `🔊 Auto-read enabled - Andy will read all responses in ${lang}` 
+        ? `🔊 Auto-read enabled - Voice Assistant will read all responses in ${lang}` 
         : '🔇 Auto-read disabled',
       true
     );
@@ -1050,7 +1084,12 @@ const ChatInterface = ({ preferences, lawTypeSelection, onResetPreferences, onCh
 
   // Handle file upload
   const handleFileUpload = async (file) => {
-    if (!file) return;
+    if (!file) {
+      console.log('No file provided');
+      return;
+    }
+
+    console.log('📤 Uploading file:', file.name, 'Type:', file.type, 'Size:', file.size);
 
     setUploadProgress(0);
     const formData = new FormData();
@@ -1064,11 +1103,14 @@ const ChatInterface = ({ preferences, lawTypeSelection, onResetPreferences, onCh
     const tempMessage = addSystemMessage(`Uploading ${file.name}...`, true);
 
     try {
+      console.log('Sending upload request to:', `${API_URL}/api/artillery/upload`);
       const response = await fetch(`${API_URL}/api/artillery/upload`, {
         method: 'POST',
         body: formData,
         // Simulate progress (in real implementation, you'd use XMLHttpRequest for progress)
       });
+      
+      console.log('Upload response status:', response.status, response.statusText);
 
       if (!response.ok) {
         // Try to get detailed error message from backend
@@ -1081,6 +1123,7 @@ const ChatInterface = ({ preferences, lawTypeSelection, onResetPreferences, onCh
       }
 
       const result = await response.json();
+      console.log('Upload result:', result);
 
       // Remove temporary message
       setMessages(prev => prev.filter(msg => !msg.isTemporary));
@@ -1089,6 +1132,7 @@ const ChatInterface = ({ preferences, lawTypeSelection, onResetPreferences, onCh
       const imageExtensions = ['.jpg', '.jpeg', '.png', '.bmp', '.tiff', '.tif', '.gif', '.webp'];
       const fileExt = file.name.toLowerCase().substring(file.name.lastIndexOf('.'));
       const isImage = imageExtensions.includes(fileExt);
+      console.log('File extension:', fileExt, 'Is image:', isImage);
 
       // 🖼️ Create image preview for images
       if (isImage) {
@@ -1115,13 +1159,14 @@ const ChatInterface = ({ preferences, lawTypeSelection, onResetPreferences, onCh
           addSystemMessage(`✅ Image uploaded and saved!\n\n⚠️ OCR not available - Install Tesseract to extract text:\n1. Download: https://github.com/UB-Mannheim/tesseract/wiki\n2. Install to: C:\\Program Files\\Tesseract-OCR\n3. Restart servers\n\nYou can still view the image in chat!`);
         }
       } else {
-        // For non-image files, just show success message
+        // For non-image files, show document card
         const docMessage = {
           id: Date.now(),
           role: 'user',
-          content: `📄 Uploaded document: ${file.name} (${(file.size / 1024).toFixed(2)} KB)`,
+          content: ``,
           timestamp: new Date(),
           fileName: file.name,
+          fileSize: (file.size / 1024).toFixed(2) + ' KB',
           isUpload: true
         };
         setMessages(prev => [...prev, docMessage]);
@@ -1228,14 +1273,19 @@ const ChatInterface = ({ preferences, lawTypeSelection, onResetPreferences, onCh
     const question = input.trim();
     setInput('');
     setLoading(true);
-    setLoadingStage('Searching documents...');
+    setLoadingStage('LEGID THINKING');
 
     try {
-      // Build request payload with preferences
+      // Build request payload with preferences AND conversation history
       const payload = {
         message: question,
         offence_number: offenceNumber || undefined,
-        top_k: 5
+        top_k: 5,
+        // Add conversation history for context-aware responses
+        conversation_history: messages.slice(-6).map(msg => ({
+          role: msg.role,
+          content: msg.content || msg.answer
+        }))
       };
 
       // Add preferences if available
@@ -1261,7 +1311,7 @@ const ChatInterface = ({ preferences, lawTypeSelection, onResetPreferences, onCh
 
       // Add timeout warning after 10 seconds
       const timeoutWarning = setTimeout(() => {
-        setLoadingStage('Generating response (this may take a moment)...');
+        setLoadingStage('LEGID THINKING');
       }, 10000);
 
       const response = await fetch(`${API_URL}/api/artillery/chat`, {
@@ -1277,7 +1327,7 @@ const ChatInterface = ({ preferences, lawTypeSelection, onResetPreferences, onCh
       }
 
       clearTimeout(timeoutWarning);
-      setLoadingStage('Processing response...');
+      setLoadingStage('LEGID THINKING');
       const data = await response.json();
 
       const assistantMessage = {
@@ -1393,169 +1443,173 @@ const ChatInterface = ({ preferences, lawTypeSelection, onResetPreferences, onCh
     }
   }, []);
 
+  const handleDeleteChat = (chatId) => {
+    const updated = savedChats.filter(c => c.id !== chatId);
+    setSavedChats(updated);
+    localStorage.setItem('legubot_chats', JSON.stringify(updated));
+    
+    if (currentChatId === chatId) {
+      handleNewChat();
+    }
+  };
+
   return (
-    <div className="chat-interface">
-      {/* Header */}
-      <div className="chat-header">
-        <div className="header-left">
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-             <h1 className="legid-header-logo">LEGID</h1>
-             <button className="new-chat-btn" onClick={handleNewChat} title="Start new chat">
-               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                 <line x1="12" y1="5" x2="12" y2="19"></line>
-                 <line x1="5" y1="12" x2="19" y2="12"></line>
-               </svg>
-               New Chat
-             </button>
-             {messages.length > 2 && (
-               <>
-                 <button className="new-chat-btn summary-btn" onClick={() => setShowAISummary(true)} title="Generate AI case summary">
-                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                     <polyline points="14 2 14 8 20 8"></polyline>
-                     <line x1="16" y1="13" x2="8" y2="13"></line>
-                     <line x1="16" y1="17" x2="8" y2="17"></line>
-                     <polyline points="10 9 9 9 8 9"></polyline>
-                   </svg>
-                   AI Summary
-                 </button>
-                 <button className="new-chat-btn summary-btn" onClick={handleGenerateSummary} title="Generate quick summary">
-                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                     <polyline points="14 2 14 8 20 8"></polyline>
-                   </svg>
-                   Quick Summary
-                 </button>
-               </>
-             )}
-          </div>
-           {preferences && (
-             <div className="preferences-badge">
-               <button 
-                 className="pref-item pref-clickable" 
-                 onClick={() => onResetPreferences && onResetPreferences()}
-                 title="Click to change language"
-               >
-                 Language: {getLanguageName(preferences.language?.code || 'en')}
-               </button>
-               <button 
-                 className="pref-item pref-clickable"
-                 onClick={() => onResetPreferences && onResetPreferences()}
-                 title="Click to change country"
-               >
-                 {preferences.country === 'CA' ? 'Canada' : 'United States'}
-               </button>
-               {preferences.province && (
-                 <button 
-                   className="pref-item pref-clickable"
-                   onClick={() => onResetPreferences && onResetPreferences()}
-                   title="Click to change province"
-                 >
-                   {preferences.province}
-                 </button>
-               )}
-              {lawTypeSelection && (
-                <>
-                  <button 
-                    className="pref-item law-type-badge pref-clickable" 
-                    title={`${lawTypeSelection.description || lawTypeSelection.lawType} - Click to change`}
-                    onClick={() => onChangeLawType && onChangeLawType()}
-                  >
-                    {lawTypeSelection.lawType}
-                  </button>
-                  <button 
-                    className="reset-prefs-btn updates-btn" 
-                    onClick={() => setShowRecentUpdates(true)} 
-                    title="View recent legal updates"
-                  >
-                    📰 Recent Updates
-                  </button>
-                  <button 
-                    className="reset-prefs-btn" 
-                    onClick={() => setShowCaseLookup(true)} 
-                    title="Search legal cases"
-                  >
-                    🔍 Case Lookup
-                  </button>
-                  <button 
-                    className="reset-prefs-btn" 
-                    onClick={() => setShowAmendmentGenerator(true)} 
-                    title="Generate legal amendments"
-                  >
-                    📝 Amendments
-                  </button>
-                  <button 
-                    className="reset-prefs-btn" 
-                    onClick={() => setShowDocumentGenerator(true)} 
-                    title="Generate legal documents"
-                  >
-                    📄 Documents
-                  </button>
-                  <button 
-                    className="reset-prefs-btn" 
-                    onClick={() => setShowChatHistory(true)} 
-                    title="Search chat history"
-                  >
-                    💬 History
-                  </button>
-                </>
-              )}
-               {onChangeLawType && (
-                 <button className="reset-prefs-btn" onClick={onChangeLawType} title="Change law type">
-                   🔄 Change Law Type
-                 </button>
-               )}
-               {onResetPreferences && (
-                 <button className="reset-prefs-btn" onClick={onResetPreferences} title="Change all settings">
-                   ⚙️ Settings
-                 </button>
-               )}
-             </div>
-           )}
+    <div className="chat-interface-wrapper">
+      {/* Sidebar */}
+      <ChatSidebar 
+        savedChats={savedChats}
+        currentChatId={currentChatId}
+        onLoadChat={handleLoadChat}
+        onNewChat={handleNewChat}
+        onDeleteChat={handleDeleteChat}
+        onSearchChats={() => setShowChatHistory(true)}
+        isCollapsed={sidebarCollapsed}
+        onToggleCollapse={() => setSidebarCollapsed(!sidebarCollapsed)}
+        preferences={preferences}
+        lawTypeSelection={lawTypeSelection}
+        onChangeLawType={onChangeLawType}
+        onResetPreferences={onResetPreferences}
+        onShowRecentUpdates={() => setShowRecentUpdates(true)}
+        onShowCaseLookup={() => setShowCaseLookup(true)}
+        onShowAmendmentGenerator={() => setShowAmendmentGenerator(true)}
+        onShowDocumentGenerator={() => setShowDocumentGenerator(true)}
+        onShowChatHistory={() => setShowChatHistory(true)}
+        onShowSettings={onResetPreferences}
+      />
+
+      <div className="chat-interface">
+      {/* Header - Simple & Clean (ChatGPT Style) */}
+      <div className="chat-header-clean">
+        <div className="header-left-clean">
+          <span className="legid-logo">⚖️ LEGID</span>
+          {/* Clickable Law Type Button */}
+          <button 
+            className="header-selector-btn law-type-btn"
+            onClick={onChangeLawType}
+            title="Change Law Type"
+          >
+            📋 {lawTypeSelection?.lawType || 'Constitutional Law'}
+          </button>
         </div>
-        <div className="header-controls">
-          {/* Andy TTS Controls */}
-          <div className="tts-controls">
+
+        <div className="header-right-clean">
+          {/* Voice Assistant */}
+          <button 
+            className={`voice-toggle-btn ${autoRead ? 'active' : ''}`}
+            onClick={handleToggleAutoRead}
+            title={autoRead ? 'Disable Voice Assistant' : 'Enable Voice Assistant'}
+          >
+            🎤 {autoRead ? 'ON' : 'OFF'}
+          </button>
+
+          {/* Clickable Language Button */}
+          <button 
+            className="header-selector-btn language-btn"
+            onClick={onResetPreferences}
+            title="Change Language"
+          >
+            🌐 {getLanguageName(preferences?.language?.code || 'en')}
+          </button>
+
+          {/* Clickable Country/Province Button */}
+          <button 
+            className="header-selector-btn country-btn"
+            onClick={onResetPreferences}
+            title="Change Country/Province"
+          >
+            📍 {preferences?.country?.name || 'Canada'} - {preferences?.province?.name || preferences?.state?.name || 'Ontario'}
+          </button>
+
+          {/* Offence Number */}
+          <input
+            type="text"
+            value={offenceNumber}
+            onChange={(e) => setOffenceNumber(e.target.value)}
+            placeholder="Offence # (optional)"
+            className="offence-input-clean"
+          />
+
+          {/* User Profile */}
+          <div className="profile-section">
             <button 
-              className={`tts-btn ${autoRead ? 'active' : ''}`}
-              onClick={handleToggleAutoRead}
-              title={autoRead ? 'Disable auto-read' : 'Enable auto-read'}
+              className="profile-button-clean" 
+              onClick={() => setShowProfileMenu(!showProfileMenu)}
+              title="Profile & Settings"
             >
-              Andy {autoRead ? 'ON' : 'OFF'}
-              {preferences && preferences.language && (
-                <span className="tts-lang-badge">
-                  {getLanguageName(preferences.language.code)}
-                </span>
+              {user?.picture ? (
+                <img src={user.picture} alt="Profile" className="profile-avatar-img" />
+              ) : (
+                <div className="profile-avatar-clean">
+                  <span>{getUserInitials()}</span>
+                </div>
               )}
             </button>
-            
-            {isSpeaking && (
-              <button 
-                className="tts-btn stop-btn"
-                onClick={handleStopSpeech}
-                title="Stop Andy"
-              >
-                 Stop
-              </button>
-            )}
 
-            {isSpeaking && (
-              <span className="speaking-indicator">
-                <span className="pulse"></span>
-                Andy speaking {preferences && preferences.language ? getLanguageName(preferences.language.code) : 'English'}...
-              </span>
+            {/* Profile Dropdown Menu */}
+            {showProfileMenu && (
+              <div className="profile-menu">
+                <div className="profile-menu-header">
+                  {user?.picture ? (
+                    <img src={user.picture} alt="Profile" className="profile-avatar-large-img" />
+                  ) : (
+                    <div className="profile-avatar-large">
+                      <span>{getUserInitials()}</span>
+                    </div>
+                  )}
+                  <div className="profile-info">
+                    <div className="profile-name">{getUserDisplayName()}</div>
+                    <div className="profile-email">{getUserEmail()}</div>
+                  </div>
+                </div>
+                
+                <div className="profile-menu-divider"></div>
+                
+                <button className="profile-menu-item" onClick={() => { setShowProfileMenu(false); }}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                  </svg>
+                  <span>Upgrade plan</span>
+                </button>
+                
+                <button className="profile-menu-item" onClick={() => { setShowProfileMenu(false); onResetPreferences(); }}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path d="M12 1v6m0 6v6m8.66-13.66l-4.24 4.24m-4.84 4.84l-4.24 4.24M23 12h-6m-6 0H1m18.66 8.66l-4.24-4.24m-4.84-4.84l-4.24-4.24"></path>
+                  </svg>
+                  <span>Personalization</span>
+                </button>
+                
+                <button className="profile-menu-item" onClick={() => { setShowProfileMenu(false); onResetPreferences(); }}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M12 16v-4m0-4h.01"></path>
+                  </svg>
+                  <span>Settings</span>
+                </button>
+                
+                <button className="profile-menu-item">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3m.08 4h.01"></path>
+                  </svg>
+                  <span>Help</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ marginLeft: 'auto' }}>
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                </button>
+                
+                <div className="profile-menu-divider"></div>
+                
+                <button className="profile-menu-item" onClick={handleLogout}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                    <polyline points="16 17 21 12 16 7"></polyline>
+                    <line x1="21" y1="12" x2="9" y2="12"></line>
+                  </svg>
+                  <span>Log out</span>
+                </button>
+              </div>
             )}
-          </div>
-
-          <div className="offence-input">
-            <label>Offence Number (optional):</label>
-            <input
-              type="text"
-              value={offenceNumber}
-              onChange={(e) => setOffenceNumber(e.target.value)}
-              placeholder="e.g., 123456789"
-              className="offence-field"
-            />
           </div>
         </div>
       </div>
@@ -1678,48 +1732,7 @@ const ChatInterface = ({ preferences, lawTypeSelection, onResetPreferences, onCh
         
         {messages.length === 0 ? (
           <div className="welcome-message">
-            <h2 className="welcome-legid-logo">LEGID</h2>
-            <p className="welcome-tagline">Your Advanced Legal Intelligence Assistant</p>
-             <p>Upload a legal document to get started, or ask me questions about legal matters.</p>
-             
-             {/* 🎯 Upload Instructions */}
-             <div className="upload-instructions">
-               <div className="upload-method">
-                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                   <polyline points="17 8 12 3 7 8"></polyline>
-                   <line x1="12" y1="3" x2="12" y2="15"></line>
-                 </svg>
-                 <span>Drag & drop files here</span>
-               </div>
-               <div className="upload-method">
-                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                   <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                   <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                 </svg>
-                 <span>Or press <kbd>Ctrl+V</kbd> to paste</span>
-               </div>
-               <div className="upload-method">
-                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                   <circle cx="12" cy="12" r="10"></circle>
-                   <line x1="12" y1="8" x2="12" y2="16"></line>
-                   <line x1="8" y1="12" x2="16" y2="12"></line>
-                 </svg>
-                 <span>Or click the <strong>+</strong> button below</span>
-               </div>
-             </div>
-
-             <div className="quick-actions">
-               <button onClick={() => setInput('What are the penalties for speeding?')}>
-                 Speeding Penalties
-               </button>
-               <button onClick={() => setInput('How do I dispute a traffic ticket?')}>
-                 Dispute Process
-               </button>
-               <button onClick={() => setInput('What are demerit points?')}>
-                 Demerit Points
-               </button>
-            </div>
+            <h2 className="welcome-greeting">What's on the agenda today?</h2>
           </div>
         ) : (
           messages.map((message) => (
@@ -1754,8 +1767,23 @@ const ChatInterface = ({ preferences, lawTypeSelection, onResetPreferences, onCh
                         </div>
                       </div>
                     )}
-                    {/* Show text content */}
-                    {!message.imageUrl && message.content}
+                    {/* 📄 Show document icon for uploaded files */}
+                    {!message.imageUrl && message.isUpload && message.fileName && (
+                      <div className="uploaded-document-card">
+                        <div className="document-icon">
+                          {message.fileName.toLowerCase().endsWith('.pdf') ? '📄' : 
+                           message.fileName.toLowerCase().endsWith('.docx') || message.fileName.toLowerCase().endsWith('.doc') ? '📝' :
+                           message.fileName.toLowerCase().endsWith('.txt') ? '📃' :
+                           message.fileName.toLowerCase().endsWith('.xlsx') || message.fileName.toLowerCase().endsWith('.xls') ? '📊' : '📎'}
+                        </div>
+                        <div className="document-info">
+                          <span className="document-name">{message.fileName}</span>
+                          {message.fileSize && <span className="document-size">{message.fileSize}</span>}
+                        </div>
+                      </div>
+                    )}
+                    {/* Show text content for non-upload messages */}
+                    {!message.imageUrl && !message.isUpload && message.content}
                   </div>
                 ) : (
                   <div className="message-text system-text">
@@ -1817,7 +1845,7 @@ const ChatInterface = ({ preferences, lawTypeSelection, onResetPreferences, onCh
                         <button 
                           className="action-btn" 
                           onClick={() => handleReadAloud(message.content || message.answer)}
-                          title="Andy read aloud"
+                          title="🎙️ Voice Assistant read aloud"
                         >
                           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                             <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
@@ -1855,19 +1883,13 @@ const ChatInterface = ({ preferences, lawTypeSelection, onResetPreferences, onCh
 
         {/* Typing indicator */}
         {loading && (
-          <div className="message assistant">
-            <div className="message-content">
-              <div className="typing-indicator">
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
+          <div className="loading-indicator-container">
               {loadingStage && (
-                <div className="loading-stage" style={{ marginTop: '0.5rem', fontSize: '0.85rem', color: '#888' }}>
-                  {loadingStage}
+              <div className="loading-stage">
+                <span className="blinking-dot-white"></span>
+                <span className="loading-text">{loadingStage}</span>
                 </div>
               )}
-            </div>
           </div>
         )}
 
@@ -2024,7 +2046,7 @@ const ChatInterface = ({ preferences, lawTypeSelection, onResetPreferences, onCh
               <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
               <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
             </svg>
-            Andy read aloud
+            🎙️ Voice Assistant read aloud
           </button>
           <button onClick={() => { handleCopyMessage(contextMenu.content); setContextMenu(null); }}>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -2052,7 +2074,8 @@ const ChatInterface = ({ preferences, lawTypeSelection, onResetPreferences, onCh
            onClose={() => setShowRecentUpdates(false)}
          />
        )}
-     </div>
+      </div>
+    </div>
    );
 };
 

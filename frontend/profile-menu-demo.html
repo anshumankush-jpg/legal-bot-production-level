@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Menu Demo - ChatGPT Style</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .demo-container {
+            background: #2d3748;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .demo-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .demo-header h1 {
+            color: #e5e5e5;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .demo-header p {
+            color: #a0a0a0;
+            font-size: 16px;
+        }
+
+        .navbar-demo {
+            background: #1f1f1f;
+            border-radius: 12px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #e5e5e5;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .navbar-logo-icon {
+            font-size: 24px;
+        }
+
+        .profile-menu-wrapper {
+            position: relative;
+        }
+
+        .profile-menu-trigger {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            padding: 0;
+            background: transparent;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .profile-menu-trigger:hover {
+            opacity: 0.8;
+        }
+
+        .profile-menu-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);
+        }
+
+        .profile-menu-initials {
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .profile-menu-dropdown {
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            width: 290px;
+            background: #2f2f2f;
+            border: 1px solid #3f3f3f;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+            z-index: 1000;
+            overflow: hidden;
+            display: none;
+            animation: dropdownSlideDown 0.2s ease-out;
+        }
+
+        .profile-menu-dropdown.active {
+            display: block;
+        }
+
+        @keyframes dropdownSlideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .profile-menu-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px;
+        }
+
+        .profile-menu-header-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+            background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .profile-menu-header-info {
+            flex: 1;
+        }
+
+        .profile-menu-name {
+            font-size: 15px;
+            font-weight: 600;
+            color: #e5e5e5;
+            line-height: 1.3;
+        }
+
+        .profile-menu-handle {
+            font-size: 13px;
+            color: #a0a0a0;
+            line-height: 1.3;
+        }
+
+        .profile-menu-badge {
+            padding: 0 16px 16px;
+        }
+
+        .profile-menu-user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 12px;
+            background: #1f1f1f;
+            border-radius: 8px;
+            border: 1px solid #3f3f3f;
+        }
+
+        .profile-menu-user-avatar {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .profile-menu-initials-small {
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .profile-menu-user-details {
+            flex: 1;
+        }
+
+        .profile-menu-user-name {
+            font-size: 13px;
+            font-weight: 500;
+            color: #e5e5e5;
+            line-height: 1.3;
+        }
+
+        .profile-menu-user-tier {
+            font-size: 12px;
+            color: #a0a0a0;
+            line-height: 1.3;
+        }
+
+        .profile-menu-divider {
+            height: 1px;
+            background: #3f3f3f;
+        }
+
+        .profile-menu-items {
+            padding: 8px 0;
+        }
+
+        .profile-menu-item {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            background: transparent;
+            border: none;
+            color: #e5e5e5;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            text-align: left;
+        }
+
+        .profile-menu-item:hover {
+            background: #3a3a3a;
+        }
+
+        .profile-menu-icon {
+            width: 18px;
+            height: 18px;
+            color: #a0a0a0;
+        }
+
+        .profile-menu-chevron {
+            width: 16px;
+            height: 16px;
+            color: #707070;
+            margin-left: auto;
+        }
+
+        .info-box {
+            background: #1f1f1f;
+            border: 1px solid #3f3f3f;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .info-box h3 {
+            color: #e5e5e5;
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+
+        .info-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .info-box li {
+            color: #a0a0a0;
+            font-size: 14px;
+            padding: 8px 0;
+            border-bottom: 1px solid #3f3f3f;
+        }
+
+        .info-box li:last-child {
+            border-bottom: none;
+        }
+
+        .info-box li::before {
+            content: "✓ ";
+            color: #14b8a6;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <div class="demo-header">
+            <h1>Profile Menu Component</h1>
+            <p>ChatGPT-style profile dropdown menu</p>
+        </div>
+
+        <div class="navbar-demo">
+            <div class="navbar-logo">
+                <img src="/logo.png" alt="LEGID" class="navbar-logo-img" style="width: 32px; height: 32px; border-radius: 50%; object-fit: cover;" />
+                <span>LEGID</span>
+            </div>
+
+            <div class="profile-menu-wrapper">
+                <button class="profile-menu-trigger" id="profileTrigger">
+                    <div class="profile-menu-avatar">
+                        <div class="profile-menu-initials">AK</div>
+                    </div>
+                </button>
+
+                <div class="profile-menu-dropdown" id="profileDropdown">
+                    <div class="profile-menu-header">
+                        <div class="profile-menu-header-avatar">
+                            <div class="profile-menu-initials">AK</div>
+                        </div>
+                        <div class="profile-menu-header-info">
+                            <div class="profile-menu-name">anshumankush</div>
+                            <div class="profile-menu-handle">@anshumankush</div>
+                        </div>
+                    </div>
+
+                    <div class="profile-menu-badge">
+                        <div class="profile-menu-user-info">
+                            <div class="profile-menu-user-avatar">
+                                <div class="profile-menu-initials-small">AK</div>
+                            </div>
+                            <div class="profile-menu-user-details">
+                                <div class="profile-menu-user-name">Anshuman Kush</div>
+                                <div class="profile-menu-user-tier">Plus</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="profile-menu-divider"></div>
+
+                    <div class="profile-menu-items">
+                        <button class="profile-menu-item">
+                            <svg class="profile-menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M12 6v6l4 2"></path>
+                            </svg>
+                            <span>Upgrade plan</span>
+                        </button>
+
+                        <button class="profile-menu-item">
+                            <svg class="profile-menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                            <span>Personalization</span>
+                        </button>
+
+                        <button class="profile-menu-item">
+                            <svg class="profile-menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="3"></circle>
+                                <path d="M12 1v6m0 6v6"></path>
+                                <path d="M17 12h-2m-6 0H7"></path>
+                            </svg>
+                            <span>Settings</span>
+                        </button>
+
+                        <div class="profile-menu-divider"></div>
+
+                        <button class="profile-menu-item">
+                            <svg class="profile-menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                            </svg>
+                            <span>Help</span>
+                            <svg class="profile-menu-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </button>
+
+                        <div class="profile-menu-divider"></div>
+
+                        <button class="profile-menu-item">
+                            <svg class="profile-menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                                <polyline points="16 17 21 12 16 7"></polyline>
+                                <line x1="21" y1="12" x2="9" y2="12"></line>
+                            </svg>
+                            <span>Log out</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h3>Features</h3>
+            <ul>
+                <li>ChatGPT-style dropdown menu design</li>
+                <li>Teal gradient avatar with initials</li>
+                <li>User info with username and handle</li>
+                <li>Plus tier badge display</li>
+                <li>Clean, modern menu items with icons</li>
+                <li>Smooth animations and hover effects</li>
+                <li>Dark theme optimized</li>
+                <li>Fully responsive design</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Toggle dropdown
+        const trigger = document.getElementById('profileTrigger');
+        const dropdown = document.getElementById('profileDropdown');
+
+        trigger.addEventListener('click', () => {
+            dropdown.classList.toggle('active');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!trigger.contains(e.target) && !dropdown.contains(e.target)) {
+                dropdown.classList.remove('active');
+            }
+        });
+
+        // Handle menu item clicks
+        const menuItems = document.querySelectorAll('.profile-menu-item');
+        menuItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const text = item.querySelector('span').textContent;
+                alert(`Clicked: ${text}`);
+                dropdown.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

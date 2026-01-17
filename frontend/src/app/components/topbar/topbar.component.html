@@ -1,0 +1,88 @@
+<header class="topbar-multi-row">
+  <!-- Row 1: Brand + New Chat + User Profile -->
+  <div class="header-row header-row-1">
+    <div class="row-left">
+      <div class="brand">
+        <span class="brand__icon">⚖️</span>
+        <span class="brand__name">LEGID</span>
+      </div>
+      <button class="btn-new-chat" (click)="createNewChat()">
+        <span class="plus-icon">+</span>
+        <span>New Chat</span>
+      </button>
+    </div>
+    
+    <div class="row-right">
+      <button class="user-profile-pill">
+        <div class="user-avatar">{{ getUserInitials() }}</div>
+        <span class="user-name">{{ currentUser?.display_name || 'User' }}</span>
+        <svg class="chevron-down" width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M7 10l5 5 5-5z"/>
+        </svg>
+      </button>
+      
+      <span class="andy-status-badge">Andy {{ andyStatus }}</span>
+      <span class="language-badge">{{ currentLanguage }}</span>
+      
+      <div class="offence-number-input">
+        <label>Offence Number (optional):</label>
+        <input type="text" placeholder="e.g., 123456789" [(ngModel)]="offenceNumber">
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 2: Language Context Info -->
+  <div class="header-row header-row-2">
+    <span class="context-text">Language: <strong>{{ currentLanguage }}</strong></span>
+    <span class="separator">|</span>
+    <span class="context-text"><strong>Canada</strong></span>
+    <span class="separator">|</span>
+    <span class="context-text"><strong>{{ region }}</strong></span>
+    <span class="separator">|</span>
+    <span class="law-type-highlight"><strong>{{ lawType }}</strong></span>
+  </div>
+
+  <!-- Row 3: Main Action Buttons -->
+  <div class="header-row header-row-3">
+    <button class="action-btn">
+      <span class="btn-icon">📰</span>
+      <span>Recent Updates</span>
+    </button>
+    <button class="action-btn">
+      <span class="btn-icon">🔍</span>
+      <span>Case Lookup</span>
+    </button>
+    <button class="action-btn">
+      <span class="btn-icon">📝</span>
+      <span>Amendments</span>
+    </button>
+    <button class="action-btn">
+      <span class="btn-icon">📄</span>
+      <span>Documents</span>
+    </button>
+    <button class="action-btn">
+      <span class="btn-icon">💬</span>
+      <span>History</span>
+    </button>
+    <button class="action-btn">
+      <span class="btn-icon">🔄</span>
+      <span>Change Law Type</span>
+    </button>
+    <button class="action-btn">
+      <span class="btn-icon">⚙️</span>
+      <span>Settings</span>
+    </button>
+  </div>
+
+  <!-- Row 4: Summary Actions -->
+  <div class="header-row header-row-4">
+    <button class="summary-btn summary-btn--ai">
+      <span class="btn-icon">🤖</span>
+      <span>AI Summary</span>
+    </button>
+    <button class="summary-btn summary-btn--quick">
+      <span class="btn-icon">⚡</span>
+      <span>Quick Summary</span>
+    </button>
+  </div>
+</header>

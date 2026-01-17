@@ -154,7 +154,37 @@
   flex-wrap: wrap;
 }
 
-.update-type {
+.update-badges {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.jurisdiction-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.jurisdiction-badge.canada {
+  background: linear-gradient(135deg, #dc3545 0%, #a71d2a 100%);
+  color: white;
+}
+
+.jurisdiction-badge.usa {
+  background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
+  color: white;
+}
+
+.update-type,
+.update-source-badge {
   display: inline-block;
   padding: 0.35rem 0.75rem;
   background: linear-gradient(135deg, #00bcd4 0%, #0097a7 100%);
@@ -164,12 +194,34 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .update-date {
   color: #b0b0b0;
   font-size: 0.9rem;
   font-weight: 500;
+}
+
+.update-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.law-type-tag {
+  display: inline-block;
+  padding: 0.25rem 0.6rem;
+  background: rgba(0, 188, 212, 0.15);
+  border: 1px solid rgba(0, 188, 212, 0.3);
+  border-radius: 4px;
+  color: #00bcd4;
+  font-size: 0.75rem;
+  font-weight: 600;
 }
 
 .update-title {

@@ -12,10 +12,16 @@ const EnhancedApp = () => {
   const [currentChatId, setCurrentChatId] = useState(null);
   const [showAccessBanner, setShowAccessBanner] = useState(false);
   const [accessBannerInfo, setAccessBannerInfo] = useState(null);
-  const [userRole, setUserRole] = useState('standard'); // guest, standard, premium, enterprise
+  const [userRole, setUserRole] = useState('plus'); // guest, standard, premium, enterprise, plus
   const [preferences, setPreferences] = useState(null);
   const [lawTypeSelection, setLawTypeSelection] = useState(null);
   const [showChatHistory, setShowChatHistory] = useState(false);
+  const [user, setUser] = useState({
+    name: 'anshumankush',
+    email: 'anshumankush@example.com',
+    role: 'plus',
+    subscription: 'plus'
+  });
 
   // Load saved chats from localStorage
   useEffect(() => {
@@ -140,6 +146,19 @@ const EnhancedApp = () => {
     localStorage.removeItem('legubot_law_type');
   };
 
+  const handleViewChange = (view) => {
+    setCurrentView(view);
+  };
+
+  const handleLogout = () => {
+    // Clear user data and redirect to login
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('user_data');
+    setUser(null);
+    alert('You have been logged out successfully.');
+    // In a real app, redirect to login page
+  };
+
   return (
     <div className="enhanced-app">
       <NavigationBar
@@ -149,7 +168,10 @@ const EnhancedApp = () => {
         onShowApps={handleShowApps}
         onShowCodex={handleShowCodex}
         onShowProjects={handleShowProjects}
+        onViewChange={handleViewChange}
+        onLogout={handleLogout}
         currentView={currentView}
+        user={user}
       />
 
       <div className="app-body">

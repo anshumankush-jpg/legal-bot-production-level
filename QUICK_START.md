@@ -1,369 +1,397 @@
-# 🚀 Quick Start Guide - Enhanced Legal Assistant
+# LEGID OAuth + Chat System - Quick Start Guide
 
-## Get Up and Running in 5 Minutes!
-
-This guide will get your Enhanced Legal Assistant up and running quickly.
+Get up and running with LEGID's OAuth authentication and chat system in under 10 minutes.
 
 ---
 
-## Prerequisites
+## ⚡ Quick Setup (Local Development)
 
-- ✅ Node.js 18+ installed
-- ✅ Python 3.9+ installed
-- ✅ OpenAI API key (for LLM responses)
+### 1. Get OAuth Credentials (5 minutes)
+
+You need OAuth credentials from Google and Microsoft to enable social login.
+
+#### Google OAuth
+
+1. Go to [Google Cloud Console](https://console.cloud.google.com/)
+2. Create a project (or use existing)
+3. Navigate to **APIs & Services** → **Credentials**
+4. Click **Create Credentials** → **OAuth client ID**
+5. Choose **Web application**
+6. Add redirect URI: `http://localhost:8000/api/auth/google/callback`
+7. **Copy Client ID and Client Secret**
+
+#### Microsoft OAuth
+
+1. Go to [Azure Portal](https://portal.azure.com/)
+2. Navigate to **Azure Active Directory** → **App registrations**
+3. Click **New registration**
+4. Add redirect URI: `http://localhost:8000/api/auth/microsoft/callback`
+5. Go to **Certificates & secrets** → **New client secret**
+6. **Copy Application ID and Client Secret value**
+
+> **Note**: For detailed OAuth setup, see `SETUP_OAUTH.md`
 
 ---
 
-## Step 1: Install Dependencies
+### 2. Configure Environment (2 minutes)
 
-### Backend
+#### Backend Configuration
+
+Create `backend/.env`:
+
 ```bash
-cd legal-bot/backend
-pip install -r requirements.txt
+# OpenAI (required for chat)
+OPENAI_API_KEY=sk-your-openai-api-key-here
+
+# JWT Security (generate random string)
+JWT_SECRET_KEY=your-random-32-character-secret-key-here
+
+# Google OAuth
+GOOGLE_CLIENT_ID=your-google-client-id.apps.googleusercontent.com
+GOOGLE_CLIENT_SECRET=your-google-client-secret
+GOOGLE_REDIRECT_URI=http://localhost:4200/auth/callback/google
+
+# Microsoft OAuth
+MS_CLIENT_ID=your-microsoft-client-id
+MS_CLIENT_SECRET=your-microsoft-client-secret
+MS_TENANT=common
+MS_REDIRECT_URI=http://localhost:4200/auth/callback/microsoft
+
+# App Config
+FRONTEND_BASE_URL=http://localhost:4200
+CORS_ORIGINS=http://localhost:4200,http://localhost:5173
+DATABASE_URL=sqlite:///./data/legal_bot.db
 ```
 
-### Frontend
+**Generate JWT Secret**:
 ```bash
-cd legal-bot/frontend
+# Linux/Mac
+openssl rand -base64 32
+
+# Windows PowerShell
+[Convert]::ToBase64String((1..32 | ForEach-Object { Get-Random -Minimum 0 -Maximum 256 }))
+```
+
+#### Frontend Configuration (Optional)
+
+Create `frontend/.env`:
+
+```bash
+VITE_API_URL=http://localhost:8000
+```
+
+---
+
+### 3. Install Dependencies (2 minutes)
+
+```bash
+# Backend
+cd backend
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+pip install -r requirements.txt
+
+# Frontend (in new terminal)
+cd frontend
 npm install
 ```
 
 ---
 
-## Step 2: Configure Environment
+### 4. Initialize Database (1 minute)
 
-Create `.env` file in `legal-bot/backend/`:
+```bash
+cd backend
+python init_database.py init
+```
 
-```env
-# Required
-OPENAI_API_KEY=your_openai_api_key_here
-
-# Optional (mock data used if not provided)
-CASETEXT_API_KEY=
-LEGALZOOM_API_KEY=
-LEXISNEXIS_API_KEY=
-WESTLAW_API_KEY=
+Expected output:
+```
+✅ Database tables created successfully!
+Created 14 tables:
+  - users
+  - oauth_identities
+  - conversations
+  - messages
+  ...
 ```
 
 ---
 
-## Step 3: Start the Application
+### 5. Start Services (1 minute)
 
-### Terminal 1: Start Backend
+**Terminal 1 - Backend:**
 ```bash
-cd legal-bot/backend
-python -m uvicorn app.main:app --reload --port 8000
+cd backend
+uvicorn app.main:app --reload --port 8000
 ```
 
-You should see:
-```
-INFO:     Uvicorn running on http://127.0.0.1:8000
-INFO:     Application startup complete.
-```
-
-### Terminal 2: Start Frontend
+**Terminal 2 - Frontend:**
 ```bash
-cd legal-bot/frontend
+cd frontend
 npm run dev
 ```
 
-You should see:
-```
-  VITE v5.0.0  ready in 500 ms
+---
 
-  ➜  Local:   http://localhost:5173/
-  ➜  Network: use --host to expose
-```
+### 6. Test Authentication (2 minutes)
+
+1. **Open browser**: http://localhost:4200/login
+
+2. **Test Email/Password Signup**:
+   - Click "Sign up" link
+   - Enter name, email, password
+   - Click "Create Account"
+   - Should redirect to chat
+
+3. **Test Google OAuth**:
+   - Click "Continue with Google"
+   - Login with Google account
+   - Should redirect back to chat
+
+4. **Test Microsoft OAuth**:
+   - Click "Continue with Microsoft"
+   - Login with Microsoft account
+   - Should redirect back to chat
 
 ---
 
-## Step 4: Access the Application
+## ✅ Verification Checklist
 
-Open your browser and go to:
-```
-http://localhost:5173
-```
-
----
-
-## Step 5: Test the Features
-
-### 1. Start a New Chat
-- Click **"New Chat"** in the navigation bar
-- Select a law type (e.g., Traffic Law)
-- Ask a question: "What are the penalties for speeding?"
-
-### 2. Try Case Lookup
-- Click **"🔍 Case Lookup"** in the header
-- Search for: "Miranda"
-- View the results
-
-### 3. Generate an Amendment
-- Click **"📝 Amendments"** in the header
-- Select document type: "Contract"
-- Fill in details and generate
-
-### 4. Search Chat History
-- Click **"Search Chats"** in navigation
-- Enter a search term
-- View highlighted results
+- [ ] Backend running on http://localhost:8000
+- [ ] Frontend running on http://localhost:4200
+- [ ] Can sign up with email/password
+- [ ] Can login with email/password
+- [ ] Can login with Google
+- [ ] Can login with Microsoft
+- [ ] User data saved to database
+- [ ] Redirected to chat after login
 
 ---
 
-## Troubleshooting
+## 🐛 Troubleshooting
 
-### Backend won't start?
+### "Module not found" errors
+
+**Fix**:
 ```bash
-# Check Python version
-python --version  # Should be 3.9+
+# Backend
+cd backend
+pip install -r requirements.txt
 
-# Reinstall dependencies
-pip install -r requirements.txt --force-reinstall
-```
-
-### Frontend won't start?
-```bash
-# Check Node version
-node --version  # Should be 18+
-
-# Clear cache and reinstall
-rm -rf node_modules package-lock.json
+# Frontend
+cd frontend
 npm install
 ```
 
-### "OpenAI API key not configured"?
-- Make sure you created `.env` file in `backend/` directory
-- Verify the API key is correct
-- Restart the backend server
+### "redirect_uri_mismatch" error
 
-### Port already in use?
+**Fix**: Make sure your OAuth redirect URIs in Google/Microsoft consoles exactly match:
+- Google: `http://localhost:8000/api/auth/google/callback`
+- Microsoft: `http://localhost:8000/api/auth/microsoft/callback`
+
+### CORS errors
+
+**Fix**: Ensure `CORS_ORIGINS` in backend `.env` includes `http://localhost:4200`
+
+### Database errors
+
+**Fix**:
 ```bash
-# Use different ports
-# Backend:
-python -m uvicorn app.main:app --reload --port 8001
-
-# Frontend: Update vite.config.js
-server: { port: 5174 }
+cd backend
+python init_database.py reset
 ```
 
----
+### Port already in use
 
-## Quick Test Commands
-
-### Test Backend Health
+**Fix**:
 ```bash
-curl http://localhost:8000/health
+# Kill process on port 8000 (backend)
+# Linux/Mac:
+lsof -ti:8000 | xargs kill
+
+# Windows:
+netstat -ano | findstr :8000
+taskkill /PID <PID> /F
+
+# Kill process on port 4200 (frontend)
+# Similar commands with port 4200
 ```
 
-Expected response:
-```json
-{
-  "status": "healthy",
-  "backend_running": true,
-  "openai_configured": true
-}
-```
+---
 
-### Test Chat Endpoint
+## 📚 Next Steps
+
+### Wire Up Frontend Components
+
+The backend is fully functional. To complete the frontend:
+
+1. **Profile Chip** - Wire to `/api/me` endpoint
+   ```typescript
+   // In your profile component
+   this.authService.getCurrentUserFromAPI().subscribe(user => {
+     // Display user.display_name, user.email, user.avatar_url
+   });
+   ```
+
+2. **Chat Sidebar** - Wire to `/api/conversations` endpoint
+   ```typescript
+   // In your chat component
+   this.http.get('/api/conversations').subscribe(conversations => {
+     // Display conversation list
+   });
+   ```
+
+3. **Send Messages** - Wire to `/api/conversations/{id}/messages`
+   ```typescript
+   this.http.post(`/api/conversations/${id}/messages`, {
+     content: userMessage
+   }).subscribe(response => {
+     // Display assistant response
+   });
+   ```
+
+4. **Preferences** - Wire to `/api/preferences`
+   ```typescript
+   // Load preferences
+   this.http.get('/api/preferences').subscribe(prefs => {
+     // Apply theme, fontSize, etc.
+   });
+
+   // Save preferences
+   this.http.put('/api/preferences', newPrefs).subscribe();
+   ```
+
+### Deploy to Production
+
+See `DEPLOYMENT_GUIDE.md` for complete deployment instructions:
+
 ```bash
-curl -X POST http://localhost:8000/api/artillery/chat \
-  -H "Content-Type: application/json" \
-  -d '{"message": "What is criminal law?"}'
+# Quick deploy to Cloud Run
+cd backend
+gcloud run deploy legid-backend --source .
+
+cd frontend
+gcloud run deploy legid-frontend --source .
 ```
 
-### Test Case Lookup
+---
+
+## 📖 Documentation
+
+- **SETUP_OAUTH.md** - Detailed OAuth setup guide
+- **DEPLOYMENT_GUIDE.md** - Complete deployment guide
+- **README_AUTH_IMPLEMENTATION.md** - Full implementation details
+
+---
+
+## 🆘 Need Help?
+
+### Check Logs
+
+**Backend:**
 ```bash
-curl -X POST http://localhost:8000/api/legal/case-lookup \
-  -H "Content-Type: application/json" \
-  -d '{"query": "Miranda", "limit": 5}'
+# Backend logs show detailed error messages
+# Check terminal where uvicorn is running
 ```
+
+**Frontend:**
+```bash
+# Check browser console (F12)
+# Check network tab for API errors
+```
+
+### Common Issues
+
+1. **OAuth not working**: Check redirect URIs in OAuth consoles
+2. **CORS errors**: Update `CORS_ORIGINS` in backend `.env`
+3. **Database errors**: Run `python init_database.py reset`
+4. **Token errors**: Check `JWT_SECRET_KEY` is set in `.env`
 
 ---
 
-## Default User Roles
+## 🎉 Success!
 
-The application supports 4 roles:
+If you can:
+- ✅ Sign up with email/password
+- ✅ Login with Google
+- ✅ Login with Microsoft
+- ✅ See your user data in the database
 
-| Role | Access Level | Features |
-|------|--------------|----------|
-| **Guest** | Basic | Chat only |
-| **Standard** | Medium | + Search, Translation |
-| **Premium** | High | + Case Lookup, Amendments |
-| **Enterprise** | Full | All features |
+**Congratulations! Your OAuth authentication system is working.**
 
-To test different roles:
+Now you can:
+1. Wire up the remaining frontend components
+2. Add unit tests
+3. Deploy to production
+4. Build your chat features
+
+---
+
+## 📝 Quick Reference
+
+### Backend Endpoints
+
+```
+POST   /api/auth/signup          - Email/password signup
+POST   /api/auth/login           - Email/password login
+POST   /api/auth/refresh         - Refresh access token
+POST   /api/auth/logout          - Logout
+GET    /api/auth/me              - Get current user
+
+GET    /api/auth/google/login    - Start Google OAuth
+GET    /api/auth/google/callback - Google OAuth callback
+GET    /api/auth/microsoft/login - Start Microsoft OAuth
+GET    /api/auth/microsoft/callback - Microsoft OAuth callback
+
+POST   /api/conversations        - Create conversation
+GET    /api/conversations        - List conversations
+GET    /api/conversations/{id}   - Get conversation
+DELETE /api/conversations/{id}   - Delete conversation
+
+POST   /api/conversations/{id}/messages - Send message
+GET    /api/conversations/{id}/messages - Get messages
+
+GET    /api/preferences          - Get preferences
+PUT    /api/preferences          - Update preferences
+```
+
+### Database Commands
 
 ```bash
-# Generate a token
-curl -X POST "http://localhost:8000/api/auth/token?user_id=test_user&role=premium"
+# Initialize database
+python init_database.py init
+
+# Reset database (delete all data)
+python init_database.py reset
+
+# Check database status
+python init_database.py check
+
+# Drop all tables
+python init_database.py drop
 ```
 
----
+### Development Commands
 
-## File Structure Overview
-
-```
-legal-bot/
-├── backend/
-│   ├── app/
-│   │   ├── main.py              # Main FastAPI app
-│   │   ├── services/            # Business logic
-│   │   └── api/                 # API routes
-│   └── requirements.txt
-│
-├── frontend/
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── EnhancedApp.jsx        # Main app
-│   │   │   ├── NavigationBar.jsx      # Top nav
-│   │   │   ├── ChatSidebar.jsx        # Left sidebar
-│   │   │   ├── ChatInterface.jsx      # Chat area
-│   │   │   ├── CaseLookup.jsx         # Case search
-│   │   │   └── AmendmentGenerator.jsx # Amendment gen
-│   │   └── App.jsx
-│   └── package.json
-│
-├── ENHANCED_UI_GUIDE.md         # Full documentation
-├── TESTING_GUIDE.md             # Testing procedures
-├── IMPLEMENTATION_SUMMARY.md    # Project summary
-└── QUICK_START.md               # This file
-```
-
----
-
-## Next Steps
-
-1. ✅ Read `ENHANCED_UI_GUIDE.md` for detailed feature documentation
-2. ✅ Review `TESTING_GUIDE.md` for testing procedures
-3. ✅ Check `IMPLEMENTATION_SUMMARY.md` for project overview
-4. ✅ Explore the API documentation at `http://localhost:8000/docs`
-
----
-
-## Common Use Cases
-
-### Use Case 1: Legal Research
-1. Start new chat
-2. Ask about a legal topic
-3. Use Case Lookup to find relevant cases
-4. Save the chat for later reference
-
-### Use Case 2: Document Amendment
-1. Start new chat about a contract issue
-2. Use Amendment Generator
-3. Fill in details
-4. Download the generated amendment
-
-### Use Case 3: Multi-language Support
-1. Change language in preferences
-2. Ask questions in your language
-3. Get responses in the same language
-
----
-
-## Performance Tips
-
-1. **Clear old chats**: Keep only recent chats for better performance
-2. **Use search**: Instead of scrolling, use the search feature
-3. **Collapse sidebar**: On smaller screens, collapse the sidebar
-4. **Close modals**: Close unused modals to free memory
-
----
-
-## Keyboard Shortcuts
-
-- `Ctrl/Cmd + K`: Open search
-- `Ctrl/Cmd + N`: New chat
-- `Ctrl/Cmd + /`: Toggle sidebar
-- `Enter`: Send message
-- `Shift + Enter`: New line in message
-
----
-
-## Getting Help
-
-1. **Documentation**: Check the guides in the root directory
-2. **API Docs**: Visit `http://localhost:8000/docs`
-3. **Console**: Check browser console for errors (F12)
-4. **Logs**: Check backend terminal for error messages
-
----
-
-## Production Deployment
-
-### Build Frontend
 ```bash
-cd legal-bot/frontend
-npm run build
-```
+# Start backend
+cd backend
+uvicorn app.main:app --reload
 
-### Deploy Backend
-```bash
-# Using Gunicorn
-pip install gunicorn
-gunicorn app.main:app -w 4 -k uvicorn.workers.UvicornWorker
+# Start frontend
+cd frontend
+npm run dev
 
-# Or using Docker
-docker build -t legal-assistant .
-docker run -p 8000:8000 legal-assistant
-```
+# Install backend dependencies
+cd backend
+pip install -r requirements.txt
 
----
-
-## Environment Variables
-
-### Backend (.env)
-```env
-# Required
-OPENAI_API_KEY=sk-...
-
-# Optional
-CASETEXT_API_KEY=
-LEGALZOOM_API_KEY=
-LEXISNEXIS_API_KEY=
-WESTLAW_API_KEY=
-
-# Server Config
-HOST=0.0.0.0
-PORT=8000
-DEBUG=False
-
-# Database (if using)
-DATABASE_URL=postgresql://...
-```
-
-### Frontend (.env)
-```env
-VITE_API_URL=http://localhost:8000
-VITE_APP_NAME=LEGID Legal Assistant
+# Install frontend dependencies
+cd frontend
+npm install
 ```
 
 ---
 
-## Success Checklist
-
-- [ ] Backend running on port 8000
-- [ ] Frontend running on port 5173
-- [ ] Can access the UI in browser
-- [ ] Can send chat messages
-- [ ] Can search chats
-- [ ] Can use Case Lookup
-- [ ] Can generate amendments
-- [ ] All features working
-
----
-
-## 🎉 You're All Set!
-
-Your Enhanced Legal Assistant is now running. Enjoy exploring all the features!
-
-For detailed documentation, see:
-- `ENHANCED_UI_GUIDE.md` - Complete feature guide
-- `TESTING_GUIDE.md` - Testing procedures
-- `IMPLEMENTATION_SUMMARY.md` - Project overview
-
----
-
-**Happy Coding! 🚀**
-
-Last Updated: January 9, 2026
+**Ready to code? Start building your chat features! 🚀**

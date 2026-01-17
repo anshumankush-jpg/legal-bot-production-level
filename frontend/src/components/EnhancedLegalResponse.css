@@ -232,28 +232,19 @@
   color: white;
 }
 
-/* Fallback response styling */
+/* Fallback response styling - plain text, no box */
 .fallback-response {
-  padding: 1.5rem;
-  background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
-  border-radius: 12px;
-  border: 1px solid #404040;
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
+  border: none;
   color: #ffffff;
-  box-shadow: 0 4px 20px rgba(0, 188, 212, 0.1);
+  box-shadow: none;
   position: relative;
 }
 
 .fallback-response::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, #00bcd4, #667eea, #764ba2, #00bcd4);
-  background-size: 200% 100%;
-  animation: gradientShift 3s linear infinite;
-  border-radius: 12px 12px 0 0;
+  display: none;
 }
 
 @keyframes gradientShift {
@@ -277,6 +268,8 @@
   font-size: 1.05rem;
   white-space: pre-wrap;
   word-wrap: break-word;
+  font-weight: 600;
+  letter-spacing: 0.02em;
 }
 
 .no-response {

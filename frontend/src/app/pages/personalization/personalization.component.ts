@@ -2,7 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { PreferencesService, Preferences } from '../../services/preferences.service';
 import { Subscription } from 'rxjs';
 
 interface UserProfile {
@@ -30,7 +31,7 @@ interface UserProfile {
 @Component({
   selector: 'app-personalization',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, MatSnackBarModule],
   template: `
     <div class="personalization-page">
       <!-- Header -->
@@ -87,6 +88,20 @@ interface UserProfile {
                   <div class="radio-description">Classic bright interface</div>
                 </div>
               </label>
+
+              <label class="radio-option" [class.selected]="preferences.theme === 'system'">
+                <input
+                  type="radio"
+                  name="theme"
+                  value="system"
+                  [(ngModel)]="preferences.theme"
+                  (change)="onPreferenceChange()"
+                />
+                <div class="radio-content">
+                  <div class="radio-label">System</div>
+                  <div class="radio-description">Match your device settings</div>
+                </div>
+              </label>
             </div>
           </div>
 
@@ -95,12 +110,12 @@ interface UserProfile {
             <p class="setting-description">Adjust the text size for better readability.</p>
 
             <div class="radio-group">
-              <label class="radio-option" [class.selected]="preferences.font_size === 'small'">
+              <label class="radio-option" [class.selected]="preferences.fontSize === 'small'">
                 <input
                   type="radio"
-                  name="font_size"
+                  name="fontSize"
                   value="small"
-                  [(ngModel)]="preferences.font_size"
+                  [(ngModel)]="preferences.fontSize"
                   (change)="onPreferenceChange()"
                 />
                 <div class="radio-content">
@@ -109,12 +124,12 @@ interface UserProfile {
                 </div>
               </label>
 
-              <label class="radio-option" [class.selected]="preferences.font_size === 'medium'">
+              <label class="radio-option" [class.selected]="preferences.fontSize === 'medium'">
                 <input
                   type="radio"
-                  name="font_size"
+                  name="fontSize"
                   value="medium"
-                  [(ngModel)]="preferences.font_size"
+                  [(ngModel)]="preferences.fontSize"
                   (change)="onPreferenceChange()"
                 />
                 <div class="radio-content">
@@ -123,12 +138,12 @@ interface UserProfile {
                 </div>
               </label>
 
-              <label class="radio-option" [class.selected]="preferences.font_size === 'large'">
+              <label class="radio-option" [class.selected]="preferences.fontSize === 'large'">
                 <input
                   type="radio"
-                  name="font_size"
+                  name="fontSize"
                   value="large"
-                  [(ngModel)]="preferences.font_size"
+                  [(ngModel)]="preferences.fontSize"
                   (change)="onPreferenceChange()"
                 />
                 <div class="radio-content">
@@ -149,12 +164,12 @@ interface UserProfile {
             <p class="setting-description">Choose how detailed you want AI responses to be.</p>
 
             <div class="radio-group">
-              <label class="radio-option" [class.selected]="preferences.response_style === 'concise'">
+              <label class="radio-option" [class.selected]="preferences.responseStyle === 'concise'">
                 <input
                   type="radio"
-                  name="response_style"
+                  name="responseStyle"
                   value="concise"
-                  [(ngModel)]="preferences.response_style"
+                  [(ngModel)]="preferences.responseStyle"
                   (change)="onPreferenceChange()"
                 />
                 <div class="radio-content">
@@ -163,31 +178,31 @@ interface UserProfile {
                 </div>
               </label>
 
-              <label class="radio-option" [class.selected]="preferences.response_style === 'balanced'">
+              <label class="radio-option" [class.selected]="preferences.responseStyle === 'detailed'">
                 <input
                   type="radio"
-                  name="response_style"
-                  value="balanced"
-                  [(ngModel)]="preferences.response_style"
-                  (change)="onPreferenceChange()"
-                />
-                <div class="radio-content">
-                  <div class="radio-label">Balanced</div>
-                  <div class="radio-description">Comprehensive but not overwhelming</div>
-                </div>
-              </label>
-
-              <label class="radio-option" [class.selected]="preferences.response_style === 'detailed'">
-                <input
-                  type="radio"
-                  name="response_style"
+                  name="responseStyle"
                   value="detailed"
-                  [(ngModel)]="preferences.response_style"
+                  [(ngModel)]="preferences.responseStyle"
                   (change)="onPreferenceChange()"
                 />
                 <div class="radio-content">
                   <div class="radio-label">Detailed</div>
                   <div class="radio-description">Thorough explanations with examples</div>
+                </div>
+              </label>
+
+              <label class="radio-option" [class.selected]="preferences.responseStyle === 'legal_format'">
+                <input
+                  type="radio"
+                  name="responseStyle"
+                  value="legal_format"
+                  [(ngModel)]="preferences.responseStyle"
+                  (change)="onPreferenceChange()"
+                />
+                <div class="radio-content">
+                  <div class="radio-label">Legal Format</div>
+                  <div class="radio-description">Formal legal document style</div>
                 </div>
               </label>
             </div>
@@ -258,13 +273,28 @@ interface UserProfile {
                 <label class="toggle-switch">
                   <input
                     type="checkbox"
-                    [(ngModel)]="preferences.auto_read_responses"
+                    [(ngModel)]="preferences.autoReadResponses"
                     (change)="onPreferenceChange()"
                   />
                   <span class="toggle-slider"></span>
                 </label>
               </div>
             </div>
+          </div>
+        </div>
+
+        <!-- Language Section -->
+        <div class="settings-section">
+          <h2>Language</h2>
+          <div class="setting-group">
+            <h3>Interface Language</h3>
+            <p class="setting-description">Choose your preferred language for the interface.</p>
+            <select [(ngModel)]="preferences.language" (change)="onPreferenceChange()" class="language-select">
+              <option value="en">English</option>
+              <option value="fr">Français</option>
+              <option value="es">Español</option>
+              <option value="de">Deutsch</option>
+            </select>
           </div>
         </div>
 
@@ -282,6 +312,12 @@ interface UserProfile {
             </div>
           </div>
         </div>
+      </div>
+
+      <!-- Loading Indicator -->
+      <div *ngIf="isLoading" class="loading-overlay">
+        <div class="loading-spinner"></div>
+        <p>Loading preferences...</p>
       </div>
 
       <!-- Status Messages -->
@@ -537,25 +573,79 @@ interface UserProfile {
         max-width: none;
       }
     }
+
+    .loading-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      color: #ececec;
+    }
+
+    .loading-spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid #404040;
+      border-top: 4px solid #00bcd4;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-bottom: 1rem;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .language-select {
+      width: 100%;
+      padding: 0.75rem;
+      background: #1f1f1f;
+      border: 2px solid #404040;
+      border-radius: 8px;
+      color: #ececec;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .language-select:hover {
+      border-color: #00bcd4;
+    }
+
+    .language-select:focus {
+      outline: none;
+      border-color: #00bcd4;
+      box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.1);
+    }
   `]
 })
 export class PersonalizationComponent implements OnInit, OnDestroy {
-  preferences: any = {
+  preferences: Preferences = {
     theme: 'dark',
-    font_size: 'medium',
-    response_style: 'balanced',
-    legal_tone: 'neutral',
-    auto_read_responses: false
+    fontSize: 'medium',
+    responseStyle: 'detailed',
+    language: 'en',
+    autoReadResponses: false
   };
 
   saveError = '';
   saveSuccess = false;
+  isLoading = false;
   private saveTimeout: any;
   private subscriptions: Subscription[] = [];
 
   constructor(
     private router: Router,
-    private http: HttpClient
+    private preferencesService: PreferencesService,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -570,14 +660,29 @@ export class PersonalizationComponent implements OnInit, OnDestroy {
   }
 
   loadPreferences(): void {
-    const sub = this.http.get<UserProfile>('/api/profile').subscribe({
-      next: (profile) => {
-        if (profile.preferences_json) {
-          this.preferences = { ...this.preferences, ...profile.preferences_json };
-        }
+    this.isLoading = true;
+    const sub = this.preferencesService.getPreferences().subscribe({
+      next: (prefs) => {
+        this.preferences = { ...this.preferences, ...prefs };
+        this.isLoading = false;
+        console.log('✅ Preferences loaded:', prefs);
       },
       error: (error) => {
-        console.error('Failed to load preferences:', error);
+        console.error('❌ Failed to load preferences:', error);
+        this.isLoading = false;
+        
+        // Try loading from localStorage as fallback
+        const localPrefs = this.preferencesService.loadFromLocalStorage();
+        if (localPrefs) {
+          this.preferences = { ...this.preferences, ...localPrefs };
+          this.snackBar.open('Loaded preferences from cache. Some features may be limited.', 'Dismiss', {
+            duration: 5000
+          });
+        } else {
+          this.snackBar.open('Failed to load preferences. Using defaults.', 'Dismiss', {
+            duration: 5000
+          });
+        }
       }
     });
     this.subscriptions.push(sub);
@@ -598,17 +703,30 @@ export class PersonalizationComponent implements OnInit, OnDestroy {
     this.saveError = '';
     this.saveSuccess = false;
 
-    const sub = this.http.put<UserProfile>('/api/profile', {
-      preferences_json: this.preferences
-    }).subscribe({
+    const sub = this.preferencesService.savePreferences(this.preferences).subscribe({
       next: (response) => {
         this.saveSuccess = true;
+        this.snackBar.open('Preferences saved successfully!', 'Dismiss', {
+          duration: 3000,
+          panelClass: ['success-snackbar']
+        });
         setTimeout(() => {
           this.saveSuccess = false;
         }, 3000);
+        console.log('✅ Preferences saved:', response);
       },
       error: (error) => {
-        this.saveError = error.error?.detail || 'Failed to save preferences';
+        const errorMsg = error.message || 'Failed to save preferences';
+        this.saveError = errorMsg;
+        this.snackBar.open(`Error: ${errorMsg}`, 'Dismiss', {
+          duration: 5000,
+          panelClass: ['error-snackbar']
+        });
+        console.error('❌ Failed to save preferences:', {
+          error,
+          message: errorMsg,
+          preferences: this.preferences
+        });
         setTimeout(() => {
           this.saveError = '';
         }, 5000);

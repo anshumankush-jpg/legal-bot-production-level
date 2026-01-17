@@ -1,0 +1,971 @@
+[
+  {
+    "id": "manual_los_angeles_traffic",
+    "country": "USA",
+    "province_state": "California",
+    "city_or_county": "Los Angeles",
+    "jurisdiction_level": "county",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "criminal"
+    ],
+    "portals": [
+      {
+        "name": "LA Superior Court - Traffic",
+        "url": "https://www.lacourt.org/division/traffic/traffic.aspx",
+        "authority": "Los Angeles Superior Court",
+        "portal_type": "court_directory",
+        "requires": [],
+        "notes": "Traffic court information for Los Angeles County"
+      },
+      {
+        "name": "LA Court Online Services",
+        "url": "https://www.lacourt.org/online/trafficportal",
+        "authority": "Los Angeles Superior Court",
+        "portal_type": "case_lookup",
+        "requires": [
+          "citation_number",
+          "name"
+        ],
+        "notes": "Online traffic case lookup and payment"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T00:00:00",
+    "verification_status": "verified",
+    "confidence": 0.9
+  },
+  {
+    "id": "16e587cd1c8bd362",
+    "country": "USA",
+    "province_state": "California",
+    "city_or_county": "Statewide",
+    "jurisdiction_level": "state",
+    "ticket_types": [
+      "traffic",
+      "criminal",
+      "civil"
+    ],
+    "portals": [
+      {
+        "name": "California Courts Directory",
+        "url": "https://www.courts.ca.gov/",
+        "authority": "State of California",
+        "portal_type": "court_directory",
+        "requires": [],
+        "notes": "Official state court directory"
+      },
+      {
+        "name": "California Courts Directory",
+        "url": "https://www.courts.ca.gov/find-my-court.htm",
+        "authority": "State of California",
+        "portal_type": "court_directory",
+        "requires": [],
+        "notes": "Official state court directory"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.988922",
+    "verification_status": "unverified",
+    "confidence": 0.5
+  },
+  {
+    "id": "c542fe36662b7874",
+    "country": "USA",
+    "province_state": "California",
+    "city_or_county": "Los Angeles",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "municipal"
+    ],
+    "portals": [
+      {
+        "name": "Los Angeles Municipal Court",
+        "url": "https://placeholder.example.com/los-angeles",
+        "authority": "City of Los Angeles",
+        "portal_type": "case_lookup",
+        "requires": [
+          "citation_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.988922",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "c6c83a8840134e3f",
+    "country": "USA",
+    "province_state": "California",
+    "city_or_county": "San Diego",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "municipal"
+    ],
+    "portals": [
+      {
+        "name": "San Diego Municipal Court",
+        "url": "https://placeholder.example.com/san-diego",
+        "authority": "City of San Diego",
+        "portal_type": "case_lookup",
+        "requires": [
+          "citation_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.988922",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "639a02bfee3b05a1",
+    "country": "USA",
+    "province_state": "California",
+    "city_or_county": "San Jose",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "municipal"
+    ],
+    "portals": [
+      {
+        "name": "San Jose Municipal Court",
+        "url": "https://placeholder.example.com/san-jose",
+        "authority": "City of San Jose",
+        "portal_type": "case_lookup",
+        "requires": [
+          "citation_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.988922",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "cd1476e2c1cc9737",
+    "country": "USA",
+    "province_state": "California",
+    "city_or_county": "San Francisco",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "municipal"
+    ],
+    "portals": [
+      {
+        "name": "San Francisco Municipal Court",
+        "url": "https://placeholder.example.com/san-francisco",
+        "authority": "City of San Francisco",
+        "portal_type": "case_lookup",
+        "requires": [
+          "citation_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.988922",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "32c10cd5e4d4c9bc",
+    "country": "USA",
+    "province_state": "California",
+    "city_or_county": "Fresno",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "municipal"
+    ],
+    "portals": [
+      {
+        "name": "Fresno Municipal Court",
+        "url": "https://placeholder.example.com/fresno",
+        "authority": "City of Fresno",
+        "portal_type": "case_lookup",
+        "requires": [
+          "citation_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.988922",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "6d6cf992ec5fda9c",
+    "country": "USA",
+    "province_state": "Texas",
+    "city_or_county": "Statewide",
+    "jurisdiction_level": "state",
+    "ticket_types": [
+      "traffic",
+      "criminal",
+      "civil"
+    ],
+    "portals": [
+      {
+        "name": "Texas Courts Directory",
+        "url": "https://www.txcourts.gov/",
+        "authority": "State of Texas",
+        "portal_type": "court_directory",
+        "requires": [],
+        "notes": "Official state court directory"
+      },
+      {
+        "name": "Texas Courts Directory",
+        "url": "https://www.txcourts.gov/all-texas-courts/court-directories/",
+        "authority": "State of Texas",
+        "portal_type": "court_directory",
+        "requires": [],
+        "notes": "Official state court directory"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.988922",
+    "verification_status": "unverified",
+    "confidence": 0.5
+  },
+  {
+    "id": "217e1367f8be1a25",
+    "country": "USA",
+    "province_state": "Texas",
+    "city_or_county": "Houston",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "municipal"
+    ],
+    "portals": [
+      {
+        "name": "Houston Municipal Court",
+        "url": "https://placeholder.example.com/houston",
+        "authority": "City of Houston",
+        "portal_type": "case_lookup",
+        "requires": [
+          "citation_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.988922",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "4ca252e344be2fc8",
+    "country": "USA",
+    "province_state": "Texas",
+    "city_or_county": "San Antonio",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "municipal"
+    ],
+    "portals": [
+      {
+        "name": "San Antonio Municipal Court",
+        "url": "https://placeholder.example.com/san-antonio",
+        "authority": "City of San Antonio",
+        "portal_type": "case_lookup",
+        "requires": [
+          "citation_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.988922",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "0a869d56bc1bbe2d",
+    "country": "USA",
+    "province_state": "Texas",
+    "city_or_county": "Dallas",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "municipal"
+    ],
+    "portals": [
+      {
+        "name": "Dallas Municipal Court",
+        "url": "https://placeholder.example.com/dallas",
+        "authority": "City of Dallas",
+        "portal_type": "case_lookup",
+        "requires": [
+          "citation_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.988922",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "2774d26e9622d150",
+    "country": "USA",
+    "province_state": "Texas",
+    "city_or_county": "Austin",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "municipal"
+    ],
+    "portals": [
+      {
+        "name": "Austin Municipal Court",
+        "url": "https://placeholder.example.com/austin",
+        "authority": "City of Austin",
+        "portal_type": "case_lookup",
+        "requires": [
+          "citation_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.988922",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "7fe8b95eee1ea6b2",
+    "country": "USA",
+    "province_state": "Texas",
+    "city_or_county": "Fort Worth",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "municipal"
+    ],
+    "portals": [
+      {
+        "name": "Fort Worth Municipal Court",
+        "url": "https://placeholder.example.com/fort-worth",
+        "authority": "City of Fort Worth",
+        "portal_type": "case_lookup",
+        "requires": [
+          "citation_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.988922",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "d72a1787b8a560cb",
+    "country": "USA",
+    "province_state": "New York",
+    "city_or_county": "Statewide",
+    "jurisdiction_level": "state",
+    "ticket_types": [
+      "traffic",
+      "criminal",
+      "civil"
+    ],
+    "portals": [
+      {
+        "name": "New York Courts Directory",
+        "url": "https://ww2.nycourts.gov/",
+        "authority": "State of New York",
+        "portal_type": "court_directory",
+        "requires": [],
+        "notes": "Official state court directory"
+      },
+      {
+        "name": "New York Courts Directory",
+        "url": "https://iapps.courts.state.ny.us/webcivil/FCASMain",
+        "authority": "State of New York",
+        "portal_type": "court_directory",
+        "requires": [],
+        "notes": "Official state court directory"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.988922",
+    "verification_status": "unverified",
+    "confidence": 0.5
+  },
+  {
+    "id": "e040efc0234304e5",
+    "country": "USA",
+    "province_state": "New York",
+    "city_or_county": "New York City",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "municipal"
+    ],
+    "portals": [
+      {
+        "name": "New York City Municipal Court",
+        "url": "https://placeholder.example.com/new-york-city",
+        "authority": "City of New York City",
+        "portal_type": "case_lookup",
+        "requires": [
+          "citation_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.988922",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "ed340efc52dbd46f",
+    "country": "USA",
+    "province_state": "New York",
+    "city_or_county": "Buffalo",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "municipal"
+    ],
+    "portals": [
+      {
+        "name": "Buffalo Municipal Court",
+        "url": "https://placeholder.example.com/buffalo",
+        "authority": "City of Buffalo",
+        "portal_type": "case_lookup",
+        "requires": [
+          "citation_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.988922",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "ac5d7c0acbc98b60",
+    "country": "USA",
+    "province_state": "New York",
+    "city_or_county": "Rochester",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "municipal"
+    ],
+    "portals": [
+      {
+        "name": "Rochester Municipal Court",
+        "url": "https://placeholder.example.com/rochester",
+        "authority": "City of Rochester",
+        "portal_type": "case_lookup",
+        "requires": [
+          "citation_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.988922",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "be16dfc08b8daba2",
+    "country": "USA",
+    "province_state": "New York",
+    "city_or_county": "Yonkers",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "municipal"
+    ],
+    "portals": [
+      {
+        "name": "Yonkers Municipal Court",
+        "url": "https://placeholder.example.com/yonkers",
+        "authority": "City of Yonkers",
+        "portal_type": "case_lookup",
+        "requires": [
+          "citation_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.988922",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "78fbda231ce79648",
+    "country": "USA",
+    "province_state": "New York",
+    "city_or_county": "Syracuse",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "municipal"
+    ],
+    "portals": [
+      {
+        "name": "Syracuse Municipal Court",
+        "url": "https://placeholder.example.com/syracuse",
+        "authority": "City of Syracuse",
+        "portal_type": "case_lookup",
+        "requires": [
+          "citation_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.988922",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "165c282026a65d5b",
+    "country": "USA",
+    "province_state": "Florida",
+    "city_or_county": "Statewide",
+    "jurisdiction_level": "state",
+    "ticket_types": [
+      "traffic",
+      "criminal",
+      "civil"
+    ],
+    "portals": [
+      {
+        "name": "Florida Courts Directory",
+        "url": "https://www.flcourts.gov/",
+        "authority": "State of Florida",
+        "portal_type": "court_directory",
+        "requires": [],
+        "notes": "Official state court directory"
+      },
+      {
+        "name": "Florida Courts Directory",
+        "url": "https://www.flcourts.gov/Florida-Courts/Trial-Courts",
+        "authority": "State of Florida",
+        "portal_type": "court_directory",
+        "requires": [],
+        "notes": "Official state court directory"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.988922",
+    "verification_status": "unverified",
+    "confidence": 0.5
+  },
+  {
+    "id": "987ffb98c0721caf",
+    "country": "USA",
+    "province_state": "Florida",
+    "city_or_county": "Jacksonville",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "municipal"
+    ],
+    "portals": [
+      {
+        "name": "Jacksonville Municipal Court",
+        "url": "https://placeholder.example.com/jacksonville",
+        "authority": "City of Jacksonville",
+        "portal_type": "case_lookup",
+        "requires": [
+          "citation_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.988922",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "6fac9e170e48e2ce",
+    "country": "USA",
+    "province_state": "Florida",
+    "city_or_county": "Miami",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "municipal"
+    ],
+    "portals": [
+      {
+        "name": "Miami Municipal Court",
+        "url": "https://placeholder.example.com/miami",
+        "authority": "City of Miami",
+        "portal_type": "case_lookup",
+        "requires": [
+          "citation_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.988922",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "9babff660c17db74",
+    "country": "USA",
+    "province_state": "Florida",
+    "city_or_county": "Tampa",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "municipal"
+    ],
+    "portals": [
+      {
+        "name": "Tampa Municipal Court",
+        "url": "https://placeholder.example.com/tampa",
+        "authority": "City of Tampa",
+        "portal_type": "case_lookup",
+        "requires": [
+          "citation_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.988922",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "4c6552bf2d835986",
+    "country": "USA",
+    "province_state": "Florida",
+    "city_or_county": "Orlando",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "municipal"
+    ],
+    "portals": [
+      {
+        "name": "Orlando Municipal Court",
+        "url": "https://placeholder.example.com/orlando",
+        "authority": "City of Orlando",
+        "portal_type": "case_lookup",
+        "requires": [
+          "citation_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.989947",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "8e130e4273dfccd4",
+    "country": "USA",
+    "province_state": "Florida",
+    "city_or_county": "Saint Petersburg",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "municipal"
+    ],
+    "portals": [
+      {
+        "name": "St. Petersburg Municipal Court",
+        "url": "https://placeholder.example.com/st.-petersburg",
+        "authority": "City of St. Petersburg",
+        "portal_type": "case_lookup",
+        "requires": [
+          "citation_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.989947",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "fd429e7761c40b15",
+    "country": "USA",
+    "province_state": "Illinois",
+    "city_or_county": "Statewide",
+    "jurisdiction_level": "state",
+    "ticket_types": [
+      "traffic",
+      "criminal",
+      "civil"
+    ],
+    "portals": [
+      {
+        "name": "Illinois Courts Directory",
+        "url": "https://www.illinoiscourts.gov/",
+        "authority": "State of Illinois",
+        "portal_type": "court_directory",
+        "requires": [],
+        "notes": "Official state court directory"
+      },
+      {
+        "name": "Illinois Courts Directory",
+        "url": "https://www.cookcountycourt.org/",
+        "authority": "State of Illinois",
+        "portal_type": "court_directory",
+        "requires": [],
+        "notes": "Official state court directory"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.989947",
+    "verification_status": "unverified",
+    "confidence": 0.5
+  },
+  {
+    "id": "223d64a15d2411d6",
+    "country": "USA",
+    "province_state": "Illinois",
+    "city_or_county": "Chicago",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "municipal"
+    ],
+    "portals": [
+      {
+        "name": "Chicago Municipal Court",
+        "url": "https://placeholder.example.com/chicago",
+        "authority": "City of Chicago",
+        "portal_type": "case_lookup",
+        "requires": [
+          "citation_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.989947",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "c55fc0a619c2ff29",
+    "country": "USA",
+    "province_state": "Illinois",
+    "city_or_county": "Aurora",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "municipal"
+    ],
+    "portals": [
+      {
+        "name": "Aurora Municipal Court",
+        "url": "https://placeholder.example.com/aurora",
+        "authority": "City of Aurora",
+        "portal_type": "case_lookup",
+        "requires": [
+          "citation_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.989947",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "db70e2d37846a734",
+    "country": "USA",
+    "province_state": "Illinois",
+    "city_or_county": "Joliet",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "municipal"
+    ],
+    "portals": [
+      {
+        "name": "Joliet Municipal Court",
+        "url": "https://placeholder.example.com/joliet",
+        "authority": "City of Joliet",
+        "portal_type": "case_lookup",
+        "requires": [
+          "citation_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.989947",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "9256c3558d480bad",
+    "country": "USA",
+    "province_state": "Illinois",
+    "city_or_county": "Naperville",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "municipal"
+    ],
+    "portals": [
+      {
+        "name": "Naperville Municipal Court",
+        "url": "https://placeholder.example.com/naperville",
+        "authority": "City of Naperville",
+        "portal_type": "case_lookup",
+        "requires": [
+          "citation_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.989947",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  },
+  {
+    "id": "c5fd1c3f449ad0fd",
+    "country": "USA",
+    "province_state": "Illinois",
+    "city_or_county": "Rockford",
+    "jurisdiction_level": "city",
+    "ticket_types": [
+      "traffic",
+      "parking",
+      "municipal"
+    ],
+    "portals": [
+      {
+        "name": "Rockford Municipal Court",
+        "url": "https://placeholder.example.com/rockford",
+        "authority": "City of Rockford",
+        "portal_type": "case_lookup",
+        "requires": [
+          "citation_number"
+        ],
+        "notes": "Placeholder - would be discovered by actual scraper"
+      }
+    ],
+    "language": [
+      "en"
+    ],
+    "last_verified_at": "2026-01-15T21:30:25.989947",
+    "verification_status": "unverified",
+    "confidence": 0.3
+  }
+]

@@ -211,6 +211,47 @@
   cursor: not-allowed;
 }
 
+/* Avatar Section */
+.avatar-section {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid var(--border-subtle, #2f2f2f);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.avatar-preview {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #1f2937;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar-placeholder {
+  color: #e5e7eb;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.avatar-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
 .secondary-btn {
   padding: 10px 16px;
   background: transparent;

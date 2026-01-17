@@ -37,13 +37,25 @@ export class LoginComponent {
         this.loginForm.value.password
       ).subscribe({
         next: () => {
-          this.router.navigate(['/setup']);
+          this.router.navigate(['/chat']);
         },
         error: (error) => {
-          this.errorMessage = error.error?.message || 'Login failed. Please try again.';
+          this.errorMessage = error.error?.detail || 'Login failed. Please try again.';
           this.isLoading = false;
         }
       });
     }
+  }
+
+  loginWithGoogle(): void {
+    this.authService.loginWithGoogle();
+  }
+
+  loginWithMicrosoft(): void {
+    this.authService.loginWithMicrosoft();
+  }
+
+  goToSignup(): void {
+    this.router.navigate(['/signup']);
   }
 }

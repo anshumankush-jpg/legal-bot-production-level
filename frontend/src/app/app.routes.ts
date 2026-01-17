@@ -32,6 +32,34 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/chat/chat.component').then(m => m.ChatComponent),
     canActivate: [AuthGuard, ProvisionedGuard, SetupGuard]
   },
+  // New ChatGPT-style app shell
+  {
+    path: 'app',
+    loadComponent: () => import('./components/app-shell/app-shell.component').then(m => m.AppShellComponent),
+    children: [
+      {
+        path: '',
+        redirectTo: 'chat',
+        pathMatch: 'full'
+      },
+      {
+        path: 'chat',
+        loadComponent: () => import('./pages/chat-page/chat-page.component').then(m => m.ChatPageComponent)
+      },
+      {
+        path: 'chat/:id',
+        loadComponent: () => import('./pages/chat-page/chat-page.component').then(m => m.ChatPageComponent)
+      },
+      {
+        path: 'personalization',
+        loadComponent: () => import('./pages/personalization/personalization.component').then(m => m.PersonalizationComponent)
+      },
+      {
+        path: 'settings',
+        loadComponent: () => import('./pages/settings/settings.component').then(m => m.SettingsComponent)
+      }
+    ]
+  },
   {
     path: 'profile',
     loadComponent: () => import('./pages/profile/profile.component').then(m => m.ProfileComponent),

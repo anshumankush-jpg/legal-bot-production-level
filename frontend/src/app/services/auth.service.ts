@@ -1,313 +1,173 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, BehaviorSubject, of, throwError } from 'rxjs';
-import { tap, catchError, map, switchMap } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { Router } from '@angular/router';
-import { environment } from '../../environments/environment';
 
 export interface User {
-  id: string;
-  email: string;
-  name?: string;
-  role: 'client' | 'lawyer' | 'employee' | 'employee_admin';
-  lawyer_status: 'not_applicable' | 'pending' | 'approved' | 'rejected';
-  is_provisioned: boolean;
-  created_at: string;
-  last_login_at?: string;
-}
-
-export interface UserProfile {
   user_id: string;
-  display_name?: string;
-  username?: string;
-  avatar_url?: string;
-  preferences_json?: any;
-  updated_at: string;
-}
-
-export interface SessionResponse {
-  user: User;
-  profile: UserProfile;
-  token: string;
-  expires_at: string;
-}
-
-export interface LoginCredentials {
   email: string;
-  password: string;
+  display_name: string;
+  role: 'client' | 'lawyer' | 'admin';
+  created_at: Date;
+  last_login_at: Date;
 }
 
-export interface OAuthLoginData {
-  provider: 'google' | 'microsoft';
-  token: string;
-  role?: string;
+export interface AuthResponse {
+  access_token: string;
+  refresh_token?: string;
+  user: User;
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = environment.apiUrl || 'http://localhost:8001';
-  
-  private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
-  private userSubject = new BehaviorSubject<User | null>(null);
-  private profileSubject = new BehaviorSubject<UserProfile | null>(null);
-  private isProvisionedSubject = new BehaviorSubject<boolean>(true);
-  
-  public isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
-  public user$ = this.userSubject.asObservable();
-  public profile$ = this.profileSubject.asObservable();
-  public isProvisioned$ = this.isProvisionedSubject.asObservable();
+  private apiUrl = 'http://localhost:8000';
+  private currentUserSubject = new BehaviorSubject<User | null>(null);
+  private tokenSubject = new BehaviorSubject<string | null>(null);
+
+  public currentUser$ = this.currentUserSubject.asObservable();
+  public token$ = this.tokenSubject.asObservable();
+  public isAuthenticated$ = new BehaviorSubject<boolean>(false);
 
   constructor(
     private http: HttpClient,
     private router: Router
   ) {
-    this.checkAuthStatus();
+    this.loadUserFromStorage();
   }
 
-  private getHeaders(): HttpHeaders {
-    const token = this.getToken();
-    return new HttpHeaders({
-      'Content-Type': 'application/json',
-      ...(token ? { 'Authorization': `Bearer ${token}` } : {})
-    });
-  }
+  private loadUserFromStorage(): void {
+    const token = localStorage.getItem('legid_token');
+    const userJson = localStorage.getItem('legid_user');
 
-  // ============================================
-  // SESSION MANAGEMENT
-  // ============================================
-
-  /**
-   * Create session with email/password
-   */
-  login(email: string, password: string): Observable<SessionResponse> {
-    return this.http.post<SessionResponse>(`${this.apiUrl}/api/session`, { 
-      email, 
-      password,
-      auth_type: 'email'
-    }).pipe(
-      tap(response => this.handleSessionResponse(response)),
-      catchError(error => this.handleAuthError(error))
-    );
-  }
-
-  /**
-   * Create session with OAuth provider
-   */
-  loginWithOAuth(data: OAuthLoginData): Observable<SessionResponse> {
-    return this.http.post<SessionResponse>(`${this.apiUrl}/api/session`, {
-      provider: data.provider,
-      token: data.token,
-      role: data.role,
-      auth_type: 'oauth'
-    }).pipe(
-      tap(response => this.handleSessionResponse(response)),
-      catchError(error => this.handleAuthError(error))
-    );
-  }
-
-  /**
-   * Handle successful session response
-   */
-  private handleSessionResponse(response: SessionResponse): void {
-    if (response.token) {
-      localStorage.setItem('authToken', response.token);
-      localStorage.setItem('legalai_user', JSON.stringify(response.user));
-      localStorage.setItem('legalai_profile', JSON.stringify(response.profile));
-      
-      this.userSubject.next(response.user);
-      this.profileSubject.next(response.profile);
-      this.isAuthenticatedSubject.next(true);
-      this.isProvisionedSubject.next(response.user.is_provisioned);
-    }
-  }
-
-  /**
-   * Handle authentication errors
-   */
-  private handleAuthError(error: any): Observable<never> {
-    if (error.status === 403 && error.error?.code === 'NOT_PROVISIONED') {
-      this.isProvisionedSubject.next(false);
-      // Store minimal user info for access request
-      if (error.error?.user) {
-        localStorage.setItem('legalai_pending_user', JSON.stringify(error.error.user));
+    if (token && userJson) {
+      try {
+        const user = JSON.parse(userJson);
+        this.tokenSubject.next(token);
+        this.currentUserSubject.next(user);
+        this.isAuthenticated$.next(true);
+      } catch (e) {
+        this.logout();
       }
     }
-    return throwError(() => error);
   }
 
-  /**
-   * Get current user info from /api/me
-   */
-  getMe(): Observable<{ user: User; profile: UserProfile }> {
-    return this.http.get<{ user: User; profile: UserProfile }>(
-      `${this.apiUrl}/api/me`,
-      { headers: this.getHeaders() }
-    ).pipe(
-      tap(response => {
-        this.userSubject.next(response.user);
-        this.profileSubject.next(response.profile);
-        this.isProvisionedSubject.next(response.user.is_provisioned);
-        localStorage.setItem('legalai_user', JSON.stringify(response.user));
-        localStorage.setItem('legalai_profile', JSON.stringify(response.profile));
-      }),
-      catchError(error => {
-        if (error.status === 401) {
-          this.logout();
-        }
-        return throwError(() => error);
-      })
+  login(email: string, password: string): Observable<AuthResponse> {
+    return this.http.post<AuthResponse>(`${this.apiUrl}/api/auth/login`, {
+      email,
+      password
+    }).pipe(
+      tap(response => this.handleAuthSuccess(response))
     );
   }
 
-  /**
-   * Refresh session / validate token
-   */
-  refreshSession(): Observable<SessionResponse> {
-    return this.http.post<SessionResponse>(
-      `${this.apiUrl}/api/session/refresh`,
-      {},
-      { headers: this.getHeaders() }
-    ).pipe(
-      tap(response => this.handleSessionResponse(response)),
-      catchError(error => {
-        if (error.status === 401) {
-          this.logout();
+  loginWithGoogle(): void {
+    // Initiate Google OAuth flow
+    this.http.get<{auth_url: string, state: string}>(`${this.apiUrl}/api/auth/google/login`)
+      .subscribe({
+        next: (response) => {
+          // Store state for CSRF protection
+          sessionStorage.setItem('oauth_state', response.state);
+          // Redirect to Google auth
+          window.location.href = response.auth_url;
+        },
+        error: (error) => {
+          console.error('Google OAuth initiation failed:', error);
         }
-        return throwError(() => error);
-      })
-    );
-  }
-
-  // ============================================
-  // LOGOUT
-  // ============================================
-
-  /**
-   * Logout - clear session and redirect
-   */
-  logout(): void {
-    // Call backend to invalidate session
-    this.http.post(`${this.apiUrl}/api/logout`, {}, { headers: this.getHeaders() })
-      .pipe(catchError(() => of(null)))
-      .subscribe(() => {
-        this.clearLocalState();
-        this.router.navigate(['/login']);
       });
   }
 
-  /**
-   * Logout from all devices
-   */
-  logoutAllDevices(): Observable<void> {
-    return this.http.post<void>(
-      `${this.apiUrl}/api/logout/all`,
-      {},
-      { headers: this.getHeaders() }
-    ).pipe(
-      tap(() => {
-        this.clearLocalState();
-        this.router.navigate(['/login']);
-      }),
-      catchError(error => {
-        console.error('Failed to logout from all devices:', error);
-        // Still clear local state
-        this.clearLocalState();
-        this.router.navigate(['/login']);
-        return throwError(() => error);
+  loginWithMicrosoft(): void {
+    // Initiate Microsoft OAuth flow
+    this.http.get<{auth_url: string, state: string}>(`${this.apiUrl}/api/auth/microsoft/login`)
+      .subscribe({
+        next: (response) => {
+          // Store state for CSRF protection
+          sessionStorage.setItem('oauth_state', response.state);
+          // Redirect to Microsoft auth
+          window.location.href = response.auth_url;
+        },
+        error: (error) => {
+          console.error('Microsoft OAuth initiation failed:', error);
+        }
+      });
+  }
+
+  signup(email: string, password: string, name?: string): Observable<AuthResponse> {
+    return this.http.post<AuthResponse>(`${this.apiUrl}/api/auth/signup`, {
+      email,
+      password,
+      name
+    }).pipe(
+      tap(response => this.handleAuthSuccess(response))
+    );
+  }
+
+  private handleAuthSuccess(response: AuthResponse): void {
+    localStorage.setItem('legid_token', response.access_token);
+    localStorage.setItem('legid_user', JSON.stringify(response.user));
+    
+    if (response.refresh_token) {
+      localStorage.setItem('legid_refresh_token', response.refresh_token);
+    }
+
+    this.tokenSubject.next(response.access_token);
+    this.currentUserSubject.next(response.user);
+    this.isAuthenticated$.next(true);
+  }
+
+  logout(): void {
+    localStorage.removeItem('legid_token');
+    localStorage.removeItem('legid_user');
+    localStorage.removeItem('legid_refresh_token');
+
+    this.tokenSubject.next(null);
+    this.currentUserSubject.next(null);
+    this.isAuthenticated$.next(false);
+
+    this.router.navigate(['/login']);
+  }
+
+  getToken(): string | null {
+    return this.tokenSubject.value;
+  }
+
+  getCurrentUser(): User | null {
+    return this.currentUserSubject.value;
+  }
+
+  isAuthenticated(): boolean {
+    return this.isAuthenticated$.value;
+  }
+
+  refreshToken(): Observable<AuthResponse> {
+    const refreshToken = localStorage.getItem('legid_refresh_token');
+    return this.http.post<AuthResponse>(`${this.apiUrl}/api/auth/refresh`, {
+      refresh_token: refreshToken
+    }).pipe(
+      tap(response => this.handleAuthSuccess(response))
+    );
+  }
+
+  getCurrentUserFromAPI(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/api/auth/me`).pipe(
+      tap(user => {
+        this.currentUserSubject.next(user as User);
+        this.isAuthenticated$.next(true);
+        localStorage.setItem('legid_user', JSON.stringify(user));
       })
     );
   }
 
-  /**
-   * Clear all local state
-   */
-  private clearLocalState(): void {
-    localStorage.removeItem('authToken');
-    localStorage.removeItem('legalai_user');
-    localStorage.removeItem('legalai_profile');
-    localStorage.removeItem('legalai_pending_user');
-    
-    this.userSubject.next(null);
-    this.profileSubject.next(null);
-    this.isAuthenticatedSubject.next(false);
-    this.isProvisionedSubject.next(true);
-  }
-
-  // ============================================
-  // AUTH STATE
-  // ============================================
-
-  isAuthenticated(): boolean {
-    return !!localStorage.getItem('authToken');
-  }
-
-  getToken(): string | null {
-    return localStorage.getItem('authToken');
-  }
-
-  getCurrentUser(): User | null {
-    return this.userSubject.getValue();
-  }
-
-  getCurrentProfile(): UserProfile | null {
-    return this.profileSubject.getValue();
-  }
-
-  isUserProvisioned(): boolean {
-    return this.isProvisionedSubject.getValue();
-  }
-
-  /**
-   * Check if user has specific role
-   */
-  hasRole(role: string | string[]): boolean {
-    const user = this.getCurrentUser();
-    if (!user) return false;
-    
-    const roles = Array.isArray(role) ? role : [role];
-    return roles.includes(user.role);
-  }
-
-  /**
-   * Check if lawyer is approved
-   */
-  isApprovedLawyer(): boolean {
-    const user = this.getCurrentUser();
-    return user?.role === 'lawyer' && user?.lawyer_status === 'approved';
-  }
-
-  private checkAuthStatus(): void {
-    const token = this.getToken();
-    const cachedUser = localStorage.getItem('legalai_user');
-    const cachedProfile = localStorage.getItem('legalai_profile');
-    
-    if (token) {
-      this.isAuthenticatedSubject.next(true);
-      
-      if (cachedUser) {
-        try {
-          const user = JSON.parse(cachedUser);
-          this.userSubject.next(user);
-          this.isProvisionedSubject.next(user.is_provisioned);
-        } catch (e) {
-          localStorage.removeItem('legalai_user');
-        }
-      }
-      
-      if (cachedProfile) {
-        try {
-          this.profileSubject.next(JSON.parse(cachedProfile));
-        } catch (e) {
-          localStorage.removeItem('legalai_profile');
-        }
-      }
-      
-      // Validate token with backend
-      this.getMe().pipe(
-        catchError(() => of(null))
-      ).subscribe();
-    }
+  logoutAPI(): Observable<any> {
+    const refreshToken = localStorage.getItem('legid_refresh_token');
+    return this.http.post(`${this.apiUrl}/api/auth/logout`, {
+      refresh_token: refreshToken
+    }).pipe(
+      tap(() => {
+        this.logout();
+      })
+    );
   }
 }

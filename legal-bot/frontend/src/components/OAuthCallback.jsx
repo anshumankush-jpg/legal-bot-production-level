@@ -57,14 +57,11 @@ const OAuthCallback = ({ onAuthSuccess }) => {
         const data = await response.json();
 
         if (!response.ok) {
-          // Check if this is an access denied error (403)
-          if (response.status === 403) {
-            // User not in allowlist - redirect to access denied page
-            sessionStorage.setItem('access_denied_reason', data.detail || 'Access not authorized');
-            window.location.href = '/access-denied';
+          if (response.status === 403 && data?.detail?.code === 'NOT_PROVISIONED') {
+            window.location.href = '/not-provisioned';
             return;
           }
-          throw new Error(data.detail || 'OAuth exchange failed');
+          throw new Error(data.detail?.message || data.detail || 'OAuth exchange failed');
         }
 
         // Clear OAuth session data
@@ -115,7 +112,6 @@ const OAuthCallback = ({ onAuthSuccess }) => {
 
         {status === 'error' && (
           <div className="oauth-status error">
-            <div className="oauth-error-icon">⚠️</div>
             <h2>Sign in failed</h2>
             <p className="error-message">{error}</p>
             <button

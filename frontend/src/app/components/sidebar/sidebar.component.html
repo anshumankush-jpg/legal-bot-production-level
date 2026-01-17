@@ -1,0 +1,83 @@
+<aside class="sidebar">
+  <!-- Brand -->
+  <div class="brand">
+    <div class="brand__name">LEGID</div>
+  </div>
+
+  <!-- New Chat Button -->
+  <div class="sidebar__cta">
+    <button class="btn btn--primary" (click)="createNewChat()" style="width: 100%;">
+      <span>New Chat</span>
+    </button>
+  </div>
+
+  <!-- Search -->
+  <div class="sidebar__search">
+    <input
+      type="text"
+      class="search"
+      placeholder="Search chats..."
+      [(ngModel)]="searchQuery"
+      (ngModelChange)="onSearchChange()"
+    />
+  </div>
+
+  <!-- Chat List -->
+  <div class="chatlist">
+    <div class="chatlist__title">YOUR CHATS</div>
+    <div *ngIf="conversations.length > 0">
+      <div
+        *ngFor="let conv of conversations"
+        class="chatitem"
+        [class.chatitem--active]="conv.conversation_id === activeConversationId"
+        (click)="selectConversation(conv)"
+      >
+        <div>
+          <div class="chatitem__name">{{ conv.title }}</div>
+          <div class="chatitem__meta">{{ formatDate(conv.updated_at) }}</div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="conversations.length === 0" class="empty-state">
+      <p style="font-size: 13px; color: var(--text-3);">No conversations yet</p>
+    </div>
+  </div>
+
+  <!-- Profile -->
+  <div class="sidebar__profile">
+    <div class="profile-chip" (click)="toggleProfileMenu()">
+      <div class="avatar">{{ getUserInitials() }}</div>
+      <div class="profile-chip__text">
+        <div class="profile-chip__name">{{ currentUser?.display_name || 'User' }}</div>
+        <div class="profile-chip__role">{{ currentUser?.role === 'lawyer' ? 'Lawyer' : 'Plus' }}</div>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<!-- Profile Dropdown -->
+<div class="dropdown" [class.dropdown--open]="showProfileMenu" (click)="toggleProfileMenu()">
+  <div class="dropdown__panel" (click)="$event.stopPropagation()">
+    <div class="dropdown__header">
+      <div class="dropdown__name">{{ currentUser?.display_name || 'User' }}</div>
+      <div class="dropdown__email">{{ currentUser?.email }}</div>
+    </div>
+    <button class="dropdown__item" (click)="handleProfileAction('personalization')">
+      <span>⚙️</span>
+      <span>Personalization</span>
+    </button>
+    <button class="dropdown__item" (click)="handleProfileAction('settings')">
+      <span>🔧</span>
+      <span>Settings</span>
+    </button>
+    <button class="dropdown__item" (click)="handleProfileAction('help')">
+      <span>❓</span>
+      <span>Help</span>
+    </button>
+    <div class="dropdown__divider"></div>
+    <button class="dropdown__item dropdown__item--danger" (click)="handleProfileAction('logout')">
+      <span>🚪</span>
+      <span>Log out</span>
+    </button>
+  </div>
+</div>

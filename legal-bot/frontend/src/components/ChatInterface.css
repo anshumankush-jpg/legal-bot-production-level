@@ -71,9 +71,15 @@
 
 .header-left {
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  align-items: center;
+  gap: 1rem;
   flex: 1;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 /* Top Row with Logo and New Chat */
@@ -324,6 +330,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  min-height: 0;
 }
 
 .messages-container::-webkit-scrollbar {
@@ -499,6 +506,141 @@
 .quick-actions button:hover {
   background: #2f2f2f;
   border-color: #565656;
+}
+
+/* Main Layout with Sidebar */
+.chat-main-layout {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  height: calc(100vh - 60px);
+}
+
+/* ChatSidebar Component Integration */
+.chat-main-layout > .chat-sidebar {
+  flex-shrink: 0;
+  height: 100%;
+}
+
+/* Main Chat Content Area */
+.chat-main-layout > .messages-container,
+.chat-main-layout > .chat-content {
+  flex: 1;
+  overflow-y: auto;
+  min-width: 0;
+}
+
+/* Left Sidebar (Old - Hidden) */
+.chat-sidebar-left {
+  width: 280px;
+  background: #1a1a1a;
+  border-right: 1px solid #2f2f2f;
+  padding: 1rem;
+  overflow-y: auto;
+  flex-shrink: 0;
+  display: none; /* Hidden - using ChatSidebar component instead */
+}
+
+/* Context Display */
+.context-display {
+  margin-bottom: 1.5rem;
+  padding: 0.75rem;
+  background: #212121;
+  border-radius: 8px;
+  border: 1px solid #2f2f2f;
+}
+
+.context-text {
+  font-size: 0.85rem;
+  color: #9b9b9b;
+  line-height: 1.5;
+}
+
+.context-text .law-type-highlight {
+  color: #ececec;
+  font-weight: 600;
+  background: #2f2f2f;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+/* Sidebar Navigation */
+.sidebar-navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 0.75rem;
+  background: transparent;
+  border: 1px solid #2f2f2f;
+  border-radius: 6px;
+  color: #9b9b9b;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.15s;
+  text-align: left;
+  width: 100%;
+}
+
+.nav-btn:hover {
+  background: #212121;
+  border-color: #3a3a3a;
+  color: #ececec;
+}
+
+/* Summary Buttons */
+.summary-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #2f2f2f;
+}
+
+.summary-btn {
+  padding: 0.65rem 0.75rem;
+  background: transparent;
+  border: 1px solid #3a5a3a;
+  border-radius: 6px;
+  color: #7cb37c;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.15s;
+  text-align: center;
+  width: 100%;
+}
+
+.summary-btn:hover {
+  background: rgba(76, 175, 80, 0.1);
+  border-color: #4caf50;
+  color: #8bc34a;
+}
+
+.summary-btn.ai-summary {
+  border-color: #4caf50;
+  color: #8bc34a;
+}
+
+.summary-btn.quick-summary {
+  border-color: #3a5a3a;
+  color: #7cb37c;
+}
+
+/* Main Chat Content */
+.chat-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-width: 0;
 }
 
 /* Messages - ChatGPT Style */

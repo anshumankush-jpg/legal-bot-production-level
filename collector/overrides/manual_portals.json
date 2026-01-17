@@ -1,0 +1,130 @@
+[
+  {
+    "id": "manual_toronto_traffic",
+    "country": "Canada",
+    "province_state": "Ontario",
+    "city_or_county": "Toronto",
+    "jurisdiction_level": "city",
+    "ticket_types": ["traffic", "parking", "provincial_offences"],
+    "portals": [
+      {
+        "name": "City of Toronto Court Case Lookup",
+        "url": "https://secure.toronto.ca/CourtCaseLookUp/welcome.jsf",
+        "authority": "City of Toronto",
+        "portal_type": "case_lookup",
+        "requires": ["ticket_number", "offence_number"],
+        "notes": "Official City of Toronto case lookup portal for Provincial Offences tickets"
+      },
+      {
+        "name": "Toronto Provincial Offences Court",
+        "url": "https://www.toronto.ca/city-government/accountability-operations-customer-service/complaints-claims-compliments/provincial-offences-act/",
+        "authority": "City of Toronto",
+        "portal_type": "court_directory",
+        "requires": [],
+        "notes": "Information about Provincial Offences Court in Toronto"
+      },
+      {
+        "name": "Toronto Parking Ticket Payment",
+        "url": "https://secure.toronto.ca/wes/eTPOWeb/htm/paymentOption.htm",
+        "authority": "City of Toronto",
+        "portal_type": "pay_ticket",
+        "requires": ["ticket_number"],
+        "notes": "Pay parking tickets online"
+      }
+    ],
+    "language": ["en", "fr"],
+    "last_verified_at": "2026-01-15T00:00:00",
+    "verification_status": "verified",
+    "confidence": 1.0
+  },
+  {
+    "id": "manual_ontario_courts",
+    "country": "Canada",
+    "province_state": "Ontario",
+    "city_or_county": "Province-wide",
+    "jurisdiction_level": "province_state",
+    "ticket_types": ["traffic", "criminal", "provincial_offences"],
+    "portals": [
+      {
+        "name": "Ontario Court of Justice",
+        "url": "https://www.ontariocourts.ca/ocj/",
+        "authority": "Ontario Court of Justice",
+        "portal_type": "court_directory",
+        "requires": [],
+        "notes": "Main portal for Ontario Court of Justice locations and information"
+      },
+      {
+        "name": "Pay Ontario Provincial Offences Tickets",
+        "url": "https://www.paytickets.ca/",
+        "authority": "Province of Ontario",
+        "portal_type": "pay_ticket",
+        "requires": ["ticket_number", "offence_number"],
+        "notes": "Official provincial portal for paying tickets online (not all municipalities)"
+      }
+    ],
+    "language": ["en", "fr"],
+    "last_verified_at": "2026-01-15T00:00:00",
+    "verification_status": "verified",
+    "confidence": 1.0
+  },
+  {
+    "id": "manual_vancouver_traffic",
+    "country": "Canada",
+    "province_state": "British Columbia",
+    "city_or_county": "Vancouver",
+    "jurisdiction_level": "city",
+    "ticket_types": ["traffic", "parking", "bylaw"],
+    "portals": [
+      {
+        "name": "Vancouver Parking Ticket Payment",
+        "url": "https://parking.vancouver.ca/",
+        "authority": "City of Vancouver",
+        "portal_type": "pay_ticket",
+        "requires": ["ticket_number"],
+        "notes": "Pay parking tickets for City of Vancouver"
+      },
+      {
+        "name": "BC Provincial Court - Vancouver",
+        "url": "https://www.provincialcourt.bc.ca/locations/vancouver",
+        "authority": "Provincial Court of British Columbia",
+        "portal_type": "court_directory",
+        "requires": [],
+        "notes": "Vancouver Provincial Court location and information"
+      }
+    ],
+    "language": ["en"],
+    "last_verified_at": "2026-01-15T00:00:00",
+    "verification_status": "verified",
+    "confidence": 0.9
+  },
+  {
+    "id": "manual_los_angeles_traffic",
+    "country": "USA",
+    "province_state": "California",
+    "city_or_county": "Los Angeles",
+    "jurisdiction_level": "county",
+    "ticket_types": ["traffic", "parking", "criminal"],
+    "portals": [
+      {
+        "name": "LA Superior Court - Traffic",
+        "url": "https://www.lacourt.org/division/traffic/traffic.aspx",
+        "authority": "Los Angeles Superior Court",
+        "portal_type": "court_directory",
+        "requires": [],
+        "notes": "Traffic court information for Los Angeles County"
+      },
+      {
+        "name": "LA Court Online Services",
+        "url": "https://www.lacourt.org/online/trafficportal",
+        "authority": "Los Angeles Superior Court",
+        "portal_type": "case_lookup",
+        "requires": ["citation_number", "name"],
+        "notes": "Online traffic case lookup and payment"
+      }
+    ],
+    "language": ["en"],
+    "last_verified_at": "2026-01-15T00:00:00",
+    "verification_status": "verified",
+    "confidence": 0.9
+  }
+]

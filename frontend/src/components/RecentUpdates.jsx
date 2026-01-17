@@ -66,13 +66,28 @@ const RecentUpdates = ({ lawType, jurisdiction, onClose }) => {
               updates.map((update, index) => (
                 <div key={index} className="update-card">
                   <div className="update-header">
-                    <span className="update-type">{update.type}</span>
+                    <div className="update-badges">
+                      {update.jurisdiction && (
+                        <span className={`jurisdiction-badge ${update.jurisdiction.toLowerCase()}`}>
+                          {update.jurisdiction === 'Canada' ? '🍁' : '🇺🇸'} {update.jurisdiction}
+                        </span>
+                      )}
+                      <span className="update-source-badge">{update.source || 'Legal News'}</span>
+                    </div>
                     <span className="update-date">{formatDate(update.date)}</span>
                   </div>
                   
                   <h3 className="update-title">{update.title}</h3>
                   
-                  <p className="update-summary">{update.summary}</p>
+                  <p className="update-summary">{update.description || update.summary}</p>
+                  
+                  {update.law_types && update.law_types.length > 0 && (
+                    <div className="update-tags">
+                      {update.law_types.map((lt, idx) => (
+                        <span key={idx} className="law-type-tag">{lt}</span>
+                      ))}
+                    </div>
+                  )}
                   
                   {update.citation && (
                     <div className="update-citation">
@@ -97,15 +112,15 @@ const RecentUpdates = ({ lawType, jurisdiction, onClose }) => {
                     </div>
                   )}
                   
-                  {update.source_url && (
+                  {(update.link || update.source_url) && (
                     <div className="update-source">
                       <a 
-                        href={update.source_url} 
+                        href={update.link || update.source_url} 
                         target="_blank" 
                         rel="noopener noreferrer"
                         className="source-link"
                       >
-                        View Official Source
+                        📰 Read Full Article →
                       </a>
                     </div>
                   )}
